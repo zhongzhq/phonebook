@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+# -*- coding: utf-8  -*-
+rank1 = Unirole::Rank.create(name: '企业')
+rank2 = Unirole::Rank.create(name: '部门', parent: rank1)
+
+
+membership1 = Unirole::Membership.create!(:name => '系统管理员')
+membership2 = Unirole::Membership.create!(:name => '成员')
+en = Unirole::Organ.create!(name: '成都知一软件有限公司', rank: rank1, parent: nil, order: 1)
+Unirole::Organ.create!(name: '软件开发部', rank: rank2, parent: en, order: 1)
+Unirole::Organ.create!(name: '后勤行政部', rank: rank2, parent: en, order: 2)

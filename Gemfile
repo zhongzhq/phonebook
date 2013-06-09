@@ -57,7 +57,24 @@ group :test do
   gem "guard-bundler"
   gem "simplecov", :require => false
 end
+gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 
-gem "unirole", :git => "git@task.zhiyisoft.com:bazaar/xiegang/zhiyi-unirole.git"
+if File.readable?(gemfile_local)
+
+  gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails",:path =>"../zhiyi-bootstrap-rails"
+  gem 'unirole', :path => "../zhiyi-unirole"
+
+else
+
+  gem 'unirole', :git => 'git@github.com:zhiyisoft/zhiyi-unirole.git', :branch => "dev"
+  gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails", :git => "git@github.com:zhiyisoft/bootstrap-rails.git", :ref => "HEAD"
+
+end
+
 gem "ruote"
 gem "ruote-mon"
+gem "mongoid"
+gem "mongoid-ancestry"
+gem "simple_form"
+gem 'will_paginate_mongoid'
+
