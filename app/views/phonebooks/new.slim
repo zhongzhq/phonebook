@@ -1,0 +1,8 @@
+.widget
+  h4
+    i.icon-upload.text-large
+    span.text-info 添加记录
+  .widgetarea
+    = simple_form_for @phonebook, :html => {:class=>"form-horizontal form-mini"} do |f|
+      =render "form",:f =>f
+

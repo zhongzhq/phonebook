@@ -1,0 +1,11 @@
+.widget
+  h4
+    i.icon-hand-right
+    span.text-info
+      |成都知一软件有限公司 -
+      =@phonebook.name
+    .pull-right
+      =link_to "添加",new_phonebook_path,:class=>"btn btn-info"
+  .widgetarea.widgetarea-height
+    p 电话: "#{@phonebook.phone}"
+    a href=edit_phonebook_path(@phonebook) target="_blank" 修改
