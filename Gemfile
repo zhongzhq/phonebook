@@ -1,15 +1,8 @@
 source "http://ruby.taobao.org"
-# source 'https://rubygems.org'
 
-gem 'rails', '3.2.13'
+ruby '1.9.3'
+gem 'rails', '~> 3.2.11'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
-
-
-# Gems used only for assets and not required
-# in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
@@ -22,26 +15,10 @@ end
 gem 'execjs'
 gem 'therubyracer'
 gem 'jquery-rails'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'debugger'
-
+gem 'sqlite3'
 gem "slim"
+gem 'thin'
 gem "rubycas-client"
-gem "cancan"
-gem "settingslogic"
 gem "cells"
 group :test do
   gem "turn", :require => false
@@ -57,24 +34,18 @@ group :test do
   gem "guard-bundler"
   gem "simplecov", :require => false
 end
-gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
-
-if File.readable?(gemfile_local)
-
-  gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails",:path =>"../zhiyi-bootstrap-rails"
-  gem 'unirole', :path => "../zhiyi-unirole"
-
-else
-
-  gem 'unirole', :git => 'git@github.com:zhiyisoft/zhiyi-unirole.git', :branch => "dev"
-  gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails", :git => "git@github.com:zhiyisoft/bootstrap-rails.git", :ref => "HEAD"
-
-end
 
 gem "ruote"
 gem "ruote-mon"
-gem "mongoid"
-gem "mongoid-ancestry"
 gem "simple_form"
-gem 'will_paginate_mongoid'
 
+gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
+
+if File.readable?(gemfile_local)
+  gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails",:path =>"../zhiyi-bootstrap-rails"
+
+else
+  gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails", :git => "git@github.com:zhiyisoft/bootstrap-rails.git", :ref => "HEAD"
+
+end
+gem "font-awesome-rails"
