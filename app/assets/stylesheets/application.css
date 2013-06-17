@@ -10,4 +10,9 @@
  *
  *= require_self
  *= require_tree .
+ *= require twitter/bootstrap
+ *= require twitter/bootstrap-responsive
+ *= require font-awesome
+ *= require font-awesome-ie7.min
+
  */

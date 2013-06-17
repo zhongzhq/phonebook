@@ -1,0 +1,21 @@
+doctype 5
+
+html lang="en"
+  head
+    meta http-equiv="Content-Type" content="text/html; charset=utf-8"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
+
+    title= t('system.title')
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tag
+  body#body
+    .navbar
+      .navbar-inner
+        .container-fluid
+          h2 企业电话簿
+    #working-area
+      #screen-full.row-fluid
+        = yield
+    .footer
+      =render "templates/footer"

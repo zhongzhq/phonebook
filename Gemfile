@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.13'
 
@@ -12,6 +12,12 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'slim'
+gem 'thin'
+gem "font-awesome-rails"
+gem "simple_form"
+gem "bootstrap_helper"
+
 
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 
