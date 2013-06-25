@@ -4,6 +4,7 @@ EPBook::Application.routes.draw do
 
   root :to => 'dashboard#index'
 
+  mount Unirole::Engine => '/unirole', as: 'unirole_app'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
