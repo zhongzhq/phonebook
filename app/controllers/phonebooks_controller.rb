@@ -1,11 +1,16 @@
 # -*- coding: utf-8 -*-
 class PhonebooksController < ApplicationController
+  respond_to :html, :json, :js
   def index
     @phonebooks = Phonebook.all
+    if params[:callback]
+      render :json=>@phonebooks,:callback=>params[:callback]
+    end
   end
 
   def new
     @phonebook = Phonebook.new
+
   end
 
   def  show
