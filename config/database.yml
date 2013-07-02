@@ -1,0 +1,18 @@
+development:
+  adapter: sqlite3
+  database: db/EPBook.dev.sqlite3
+  pool: 5
+  timeout: 5000
+
+
+test:
+  adapter: sqlite3
+  database: db/EPBooktest.sqlite3
+  pool: 5
+  timeout: 5000
+
+production:
+  adapter: sqlite3
+  database: db/EPBook.pro.sqlite3
+  pool: 5
+  timeout: 5000

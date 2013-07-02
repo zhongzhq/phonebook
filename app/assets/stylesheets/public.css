@@ -1,0 +1,52 @@
+/*++++++++++++++++++++++++++++++++++++++++++
+  public
+--------------------------------------------*/
+.more{
+    font-size:12px;
+}
+.index_number{
+    width: 40px;
+}
+.operating *{
+    margin-left:5px;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++++
+ working area layout
+----------------------------------------------*/
+#showcontent{
+    margin-left:200px;
+    padding:50px 10px 10px 10px;
+}
+#working-area{
+    overflow:hidden;
+}
+
+/*++++++++++++++++++++++++++++++++++++++++++
+  widget
+--------------------------------------------*/
+.widget{
+    border:1px solid #DFDFDF;
+    border-radius: 3px 3px 3px 3px;
+    box-shadow: 0 1px 0 #FFFFFF inset;
+    background:linear-gradient(to top, #F5F5F5, #F9F9F9) repeat scroll 0 0 #F5F5F5;
+    min-height:120px;
+    margin-bottom:10px;
+}
+.widget h4{
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
+    border-bottom:1px solid #DFDFDF;
+    margin:0px;
+    color:#464646;
+    font-size:15px;
+    background:url("topbar_g.png") repeat-x;
+
+}
+.widget .widgetarea{
+    padding:10px;
+    min-height: 150px;
+}
+
+.widget-hide{min-height: 35px !important;}
