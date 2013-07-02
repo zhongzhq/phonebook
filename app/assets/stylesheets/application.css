@@ -9,10 +9,10 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- * require twitter/bootstrap
- * require twitter/bootstrap-responsive
- * require font-awesome
- * require font-awesome-ie7.min
+ *= require twitter/bootstrap
+ *= require twitter/bootstrap-responsive
+ *= require font-awesome
+ *= require font-awesome-ie7.min
  *= require jquery.mobile
  *= require_tree .
 

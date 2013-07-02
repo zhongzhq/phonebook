@@ -14,21 +14,20 @@ end
 gem 'jquery-rails'
 gem 'slim'
 gem 'thin'
-#gem "font-awesome-rails"
 gem "simple_form"
-#gem "bootstrap_helper"
+gem "font-awesome-rails"
+gem "bootstrap_helper"
 
 
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 
 if File.readable?(gemfile_local)
   gem 'unirole',:path => "../zhiyi-unirole"
-#  gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails",:path =>"../zhiyi-bootstrap-rails"
+  gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails",:path =>"../zhiyi-bootstrap-rails"
 
 else
   gem 'unirole',:git => "git@github.com:tianbymy/zhiyi-unirole.git"
-#  gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails", :git => "git@github.com:zhiyisoft/bootstrap-rails.git", :ref => "HEAD"
+  gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails", :git => "git@github.com:zhiyisoft/bootstrap-rails.git", :ref => "HEAD"
 
 end
-#gem "font-awesome-rails"
 gem 'jquery_mobile_rails'
