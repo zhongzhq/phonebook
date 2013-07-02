@@ -1,17 +1,23 @@
 development:
-  adapter: sqlite3
-  database: db/EPBook.dev.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  encoding: utf8
+  database: phonebook_dev
+  username: phonebook
+  password: phonebook
+  host: localhost
 
 test:
-  adapter: sqlite3
-  database: db/EPBooktest.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  encoding: utf8
+  database: phonebook_test
+  username: phonebook
+  password: phonebook
+  host: localhost
 
 production:
-  adapter: sqlite3
-  database: db/EPBook.pro.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: postgresql
+  encoding: utf8
+  database: phonebook_pro
+  username: phonebook
+  password: phonebook
+  host: localhost
