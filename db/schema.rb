@@ -13,6 +13,48 @@
 
 ActiveRecord::Schema.define(:version => 20130617083036) do
 
+  create_table "organs",:force => true do |t|
+    t.string :name
+    t.integer :root_id
+    t.integer :rank_id
+
+    t.string :address
+    t.text :description
+    t.integer :postalcode
+    t.string :areacode
+
+    t.boolean :status,:default => 0 #默认 0禁用 1启用
+
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ranks", :force => true do |t|
+    t.string :name
+
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "memberships", :force => true do |t|
+    t.string :name
+
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string :account
+    t.string :password
+    t.string :name
+    t.integer :membership_id
+    t.integer :organ_id
+
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+
   create_table "phonebooks", :force => true do |t|
     t.string   "name"
     t.string   "phone"
