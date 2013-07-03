@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.integer :postalcode
     t.string :areacode
 
-    t.boolean :status,:default => 0 #默认 0禁用 1启用
+    t.integer :status,:default => 0 #默认 0禁用 1启用
 
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
