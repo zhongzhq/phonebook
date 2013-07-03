@@ -1,0 +1,17 @@
+一、安装数据库
+  1、安装PGsql数据库
+    |--sudo aptitude install postgresql postgresql-8.4
+
+  2、设置数据库访问帐号、密码、数据库
+    |---su - postgres
+    |---psql
+    |---#创建表，并分配权限
+    |-- postgres=# CREATE USER phonebook WITH PASSWORD 'phonebook';
+    |-- postgres=# CREATE DATABASE phonebook_dev;
+    |-- postgres=# GRANT ALL PRIVILEGES ON DATABASE phonebook_dev to phonebook;
+  3、退出
+    |-- postgres=# \q
+二、初始化数据
+  1、进入项目根目录
+    |--rake db:schema:load
+
