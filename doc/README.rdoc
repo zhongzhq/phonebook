@@ -71,8 +71,9 @@
 
 三、数据关系
 
-1、organ(id,name,rank_id,root_id) root_id 为根节点id以区分其他企业用
-2、user(id,account,membership_id,organ_id)
+1、organ与user的关系
+  |--organ(id,name,rank_id,root_id) root_id 为根节点id以区分其他企业用
+  |--user(id,account,membership_id,organ_id)
 
 
 
