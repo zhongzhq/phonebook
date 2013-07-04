@@ -5,7 +5,7 @@
 //*****************
 //#body
 //*****************
-
+body{background:url("bg-f.png");}
 
 //*****************
 //#header
@@ -18,7 +18,9 @@
 //*****************
 //#content
 //*****************
-#content{margin-left:330px;border:1px solid #ccc;}
+#content{
+	margin-left:310px;
+	}
 #working-area{}
 
 //*****************
@@ -30,5 +32,52 @@
 	top:60px;
 	width:300px;
 	min-height:1000px;
+	background-color:#FAFAFA;
 }
-.menu-block{padding:15px;margin:5px;}
+.menu-block{	
+	margin:5px;	
+	}
+.menu-block p{
+	text-align:center;
+	margin:0;
+	}
+.menu-block a{
+	display:block;
+	padding:10px 15px;
+	background:-moz-linear-gradient(center top , #F9F9F9 0%, #EFEFEF 100%) repeat scroll 0 0 transparent;
+	color:#333;
+	border-radius:5px;
+	border:1px solid #E1E3E6;
+	box-shadow:0 1px 2px #E1E3E6;
+	}
+.menu-block a:hover{
+	text-decoration:none;
+	color:#0088CC;
+	border:1px solid #D2E1F1;
+}
+
+//*****************
+//inforbox
+//*****************
+.inforbox{
+	background-color:#FEFEFE;
+	border:1px solid #E1E3E6;
+	box-shadow:0 1px 2px #E1E3E6;
+	}
+.inforbox h4{	
+	margin:0 10px;
+	border-bottom:1px solid #eaeaea;
+	height:40px;
+	line-height:40px;
+	}
+.inforbox h4 a{
+	font-size:16px;
+	font-weight:normal;
+}
+.inforbox h4 .more a{
+	color:#ccc;
+	font-size:12px;
+}
+.inforbox .inforbox-area{
+	padding:10px;
+}

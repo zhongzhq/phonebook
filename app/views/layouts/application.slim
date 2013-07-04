@@ -13,9 +13,11 @@ html lang="en"
         =render "templates/header"
       #menubar
         =render "templates/menubar"
-      #content
-        #working-area
-          = render 'templates/flash', :flash => flash
-          = yield
-        #footer
-          =render "templates/footer"
+      .container-fluid
+        #content
+          #working-area
+            .row-fluid
+              = render 'templates/flash', :flash => flash
+              = yield
+          #footer
+            =render "templates/footer"
