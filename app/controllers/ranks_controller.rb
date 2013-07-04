@@ -9,11 +9,8 @@ class RanksController < ApplicationController
   end
 
   def new
-    @rank = Rank.new(parent_id: Rank.find(params[:id]).id)
-  end
-
-  def new_root
-    @rank = Rank.new
+    parent = Rank.find(params[:id]) if params[:id]
+    @rank = Rank.new(parent_id: parent ? parent.id : nil)
   end
 
   def create
@@ -46,10 +43,7 @@ class RanksController < ApplicationController
 
   def destroy
     @rank = Rank.find(params[:id])
-    if @rank.destroy
-      redirect_to action: "index"#, notice: '删除成功'
-    else
-      redirect_to action: "index"
-    end
+    @rank.destroy    
+    redirect_to ranks_path, notice: '删除成功'
   end
 end
