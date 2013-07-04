@@ -1,6 +1,6 @@
 EPBook::Application.routes.draw do
 
-  get "users/index"
+  resources :users,:only=>[:new]
 
   resources :phonebooks
   resources :ranks
