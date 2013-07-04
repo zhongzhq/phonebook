@@ -46,11 +46,10 @@ class RanksController < ApplicationController
 
   def destroy
     @rank = Rank.find(params[:id])
-
     if @rank.destroy
-      redirect_to ranks_path, notice: '删除成功'
+      redirect_to action: "index"#, notice: '删除成功'
     else
-      redirect_to ranks_path
+      redirect_to action: "index"
     end
   end
 end

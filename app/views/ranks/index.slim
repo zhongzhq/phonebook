@@ -3,7 +3,7 @@
     i.icon-hand-right
     span.text-info 等级
     .pull-right
-      = link_to "添加最高等级", new_root_ranks_path, :class=>"btn btn-info"
+      = link_to "添加根节点", new_root_ranks_path, :class=>"btn btn-info"
   .widgetarea.widgetarea-height
     table.table.table-bordered.table-hover
       thead
@@ -18,10 +18,10 @@
             td= index + 1
             td= rank.name
             td= rank.parent.name if rank.parent
-            td.operating              
+            td.operating
               a href= rank_path(rank) target="_blank" 查看
               a href= edit_rank_path(rank) target="_blank" 修改
-              = link_to '删除', rank_path(rank), method: :delete, confirm: '你确定要删除？'
+              = link_to '删除', rank_path(rank), method: :DELETE, confirm: '你确定要删除？'
 
               - if rank.child.blank?
                 = link_to '新建子级', new_rank_path( :id => rank.id )
