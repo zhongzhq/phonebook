@@ -13,8 +13,9 @@ html lang="en"
         =render "templates/header"
       #menubar
         =render "templates/menubar"
-      #content
-        #working-area
-          = yield
-        #footer
-          =render "templates/footer"
+      .container-fluid
+        #content        
+          #working-area
+            = yield
+          #footer
+            =render "templates/footer"
