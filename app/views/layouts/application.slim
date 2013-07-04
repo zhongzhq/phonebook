@@ -8,13 +8,14 @@ html lang="en"
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tag
-  body#body
-    #body
+  body
       #header
         =render "templates/header"
-      #working-area
-        #screen-full.row-fluid
+      #menubar
+        =render "templates/menubar"
+      #content
+        #working-area
           = render 'templates/flash', :flash => flash
           = yield
-      #footer
-        =render "templates/footer"
+        #footer
+          =render "templates/footer"

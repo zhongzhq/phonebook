@@ -5,7 +5,7 @@
 //*****************
 //#body
 //*****************
-#body{background:url("bg-f.png");}
+
 
 //*****************
 //#header
@@ -16,6 +16,19 @@
 //*****************
 
 //*****************
-//working-area
+//#content
 //*****************
+#content{margin-left:330px;border:1px solid #ccc;}
 #working-area{}
+
+//*****************
+//menubar
+//*****************
+#menubar{
+    border:1px solid #ccc;
+	position:fixed;
+	top:60px;
+	width:300px;
+	min-height:1000px;
+}
+.menu-block{padding:15px;margin:5px;}
