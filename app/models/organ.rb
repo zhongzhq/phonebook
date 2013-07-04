@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Organ < ActiveRecord::Base
   attr_accessible :name, :parent_id, :rank_id, :address, :description, :postalcode, :areacode, :status
 
