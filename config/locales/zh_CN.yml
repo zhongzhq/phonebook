@@ -3,3 +3,13 @@
 
 zh_CN:
   site_name: "企业通讯录"
+
+  simple_form:
+    required:
+      text: '必填'
+      mark: '* '
+
+  helpers:
+    submit:
+      create: 保存
+      update: 更新

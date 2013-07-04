@@ -1,8 +1,9 @@
 EPBook::Application.routes.draw do
 
   resources :phonebooks
+  resources :ranks
   root :to => 'default#index'
-
+  resources :dashboard,:only=>[:index]
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
