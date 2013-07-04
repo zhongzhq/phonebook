@@ -6,10 +6,11 @@ zh_CN:
     attributes:
       rank:
         name: 级别
+        parent_id: 隶属上级
       organ:
         name: 组织名
-        parent: 上级组织
-        rank: 等级
+        parent_id: 隶属上级组织
+        rank_id: 等级
         address: 地址
         description: 描述
         postalcode: 邮编
