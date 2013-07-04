@@ -1,6 +1,5 @@
 doctype 5
-
-html lang="en" class="ui-mobile"
+html lang="en"
   head
     meta http-equiv="Content-Type" content="text/html; charset=utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1"
@@ -10,11 +9,11 @@ html lang="en" class="ui-mobile"
     = javascript_include_tag 'application'
     = csrf_meta_tag
   body#body
-    #body data-role="page"
-      .navbar data-role="header"
-        h2 企业电话簿
-      #working-area data-role="content"
+    #body
+      #header
+        =render "templates/header"
+      #working-area
         #screen-full.row-fluid
           = yield
-      .footer data-role="footer"
+      #footer
         =render "templates/footer"

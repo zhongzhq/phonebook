@@ -3,6 +3,7 @@
     |--sudo aptitude install postgresql postgresql-8.4
 
   2、设置数据库访问帐号、密码、数据库
+    |---sudo -s
     |---su - postgres
     |---psql
     |---#创建表，并分配权限
