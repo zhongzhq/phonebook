@@ -2,9 +2,19 @@ zh_CN:
   activerecord:
     models:
       rank: 等级
+      organ: 组织
     attributes:
       rank:
         name: 级别
+      organ:
+        name: 组织名
+        parent: 上级组织
+        rank: 等级
+        address: 地址
+        description: 描述
+        postalcode: 邮编
+        areacode: 区号
+        status: 状态
 
   errors: &errors
     format: ! '%{attribute} %{message}'
