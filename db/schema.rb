@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
 
   create_table "organs",:force => true do |t|
     t.string :name
-    t.integer :root_id
+    t.integer :parent_id
     t.integer :rank_id
 
     t.string :address
