@@ -1,6 +1,6 @@
 EPBook::Application.routes.draw do
 
-  resources :users,:only=>[:new]
+  resources :users,:only=>[:new,:create]
 
   resources :phonebooks
   resources :ranks do

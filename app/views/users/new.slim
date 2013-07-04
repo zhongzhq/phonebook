@@ -1,0 +1,7 @@
+.widget
+  h4
+    i.icon-upload.text-large
+    span.text-info 用户注册
+  .widgetarea
+    = simple_form_for user, :html => {:class=>"form-horizontal form-mini"} do |f|
+      =render "users/form",:f =>f

@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.string :account
     t.string :password
     t.string :name
+    t.string :email
     t.integer :membership_id
     t.integer :organ_id
 
