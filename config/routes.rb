@@ -1,5 +1,7 @@
 EPBook::Application.routes.draw do
 
+  get "users/index"
+
   resources :phonebooks
   resources :ranks
   resources :organs
