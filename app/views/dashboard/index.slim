@@ -3,19 +3,61 @@
   .inforbox
     .inforbox-title
       h4
-        a href=phonebooks_path 快速查找
+        a href=phonebooks_path
+          i.icon-search.muted
+          | 快速查找
         .more.pull-right
-          a href=phonebooks_path 更多>>
+          a href=""
+            i.icon-question.text-success
+            | 查询帮助          
     .inforbox-area
-      form.form-search method="post"
-        input type="text"
-        input type="submit"
+      form.form-inline method="post"
+        input.margin-right5 style="width:85%;" type="text"
+        input.btn.btn-info type="submit" value="查 找"
+      .alert.alert-info.margin-bottom0
+        strong 最近查找：
+        a.margin-right5 href="" 12345654345
+        a.margin-right5 href="" gsdfg
+        a.margin-right5 href="" asdfadf
+  .row-fluid
+    .span6
+      //企业电话薄
+      .inforbox
+        .inforbox-title
+          h4
+            a href=phonebooks_path
+              i.icon-group.muted
+              | 企业电话薄
+            .more.pull-right
+              a href=phonebooks_path 更多>>
+        .inforbox-area
+          h5 中国石油集团川庆钻探工程有限公司
+          p
+            | 地址：成都市府青路一段3号邮编：610051区号：028
+
+    .span6
+      //企业电话薄
+      .inforbox
+        .inforbox-title
+          h4
+            a href=phonebooks_path
+              i.icon-group.muted
+              | 企业电话薄
+            .more.pull-right
+              a href=phonebooks_path 更多>>
+        .inforbox-area
+          h5 中国石油集团川庆钻探工程有限公司
+          p
+            | 地址：成都市府青路一段3号邮编：610051区号：028
+
 .span4
   //企业电话薄
   .inforbox
     .inforbox-title
       h4
-        a href=phonebooks_path 企业电话薄
+        a href=phonebooks_path
+          i.icon-group.muted
+          | 企业电话薄
         .more.pull-right
           a href=phonebooks_path 更多>>
     .inforbox-area
