@@ -1,0 +1,26 @@
+.widget
+  h4
+    i.icon-hand-right
+    span.text-info 组织
+    .pull-right
+      =link_to "添加",new_organ_path,:class=>"btn btn-info"
+  .widgetarea.widgetarea-height
+    table.table.table-bordered.table-hover
+      thead        
+        tr.alert.alert-info
+          th.index_number 序号
+          th 组织名
+          th 等级
+          th 上级组织
+          th 操作
+      tbody
+        -@organs.each_with_index do |organ,index|
+          tr
+            td=index=index+1
+            td=organ.name
+            td=organ.rank.name
+            td=organ.parent.name if organ.parent
+            td.operating
+              a href=organ_path(organ) target="_blank" 查看
+              a href=edit_organ_path(organ) target="_blank" 修改
+              = link_to '删除', organ_path(organ), method: :delete, confirm: '你确定要删除？'
