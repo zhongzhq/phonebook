@@ -17,6 +17,10 @@ zh_CN:
         areacode: 区号
         status: 状态
 
+  status:
+    :0: 生效
+    :1: 失效
+
   errors: &errors
     format: ! '%{attribute} %{message}'
     messages:

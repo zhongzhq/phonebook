@@ -1,8 +1,6 @@
 .widget
   h4
     i.icon-upload.text-large
-    span.text-info 添加记录
-  .widgetarea
-    = simple_form_for @organ, :html => {:class=>"form-horizontal form-mini"} do |f|
-      =render "form",:f =>f
+    span.text-info = @organ.parent ? "新建#{ @organ.parent.name }子部门" : '添加组织机构'
+  = render 'form'
 
