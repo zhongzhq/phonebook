@@ -1,5 +1,5 @@
 doctype 5
-html lang="en"
+html
   head
     meta http-equiv="Content-Type" content="text/html; charset=utf-8"
     meta name="viewport" content="width=device-width, initial-scale=1"
@@ -10,11 +10,9 @@ html lang="en"
     = csrf_meta_tag
   body
       #header
-        =render "templates/header"
-      #menubar
-        =render "templates/menubar"
+        =render "templates/header"     
       #content
         #working-area
           = yield
-        #footer
-          =render "templates/footer"
+      #footer
+        =render "templates/footer"

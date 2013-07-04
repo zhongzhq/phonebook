@@ -25,4 +25,3 @@ if File.readable?(gemfile_local)
 else
   gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails", :git => "git@github.com:zhiyisoft/bootstrap-rails.git", :ref => "HEAD"
 end
-gem 'jquery_mobile_rails'
