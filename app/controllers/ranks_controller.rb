@@ -9,6 +9,10 @@ class RanksController < ApplicationController
   end
 
   def new
+    @rank = Rank.new(parent_id: Rank.find(params[:id]).id)
+  end
+
+  def new_root
     @rank = Rank.new
   end
 

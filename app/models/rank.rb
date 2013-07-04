@@ -3,8 +3,8 @@ class Rank < ActiveRecord::Base
 
   validates :name, presence: true, uniqueness: true
 
-  has_many :childs, class_name: 'Organ', foreign_key: 'parent_id'
-  belongs_to :parent, class_name: 'Organ'
+  has_one :child, class_name: 'Rank', foreign_key: 'parent_id'
+  belongs_to :parent, class_name: 'Rank'
 
   has_many :organs
 end
