@@ -1,6 +1,7 @@
 EPBook::Application.routes.draw do
 
   resources :phonebooks
+  resources :ranks
   root :to => 'default#index'
 
   # See how all your routes lay out with "rake routes"

@@ -14,6 +14,7 @@ html lang="en"
         =render "templates/header"
       #working-area
         #screen-full.row-fluid
+          = render 'templates/flash', :flash => flash
           = yield
       #footer
         =render "templates/footer"
