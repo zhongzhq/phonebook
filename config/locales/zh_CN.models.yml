@@ -8,8 +8,8 @@ zh_CN:
         name: 级别
       organ:
         name: 组织名
-        parent: 上级组织
-        rank: 等级
+        parent_id: 上级组织
+        rank_id: 等级
         address: 地址
         description: 描述
         postalcode: 邮编
