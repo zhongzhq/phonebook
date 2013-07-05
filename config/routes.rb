@@ -6,6 +6,7 @@ EPBook::Application.routes.draw do
   resources :ranks
   resources :organs
   resources :memberships
+  resources :users
   root :to => 'default#index'
   resources :dashboard,:only=>[:index]
   # See how all your routes lay out with "rake routes"
