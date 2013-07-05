@@ -80,6 +80,8 @@ body{background:url("bg-f.png");}
 	border-bottom:1px solid #eaeaea;
 	height:40px;
 	line-height:40px;
+	font-size:16px;
+	font-weight:normal;
 	}
 .inforbox h4 a{
 	font-size:16px;
@@ -91,4 +93,32 @@ body{background:url("bg-f.png");}
 }
 .inforbox .inforbox-area{
 	padding:10px;
+}
+//****************************
+//#login
+//*****************************
+#login label{
+	width:50px;
+	}
+#login .controls{
+	margin-left:60px;
+}
+
+//*************************
+//default index
+//**************************
+.index-search,.index-safe,.index-easy,.index-contain{
+	width:260px;
+	height:150px;	
+	padding:10px 20px;
+	}
+.index-search,.index-easy{	
+	border-right:1px solid #f1f1f1;
+}
+.index-search,.index-safe{
+	border-bottom:1px solid #f1f1f1;
+}
+.index-search h4,.index-safe h4,.index-easy h4,.index-contain h4{
+	border:0 none;
+	margin-bottom:20px;
 }
