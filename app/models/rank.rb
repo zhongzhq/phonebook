@@ -7,4 +7,7 @@ class Rank < ActiveRecord::Base
   belongs_to :parent, class_name: 'Rank'
 
   has_many :organs
+
+
+
 end
