@@ -5,7 +5,7 @@
     font-size:12px;
 }
 .margin-bottom0{
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
 }
 .index_number{
     width: 40px;

@@ -1,23 +1,39 @@
-.widget
-  h4
-    i.icon-hand-right
-    span.text-info 成都知一软件有限公司
-    .pull-right
-      =link_to "添加",new_phonebook_path,:class=>"btn btn-info"
-  .widgetarea.widgetarea-height
-    table.table.table-bordered.table-hover
-      thead
-        tr.alert.alert-info
-          th.index_number 序号
-          th 姓名
-          th 电话
-          th 操作
-      tbody
-        -@phonebooks.each_with_index do |phonebook,index|
+.span4
+  .well.well-small
+    ul
+      li
+        a href="" 成都知一软件有限公司
+.span8
+  .alert.alert-info
+    p
+      strong 总经理办公室
+      | 【成都知一软件有限公司】
+    p 地址：
+  .inforbox    
+    .inforbox-area 
+      table.table.table-hover
+        thead
+          tr.alert.alert-info          
+            td colspan="5"
+              input.margin-bottom0.margin-right5 type="text"                        
+              select.margin-bottom0.margin-right5
+                option 
+              input.btn.btn-info.margin-bottom0 type="submit" value="查找"   
+              .pull-right
+                =link_to "添加",new_phonebook_path,:class=>"btn"
           tr
-            td=index=index+1
-            td=phonebook.name
-            td=phonebook.phone
-            td.operating
-              a href=phonebook_path(phonebook) target="_blank" 查看
-              a href=edit_phonebook_path(phonebook) target="_blank" 修改
+            th.index_number 序号
+            th 姓名
+            th 职务
+            th 电话
+            th 操作
+        tbody
+          -@phonebooks.each_with_index do |phonebook,index|
+            tr
+              td=index=index+1
+              td=phonebook.name
+              td
+              td=phonebook.phone
+              td.operating
+                a href=phonebook_path(phonebook) target="_blank" 查看
+                a href=edit_phonebook_path(phonebook) target="_blank" 修改
