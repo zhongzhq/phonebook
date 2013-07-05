@@ -17,6 +17,7 @@ gem "simple_form"
 gem "font-awesome-rails"
 gem "bootstrap_helper"
 gem "pg"
+gem 'bcrypt-ruby'
 
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 

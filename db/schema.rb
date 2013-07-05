@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
 
   create_table "users", :force => true do |t|
     t.string :account
-    t.string :password
+    t.string :password_digest
     t.string :name
     t.string :email
     t.string :phone
