@@ -19,7 +19,7 @@
             td= index + 1
             td= organ.name
             td= organ.rank.name
-            td= t("status.#{organ.status}")
+            td= t("status.organ.#{organ.status}")
             td.operating
               a href= organ_path(organ) target="_blank" 查看
               a href= edit_organ_path(organ) target="_blank" 修改

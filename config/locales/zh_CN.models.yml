@@ -31,8 +31,12 @@ zh_CN:
         organ_id: 组织名
 
   status:
-    :0: 启用
-    :1: 禁用
+    organ:
+      :0: 启用
+      :1: 禁用
+    user:
+      :0: 未激活
+      :1: 激活
 
   errors: &errors
     format: ! '%{attribute} %{message}'
