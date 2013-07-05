@@ -1,0 +1,8 @@
+.widgetarea
+  = simple_form_for @membership, :html => {:class=>"form-horizontal form-mini"} do |f|
+    = f.input :name
+
+    .control-group
+      .controls
+        = f.button :submit,:class => "btn-info"
+        = link_to "返回", :back
