@@ -1,0 +1,16 @@
+.widget
+  h4
+    i.icon-upload.text-large
+    span.text-info 用户注册
+  .widgetarea
+    span 邮箱注册 | 手机号注册
+    
+    = simple_form_for @user, :html => {:class=>"form-horizontal form-mini"} do |f|
+      = f.input :account
+      = f.input :password
+      = f.input :email
+      = f.input :phone
+
+      .control-group
+        .controls
+          = f.button :submit,"注册",:class => "btn-info"

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
+  layout 'default', :only => [:sign_in, :create]
+
   def index
     @users = User.all
 
@@ -8,21 +10,17 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
+  def sign_in
     @user = User.new
-    respond_to do |format|
-      format.html {render "new.slim"}
-      format.js  {render "new.slim",:layout=>false}
-    end
   end
 
   def create
     @user = User.new(params[:user])
 
     if @user.save
-      redirect_to users_path, notice: '添加成功'
+      redirect_to root_path, notice: '注册成功'
     else
-      render 'new'
+      render 'sign_in'
     end
   end
 
@@ -42,5 +40,11 @@ class UsersController < ApplicationController
     else
       render 'edit'
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to users_path    
   end
 end

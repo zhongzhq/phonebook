@@ -1,1 +1,13 @@
-=@user_html.html_safe
+.widget
+  h4
+    i.icon-upload.text-large
+    span.text-info 用户登陆
+  .widgetarea
+    = simple_form_for @user, :url => login_default_index_path, :html => {:class=>"form-horizontal form-mini"} do |f|
+      =f.input :account
+      =f.input :password
+
+      .control-group
+        .controls
+          = f.button :submit, '登陆', :class => "btn-info"
+          = link_to '注册', sign_in_users_path
