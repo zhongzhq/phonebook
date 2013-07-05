@@ -9,7 +9,8 @@ class OrgansController < ApplicationController
   end
 
   def new
-    @organ = Organ.new
+    parent = Organ.find(params[:id]) if params[:id]
+    @organ = Organ.new(parent_id: parent ? parent.id : nil)
   end
 
   def create

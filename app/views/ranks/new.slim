@@ -1,8 +1,5 @@
 .widget
   h4
     i.icon-upload.text-large
-    span.text-info 添加记录
-  .widgetarea
-    = simple_form_for @rank, :html => {:class=>"form-horizontal form-mini"} do |f|
-      =render "form",:f =>f
-
+    span.text-info= @rank.parent ? "新建#{ @rank.parent.name }子级" : '添加顶级'
+  = render 'form'

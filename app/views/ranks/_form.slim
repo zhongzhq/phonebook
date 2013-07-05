@@ -1,5 +1,9 @@
-=f.input :name
+.widgetarea
+  = simple_form_for @rank, :html => {:class=>"form-horizontal form-mini"} do |f|
+    = f.input :name
+    = f.hidden_field :parent_id
 
-.control-group
-  .controls
-    = f.button :submit,:class => "btn-info"
+    .control-group
+      .controls
+        = f.button :submit,:class => "btn-info"
+        = link_to "返回", :back

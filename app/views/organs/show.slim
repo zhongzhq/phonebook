@@ -1,11 +1,15 @@
 .widget
   h4
     i.icon-hand-right
-    span.text-info
-      |成都知一软件有限公司 -
-      =@rank.name
-    .pull-right
-      =link_to "添加",new_rank_path,:class=>"btn btn-info"
+    span.text-info= "组织机构 - #{ @organ.name }"
   .widgetarea.widgetarea-height
-    p 等级: "#{@rank.name}"
-    a href=edit_rank_path(@rank) target="_blank" 修改
+    p 组织机构名: "#{@organ.name}"
+    p 等级: #{@organ.rank.name}
+    p 隶属机构: #{@organ.parent.name if @organ.parent }
+    p 状态: #{t("status.#{@organ.status}")}
+    p 地址: #{@organ.address}
+    p 描述: #{@organ.description}
+    p 邮编: #{@organ.postalcode}
+    p 区号: #{@organ.areacode}
+    a href= edit_organ_path(@organ) target="_blank" 修改
+    = link_to "返回", :back
