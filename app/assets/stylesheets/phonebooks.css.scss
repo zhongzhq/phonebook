@@ -19,7 +19,7 @@ body{background:url("bg-f.png");}
 //#content
 //*****************
 #content{
-	margin-left:310px;
+	margin-left:210px;
 	}
 #working-area{}
 
@@ -30,7 +30,7 @@ body{background:url("bg-f.png");}
     border:1px solid #ccc;
 	position:fixed;
 	top:60px;
-	width:300px;
+	width:200px;
 	min-height:1000px;
 	background-color:#FAFAFA;
 }
@@ -54,6 +54,12 @@ body{background:url("bg-f.png");}
 	text-decoration:none;
 	color:#0088CC;
 	border:1px solid #D2E1F1;
+}
+.adduser{
+	display:block;
+	margin:5px 10px;
+	height:25px;
+	line-height:25px;
 }
 
 //*****************
