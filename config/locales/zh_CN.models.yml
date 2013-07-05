@@ -4,6 +4,7 @@ zh_CN:
       rank: 等级
       organ: 组织
       membership: 角色
+      user: 用户
     attributes:
       rank:
         name: 级别
@@ -19,10 +20,18 @@ zh_CN:
         status: 状态
       membership:
         name: 角色名
+      user:
+        account: 用户名
+        password: 密码
+        name: 姓名
+        email: 电子邮箱
+        phone: 电话号码
+        membership_id: 角色
+        organ_id: 组织名
 
   status:
-    :0: 生效
-    :1: 失效
+    :0: 启用
+    :1: 禁用
 
   errors: &errors
     format: ! '%{attribute} %{message}'
