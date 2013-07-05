@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
   def index
-    @organs = Organ.all
-
+    @organs = Organ.all(:order=>"rank_id asc")
     if params[:callback]
       render :json=>@organs,:callback=>params[:callback]
     end
