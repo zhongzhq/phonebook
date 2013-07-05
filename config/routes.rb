@@ -4,7 +4,7 @@ EPBook::Application.routes.draw do
 
   resources :users do
     collection do
-      get 'sign_in'
+      get 'register'
     end
   end
 

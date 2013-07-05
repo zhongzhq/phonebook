@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
-  layout 'default', :only => [:sign_in, :create]
+  layout 'default', :only => [:register, :create]
 
   def index
     @users = User.all
@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def sign_in
+  def register
     @user = User.new
   end
 
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       redirect_to root_path, notice: '注册成功'
     else
       @user.errors.add(:captcha, '验证码错误')
-      render 'sign_in'
+      render 'register'
     end
   end
 
