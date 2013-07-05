@@ -21,6 +21,6 @@
               a href= edit_rank_path(rank) target="_blank" 修改
 
               - if rank.child.blank?
-                = link_to '新建子级', new_rank_path( :id => rank.id )
+                = link_to '新增下级', new_rank_path( :id => rank.id )
           -if !(rank.child.blank?)
             =render "child_list",:rank=>rank.child,:index=>index
