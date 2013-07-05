@@ -17,9 +17,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    if @user.save
+    if request.post? && captcha_valid?(params[:captcha]) && @user.save
       redirect_to root_path, notice: '注册成功'
     else
+      @user.errors.add(:captcha, '验证码错误')
       render 'sign_in'
     end
   end

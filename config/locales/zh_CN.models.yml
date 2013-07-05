@@ -23,9 +23,10 @@ zh_CN:
       user:
         account: 用户名
         password: 密码
+        password_confirmation: 确认密码
         name: 姓名
         email: 电子邮箱
-        phone: 电话号码
+        phone: 手机号码
         membership_id: 角色
         organ_id: 组织名
 

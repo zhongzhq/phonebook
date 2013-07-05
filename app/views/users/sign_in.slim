@@ -8,8 +8,14 @@
     = simple_form_for @user, :html => {:class=>"form-horizontal form-mini"} do |f|
       = f.input :account
       = f.input :password
+      = f.input :password_confirmation
       = f.input :email
       = f.input :phone
+
+      // 验证码
+      = f.input :captcha, :label => '验证码', hint: captcha_tag do
+        = text_field_tag :captcha
+        
 
       .control-group
         .controls

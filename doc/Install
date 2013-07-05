@@ -16,3 +16,6 @@
   1、进入项目根目录
     |--rake db:schema:load
 
+三、安装 Gem 依赖库
+  1、安装 easy_captcha Gem 时：
+    |-- sudo apt-get install libmagickwand-dev

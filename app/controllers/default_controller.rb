@@ -6,9 +6,7 @@ class DefaultController < ApplicationController
   end
 
   def login
-    @user = User.find_by_account(params[:user][:account])
-
-    if @user && @user.password == params[:user][:password]
+    if User.find_by_account( params[:user][:account] ).try( :authenticate, params[:user][:password])
       redirect_to dashboard_index_path
     else
       redirect_to 'index'
