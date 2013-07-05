@@ -3,6 +3,7 @@ zh_CN:
     models:
       rank: 等级
       organ: 组织
+      membership: 角色
     attributes:
       rank:
         name: 级别
@@ -16,6 +17,8 @@ zh_CN:
         postalcode: 邮编
         areacode: 区号
         status: 状态
+      membership:
+        name: 角色名
 
   status:
     :0: 生效
