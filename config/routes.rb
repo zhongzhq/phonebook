@@ -1,16 +1,23 @@
 EPBook::Application.routes.draw do
 
-  resources :users,:only=>[:new,:create]
+  resources :users do
+    collection do
+      get 'sign_in'
+    end
+  end
 
   resources :phonebooks
   resources :ranks
   resources :organs
   resources :memberships
-  root :to => 'default#index'
-  resources :dashboard,:only=>[:index]
-  # See how all your routes lay out with "rake routes"
+  resources :dashboard, :only=>[:index]
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
+  resources :default, :only => [:index] do
+    collection do
+      post 'login'
+      get 'logout'
+    end
+  end
+
+  root :to => 'default#index'
 end

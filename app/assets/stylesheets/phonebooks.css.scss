@@ -18,10 +18,13 @@ body{background:url("bg-f.png");}
 //*****************
 //#content
 //*****************
-#content{
+.dashboard #working-area{
 	margin-left:210px;
 	}
-#working-area{}
+.default #working-area{
+	width:960px;
+	margin:10px auto;
+	}
 
 //*****************
 //menubar
