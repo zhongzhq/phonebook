@@ -21,5 +21,6 @@
             td= user.phone
             td= user.membership.name if user.membership
             td.operating
-              a href= rank_path(rank) target="_blank" 查看
-              a href= edit_rank_path(rank) target="_blank" 修改
+              a href= user_path(user) target="_blank" 查看
+              a href= edit_user_path(user) target="_blank" 修改
+              = link_to 'delete', user_path(user), method: :delete, confirm: 'are you sure?'
