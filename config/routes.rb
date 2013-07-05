@@ -1,5 +1,7 @@
 EPBook::Application.routes.draw do
 
+  captcha_route
+
   resources :users do
     collection do
       get 'sign_in'

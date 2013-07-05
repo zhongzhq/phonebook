@@ -12,6 +12,11 @@
       = f.input :email
       = f.input :phone
 
+      // 验证码
+      = f.input :captcha, :label => '验证码', hint: captcha_tag do
+        = text_field_tag :captcha
+        
+
       .control-group
         .controls
           = f.button :submit,"注册",:class => "btn-info"
