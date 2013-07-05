@@ -5,13 +5,12 @@
     .pull-right
       = link_to "添加组织机构",new_organ_path, :class=>"btn btn-info"
   .widgetarea.widgetarea-height
-    table.table.table-bordered.table-hover
-      thead        
+    table.table.table-hover
+      thead
         tr.alert.alert-info
           th.index_number 序号
-          th 组织名
+          th 名称
           th 等级
-          th 上级组织
           th 状态
           th 操作
       tbody
@@ -20,10 +19,9 @@
             td= index + 1
             td= organ.name
             td= organ.rank.name
-            td= organ.parent.name if organ.parent
             td= t("status.#{organ.status}")
             td.operating
               a href= organ_path(organ) target="_blank" 查看
               a href= edit_organ_path(organ) target="_blank" 修改
               - if organ.rank.child
-                = link_to '新建子机构', new_organ_path( :id => organ.id )
+                = link_to '添加部门', new_organ_path( :id => organ.id )

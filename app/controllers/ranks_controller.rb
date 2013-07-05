@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 class RanksController < ApplicationController
   def index
-    @ranks = Rank.all
-
+    @ranks = Rank.where("parent_id"=>nil)
     if params[:callback]
       render :json=>@ranks,:callback=>params[:callback]
     end
@@ -43,7 +42,7 @@ class RanksController < ApplicationController
 
   def destroy
     @rank = Rank.find(params[:id])
-    @rank.destroy    
+    @rank.destroy
     redirect_to ranks_path, notice: '删除成功'
   end
 end
