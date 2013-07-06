@@ -5,6 +5,8 @@ EPBook::Application.routes.draw do
   resources :users do
     collection do
       get 'register'
+      get 'activate'
+      get 'confirm'
     end
   end
 

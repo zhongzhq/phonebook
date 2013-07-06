@@ -53,7 +53,9 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.string :phone
     t.integer :membership_id
     t.integer :organ_id
+
     t.integer :status, :default => 0 #默认 0 未激活 1 激活
+    t.string :cdkey, :default => rand(Time.now.to_i).to_s
 
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

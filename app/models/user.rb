@@ -5,4 +5,12 @@ class User < ActiveRecord::Base
   has_secure_password
   
   belongs_to :membership
+
+  def confirm cdkey_string
+    self.update_attribute( :status, 1 ) if self.cdkey == cdkey_string
+  end
+
+  def activate?
+    self.status == 1 ? true : false
+  end
 end
