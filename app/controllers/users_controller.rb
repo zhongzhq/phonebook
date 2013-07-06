@@ -18,6 +18,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def resend_mail
+    @user = User.find(params[:id])
+    UserMailer.confirm( @user ).deliver
+    redirect_to activate_users_path( :id => params[:id] ), notice: '重新发送激活邮件成功，请注意查收'
+  end
+
   def confirm
     @user = User.find(params[:id])
 

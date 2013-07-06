@@ -7,6 +7,7 @@ EPBook::Application.routes.draw do
       get 'register'
       get 'activate'
       get 'confirm'
+      get 'resend_mail'
     end
   end
 
