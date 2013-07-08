@@ -17,6 +17,10 @@ EPBook::Application.routes.draw do
   resources :memberships
   resources :dashboard, :only=>[:index]
 
+  resources :master,:only=>[:index] do
+
+  end
+
   resources :default, :only => [:index] do
     collection do
       post 'login'
