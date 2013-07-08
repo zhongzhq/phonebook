@@ -1,6 +1,6 @@
 .widget
   h4
     i.icon-upload.text-large
-    span.text-info = @organ.parent ? "新建#{ @organ.parent.name }子部门" : '添加组织机构'
+    span.text-info = @organ.parent ? "新建[#{ @organ.parent.name }]下级部门" : '添加组织机构'
   = render 'form'
 
