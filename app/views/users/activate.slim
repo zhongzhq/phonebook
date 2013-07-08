@@ -1,0 +1,15 @@
+- if @user.activate?
+  h3
+    | 用户帐号激活成功， 现在可以使用该帐号
+    = link_to '登陆', root_path
+
+- else
+  h3
+    | 你的帐号尚未激活，不能登陆。请先到邮箱激活。或
+    = link_to '重新发送激活邮件', resend_mail_users_path( :id => @user.id )
+    
+h4 你的注册信息如下：
+p 用户名：#{ @user.account }
+p 邮箱： #{ @user.email }
+p 手机号码： #{ @user.phone }
+p 用户状态： #{ t("status.user.#{@user.status}") }

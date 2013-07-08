@@ -13,6 +13,7 @@ html
         =render "templates/header"     
       #content.default
         #working-area
+          = render 'templates/flash', :flash => flash
           = yield
       #footer
         =render "templates/footer"

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
-  layout 'default', :only => [:sign_in, :create]
+  layout 'default', :only => [:register, :create, :activate]
 
   def index
     @users = User.all
@@ -10,18 +10,39 @@ class UsersController < ApplicationController
     end
   end
 
-  def sign_in
+  def register
     @user = User.new
+  end
+
+  def activate
+    @user = User.find(params[:id])
+  end
+
+  def resend_mail
+    @user = User.find(params[:id])
+    UserMailer.confirm( @user ).deliver
+    redirect_to activate_users_path( :id => params[:id] ), notice: '重新发送激活邮件成功，请注意查收'
+  end
+
+  def confirm
+    @user = User.find(params[:id])
+
+    if @user.confirm params[:cdkey]
+      redirect_to activate_users_path( :id => params[:id] ), notice: '帐号成功激活'
+    else
+      redirect_to activate_users_path( :id => params[:id] ), alert: '帐号激活失败'
+    end
   end
 
   def create
     @user = User.new(params[:user])
 
     if request.post? && captcha_valid?(params[:captcha]) && @user.save
-      redirect_to root_path, notice: '注册成功'
+      UserMailer.confirm( @user ).deliver
+      redirect_to activate_users_path( :id => @user.id), notice: '注册成功'
     else
       @user.errors.add(:captcha, '验证码错误')
-      render 'sign_in'
+      render 'register'
     end
   end
 

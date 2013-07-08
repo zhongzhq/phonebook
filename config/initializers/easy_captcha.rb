@@ -9,7 +9,7 @@ EasyCaptcha.setup do |config|
   # config.cache_expire   = 1.days
 
   # Chars
-  # config.chars          = %w(2 3 4 5 6 7 9 A C D E F G H J K L M N P Q R S T U X Y Z)
+  config.chars          = %w(0 1 2 3 4 5 6 7 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h)
 
   # Length
   # config.length         = 6
@@ -34,16 +34,16 @@ EasyCaptcha.setup do |config|
   # end
 
   # configure generator
-  # config.generator :default do |generator|
+  config.generator :default do |generator|
 
     # Font
     # generator.font_size              = 24
-    # generator.font_fill_color        = '#333333'
+    generator.font_fill_color        = '#000000'
     # generator.font_stroke_color      = '#000000'
     # generator.font_stroke            = 0
     # generator.font_family            = File.expand_path('../../resources/afont.ttf', __FILE__)
 
-    # generator.image_background_color = "#FFFFFF"
+    generator.image_background_color = "#FFFFFF"
 
     # Wave
     # generator.wave                   = true
@@ -62,5 +62,5 @@ EasyCaptcha.setup do |config|
     # generator.blur                   = true
     # generator.blur_radius            = 1
     # generator.blur_sigma             = 2
-  # end
+  end
 end

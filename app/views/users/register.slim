@@ -13,10 +13,11 @@
       = f.input :phone
 
       // 验证码
-      = f.input :captcha, :label => '验证码', hint: captcha_tag do
+      = f.input :captcha, label: '验证码', hint: captcha_tag + "<a>看不清，换一张</a>".html_safe do
         = text_field_tag :captcha
         
 
       .control-group
         .controls
           = f.button :submit,"注册",:class => "btn-info"
+          = link_to '返回登陆', :back
