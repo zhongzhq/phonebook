@@ -17,8 +17,8 @@ gem "simple_form"
 gem "font-awesome-rails"
 gem "bootstrap_helper"
 gem "pg"
-gem 'bcrypt-ruby','~> 3.0.0'
 gem 'easy_captcha'
+gem 'devise'
 
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 

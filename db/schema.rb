@@ -47,15 +47,27 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
 
   create_table "users", :force => true do |t|
     t.string :account
-    t.string :password_digest
     t.string :name
-    t.string :email
     t.string :phone
     t.integer :membership_id
     t.integer :organ_id
 
-    t.integer :status, :default => 0 #默认 0 未激活 1 激活
-    t.string :cdkey, :default => rand(Time.now.to_i).to_s
+    t.integer :status, :default => 0 # 默认 0 未激活 1 激活
+
+    ## devise field
+    # Database authenticatable
+    t.string :email,              :null => false, :default => ""
+    t.string :encrypted_password, :null => false, :default => ""
+
+    # Recoverable
+    t.string   :reset_password_token
+    t.datetime :reset_password_sent_at
+
+    # Confirmable
+    t.string   :confirmation_token
+    t.datetime :confirmed_at
+    t.datetime :confirmation_sent_at
+    t.string   :unconfirmed_email
 
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

@@ -1,5 +1,7 @@
 EPBook::Application.routes.draw do
 
+  devise_for :users
+
   captcha_route
 
   resources :users do

@@ -13,7 +13,7 @@
       = f.input :phone
 
       // 验证码
-      = f.input :captcha, label: '验证码', hint: captcha_tag + "<a>看不清，换一张</a>".html_safe do
+      = f.input :captcha, label: '验证码', hint: captcha_tag + "<a onclick='refresh_captcha();' href='javascript:void(0)'>看不清，换一张</a>".html_safe do
         = text_field_tag :captcha
         
 
