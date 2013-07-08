@@ -1,8 +1,8 @@
-.widget
-  h4
-    i.icon-upload.text-large
+.inforbox  
+  h4 
+    i.icon-edit.text-large
     span.text-info 用户注册
-  .widgetarea
+  .inforbox-area  
     span 邮箱注册 | 手机号注册
     
     = simple_form_for @user, :html => {:class=>"form-horizontal form-mini"} do |f|
