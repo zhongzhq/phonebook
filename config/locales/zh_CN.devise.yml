@@ -16,11 +16,11 @@ zh_CN:
       unconfirmed: 继续操作前请先确认您的帐号.
     mailer:
       confirmation_instructions:
-        subject: 确认信息
+        subject: 企业通讯录 - 用户注册激活
       reset_password_instructions:
-        subject: 重置密码信息
+        subject: 企业通讯录 - 重置密码信息
       unlock_instructions:
-        subject: 解锁信息
+        subject: 企业通讯录 - 解锁账户
     omniauth_callbacks:
       failure: 因为%{reason}，所以您无法从%{kind}获得授权.
       success: 成功地从%{kind}获得授权.

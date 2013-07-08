@@ -1,10 +1,11 @@
 .navbar.navbar-inner
   .container-fluid
     a.brand href=""=t('site_name')
-    ul.nav.pull-right
-      li 
-        a href="" 欢迎你，12345678909
-      li
-        a href="" 设置
-      li
-        a href="" 退出
+    - if user_signed_in?
+      ul.nav.pull-right
+        li
+          a href="" 欢迎你，#{ current_user.email }
+        li
+          a href="" 设置
+        li
+          = link_to('退出', destroy_user_session_path, :method => :delete)
