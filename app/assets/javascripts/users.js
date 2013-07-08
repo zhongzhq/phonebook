@@ -1,5 +1,3 @@
-$(document).ready(function(){
-    $('#captcha').next().find('a').click(function(){
-        $('#captcha').next().find('img').attr('src', '/captcha?action=captcha')
-    })
-})
+function refresh_captcha( obj ){
+  $('#captcha').next().find('img').attr('src', '/captcha?action=captcha')
+}
