@@ -1,0 +1,23 @@
+.widget
+  h4
+    i.icon-upload.text-large
+    span.text-info 用户注册
+  .widgetarea
+    span 邮箱注册 | 手机号注册
+
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class=>"form-horizontal form-mini"}) do |f|
+      = f.input :account, :autofocus => true
+      = f.input :email
+      = f.input :password
+      = f.input :password_confirmation
+      = f.input :phone
+
+      // 验证码
+      = f.input :captcha, hint: captcha_tag + "<a onclick='refresh_captcha();' href='javascript:void(0)'>看不清，换一张</a>".html_safe
+
+      .control-group
+        .controls
+          = f.button :submit,"注册",:class => "btn-info"
+          = link_to '返回登陆', :back
+
+= render "devise/shared/links"

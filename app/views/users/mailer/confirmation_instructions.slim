@@ -1,0 +1,5 @@
+p 欢迎你 #{ @email } !
+
+p 你可以通过下面连接激活你的账户：
+
+p= link_to '激活你的账户', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
