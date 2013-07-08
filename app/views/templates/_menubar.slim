@@ -1,15 +1,14 @@
 .menu-area
   -if request.fullpath.include?("master")
     .menu-block
+      a href=organs_path  组织结构管理
+    .menu-block
+      a href=users_path 用户管理
+    .menu-block
       a href=ranks_path  等级管理
     .menu-block
       a href=memberships_path 角色管理
-    .menu-block
-      a href=organs_path  组织结构管理
-    .menu-block.thumbnail
-      a href=memberships_path 角色管理
-    .menu-block.thumbnail
-      a href=users_path 用户管理
+
   -else
     a.adduser.btn.btn-success
       i.icon-plus
