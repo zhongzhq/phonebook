@@ -1,42 +1,42 @@
 .menu-area
-  a.adduser.btn.btn-success
-    i.icon-plus
-    | 添加联系人
-  .menu-block.pull-left
-    a href=main_app.dashboard_index_path() 
-      p
-        i.icon-dashboard.text-xlarge
-      p 仪表盘
-  .menu-block.pull-left
-    a href=phonebooks_path
-      p
-        i.icon-group.text-xlarge
-      p 企业电话本
-  .menu-block.pull-left
-    a href="" 
-      p
-        i.icon-book.text-xlarge
-      p 个人电话本
-  .menu-block.pull-left
-    a href=""
-      p
-        i.icon-info-sign.text-xlarge
-      p  关于我们
+  -if request.fullpath.include?("master")
+    .menu-block
+      a href=organs_path  组织结构管理
+    .menu-block
+      a href=users_path 用户管理
+    .menu-block
+      a href=ranks_path  等级管理
+    .menu-block
+      a href=memberships_path 角色管理
 
-  .menu-block.pull-left
-    a href=ranks_path  等级管理
-  .menu-block.pull-left
-    a href=memberships_path 角色管理
-  .menu-block.pull-left
-    a href=organs_path  组织结构管理
-  .menu-block.thumbnail.pull-left
-    a href=memberships_path 角色管理
-  .menu-block.thumbnail.pull-left
-    a href=users_path 用户管理
+  -else
+    a.adduser.btn.btn-success
+      i.icon-plus
+      | 添加联系人
+    .menu-block
+      a href=main_app.dashboard_index_path()
+        p
+          i.icon-dashboard.text-xlarge
+        p 仪表盘
+    .menu-block
+      a href=phonebooks_path
+        p
+          i.icon-group.text-xlarge
+        p 企业电话本
+    .menu-block
+      a href=""
+        p
+          i.icon-book.text-xlarge
+        p 个人电话本
+    .menu-block
+      a href=""
+        p
+          i.icon-info-sign.text-xlarge
+        p  关于我们
+
   .clearfix
 .footer
-  p &copy; 2013 版权所有
-  p 成都知一软件有限公司
+  p &copy; 2013 知一软件 版权所有
   p
     i.icon-envelope
-    a.margin-right5 href="mailto:xiegang@zhiyisoft.com" xiegang@zhiyisoft.com
+    a.margin-right5 href="mailto:xiegang@zhiyisoft.com" 意见反馈

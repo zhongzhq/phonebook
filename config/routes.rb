@@ -16,8 +16,14 @@ EPBook::Application.routes.draw do
   resources :phonebooks
   resources :ranks
   resources :organs
-  resources :memberships
+
   resources :dashboard, :only=>[:index]
+
+  resources :master,:only=>[:index] do
+    collection do
+      resources :memberships
+    end
+  end
 
   resources :default, :only => [:index] do
     collection do

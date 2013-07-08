@@ -1,7 +1,7 @@
 .widget
   h4
     i.icon-hand-right
-    span.text-info 角色
+    span.text-info 角色管理
     .pull-right
       = link_to "添加角色", new_membership_path, :class=>"btn btn-info"
   .widgetarea.widgetarea-height
@@ -10,12 +10,18 @@
         tr.alert.alert-info
           th.index_number 序号
           th 角色名
+          th 角色类型
           th 操作
       tbody
         - @memberships.each_with_index do |membership, index|
           tr
             td= index + 1
             td= membership.name
+            td
+              -if  membership.status ==1
+                span 系统用户
+              -else
+                span 企业用户
             td.operating
               a href= membership_path(membership) target="_blank" 查看
               a href= edit_membership_path(membership) target="_blank" 修改

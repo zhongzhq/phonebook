@@ -10,7 +10,10 @@ body{background:url("bg-f.png");}
 //*****************
 //#header
 //****************
-
+#header .navbar-container,#footer{
+	width:960px;
+	margin:0 auto;
+	}
 //*****************
 //#footer
 //*****************
@@ -108,15 +111,11 @@ body{background:url("bg-f.png");}
 //default index
 //**************************
 .index-search,.index-safe,.index-easy,.index-contain{
-	width:260px;
 	height:150px;	
 	padding:10px 20px;
 	}
 .index-search,.index-easy{	
 	border-right:1px solid #f1f1f1;
-}
-.index-search,.index-safe{
-	border-bottom:1px solid #f1f1f1;
 }
 .index-search h4,.index-safe h4,.index-easy h4,.index-contain h4{
 	border:0 none;
