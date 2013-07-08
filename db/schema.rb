@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
 
   create_table "memberships", :force => true do |t|
     t.string :name
-    t.integer :status, :default => 1 # 1企业用户 0系统用户
+    t.integer :status, :default => 0 # 0企业用户 1系统用户
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

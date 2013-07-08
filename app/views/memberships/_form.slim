@@ -1,7 +1,12 @@
 .widgetarea
   = simple_form_for @membership, :html => {:class=>"form-horizontal form-mini"} do |f|
     = f.input :name
-    = f.input :status
+    .control-group
+      label for="optionsCheckbox" class="control-label" 用户类型
+      .controls
+        label class="checkbox"
+          =f.check_box :status
+          |企业用户
 
     .control-group
       .controls

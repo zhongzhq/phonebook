@@ -9,7 +9,7 @@ rank21 = Rank.create!(name: "市级",parent_id: rank2.id)
 rank211 = Rank.create!(name: "区县级",parent_id: rank21.id)
 
 membership = Membership.create!(name: "企业用户")
-membership1 = Membership.create!(name: "系统用户",status: 0)
+membership1 = Membership.create!(name: "系统用户",status: 1)
 
 
 
