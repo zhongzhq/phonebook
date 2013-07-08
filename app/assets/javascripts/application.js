@@ -16,3 +16,7 @@
 // require_tree .
 // require public.js
 
+// 刷新验证码
+function refresh_captcha(){
+  $('#captcha').next().find('img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
+}
