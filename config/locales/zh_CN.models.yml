@@ -29,6 +29,7 @@ zh_CN:
         phone: 手机号码
         membership_id: 角色
         organ_id: 组织名
+        captcha: 验证码
 
   status:
     organ:

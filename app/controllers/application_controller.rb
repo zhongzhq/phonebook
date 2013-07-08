@@ -1,20 +1,17 @@
 class ApplicationController < ActionController::Base
-  before_filter :authenticate_user!
-
-  # reset captcha code after each request for security
-  after_filter :reset_last_captcha_code!
-  
   protect_from_forgery
 
+  # 为了安全，在每个请求之后都重新设置验证码
+  after_filter :reset_last_captcha_code!
+
+  # Devise Filter
+  before_filter :authenticate_user!
+
+  # 设置 devise 页面 Layout
   layout :layout_by_resource
 
   protected
-
   def layout_by_resource
-    if devise_controller?
-      "default"
-    else
-      "application"
-    end
+    devise_controller? ? 'default' : 'application'
   end
 end
