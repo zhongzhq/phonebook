@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
     self.update_attribute( :status, 1 ) if self.cdkey == cdkey_string
   end
 
+  def confirm_email?
+    self.confirmation_token.blank?
+  end
+
   def activate?
     self.status == 1 ? true : false
   end

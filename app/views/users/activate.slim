@@ -8,11 +8,12 @@
 		- else
 		  h4
 		    i.icon-information
-		    | 你的帐号尚未激活，不能登陆。请先到邮箱激活。或
-		    = link_to '重新发送激活邮件', resend_mail_users_path( :id => @user.id )
-		    
+		    | 你的帐号尚未激活，不能登陆
+		    = link_to "重新发送确认邮件?", new_confirmation_path(@user)
+
 		p 你的注册信息如下：
 		p 用户名：#{ @user.account }
-		p 邮箱： #{ @user.email }
+		p
+		  | 邮箱： #{ @user.email } 
+		  = @user.confirm_email? ? '<已验证>' : '<未验证>'
 		p 手机号码： #{ @user.phone }
-		p 用户状态： #{ t("status.user.#{@user.status}") }
