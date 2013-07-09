@@ -32,5 +32,5 @@ EPBook::Application.routes.draw do
     end
   end
 
-  root :to => 'default#index'
+  root :to => 'dashboard#index'
 end
