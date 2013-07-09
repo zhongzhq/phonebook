@@ -60,13 +60,13 @@ module EPBook
     config.assets.version = '1.0'
 
     # mail config
-    config.action_mailer.default_url_options = { host: 'localhost:3000' }
+    config.action_mailer.default_url_options = { host: '61.139.87.56:3000' }
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :address              => "smtp.qq.com",
+      :address              => "smtp.ym.163.com",
       :port                 => 25,
-      :user_name            => '626758993@qq.com',
-      :password             => 'tjj&123',
+      :user_name            => 'office@zhiyisoft.com',
+      :password             => '',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
   end
