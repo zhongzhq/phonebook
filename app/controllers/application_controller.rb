@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   after_filter :reset_last_captcha_code!
 
   # Devise Filter
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, :except => [:activate]
 
   # 设置 devise 页面 Layout
   layout :layout_by_resource
