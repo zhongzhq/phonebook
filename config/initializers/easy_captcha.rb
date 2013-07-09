@@ -12,11 +12,11 @@ EasyCaptcha.setup do |config|
   config.chars          = %w(0 1 2 3 4 5 6 7 9 A B C D E F G H I J K L M N O P Q R S T U V W X Y Z a b c d e f g h)
 
   # Length
-  # config.length         = 6
+  config.length         = 4
 
   # Image
-  # config.image_height   = 40
-  # config.image_width    = 140
+   config.image_height   = 30
+   config.image_width    = 80
 
   # eSpeak
   # config.espeak do |espeak|
