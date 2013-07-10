@@ -1,5 +1,5 @@
 class Api::SessionsController < Api::BaseController
-  before_filter :authenticate_user!, :except => [:login, :logout]
+  before_filter :authenticate_user!, :except => [:login]
   before_filter :ensure_params_exist
   respond_to :json
  
