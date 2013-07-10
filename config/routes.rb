@@ -41,5 +41,12 @@ EPBook::Application.routes.draw do
     end
   end
 
-  root :to => 'dashboard#index'
+  authenticated :user do
+    root :to => 'dashboard#index'
+  end
+  unauthenticated :user do
+    devise_scope :user do 
+      get "/" => "devise/sessions#new"
+    end
+  end  
 end
