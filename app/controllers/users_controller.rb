@@ -5,8 +5,9 @@ class UsersController < ApplicationController
   def index
     @users = User.all
 
-    if params[:callback]
-      render :json=>@users,:callback=>params[:callback]
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @users }
     end
   end
 
