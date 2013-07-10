@@ -24,7 +24,11 @@ EPBook::Application.routes.draw do
 
   resources :phonebooks
   resources :ranks
-  resources :organs
+  resources :organs do
+    collection do
+      get "get_organ"
+    end
+  end
 
   resources :dashboard, :only=>[:index]
 
