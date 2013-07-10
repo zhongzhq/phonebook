@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class Api::SessionsController < Api::BaseController
   before_filter :authenticate_user!, :except => [:login]
   before_filter :ensure_params_exist
@@ -18,9 +19,11 @@ class Api::SessionsController < Api::BaseController
  
   def logout
     resource = User.find_for_database_authentication(:email => params[:user_login][:email])
-    resource.authentication_token = nil
-    resource.save
-    render :json=> {:success=>true}
+    if resource && resource.update_attribute(:authentication_token, nil)
+      render :json => {:status => 'success', :message => '退出成功'}
+    else
+      render :json => {:status => 'failure', :message => '需要参数 email'}
+    end
   end
  
   protected
