@@ -2,6 +2,15 @@ EPBook::Application.routes.draw do
 
   devise_for :users, :controllers => { :registrations => "users/registrations", :sessions => "users/sessions" }
 
+  namespace :api do
+    resources :sessions, :only => [] do
+      collection do
+        get 'login'
+        get 'logout'
+      end
+    end
+  end
+
   captcha_route
 
   resources :users do

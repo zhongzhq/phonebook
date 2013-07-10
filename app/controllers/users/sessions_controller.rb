@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
 
     if request.post? && captcha_valid?(params[:captcha])
       @user = User.where( email: params[:user][:email] ).first
-      @user.confirm_email? ? super : redirect_to( activate_users_path( :id => @user.id ) )
+      super
     else
       resource.errors.add(:captcha, '验证码错误')
       render 'new'
