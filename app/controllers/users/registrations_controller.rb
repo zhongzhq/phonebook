@@ -11,14 +11,4 @@ class Users::RegistrationsController < Devise::RegistrationsController
       render 'new'
     end
   end
-
-  protected
-
-  def after_sign_up_path_for(resource)
-    activate_users_path(id: resource.id)
-  end
-
-  def after_inactive_sign_up_path_for(resource)
-    activate_users_path(id: resource.id)
-  end
 end
