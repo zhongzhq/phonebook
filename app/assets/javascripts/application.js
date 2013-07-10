@@ -18,5 +18,5 @@
 
 // 刷新验证码
 function refresh_captcha(){
-  $('#captcha').next().find('img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
+  $('#captcha_img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
 }

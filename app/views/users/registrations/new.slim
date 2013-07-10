@@ -14,7 +14,7 @@
         = f.input :phone
 
         // 验证码
-        = f.input :captcha, hint: captcha_tag + "<a onclick='refresh_captcha();' href='javascript:void(0)'>看不清，换一张</a>".html_safe, required: true do
+        = f.input :captcha, hint: captcha_tag(id: 'captcha_img') + "<a onclick='refresh_captcha();' href='javascript:void(0)'>看不清，换一张</a>".html_safe, required: true do
           = text_field_tag :captcha
 
         .control-group
