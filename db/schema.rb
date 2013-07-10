@@ -69,6 +69,9 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.datetime :confirmation_sent_at
     t.string   :unconfirmed_email
 
+    # Token authenticatable
+    t.string :authentication_token
+
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
