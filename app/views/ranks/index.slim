@@ -20,7 +20,7 @@
               a href= rank_path(rank) target="_blank" 查看
               a href= edit_rank_path(rank) target="_blank" 修改
 
-              - if rank.child.blank?
+              - unless rank.has_children?
                 = link_to '新增下级', new_rank_path( :id => rank.id )
-          -if !(rank.child.blank?)
-            =render "child_list",:rank=>rank.child,:index=>index
+          -if rank.has_children?
+            =render "child_list",:rank=>rank.children.first,:index=>index
