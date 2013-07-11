@@ -10,33 +10,37 @@
       a href=memberships_path 角色管理
 
   -else
-    a.adduser.btn.btn-success
-      i.icon-plus
-      | 添加联系人
+    .btn-group.menu-head
+      a.adduser.btn.btn-info
+        i.icon-edit
+        | 修改名片
+      a.adduser.btn.btn-info
+        i.icon-plus
+        | 添加联系人
+      .clearfix
     .menu-block
       a href=main_app.dashboard_index_path()
         p
           i.icon-dashboard.text-xlarge
-        p 仪表盘
+          | 仪表盘
     .menu-block
       a href=phonebooks_path
         p
           i.icon-group.text-xlarge
-        p 企业电话本
+          | 企业电话本
     .menu-block
       a href=""
         p
           i.icon-book.text-xlarge
-        p 个人电话本
+          | 个人电话本
     .menu-block
       a href=""
         p
           i.icon-info-sign.text-xlarge
-        p  关于我们
+          | 关于我们
 
   .clearfix
 .footer
   p &copy; 2013 知一软件 版权所有
-  p
-    i.icon-envelope
-    a.margin-right5 href="mailto:xiegang@zhiyisoft.com" 意见反馈
+  
+    

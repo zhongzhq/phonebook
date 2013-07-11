@@ -1,10 +1,10 @@
-.widget
+.inforbox
   h4
     i.icon-hand-right
     span.text-info 角色管理
     .pull-right
-      = link_to "添加角色", new_membership_path, :class=>"btn btn-info"
-  .widgetarea.widgetarea-height
+      = link_to "添加角色", new_membership_path
+  .inforbox-area.widgetarea-height
     table.table.table-bordered.table-hover
       thead
         tr.alert.alert-info
@@ -23,5 +23,5 @@
               -else
                 span 企业用户
             td.operating
-              a href= membership_path(membership) target="_blank" 查看
-              a href= edit_membership_path(membership) target="_blank" 修改
+              a href= membership_path(membership) 查看
+              a href= edit_membership_path(membership) 修改
