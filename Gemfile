@@ -20,7 +20,7 @@ gem "pg"
 gem 'easy_captcha'
 gem 'devise'
 gem 'cancan'
-
+gem 'ancestry'
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 
 if File.readable?(gemfile_local)
