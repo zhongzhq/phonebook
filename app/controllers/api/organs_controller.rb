@@ -20,7 +20,10 @@ class Api::OrgansController < Api::BaseController
   def get_childs
     if params[:organ_id]
       if organ = Organ.where(id: params[:organ_id]).first
-        result = organ.children
+        result = organ.children.each do |value|
+          value[:child] = value.has_children?
+        end
+
       end
     end
     if !params[:callback]
