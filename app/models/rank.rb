@@ -7,16 +7,4 @@ class Rank < ActiveRecord::Base
   has_many :organs
 
   has_ancestry
-
-  def self.get_childs parent_id
-    result = []
-    rank = Rank.where(:parent_id =>parent_id).first
-    if rank && rank.child
-      result << rank
-      result =result +  get_childs(rank.id)
-    else
-      result << rank
-    end
-    return result
-  end
 end
