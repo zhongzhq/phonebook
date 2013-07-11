@@ -7,6 +7,11 @@ EPBook::Application.routes.draw do
   }
 
   namespace :api do
+    resources :organs,:only=>[] do
+      collection do
+        get "get_organs"
+      end
+    end
     resources :sessions, :only => [] do
       collection do
         get 'login'
@@ -53,8 +58,8 @@ EPBook::Application.routes.draw do
     root :to => 'dashboard#index'
   end
   unauthenticated :user do
-    devise_scope :user do 
+    devise_scope :user do
       get "/" => "devise/sessions#new"
     end
-  end  
+  end
 end

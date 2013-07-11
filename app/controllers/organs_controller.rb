@@ -49,17 +49,6 @@ class OrgansController < ApplicationController
       redirect_to organs_path
     end
   end
-  # for app
-  def get_organ
-    if params[:organ_id]
-      if organ = Organ.where(id: params[:organ_id]).first
-        result = organ
-      end
-    end
 
-    if params[:callback]
-      render :json=>result,:callback=>params[:callback]
-    end
-  end
 
 end
