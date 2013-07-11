@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 class Api::SessionsController < Api::BaseController
-  before_filter :authenticate_user!, :except => [:login]
+
   before_filter :ensure_params_exist
-  respond_to :json
- 
+
   def login
     resource = User.find_for_database_authentication(:email => params[:user_login][:email])
     return invalid_login_attempt unless resource
- 
+
     if resource.valid_password?(params[:user_login][:password])
       sign_in(:user, resource)
       resource.ensure_authentication_token!
@@ -16,7 +15,7 @@ class Api::SessionsController < Api::BaseController
     end
     invalid_login_attempt
   end
- 
+
   def logout
     resource = User.find_for_database_authentication(:email => params[:user_login][:email])
     if resource && resource.update_attribute(:authentication_token, nil)
@@ -25,13 +24,13 @@ class Api::SessionsController < Api::BaseController
       render :json => {:status => 'failure', :message => '需要参数 email'}
     end
   end
- 
+
   protected
   def ensure_params_exist
     return unless params[:user_login].blank?
     render :json=>{:success=>false, :message=>"missing user_login parameter"}, :status=>422
   end
- 
+
   def invalid_login_attempt
     render :json=> {:success=>false, :message=>"Error with your login or password"}, :status=>401
   end

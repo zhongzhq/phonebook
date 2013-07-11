@@ -9,7 +9,8 @@ EPBook::Application.routes.draw do
   namespace :api do
     resources :organs,:only=>[] do
       collection do
-        get "get_organs"
+        get "get_root"
+        get "get_childs"
       end
     end
     resources :sessions, :only => [] do
