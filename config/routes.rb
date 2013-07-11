@@ -23,14 +23,7 @@ EPBook::Application.routes.draw do
 
   captcha_route
 
-  resources :users do
-    collection do
-      get 'register'
-      get 'activate'
-      get 'confirm'
-      get 'resend_mail'
-    end
-  end
+  resources :users
 
   resources :phonebooks
   resources :ranks

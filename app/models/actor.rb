@@ -4,5 +4,7 @@ class Actor < ActiveRecord::Base
 
   belongs_to :organ
   belongs_to :membership
-  has_and_belongs_to_many :users
+
+  has_many :actor_users
+  has_many :users, :through => :actor_users
 end

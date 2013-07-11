@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class RanksController < ApplicationController
   def index
-    @ranks = Rank.where("parent_id"=>nil)
+    @ranks = Rank.roots
     if params[:callback]
       render :json=>@ranks,:callback=>params[:callback]
     end

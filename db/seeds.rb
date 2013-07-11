@@ -2,8 +2,8 @@
 
 #------- 初始化本公司数据  测试数据----
 rank1 = Rank.create!(name: "企业")
-rank11 = Rank.create!(name: "部门",parent_id: rank1.id)
-rank111 = Rank.create!(name: "科室",parent_id: rank11.id)
+rank11 = Rank.create!(name: "部门",parent: rank1)
+rank111 = Rank.create!(name: "科室",parent: rank11)
 
 
 membership1 = Membership.create!(name: "总经理")
