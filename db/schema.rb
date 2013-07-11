@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
   create_table "ranks", :force => true do |t|
     t.string :name
     t.integer :parent_id
-#    t.integer :level ,:defaut=>1 # 1企业级 0系统级
+    # t.integer :level ,:defaut=>1 # 1企业级 0系统级
 
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -41,16 +41,28 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
   create_table "memberships", :force => true do |t|
     t.string :name
     t.integer :status, :default => 0 # 0企业用户 1系统用户
+
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "actors", :force => true do |t|
+    t.integer :membership_id
+    t.integer :organ_id
+
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "actors_users", :force => true do |t|
+    t.integer :user_id
+    t.integer :actor_id
   end
 
   create_table "users", :force => true do |t|
     t.string :account
     t.string :name
     t.string :phone
-    t.integer :membership_id
-    t.integer :organ_id
 
     t.integer :status, :default => 0 # 默认 0 未激活 1 激活
 

@@ -8,4 +8,6 @@ class Organ < ActiveRecord::Base
   belongs_to :parent, class_name: 'Organ'
 
   belongs_to :rank
+
+  has_many :actors
 end

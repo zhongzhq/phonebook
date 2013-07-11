@@ -5,9 +5,11 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :validatable, :confirmable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :account, :password, :name, :email, :phone, :membership_id, :organ_id, :password_confirmation, :status
+  attr_accessible :account, :password, :name, :email, :phone, :password_confirmation, :status
 
   validates_presence_of :account, :password, :email, :phone, :password_confirmation
+
+  has_and_belongs_to_many :actors
   
   belongs_to :membership
 

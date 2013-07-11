@@ -27,8 +27,6 @@ zh_CN:
         name: 姓名
         email: 电子邮箱
         phone: 手机号码
-        membership_id: 角色
-        organ_id: 组织名
         captcha: 验证码
 
   status:
