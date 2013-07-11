@@ -19,6 +19,7 @@ gem "bootstrap_helper"
 gem "pg"
 gem 'easy_captcha'
 gem 'devise'
+gem 'cancan'
 
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 
