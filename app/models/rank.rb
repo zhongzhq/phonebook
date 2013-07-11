@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Rank < ActiveRecord::Base
-  attr_accessible :name, :parent_id
+  attr_accessible :name, :parent_id, :parent
 
   validates :name, presence: true, uniqueness: true
 
