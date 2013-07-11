@@ -2,12 +2,11 @@
 class Api::OrgansController < Api::BaseController
   respond_to :json
 
-  def get_organs
+  def get_root
 
     if params[:organ_id]
       if organ = Organ.where(id: params[:organ_id]).first
-        p organ.root
-        result = organ
+        organ.is_root? ? result = organ : result = organ.root
       end
     end
 
@@ -16,9 +15,19 @@ class Api::OrgansController < Api::BaseController
     else
       render :json=>result,:callback=>params[:callback]
     end
-
-
   end
 
+  def get_childs
+    if params[:organ_id]
+      if organ = Organ.where(id: params[:organ_id]).first
+        result = organ.children
+      end
+    end
+    if !params[:callback]
+      render :json=>'{"status":400,"message":"请求方式错误，请使用jsonp方式请求数据"}'
+    else
+      render :json=>result,:callback=>params[:callback]
+    end
+  end
 
 end
