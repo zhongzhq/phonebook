@@ -1,4 +1,4 @@
-.widgetarea
+.inforbox-area
   = simple_form_for @membership, :html => {:class=>"form-horizontal form-mini"} do |f|
     = f.input :name
     .control-group
@@ -10,5 +10,6 @@
 
     .control-group
       .controls
+        = link_to "取消", :back,:class => "btn margin-right5"
         = f.button :submit,:class => "btn-info"
-        = link_to "返回", :back
+        

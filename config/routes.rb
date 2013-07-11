@@ -27,7 +27,7 @@ EPBook::Application.routes.draw do
   end
 
   resources :phonebooks
-  resources :ranks
+ 
   resources :organs do
     collection do
       get "get_organ"
@@ -38,7 +38,9 @@ EPBook::Application.routes.draw do
 
   resources :master,:only=>[:index] do
     collection do
+    
       resources :memberships
+      resources :ranks
     end
   end
 
