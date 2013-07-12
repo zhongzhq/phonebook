@@ -10,7 +10,7 @@ EPBook::Application.routes.draw do
     resources :organs,:only=>[] do
       collection do
         get "get_root"
-        get "get_childs"
+        get "get_organ_tree"
       end
     end
     resources :sessions, :only => [] do
@@ -26,14 +26,16 @@ EPBook::Application.routes.draw do
   resources :users
 
   resources :phonebooks
-  resources :ranks
+
   resources :organs
 
   resources :dashboard, :only=>[:index]
 
   resources :master,:only=>[:index] do
     collection do
+    
       resources :memberships
+      resources :ranks
     end
   end
 

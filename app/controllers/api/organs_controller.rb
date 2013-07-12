@@ -17,13 +17,10 @@ class Api::OrgansController < Api::BaseController
     end
   end
 
-  def get_childs
+  def get_organ_tree
     if params[:organ_id]
       if organ = Organ.where(id: params[:organ_id]).first
-        result = organ.children.each do |value|
-          value[:child] = value.has_children?
-        end
-
+        result = get_childs organ.root
       end
     end
     if !params[:callback]
@@ -31,6 +28,20 @@ class Api::OrgansController < Api::BaseController
     else
       render :json=>result,:callback=>params[:callback]
     end
+  end
+
+  def get_childs organ
+    node = []
+    unless  organ.is_root?
+          node << organ
+    end
+    if organ.has_children?
+      organ.children.each do |x|
+        node << x
+        get_childs x
+      end
+    end
+    node
   end
 
 end
