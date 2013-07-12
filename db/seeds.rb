@@ -8,7 +8,7 @@ rank111 = Rank.create!(name: "科室",parent: rank11)
 
 membership1 = Membership.create!(name: "总经理")
 membership2 = Membership.create!(name: "成员")
-membership3 = Membership.create!(name: "企业用户")
+membership3 = Membership.create!(name: "管理员")
 membership4 = Membership.create!(name: "系统管理员")
 
 

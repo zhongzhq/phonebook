@@ -16,7 +16,7 @@ class OrgansController < ApplicationController
     @organ = Organ.new(params[:organ])
 
     if @organ.save
-      # Actor.new(membership_id: Membership.enterprise_admin)
+      @organ.add_member_and_admin( current_user )
       redirect_to organs_path, notice: '添加成功'
     else
       render 'new'
