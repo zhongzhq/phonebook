@@ -8,14 +8,15 @@ class OrgansController < ApplicationController
   end
 
   def new
-    parent = Organ.find(params[:id]) if params[:id]
-    @organ = Organ.new(parent_id: parent ? parent.id : nil)
+    parent = Organ.find(params[:id]) rescue nil
+    @organ = Organ.new(parent_id: parent.try(:id))
   end
 
   def create
     @organ = Organ.new(params[:organ])
 
     if @organ.save
+      # Actor.new(membership_id: Membership.enterprise_admin)
       redirect_to organs_path, notice: '添加成功'
     else
       render 'new'
