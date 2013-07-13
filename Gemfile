@@ -33,7 +33,7 @@ gem 'apotomo'
 # Gems for test
 group :development do
   gem 'rb-inotify', :require => false # Guard needs this
-  gem 'guard-zeus'
+  gem 'zeus'
   gem 'guard-bundler'
   gem 'guard-livereload'  
   gem 'guard-rspec'
