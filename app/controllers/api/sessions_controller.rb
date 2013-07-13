@@ -28,6 +28,7 @@ class Api::SessionsController < Api::BaseController
   def get_user
     result = User.where(email: params[:user_login][:email],authentication_token: params[:user_login][:token])
     if result.first
+      p result.first
       render :json =>result.first,:callback=>params[:callback]
     else
       render :json => {:status => 'failed', :message => "请先登录"},:callback=>params[:callback]
