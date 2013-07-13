@@ -25,6 +25,11 @@ EPBook::Application.routes.draw do
         get "get_users"
       end
     end
+    resources :versions,:only=>[] do
+      collection do
+        get "update"
+      end
+    end
   end
 
   captcha_route
