@@ -35,7 +35,8 @@ EPBook::Application.routes.draw do
 
   resources :organs do
     collection do
-      get "get_organ"
+      get 'join'
+      post 'join_create'
     end
   end
 

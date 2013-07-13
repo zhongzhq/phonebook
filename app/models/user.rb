@@ -14,10 +14,6 @@ class User < ActiveRecord::Base
   
   belongs_to :membership
 
-  def confirm cdkey_string
-    self.update_attribute( :status, 1 ) if self.cdkey == cdkey_string
-  end
-
   def confirm_email?
     self.confirmation_token.blank?
   end

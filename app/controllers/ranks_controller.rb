@@ -8,8 +8,8 @@ class RanksController < ApplicationController
   end
 
   def new
-    parent = Rank.find(params[:id]) if params[:id]
-    @rank = Rank.new(parent_id: parent ? parent.id : nil)
+    parent = Rank.find(params[:id]) rescue nil
+    @rank = Rank.new(parent_id: parent.try(:id))
   end
 
   def create

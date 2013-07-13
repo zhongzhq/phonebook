@@ -2,13 +2,13 @@
 
 #------- 初始化本公司数据  测试数据----
 rank1 = Rank.create!(name: "企业")
+
 rank11 = Rank.create!(name: "部门",parent_id: rank1)
 rank111 = Rank.create!(name: "科室",parent_id: rank11)
 
-
 membership1 = Membership.create!(name: "总经理")
 membership2 = Membership.create!(name: "成员")
-membership3 = Membership.create!(name: "企业用户")
+membership3 = Membership.create!(name: "管理员")
 membership4 = Membership.create!(name: "系统管理员")
 
 
@@ -19,6 +19,8 @@ organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id
   organ12 = Organ.create!(name: '测试部', rank_id: rank11.id, parent_id: organ1)
   organ13 = Organ.create!(name: '行政部', rank_id: rank11.id, parent_id: organ1)
   organ14 = Organ.create!(name: '财务部', rank_id: rank11.id, parent_id: organ1 )
+
+=begin
 
 User.create!(account: "suyu", name: "苏渝",membership_id: membership1.id,organ_id: organ1.id, phone: 18602881279, email: "suyu@zhiyisoft.com",password: "18602881279",password_confirmation:  "18602881279")
 User.create!(account: "xiegang", name: "谢刚",membership_id: membership2.id,organ_id: organ11.id, phone: 18628171676, email: "xiegang@zhiyisoft.com",password: "18628171676",password_confirmation:  "18628171676")
@@ -35,4 +37,8 @@ User.create!(account: "yanqiuyun", name: "闫秋云",membership_id: membership2.
 User.create!(account: "liuling", name: "刘玲",membership_id: membership2.id,organ_id: organ14.id, phone: 13541386053, email: "liuling@zhiyisoft.com",password: "13541386053",password_confirmation:  "13541386053")
 User.create!(account: "lijia", name: "李佳",membership_id: membership2.id,organ_id: organ14.id, phone: 13308176710, email: "lijia@zhiyisoft.com",password: "13308176710",password_confirmation:  "13308176710")
 
+
 User.create!(account: "tianbymy", name: "谢刚",membership_id: membership2.id,organ_id: organ11.id, phone: 18628171676, email: "tianbymy@163.com",password: "adminxg",password_confirmation:  "adminxg")
+
+=end
+
