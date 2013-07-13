@@ -4,4 +4,6 @@ class ActorUser < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :actor
+
+  validates :user_id, uniqueness: { scope: :actor_id, message: '已加入企业'}
 end

@@ -28,7 +28,12 @@ EPBook::Application.routes.draw do
 
   resources :phonebooks
 
-  resources :organs
+  resources :organs do
+    collection do
+      get 'join'
+      post 'join_create'
+    end
+  end
 
   resources :dashboard, :only=>[:index]
 
