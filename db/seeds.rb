@@ -25,7 +25,7 @@ organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id
 
 @user = User.create!(account: "tianbymy",email:"tianbymy@163.com",name:"1",password:"adminxg",password_confirmation:"adminxg",phone: "18628171676")
 @actor = Actor.create!(membership_id: membership2.id,organ_id: organ11_2.id)
-@user.actors << @actor
+@actor.users << @user
 
 =begin
 

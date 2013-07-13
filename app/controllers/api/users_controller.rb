@@ -5,7 +5,9 @@ class Api::UsersController < Api::BaseController
   def get_users
 
     if params[:organ_id]
-      result = User.where(organ_id: params[:organ_id])
+      actors = Actor.where(organ_id: params[:organ_id])
+      p actors.users
+      result = User.all
     end
 
     if !params[:callback]
