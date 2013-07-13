@@ -4,9 +4,15 @@ class Api::OrgansController < Api::BaseController
 
   def get_root
 
-    if params[:organ_id]
-      if organ = Organ.where(id: params[:organ_id]).first
-        organ.is_root? ? result = organ : result = organ.root
+    if params[:email]
+      user = User.where(email: params[:email]).first
+      if user
+        p user.actors
+        if !user.actors.blank?
+          organ_id = user.actors.first.organ_id
+          organ = Organ.find(organ_id)
+          organ.is_root? ? result = organ : result = organ.root
+        end
       end
     end
 

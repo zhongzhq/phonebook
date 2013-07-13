@@ -6,8 +6,11 @@ class Api::UsersController < Api::BaseController
 
     if params[:organ_id]
       actors = Actor.where(organ_id: params[:organ_id])
-      p actors.users
-      result = User.all
+      result=[]
+      actors.each do |actor|
+         result = result + actor.users
+      end
+      result
     end
 
     if !params[:callback]
