@@ -38,7 +38,7 @@ class Api::OrgansController < Api::BaseController
       return node if nodes.empty?
     end
     nodes.each do |organ|
-      organ[:child]={}
+      organ[:child]=[]
       if organ.has_children?
         organ[:child] = tree(organ)
       end
