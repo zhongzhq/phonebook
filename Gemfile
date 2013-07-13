@@ -29,3 +29,24 @@ else
   gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails", :git => "git@github.com:zhiyisoft/bootstrap-rails.git", :ref => "HEAD"
 end
 gem 'apotomo'
+
+# Gems for test
+group :development do
+  gem 'rb-inotify', :require => false # Guard needs this
+  gem 'guard-zeus'
+  gem 'guard-bundler'
+  gem 'guard-livereload'  
+  gem 'guard-rspec'
+  gem 'guard-cucumber'
+end
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+end
