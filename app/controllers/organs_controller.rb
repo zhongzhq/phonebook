@@ -9,11 +9,13 @@ class OrgansController < ApplicationController
 
   # 创建企业，并把当前用户作为企业成员和管理员
   def new
+    return redirect_to :back, alert: '已加入企业，不能申请企业' unless current_user.actors.empty?
     parent = Organ.find(params[:id]) rescue nil
     @organ = Organ.new(parent_id: parent.try(:id))
   end
   
   def create
+    return redirect_to root_path, alert: '已加入企业，不能申请企业' unless current_user.actors.empty?
     @organ = Organ.new(params[:organ])
 
     if @organ.save
@@ -26,7 +28,7 @@ class OrgansController < ApplicationController
 
   # 申请加入企业，并吧当前用户作为企业成员
   def join
-    # @organ = Organ.new
+    redirect_to :back, alert: '已加入企业，不能同时加入多个企业' unless current_user.actors.empty?
   end
 
   def join_create
@@ -35,7 +37,7 @@ class OrgansController < ApplicationController
     if @organ.try(:add_member, current_user)
       redirect_to root_path, notice: '成功加入企业'
     else
-      redirect_to root_path, alert: '加入企业失败, 或你已经加入该企业'
+      redirect_to root_path, alert: '加入企业失败, 已经加入该企业'
     end
   end
 
