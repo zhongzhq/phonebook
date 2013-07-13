@@ -35,6 +35,3 @@ User.create!(account: "yanqiuyun", name: "闫秋云",membership_id: membership2.
 User.create!(account: "liuling", name: "刘玲",membership_id: membership2.id,organ_id: organ14.id, phone: 13541386053, email: "liuling@zhiyisoft.com",password: "13541386053",password_confirmation:  "13541386053")
 User.create!(account: "lijia", name: "李佳",membership_id: membership2.id,organ_id: organ14.id, phone: 13308176710, email: "lijia@zhiyisoft.com",password: "13308176710",password_confirmation:  "13308176710")
 =end
-
-
-User.create!(account: 'tangjiujun', name: '唐久军', email: 'jfsljflsdjfljfjsdlfj')
