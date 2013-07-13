@@ -17,7 +17,12 @@ EPBook::Application.routes.draw do
       collection do
         get 'login'
         get 'logout'
-        get "get_user"
+        get 'get_user'
+      end
+    end
+    resources :users,:only => [] do
+      collection do
+        get "get_users"
       end
     end
   end
