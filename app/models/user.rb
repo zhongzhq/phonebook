@@ -9,9 +9,9 @@ class User < ActiveRecord::Base
 
   validates_presence_of :account, :password, :email, :phone, :password_confirmation
 
-  has_many :actor_users
-  has_many :actors, :through => :actor_users
-  
+
+  has_and_belongs_to_many :actors
+
   belongs_to :membership
 
   def confirm_email?

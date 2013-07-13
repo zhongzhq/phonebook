@@ -5,8 +5,7 @@ class Actor < ActiveRecord::Base
   belongs_to :organ
   belongs_to :membership
 
-  has_many :actor_users
-  has_many :users, :through => :actor_users
+  has_and_belongs_to_many :users
 
   scope :find_by_organ_and_membership, ->(organ, membership) { where(organ_id: organ.id).where(membership_id: membership.id)}
 
