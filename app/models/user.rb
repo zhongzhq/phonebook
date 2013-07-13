@@ -12,8 +12,6 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :actors
 
-  belongs_to :membership
-
   def confirm_email?
     self.confirmation_token.blank?
   end
