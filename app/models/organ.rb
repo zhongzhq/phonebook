@@ -10,11 +10,13 @@ class Organ < ActiveRecord::Base
   has_ancestry
 
   def add_admin user
-    ActorUser.new( user: user, actor: Actor.find_or_new_organ_admin(self) ).save
+    actor_users = Actor.find_or_new_organ_admin(self).users
+    actor_users << user unless actor_users.include?( user )
   end
 
   def add_member user
-    ActorUser.new( user: user, actor: Actor.find_or_new_organ_member(self) ).save
+    actor_users = Actor.find_or_new_organ_member(self).users
+    actor_users << user unless actor_users.include?( user )
   end
 
   def add_member_and_admin user
