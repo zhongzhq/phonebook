@@ -1,23 +1,23 @@
-development:
+sessions: &default
   adapter: postgresql
   encoding: utf8
-  database: phonebook_dev
+  pool: 5
   username: phonebook
   password: phonebook
   host: localhost
+  port: 5432
 
-test:
-  adapter: postgresql
-  encoding: utf8
+development:
+  <<: *default
+  database: phonebook_dev
+
+test: &test
+  <<: *default
   database: phonebook_test
-  username: phonebook
-  password: phonebook
-  host: localhost
 
 production:
-  adapter: postgresql
-  encoding: utf8
+  <<: *default
   database: phonebook_pro
-  username: phonebook
-  password: phonebook
-  host: localhost
+
+cucumber:
+  <<: *test

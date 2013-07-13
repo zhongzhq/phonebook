@@ -2,19 +2,22 @@
   1、安装PGsql数据库
     |--sudo aptitude install postgresql postgresql-8.4
 
-  2、设置数据库访问帐号、密码、数据库
-    |---sudo -s
-    |---su - postgres
-    |---psql
-    |---#创建表，并分配权限
-    |-- postgres=# CREATE USER phonebook WITH PASSWORD 'phonebook';
-    |-- postgres=# CREATE DATABASE phonebook_dev;
-    |-- postgres=# GRANT ALL PRIVILEGES ON DATABASE phonebook_dev to phonebook;
+  2、设置数据库访问帐号、密码
+    |--- sudo -u postgres psql postgres
+    |---# 创建用户
+    |-- postgres=# create user phonebook with password 'phonebook' createdb;
+
   3、退出
     |-- postgres=# \q
-二、初始化数据
+
+二、初始化数据库
   1、进入项目根目录
-    |--rake db:schema:load
+    |-- # 创建数据库
+    |-- rake db:create RAILS_ENV="development"
+    |-- # 创建数据库表
+    |-- rake db:schema:load
+    |-- # 初始化数据
+    |-- rake db:seed
 
 三、安装 Gem 依赖库
   1、安装 easy_captcha Gem 时：
