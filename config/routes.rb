@@ -17,6 +17,7 @@ EPBook::Application.routes.draw do
       collection do
         get 'login'
         get 'logout'
+        get "get_user"
       end
     end
   end
@@ -33,7 +34,7 @@ EPBook::Application.routes.draw do
 
   resources :master,:only=>[:index] do
     collection do
-    
+
       resources :memberships
       resources :ranks
     end

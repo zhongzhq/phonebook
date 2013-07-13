@@ -23,5 +23,5 @@
             td.operating
               a href= organ_path(organ) target="_blank" 查看
               a href= edit_organ_path(organ) target="_blank" 修改
-              - if organ.rank.has_children?
+              - if organ.has_children?
                 = link_to '添加部门', new_organ_path( :id => organ.id )

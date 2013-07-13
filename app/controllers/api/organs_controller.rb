@@ -20,7 +20,7 @@ class Api::OrgansController < Api::BaseController
   def get_organ_tree
     if params[:organ_id]
       if organ = Organ.where(id: params[:organ_id]).first
-        result = get_childs organ.root
+        result = tree organ
       end
     end
     if !params[:callback]
@@ -30,18 +30,21 @@ class Api::OrgansController < Api::BaseController
     end
   end
 
-  def get_childs organ
-    node = []
-    unless  organ.is_root?
-          node << organ
+  def tree node
+    nodes = node.nil? ? node.root : node.children { |x| x}
+    under = {}
+
+    if node
+      return node if nodes.empty?
     end
-    if organ.has_children?
-      organ.children.each do |x|
-        node << x
-        get_childs x
+    nodes.each do |organ|
+      organ[:child]=[]
+      if organ.has_children?
+        organ[:child] = tree(organ)
       end
     end
-    node
+    nodes
+
   end
 
 end
