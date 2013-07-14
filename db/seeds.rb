@@ -22,7 +22,7 @@ organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id
 
 # 后台开发部
 User.create!(account: "suyu", name: "苏渝", phone: 18602881279, email: "suyu@zhiyisoft.com",password: "18602881279",password_confirmation:  "18602881279")
-User.create!(account: "xiegang", name: "谢刚", phone: 18628171676, email: "xiegang@zhiyisoft.com",password: "18628171676",password_confirmation:  "18628171676")
+# User.create!(account: "xiegang", name: "谢刚", phone: 18628171676, email: "xiegang@zhiyisoft.com",password: "18628171676",password_confirmation:  "18628171676")
 User.create!(account: "zhongzhengquan", name: "钟正权", phone: 13551147353, email: "zhongzhengquan@zhiyisoft.com",password: "13551147353",password_confirmation:  "13551147353")
 User.create!(account: "yangjunfeng", name: "杨峻峰", phone: 15881151751, email: "yangjunfeng@zhiyisoft.com",password: "15881151751",password_confirmation:  "15881151751")
 User.create!(account: "chenjianbin", name: "陈健斌", phone: 15882357025, email: "chenjianbin@zhiyisoft.com",password: "15882357025",password_confirmation:  "15882357025")
@@ -31,7 +31,7 @@ User.create!(account: "heyuan", name: "何源", phone: 13320963363, email: "heyu
 User.create!(account: "recurlamlisp", name: "黄德洲", phone: 18782902305, email: "recurlamlisp@gamil.com",password: "18782902305",password_confirmation:  "18782902305")
 User.create!(account: "zhangtao", name: "张涛", phone: 15202826031, email: "zhangtao@zhiyisoft.com",password: "15202826031",password_confirmation:  "15202826031")
 User.create!(account: "yinchangxin", name: "尹常鑫", phone: 15184469287, email: "yinchangxin@zhiyisoft.com",password: "15184469287",password_confirmation:  "15184469287")
-User.create!(account: "tianbymy",name:"1",email:"tianbymy@163.com",password:"adminxg",password_confirmation:"adminxg",phone: "18628171676")
+User.create!(account: "tianbymy",name:"xiegang_admin",email:"tianbymy@163.com",password:"adminxg",password_confirmation:"adminxg",phone: "18628171676")
 actor1 = Actor.create!(membership_id: membership2.id, organ_id: organ11_2.id)
 User.all.map { |e| actor1.users << e  }
 
@@ -52,4 +52,9 @@ actor4.users << User.last
 User.create!(account: "lijia", name: "李佳", phone: 13308176710, email: "lijia@zhiyisoft.com",password: "13308176710",password_confirmation:  "13308176710")
 actor4.users << User.last
 
+# 激活所有账户
 User.all.map { |e| e.update_attribute(:confirmation_token, nil) }
+
+# 把 tianbymy 加入  成都知一软件有限公司 管理员组
+actor5 = Actor.create!(membership_id: membership3.id, organ_id: organ1.id)
+actor5.users << User.find(:first, conditions: {account: "tianbymy", email:"tianbymy@163.com", phone: "18628171676"})
