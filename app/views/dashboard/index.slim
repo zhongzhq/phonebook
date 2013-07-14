@@ -20,12 +20,13 @@
           a.margin-right5 href="" gsdfg
           a.margin-right5 href="" asdfadf
 
-    .inforbox
-      .inforbox-title
-        h4
-          a href= new_organ_path 申请企业
-        h4
-          a href=join_organs_path 申请加入企业
+    - if current_user.actors.empty?
+      .inforbox
+        .inforbox-title
+          h4
+            a href= new_organ_path 申请企业
+          h4
+            a href=join_organs_path 申请加入企业
 
   .span4
     //常用联系人
