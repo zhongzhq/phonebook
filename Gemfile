@@ -38,6 +38,8 @@ group :development do
   gem 'guard-livereload'  
   gem 'guard-rspec'
   gem 'guard-cucumber'
+
+  gem 'pry-rails'
 end
 
 group :test do
