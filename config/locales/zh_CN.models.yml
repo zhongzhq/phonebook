@@ -24,6 +24,8 @@ zh_CN:
         account: 用户名
         password: 密码
         password_confirmation: 确认密码
+        reset_password_token: 密码重置口令
+        confirmation_token: 邮箱确认口令
         name: 姓名
         email: 电子邮箱
         phone: 手机号码
