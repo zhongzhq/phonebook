@@ -13,10 +13,29 @@
 //= require jquery
 //= require jquery_ujs
 // require twitter/bootstrap
-// require_tree .
-// require public.js
+//= require_tree .
 
 // 刷新验证码
 function refresh_captcha(){
-  $('#captcha_img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
+    $('#captcha_img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
 }
+
+$(function () {
+    $("#organ_tree").jstree({
+        "themes" : {
+          "theme" : "apple",
+          "dots" : true,
+          "icons" : true
+        },
+        "core" : { "load_open" : true },
+        "plugins" : [ "themes", "html_data" ]
+    })
+    .bind("loaded.jstree", function (event, data) {
+      $(".jstree-closed").removeClass("jstree-closed").addClass("jstree-open");
+    })
+    .delegate("a", "click", function (event, data) {
+      $.get($(this).attr('path'), function(data){
+        $("#organ_info").html(data);
+      });
+    });
+});

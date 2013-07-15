@@ -1,27 +1,7 @@
-.widget
-  h4
-    i.icon-hand-right
-    span.text-info 组织机构
-    .pull-right
-      = link_to "添加组织机构",new_organ_path, :class=>"btn btn-info"
-  .widgetarea.widgetarea-height
-    table.table.table-hover
-      thead
-        tr.alert.alert-info
-          th.index_number 序号
-          th 名称
-          th 等级
-          th 状态
-          th 操作
-      tbody
-        - @organs.each_with_index do |organ, index|
-          tr
-            td= index + 1
-            td= organ.name
-            td= organ.rank.name
-            td= t("status.organ.#{organ.status}")
-            td.operating
-              a href= organ_path(organ) target="_blank" 查看
-              a href= edit_organ_path(organ) target="_blank" 修改
-              - if organ.has_children?
-                = link_to '添加部门', new_organ_path( :id => organ.id )
+#organ_tree.span4
+ ul
+   li
+     a href="javascript:void(0)" path="#{organ_path(@organ)}" = @organ.name
+     = render 'child_list', :organ => @organ
+
+#organ_info.span8

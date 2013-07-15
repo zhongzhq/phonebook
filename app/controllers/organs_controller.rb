@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
   def index
-    @organs = Organ.all(:order=>"rank_id asc")
-    if params[:callback]
-      render :json=>@organs,:callback=>params[:callback]
-    end
+    @organ = Organ.find(params[:id])
   end
 
   # 创建企业，并把当前用户作为企业成员和管理员
@@ -43,6 +40,7 @@ class OrgansController < ApplicationController
 
   def show
     @organ = Organ.find(params[:id])
+    render :layout => false
   end
 
   def edit
