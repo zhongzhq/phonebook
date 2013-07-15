@@ -21,6 +21,14 @@ class User < ActiveRecord::Base
     self.status == 1 ? true : false
   end
 
+  def memberships
+    actors.map(&:membership)
+  end
+
+  def organ
+    actors.first.try(:organ)
+  end
+
   # 允许使用 用户名 或 Email 登陆
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

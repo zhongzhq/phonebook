@@ -20,7 +20,7 @@
           a.margin-right5 href="" gsdfg
           a.margin-right5 href="" asdfadf
 
-    - if current_user.actors.empty?
+    - if current_user.memberships
       .inforbox
         .inforbox-title
           h4
@@ -28,50 +28,52 @@
           h4
             a href=join_organs_path 申请加入企业
 
-  .span4
-    //常用联系人
-    .inforbox
-      .inforbox-title
-        h4
-          a href=phonebooks_path
-            i.icon-exchange.muted
-            | 常用联系人
-      .inforbox-area
-        h5 中国石油集团川庆钻探工程有限公司
-        p
-          | 地址：成都市府青路一段3号邮编：610051区号：028
-    
-  .span4
-    //企业电话薄
-    .inforbox
-      .inforbox-title
-        h4
-          a href=phonebooks_path
-            i.icon-group.muted
-            | 企业电话薄
-          .more.pull-right
-            a href=phonebooks_path 更多>>
-      .inforbox-area
-        h5 中国石油集团川庆钻探工程有限公司
-        p
-          | 地址：成都市府青路一段3号邮编：610051区号：028
-    
+  - organ = current_user.organ
+  - if organ
+    .span4
+      //常用联系人
+      .inforbox
+        .inforbox-title
+          h4
+            a href=phonebooks_path
+              i.icon-exchange.muted
+              | 企业信息
+        .inforbox-area
+          h5= (organ.ancestors << organ).map{|x| x.name }.join(" / ")
+          h6= '角色：' + current_user.memberships.map(&:name).join(" / ")
+          p
+            | 地址：成都市府青路一段3号 邮编：610051 区号：028
 
-    //最近联系人
-    .inforbox
-      .inforbox-title
-        h4
-          a href=phonebooks_path
-            i.icon-time.muted
-            | 最近联系人
-      .inforbox-area
-        h5 中国石油集团川庆钻探工程有限公司
-        p
-          | 地址：成都市府青路一段3号邮编：610051区号：028
+  / .span4
+  /   //企业电话薄
+  /   .inforbox
+  /     .inforbox-title
+  /       h4
+  /         a href=phonebooks_path
+  /           i.icon-group.muted
+  /           | 企业电话薄
+  /         .more.pull-right
+  /           a href=phonebooks_path 更多>>
+  /     .inforbox-area
+  /       h5 中国石油集团川庆钻探工程有限公司
+  /       p
+  /         | 地址：成都市府青路一段3号邮编：610051区号：028
 
-  .span4
-    
-    p 这里是统计
+  /   //最近联系人
+  /   .inforbox
+  /     .inforbox-title
+  /       h4
+  /         a href=phonebooks_path
+  /           i.icon-time.muted
+  /           | 最近联系人
+  /     .inforbox-area
+  /       h5 中国石油集团川庆钻探工程有限公司
+  /       p
+  /         | 地址：成都市府青路一段3号邮编：610051区号：028
+
+  / .span4
+
+  /   p 这里是统计
 
 - else
   .inforbox
