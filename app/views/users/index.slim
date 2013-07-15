@@ -16,7 +16,7 @@
         - @users.each_with_index do |user, index|
           tr
             td= index + 1
-            td= user.account
+            td= user.username
             td= user.email
             td= user.phone
             td= t("status.user.#{user.status}")

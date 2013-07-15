@@ -21,7 +21,8 @@ zh_CN:
       membership:
         name: 角色名
       user:
-        account: 用户名
+        username: 用户名
+        account: 帐号
         password: 密码
         password_confirmation: 确认密码
         reset_password_token: 密码重置口令

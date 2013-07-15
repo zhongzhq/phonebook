@@ -88,7 +88,7 @@
           = link_to "重新发送确认邮件?", new_confirmation_path(@user)
 
       p 你的注册信息如下：
-      p 用户名：#{ @user.account }
+      p 用户名：#{ @user.username }
       p
         | 邮箱： #{ @user.email } 
         = @user.confirm_email? ? '<已验证>' : '<未验证>'

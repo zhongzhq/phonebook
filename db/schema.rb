@@ -61,8 +61,8 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
   end
 
   create_table "users", :force => true do |t|
-    t.string :account
-    t.string :name
+    t.string :username # 用户名
+    t.string :name # 姓名
     t.string :phone
 
     t.integer :status, :default => 0 # 默认 0 未激活 1 激活

@@ -10,7 +10,7 @@
           | 用户登录
         .inforbox-area
           = simple_form_for( resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-horizontal margin-bottom0"} ) do |f|
-            = f.input :email, :autofocus => true
+            = f.input :account, :autofocus => true, :required => true, placeholder: "用户名 / 邮箱"
             = f.input :password
             = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
 
