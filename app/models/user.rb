@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     actors.first.try(:organ)
   end
 
+  def is_system_admin?
+    actors.map { |e| e.membership }.include? Membership.system_admin
+  end
+
   # 允许使用 用户名 或 Email 登陆
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
