@@ -23,17 +23,26 @@ function refresh_captcha(){
 $(function () {
     $("#organ_tree").jstree({
         "themes" : {
-          "theme" : "apple",
+          "theme" : "default",
           "dots" : true,
           "icons" : true
         },
-        "core" : { "load_open" : true },
         "plugins" : [ "themes", "html_data" ]
     })
     .bind("loaded.jstree", function (event, data) {
       $(".jstree-closed").removeClass("jstree-closed").addClass("jstree-open");
+
+      var init_open = $("#open").find("a:first")
+      init_open.addClass("jstree-clicked");
+      $.get(init_open.attr('path'), function(data){
+        $("#organ_info").html(data);
+      });
     })
     .delegate("a", "click", function (event, data) {
+      $('li[class^="jstree-"]').each(function(){
+        $(this).find("a").removeClass("jstree-clicked");
+      });
+      $(this).addClass("jstree-clicked");
       $.get($(this).attr('path'), function(data){
         $("#organ_info").html(data);
       });

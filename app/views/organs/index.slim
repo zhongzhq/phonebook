@@ -1,7 +1,8 @@
 #organ_tree.span4
- ul
-   li
-     a href="javascript:void(0)" path="#{organ_path(@organ)}" = @organ.name
-     = render 'child_list', :organ => @organ
+  - organ_root = @organ.root
+  ul
+   li id="#{ organ_root == @organ ? "open" : "" }"
+     a href="javascript:void(0)" path="#{organ_path(organ_root)}" = organ_root.name
+     = render 'child_list', :organ => organ_root, :current_organ => @organ
 
 #organ_info.span8

@@ -1,7 +1,7 @@
 ul
   - organ.children.each do |child|
-    li
+    li id="#{ child == current_organ ? "open" : "" }"
       a href="javascript:void(0)" path="#{organ_path(child)}" = child.name
       - unless child.children.blank?
         ul
-          = render 'child_list', :organ => child
+          = render 'child_list', :organ => child, :current_organ => current_organ
