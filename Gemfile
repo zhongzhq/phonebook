@@ -11,11 +11,10 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'slim'
+gem 'slim-rails'
 gem 'thin'
 gem "simple_form"
 gem "font-awesome-rails"
-gem "bootstrap_helper"
 gem "pg"
 gem 'easy_captcha'
 gem 'devise'
