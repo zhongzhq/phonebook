@@ -17,7 +17,7 @@ class OrgansController < ApplicationController
 
     if @organ.save
       @organ.add_member_and_admin( current_user )
-      redirect_to organs_path, notice: '添加成功'
+      redirect_to organs_path( :id => @organ.id ), notice: '添加成功'
     else
       render 'new'
     end
@@ -51,7 +51,7 @@ class OrgansController < ApplicationController
     @organ = Organ.find(params[:id])
 
     if @organ.update_attributes(params[:organ])
-      redirect_to organs_path, notice: '更新成功'
+      redirect_to organs_path( :id => @organ.id ), notice: '更新成功'
     else
       render 'edit'
     end

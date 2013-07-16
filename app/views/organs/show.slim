@@ -2,6 +2,8 @@
   h4
     i.icon-hand-right
     span.text-info= "组织机构 - #{ @organ.name }"
+    .pull-right
+      = link_to '添加下级部门', new_organ_path( :id => @organ.id ), :class=>"btn btn-info"
   .widgetarea.widgetarea-height
     p 组织机构名: "#{@organ.name}"
     p 等级: #{@organ.rank.name}
