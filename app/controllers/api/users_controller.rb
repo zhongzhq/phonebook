@@ -5,10 +5,14 @@ class Api::UsersController < Api::BaseController
   def get_users
 
     if params[:organ_id]
+      organ = Organ.where(id: params[:organ_id]).first
       actors = Actor.where(organ_id: params[:organ_id])
       result=[]
       actors.each do |actor|
-         result = result + actor.users
+        result = result + actor.users
+      end
+      result.inject({}) do |index,user|
+        user[:organname] = full_name(organ)
       end
       result
     end
@@ -18,6 +22,11 @@ class Api::UsersController < Api::BaseController
     else
       render :json=>result,:callback=>params[:callback]
     end
+  end
+
+  def full_name organ
+    return organ.name unless organ.parent
+    full_name(organ.parent) + "/" + organ.name
   end
 
 
