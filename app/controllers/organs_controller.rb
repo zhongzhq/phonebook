@@ -9,6 +9,7 @@ class OrgansController < ApplicationController
     return redirect_to :back, alert: '已加入企业，不能申请企业' unless current_user.memberships
     parent = Organ.find(params[:id]) rescue nil
     @organ = Organ.new(parent_id: parent.try(:id))
+    render :layout => false if params[:id]
   end
   
   def create
@@ -16,7 +17,7 @@ class OrgansController < ApplicationController
     @organ = Organ.new(params[:organ])
 
     if @organ.save
-      @organ.add_member_and_admin( current_user )
+      @organ.add_member_and_admin( current_user ) unless current_user.memberships
       redirect_to organs_path( :id => @organ.id ), notice: '添加成功'
     else
       render 'new'
@@ -36,6 +37,20 @@ class OrgansController < ApplicationController
     else
       redirect_to root_path, alert: '加入企业失败, 已经加入该企业'
     end
+  end
+
+  # 指定组织下的所有成员
+  def members
+    @organ = Organ.find(params[:id])
+    @members = @organ.try(:all_member)
+    render :layout => false
+  end
+
+  # 指定组织的所有下级组织成员
+  def sub_members
+    @organ = Organ.find(params[:id])
+    @sub_members = @organ.sub_members
+    render :layout => false
   end
 
   def show

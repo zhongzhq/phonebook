@@ -1,0 +1,28 @@
+.widget
+  h4
+    i.icon-hand-right
+    span.text-info #{@organ.name}
+    .pull-right
+      button.btn.btn-link path="#{new_organ_path( :id => @organ.id )}" onclick="get_form_path(this);" 添加下级部门
+      button.btn.btn-link path="#{members_organs_path( :id => @organ.id )}" onclick="get_form_path(this);" 查看成员
+      button.btn.btn-link path="#{sub_members_organs_path( :id => @organ.id )}" onclick="get_form_path(this);" 查看所有下级成员
+      
+  .widgetarea.widgetarea-height
+    table.table.table-hover
+      thead
+        tr.alert.alert-info
+          th.index_number 序号
+          th 用户名
+          th 手机号
+          td 邮箱
+          th 操作
+      tbody
+        - @sub_members.each_with_index do |member, index|
+          tr
+            td= index + 1
+            td= member.phone
+            td= member.email
+            td= member.name
+            td.operating
+              a href= user_path(member) target="_blank" 查看
+              a href= edit_user_path(member) target="_blank" 修改
