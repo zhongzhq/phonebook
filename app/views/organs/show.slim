@@ -3,7 +3,10 @@
     i.icon-hand-right
     span.text-info= "组织机构 - #{ @organ.name }"
     .pull-right
-      = link_to '添加下级部门', new_organ_path( :id => @organ.id ), :class=>"btn btn-info"
+      button.btn.btn-link path="#{new_organ_path( :id => @organ.id )}" onclick="get_form_path(this);" 添加下级部门
+      button.btn.btn-link path="#{members_organs_path( :id => @organ.id )}" onclick="get_form_path(this);" 查看成员
+      button.btn.btn-link path="#{sub_members_organs_path( :id => @organ.id )}" onclick="get_form_path(this);" 查看所有下级成员
+
   .widgetarea.widgetarea-height
     p 组织机构名: "#{@organ.name}"
     p 等级: #{@organ.rank.name}

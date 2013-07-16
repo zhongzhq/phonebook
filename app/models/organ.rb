@@ -22,4 +22,12 @@ class Organ < ActiveRecord::Base
   def add_member_and_admin user
     add_admin(user) && add_member(user)
   end
+
+  def all_member
+    actors.map(&:users).flatten.uniq
+  end
+
+  def sub_members
+    subtree.map(&:all_member).flatten
+  end
 end

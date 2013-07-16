@@ -20,31 +20,39 @@ function refresh_captcha(){
     $('#captcha_img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
 }
 
-$(function () {
+// 获取属性 path，并 get 请求 path
+function get_form_path(obj){
+  $.get($(obj).attr("path"), function(data){
+    $('#organ_info').html(data);
+  });
+}
+
+$(document).ready(function () {
+    // jstree 设置
     $("#organ_tree").jstree({
         "themes" : {
-          "theme" : "default",
-          "dots" : true,
-          "icons" : true
+            "theme" : "default",
+            "dots" : true,
+            "icons" : true
         },
         "plugins" : [ "themes", "html_data" ]
     })
-    .bind("loaded.jstree", function (event, data) {
-      $(".jstree-closed").removeClass("jstree-closed").addClass("jstree-open");
+        .bind("loaded.jstree", function (event, data) {
+            $(".jstree-closed").removeClass("jstree-closed").addClass("jstree-open");
 
-      var init_open = $("#open").find("a:first")
-      init_open.addClass("jstree-clicked");
-      $.get(init_open.attr('path'), function(data){
-        $("#organ_info").html(data);
-      });
-    })
-    .delegate("a", "click", function (event, data) {
-      $('li[class^="jstree-"]').each(function(){
-        $(this).find("a").removeClass("jstree-clicked");
-      });
-      $(this).addClass("jstree-clicked");
-      $.get($(this).attr('path'), function(data){
-        $("#organ_info").html(data);
-      });
-    });
+            var init_open = $("#open").find("a:first")
+            init_open.addClass("jstree-clicked");
+            $.get(init_open.attr('path'), function(data){
+                $("#organ_info").html(data);
+            });
+        })
+        .delegate("a", "click", function (event, data) {
+            $('li[class^="jstree-"]').each(function(){
+                $(this).find("a").removeClass("jstree-clicked");
+            });
+            $(this).addClass("jstree-clicked");
+            $.get($(this).attr('path'), function(data){
+                $("#organ_info").html(data);
+            });
+        });
 });
