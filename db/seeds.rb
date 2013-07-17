@@ -7,9 +7,9 @@ rank11 = Rank.create!(name: "部门",parent_id: rank1)
 rank111 = Rank.create!(name: "科室",parent_id: rank11)
 
 membership1 = Membership.create!(name: "总经理")
-membership2 = Membership.create!(name: "成员")
-membership3 = Membership.create!(name: "管理员")
-membership4 = Membership.create!(name: "系统管理员")
+membership2 = Membership.organ_member
+membership3 = Membership.organ_admin
+membership4 = Membership.system_admin
 
 
 organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id )

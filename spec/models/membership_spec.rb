@@ -2,9 +2,11 @@
 require 'spec_helper'
 
 describe Membership do
-  before :each do
-    @organ_member = create(:organ_member_membership)
-    @organ_admin = create(:organ_admin_membership)
-    @system_admin = create(:system_admin_membership)
+  it "可以 I18n.t('phonebook.membership'') 的 键 作为方法名来获取 以其值作为 membership 的 name 的记录" do
+    I18n.t("phonebook.membership").each { |k, v| Membership.create(name: v) }
+
+    I18n.t("phonebook.membership").each do |k, v|
+      expect(Membership.send(k).name).to eql v
+    end
   end
 end
