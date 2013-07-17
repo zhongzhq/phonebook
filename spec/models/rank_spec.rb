@@ -2,8 +2,9 @@
 require 'spec_helper'
 
 describe Rank do
-  it '不能创建两个 :name 相同的等级' do
-    expect( build(:rank).save ).to be_true
-    build(:rank).should_not be_valid    
+  before :each do
+    @qi_ye = create(:qi_ye)
+    @bu_men = create :bu_men, parent: @qi_ye
+    @ke_shi = create :ke_shi, parent: @bu_men
   end
 end
