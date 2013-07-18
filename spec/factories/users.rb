@@ -12,11 +12,18 @@ FactoryGirl.define do
       email 'guest@zhiyisoft.com'
     end
 
-    factory :member do
+    factory :organ_member do
       name '组织成员'
       username 'member'
       phone '18782943144'
       email 'member@zhiyisoft.com'
+    end
+
+    factory :organ_member2 do
+      name '组织成员2'
+      username 'member2'
+      phone '187829431441'
+      email 'member2@zhiyisoft.com'
     end
 
     factory :organ_admin do
