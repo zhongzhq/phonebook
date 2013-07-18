@@ -1,8 +1,8 @@
 .row-fluid
   .span8
     .div
-      img src="/assets/banner1.jpg" alt=""    
-  .span4 
+      img src="/assets/banner1.jpg" alt=""
+  .span4
     #login
       .inforbox
         h4
@@ -19,19 +19,19 @@
               = text_field_tag :captcha,'', :style=>"width:80px"
               = captcha_tag id: 'captcha_img'
               a onclick='refresh_captcha();' href='javascript:void(0)' 换一张
-              
+
             .control-group.margin-bottom0
               .controls
                 = f.button :submit, '登录', :class => "btn-info"
-                a.margin-right5 href= new_registration_path(resource_name) 立即注册
+                a.margin-right5 href=new_registration_path(resource_name) 立即注册
                 span.margin-right5 |
-                a.margin-right5 href= new_password_path(resource_name) 忘记密码
-                            
-                
-            
+                a.margin-right5 href=new_password_path(resource_name) 忘记密码
+
+
+
 .row-fluid
   .inforbox
-    .inforbox-area      
+    .inforbox-area
       .span4.index-search
         h4
           img src="/assets/1.png" alt=""
@@ -43,7 +43,7 @@
           img src="/assets/3.png" alt=""
           | 信息安全
         p
-      
+
       .span4.index-contain
         h4
           img src="/assets/2.png" alt=""

@@ -16,7 +16,7 @@ organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id
   organ11 = Organ.create!(name: '软件开发部', rank_id: rank11.id, parent_id: organ1 )
     organ11_1 = Organ.create!(name: '前台开发部', rank_id: rank11.id, parent_id: organ11 )
     # 后台开发部
-    organ11_2 = Organ.create!(name: '后台开发部', rank_id: rank11.id, parent_id: organ11 )      
+    organ11_2 = Organ.create!(name: '后台开发部', rank_id: rank11.id, parent_id: organ11 )
       User.create!(username: "suyu", name: "苏渝", phone: 18602881279, email: "suyu@zhiyisoft.com",password: "18602881279",password_confirmation:  "18602881279")
       User.create!(username: "xiegang", name: "谢刚", phone: 18628171676, email: "xiegang@zhiyisoft.com",password: "18628171676",password_confirmation:  "18628171676")
       User.create!(username: "zhongzhengquan", name: "钟正权", phone: 13551147353, email: "zhongzhengquan@zhiyisoft.com",password: "13551147353",password_confirmation:  "13551147353")
@@ -33,13 +33,13 @@ organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id
   # 测试部
   organ12 = Organ.create!(name: '测试部', rank_id: rank11.id, parent_id: organ1)
     actor2 = Actor.create!(membership_id: membership2.id, organ_id: organ12.id)
-    User.create!(username: "tanghao", name: "唐浩", phone: 13880129915, email: "tanghao@zhiyisoft.com",password: "13880129915",password_confirmation:  "13880129915")    
+    User.create!(username: "tanghao", name: "唐浩", phone: 13880129915, email: "tanghao@zhiyisoft.com",password: "13880129915",password_confirmation:  "13880129915")
     actor2.users << User.last
 
   # 行政部
   organ13 = Organ.create!(name: '行政部', rank_id: rank11.id, parent_id: organ1)
     actor3 = Actor.create!(membership_id: membership2.id, organ_id: organ13.id)
-    User.create!(username: "yanqiuyun", name: "闫秋云", phone: 13808229662, email: "yanqiuyun@zhiyisoft.com",password: "13808229662",password_confirmation:  "13808229662")    
+    User.create!(username: "yanqiuyun", name: "闫秋云", phone: 13808229662, email: "yanqiuyun@zhiyisoft.com",password: "13808229662",password_confirmation:  "13808229662")
     actor3.users << User.last
 
   # 财务部
@@ -62,8 +62,8 @@ actor1.users << User.create!(username: "member",name:"enterprise member",email:"
 
 actor5 = Actor.create!(membership_id: membership3.id, organ_id: organ1.id)
 actor51 = Actor.create!(membership_id: membership2.id, organ_id: organ1.id)
-actor5.users << User.create!(username: "tianbymy",name:"xiegang_admin",email:"tianbymy@163.com",password:"adminxg",password_confirmation:"adminxg",phone: "18628171676")
+actor5.users << User.create!(username: "tianbymy",name:"知一软件-谢刚",email:"tianbymy@163.com",password:"adminxg",password_confirmation:"adminxg",phone: "18628171676")
 actor51.users << User.last
 
 actor6 = Actor.create!(membership_id: membership4.id)
-actor6.users << User.create!(username: "system",name:"system",email:"system_admin@163.com",password:"123456",password_confirmation:"123456",phone: "123456")
+actor6.users << User.create!(username: "system",name:"知一软件系统管理员",email:"system_admin@163.com",password:"123456",password_confirmation:"123456",phone: "123456")
