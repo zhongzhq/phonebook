@@ -15,9 +15,3 @@ zh_CN:
     submit:
       create: 保存
       update: 更新
-
-  phonebook:
-    membership:
-      organ_member: 企业成员
-      organ_admin:  企业管理员
-      system_admin: 系统管理员

@@ -2,11 +2,18 @@
 require 'spec_helper'
 
 describe Membership do
-  it "可以 I18n.t('phonebook.membership'') 的 键 作为方法名来获取 以其值作为 membership 的 name 的记录" do
-    I18n.t("phonebook.membership").each { |k, v| Membership.create(name: v) }
+  before :each do
+    SystemRoles.each { |k, membership_name| Membership.create( :name => membership_name).update_attribute(:status, 1) }
+  end
+  it "以 SystemRoles 的 key 作为方法名来获取 Membership 中相应的角色记录" do
+    SystemRoles.each do |method_name, membership_name|
+      expect( Membership.send(method_name).name ).to eql membership_name
+    end
+  end
 
-    I18n.t("phonebook.membership").each do |k, v|
-      expect(Membership.send(k).name).to eql v
+  it '当 Membership 的 status 为 1 时，表示为系统角色，不能删除' do
+    SystemRoles.each do |method_name, membership_name|
+      expect( Membership.send(method_name).destroy ).to be_false
     end
   end
 end

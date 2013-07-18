@@ -1,29 +1,40 @@
 # -*- coding: utf-8 -*-
+
+# 定义系统角色
+SystemRoles = {
+  :organ_member => '组织成员',
+  :organ_admin => '组织管理员',
+  :system_admin => '系统管理员'
+}
+
 class Membership < ActiveRecord::Base
-  attr_accessible :name, :status
+  attr_accessible :name
 
   validates :name, presence: true, uniqueness: true
 
   has_many :actors
 
-  # 初始化系统角色
-  I18n.t("phonebook.membership").each { |k, v| create(name: v) }
+  before_destroy {|membership| membership.status != 1}
 
-  # 定义获取系统角色的方法
+  ## 根据 SystemRoles 的键定义获取系统角色的方法
   #
-  # 如果在 zh_CN.yml 中定义如下：
-  # zh_CN:
-  #   phonebook:
-  #     membership:
-  #       system_admin: 系统管理员
-  # 
-  # 那么，就可以调用方法： Membership.system_admin
+  # 将会定义如下方法：
+  #   Membership.system_admin
+  #   Membership.organ_member
+  #   Membership.organ_admin
   
   class << self
-    I18n.t("phonebook.membership").each do |k, v|
-      define_method k do
-        where(name: I18n.t("phonebook.membership.#{k.to_s}")).first
+    SystemRoles.each do |method_name, membership_name|
+      define_method method_name do
+        where(name: membership_name).first
       end
+    end
+  end
+
+  # 初始化系统角色
+  SystemRoles.each do |method_name, membership_name|
+    unless Membership.send(method_name)
+      create!( :name => membership_name).update_attribute(:status, 1)
     end
   end
 
