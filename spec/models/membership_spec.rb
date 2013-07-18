@@ -5,6 +5,7 @@ describe Membership do
   before :each do
     SystemRoles.each { |k, membership_name| Membership.create( :name => membership_name).update_attribute(:status, 1) }
   end
+  
   it "以 SystemRoles 的 key 作为方法名来获取 Membership 中相应的角色记录" do
     SystemRoles.each do |method_name, membership_name|
       expect( Membership.send(method_name).name ).to eql membership_name

@@ -14,6 +14,7 @@ class Membership < ActiveRecord::Base
 
   has_many :actors
 
+  # 系统角色不能删除
   before_destroy {|membership| membership.status != 1}
 
   ## 根据 SystemRoles 的键定义获取系统角色的方法
