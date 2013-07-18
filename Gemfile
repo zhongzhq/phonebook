@@ -20,6 +20,8 @@ gem 'easy_captcha'
 gem 'devise'
 gem 'cancan'
 gem 'ancestry'
+gem 'validates_existence'
+
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 
 if File.readable?(gemfile_local)
