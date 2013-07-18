@@ -21,6 +21,7 @@ gem 'devise'
 gem 'cancan'
 gem 'ancestry'
 gem 'validates_existence'
+gem 'settingslogic'
 
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 
