@@ -17,11 +17,5 @@
           tr
             td= index + 1
             td= membership.name
-            td
-              -if  membership.status ==1
-                span 系统用户
-              -else
-                span 企业用户
-            td.operating
-              a href= membership_path(membership) 查看
-              a href= edit_membership_path(membership) 修改
+            td= membership.status == 0 ? '普通角色' : '系统角色'
+            td.operating = link_to '修改', edit_membership_path(membership)

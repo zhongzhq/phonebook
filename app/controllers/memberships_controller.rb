@@ -2,10 +2,6 @@
 class MembershipsController < ApplicationController
   def index
     @memberships = Membership.all
-
-    if params[:callback]
-      render :json=>@memberships,:callback=>params[:callback]
-    end
   end
 
   def new
@@ -15,15 +11,8 @@ class MembershipsController < ApplicationController
   def create
     @membership = Membership.new(params[:membership])
 
-    if @membership.save
-      redirect_to memberships_path, notice: '添加成功'
-    else
-      render 'new'
-    end
-  end
-
-  def show
-    @membership = Membership.find(params[:id])
+    return redirect_to memberships_path, notice: '添加成功' if @membership.save
+    render 'new'
   end
 
   def edit
@@ -33,10 +22,7 @@ class MembershipsController < ApplicationController
   def update
     @membership = Membership.find(params[:id])
 
-    if @membership.update_attributes(params[:membership])
-      redirect_to memberships_path, notice: '更新成功'
-    else
-      render 'edit'
-    end
+    return redirect_to memberships_path, notice: '更新成功' if @membership.update_attributes(params[:membership])
+    render 'edit'
   end
 end
