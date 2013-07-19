@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.integer :postalcode
     t.string :areacode
 
-    t.integer :status,:default => 0 #默认 0禁用 1启用
+    t.string :state
 
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
@@ -85,7 +85,6 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
 
   create_table "phonebooks", :force => true do |t|
     t.string   "name"

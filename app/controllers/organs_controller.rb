@@ -4,20 +4,17 @@ class OrgansController < ApplicationController
     @organ = Organ.find(params[:id])
   end
 
-  # 创建企业，并把当前用户作为企业成员和管理员
   def new
-    return redirect_to :back, alert: '已加入企业，不能申请企业' unless current_user.memberships
-    parent = Organ.find(params[:id]) rescue nil
-    @organ = Organ.new(parent_id: parent.try(:id))
-    render :layout => false if params[:id]
+    @organ = Organ.new
   end
   
   def create
-    return redirect_to root_path, alert: '已加入企业，不能申请企业' unless current_user.memberships
     @organ = Organ.new(params[:organ])
 
     if @organ.save
-      @organ.add_member_and_admin( current_user ) unless current_user.memberships
+      # 把当前用户加入新创建组织的成员和管理员组
+      @organ.add_member(current_user)
+      @organ.add_admin(current_user)
       redirect_to organs_path( :id => @organ.id ), notice: '添加成功'
     else
       render 'new'

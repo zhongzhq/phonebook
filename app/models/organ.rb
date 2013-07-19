@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 
-# Organ 用户记录组织的详细信息（姓名，等级，上级组织，组织地址，邮编，区号，状态，描述）
-#  - 组织必须存在一个等级
-#  - 组织的状态有两种：禁用（status = 0）, 启用（status = 1）
-
 class Organ < ActiveRecord::Base
-  attr_accessible :name, :rank_id, :parent_id, :address, :postalcode, :areacode, :status, :description
+  attr_accessible :name, :rank_id, :parent_id, :address, :postalcode, :areacode, :description
 
   validates_presence_of :name, :rank_id
   validates_existence_of :rank_id
@@ -13,6 +9,16 @@ class Organ < ActiveRecord::Base
   belongs_to :rank
   has_many :actors
   has_ancestry
+
+  state_machine :initial => :apply do
+    event :pass do
+      transition :apply => :success
+    end
+
+    event :not_pass do
+      transition :apply => :failure
+    end
+  end
 
   ## 根据 Settings.system_roles 的 键 来定义给组织添加 不同角色用户 的方法
   # 
