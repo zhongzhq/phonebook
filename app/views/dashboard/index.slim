@@ -1,4 +1,4 @@
-- if @user.confirm_email? 
+- if @user.confirm? 
   .span4
     //快速查找
     .inforbox
@@ -28,8 +28,8 @@
           h4
             a href=join_organs_path 申请加入企业
 
-  - organ = current_user.organ
-  - if organ
+  - organs = current_user.organs
+  - unless organs.blank?
     .span4
       //常用联系人
       .inforbox
@@ -39,9 +39,9 @@
               i.icon-exchange.muted
               | 企业信息
             .more.pull-right
-              = link_to '管理组织', organs_path(:id => organ)
+              /= link_to '管理组织', organs_path(:id => organ)
         .inforbox-area
-          h5= (organ.ancestors << organ).map{|x| x.name }.join(" / ")
+          h5= organs.map { |organ|  (organ.ancestors << organ).map{|x| x.name }.join(" / ") }
           h6= '角色：' + current_user.memberships.map(&:name).join(" / ")
           p
             | 地址：成都市府青路一段3号 邮编：610051 区号：028
@@ -89,5 +89,5 @@
     p 用户名：#{ @user.username }
     p
       | 邮箱： #{ @user.email } 
-      = @user.confirm_email? ? '<已验证>' : '<未验证>'
+      = @user.confirmed_at ? '<已验证>' : '<未验证>'
     p 手机号码： #{ @user.phone }

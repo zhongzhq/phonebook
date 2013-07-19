@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   # 返回用户所属的所有组织，如果用户未加入任何组织，则返回 []
-  def organ
+  def organs
     actors.map(&:organ).uniq.compact
   end
 

@@ -50,7 +50,7 @@ describe User do
   end
 
   it '返回用户所属的组织' do
-    expect( @organ_admin.organ ).to eq [@zhiyi]
-    expect( @system_admin.organ ).to be_empty
+    expect( @organ_admin.organs ).to eq [@zhiyi]
+    expect( @system_admin.organs ).to be_empty
   end
 end

@@ -2,9 +2,7 @@
 
 # ---------- 系统初始化数据 ----------
 # 初始化系统角色
-Settings.system_roles.each do |key, value|
-  Membership.create!( :name => value ).update_attribute(:status, 1)
-end
+Settings.system_roles.each { |key, value| Membership.create!( :name => value ).update_attribute(:status, 1) }
 
 # ---------- 初始化本公司数据  测试数据 ----------
 rank1 = Rank.create!(name: "企业")
@@ -56,15 +54,12 @@ organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id
     User.create!(username: "lijia", name: "李佳", phone: 13308176710, email: "lijia@zhiyisoft.com",password: "13308176710",password_confirmation:  "13308176710")
     actor4.users << User.last
 
-# 激活所有账户
-# User.all.map { |e| e.update_attribute(:confirmation_token, nil) }
-
 # ---------- 其他测试数据 ----------
 organ2 = Organ.create!(name: '成都新东方烹饪学校', rank_id: rank1.id )
 
-User.create!(username: "guest",name:"no enterprise",email:"guest@163.com",password:"123456",password_confirmation:"123456",phone: "123456")
+User.create!(username: "guest",name:"no enterprise",email:"guest@163.com",password:"123456",password_confirmation:"123456",phone: "12345612345")
 
-actor1.users << User.create!(username: "member",name:"enterprise member",email:"member@163.com",password:"123456",password_confirmation:"123456",phone: "123456")
+actor1.users << User.create!(username: "member",name:"enterprise member",email:"member@163.com",password:"123456",password_confirmation:"123456",phone: "12345612346")
 
 actor5 = Actor.create!(membership_id: membership3.id, organ_id: organ1.id)
 actor51 = Actor.create!(membership_id: membership2.id, organ_id: organ1.id)
@@ -72,4 +67,8 @@ actor5.users << User.create!(username: "tianbymy",name:"知一软件-谢刚",ema
 actor51.users << User.last
 
 actor6 = Actor.create!(membership_id: membership4.id)
-actor6.users << User.create!(username: "system",name:"知一软件系统管理员",email:"system_admin@163.com",password:"123456",password_confirmation:"123456",phone: "123456")
+actor6.users << User.create!(username: "system",name:"知一软件系统管理员",email:"system_admin@163.com",password:"123456",password_confirmation:"123456",phone: "12345612347")
+
+# 激活所有账户
+User.all.map { |e| e.update_attribute(:confirmation_token, nil) }
+User.all.map { |e| e.update_attribute(:confirmed_at, Time.now) }

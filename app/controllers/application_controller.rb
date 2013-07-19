@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   # 用户登陆后跳转
   def after_sign_in_path_for(resource)
-    current_user.is_system_admin? ? master_index_path : root_path
+    current_user.system_admin? ? master_index_path : root_path
   end
 
   # 设置 devise 页面 Layout
