@@ -34,8 +34,6 @@ EPBook::Application.routes.draw do
 
   captcha_route
 
-  resources :users
-
   resources :phonebooks
 
   resources :organs do
