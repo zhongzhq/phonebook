@@ -1,5 +1,11 @@
 # -*- coding: utf-8 -*-
 
+# ---------- 系统初始化数据 ----------
+# 初始化系统角色
+Settings.system_roles.each do |key, value|
+  Membership.create!( :name => value ).update_attribute(:status, 1)
+end
+
 # ---------- 初始化本公司数据  测试数据 ----------
 rank1 = Rank.create!(name: "企业")
 
