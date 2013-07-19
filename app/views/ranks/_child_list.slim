@@ -1,11 +1,10 @@
-tr
-  td= index=index.to_s+"-1"
-  td= rank.name
-  td.operating
-    a href= rank_path(rank) target="_blank" 查看
-    a href= edit_rank_path(rank) target="_blank" 修改
+- children.each_with_index do |child, i|
+  tr
+    td= index = index.to_s + '-' + (i + 1 ).to_s
+    td= child.name
+    td.operating
+      = link_to '修改', edit_rank_path(child)
+      = link_to '添加下级', new_child_rank_path(child)
 
-    - unless rank.has_children?
-      = link_to '新增下级', new_rank_path( :id => rank.id )
--if rank.has_children?
-  =render "child_list",:rank=>rank.children.first,:index=>index
+      -if child.has_children?
+        = render "child_list", :children => child.children, :index => index

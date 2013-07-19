@@ -51,9 +51,13 @@ EPBook::Application.routes.draw do
 
   resources :master,:only=>[:index] do
     collection do
-
       resources :memberships
-      resources :ranks
+      resources :ranks, :except => [:show, :destroy] do
+        member do
+          get 'new_child'
+          post 'create_child'
+        end
+      end
     end
   end
 

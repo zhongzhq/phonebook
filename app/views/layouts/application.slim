@@ -17,5 +17,6 @@ html lang="en"
         #content.dashboard
           #working-area
             .row-fluid
-              //= render 'templates/flash', :flash => flash
+              = render 'templates/flash', :flash => flash
+            .row-fluid
               = yield

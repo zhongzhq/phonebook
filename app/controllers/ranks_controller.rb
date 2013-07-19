@@ -2,28 +2,17 @@
 class RanksController < ApplicationController
   def index
     @ranks = Rank.roots
-    if params[:callback]
-      render :json=>@ranks,:callback=>params[:callback]
-    end
   end
 
   def new
-    parent = Rank.find(params[:id]) rescue nil
-    @rank = Rank.new(parent_id: parent.try(:id))
+    @rank = Rank.new
   end
 
   def create
     @rank = Rank.new(params[:rank])
 
-    if @rank.save
-      redirect_to ranks_path, notice: '添加成功'
-    else
-      render 'new'
-    end
-  end
-
-  def show
-    @rank = Rank.find(params[:id])
+    return redirect_to ranks_path, notice: '添加成功' if @rank.save
+    render 'new'
   end
 
   def edit
@@ -33,16 +22,19 @@ class RanksController < ApplicationController
   def update
     @rank = Rank.find(params[:id])
 
-    if @rank.update_attributes(params[:rank])
-      redirect_to ranks_path, notice: '更新成功'
-    else
-      render 'edit'
-    end
+    return redirect_to ranks_path, notice: '更新成功' if @rank.update_attributes(params[:rank])
+    render 'edit'
   end
 
-  def destroy
-    @rank = Rank.find(params[:id])
-    @rank.destroy
-    redirect_to ranks_path, notice: '删除成功'
+  # 添加下级等级
+  def new_child
+    @rank = Rank.find(params[:id]).children.build
+  end
+
+  def create_child
+    @rank = Rank.new(params[:rank])
+
+    return redirect_to ranks_path, notice: '添加成功' if @rank.save
+    render 'new_child'
   end
 end

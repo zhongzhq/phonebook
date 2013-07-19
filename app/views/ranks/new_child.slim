@@ -1,0 +1,14 @@
+.widget
+  h4
+    i.icon-upload.text-large
+    span.text-info 添加#{ @rank.name }下级节点
+
+  .widgetarea
+    = simple_form_for @rank, :url => create_child_rank_path, :html => {:class=>"form-horizontal form-mini"} do |f|
+      = f.input :name
+      = f.hidden_field :parent_id
+
+      .control-group
+        .controls
+          = f.button :submit,:class => "btn-info"
+          = link_to "返回", ranks_path

@@ -3,7 +3,8 @@
     i.icon-hand-right
     span.text-info 等级管理
     .pull-right
-      = link_to "添加根节点", new_rank_path, :class=>"btn btn-info"
+      = link_to "添加根节点", new_rank_path, :class => "btn btn-info"
+
   .widgetarea.widgetarea-height
     table.table.table-hover
       thead
@@ -14,13 +15,11 @@
       tbody
         - @ranks.each_with_index do |rank, index|
           tr
-            td= index=index + 1
+            td= index = index + 1
             td= rank.name
             td.operating
-              a href= rank_path(rank) target="_blank" 查看
-              a href= edit_rank_path(rank) target="_blank" 修改
+              = link_to '修改', edit_rank_path(rank)
+              = link_to '添加下级', new_child_rank_path(rank)
 
-              - unless rank.has_children?
-                = link_to '新增下级', new_rank_path( :id => rank.id )
           -if rank.has_children?
-            =render "child_list",:rank=>rank.children.first,:index=>index
+            = render "child_list", :children => rank.children, :index => index
