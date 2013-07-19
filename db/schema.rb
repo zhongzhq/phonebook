@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
 
   create_table "organs",:force => true do |t|
     t.string :name
-#    t.integer :parent_id
     t.integer :rank_id
     t.string  :ancestry
 
@@ -65,8 +64,6 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.string :name # 姓名
     t.string :phone
 
-    t.integer :status, :default => 0 # 默认 0 未激活 1 激活
-
     ## devise field
     # Database authenticatable
     t.string :email,              :null => false, :default => ""
@@ -80,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.string   :confirmation_token
     t.datetime :confirmed_at
     t.datetime :confirmation_sent_at
-    t.string   :unconfirmed_email
+    t.string   :unconfirmed_email # Only if using reconfirmable
 
     # Token authenticatable
     t.string :authentication_token

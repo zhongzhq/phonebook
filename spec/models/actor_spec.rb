@@ -4,9 +4,7 @@ require 'spec_helper'
 describe Actor do
   before :each do
     # 角色
-    Settings.system_roles.each do |key, value|
-      Membership.create!( :name => value ).update_attribute(:status, 1)
-    end
+    Settings.system_roles.each { |key, value| Membership.create!( :name => value ).update_attribute(:status, 1) }
 
     # 等级
     @qi_ye = create(:qi_ye)
