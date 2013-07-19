@@ -26,9 +26,9 @@ class User < ActiveRecord::Base
     actors.map(&:membership)
   end
 
-  # 返回用户所属的组织，一个用户只属于一个组织。如果用户未加入任何组织，则返回 nil
+  # 返回用户所属的所有组织，如果用户未加入任何组织，则返回 []
   def organ
-    actors.first.try(:organ)
+    actors.map(&:organ).uniq.compact
   end
 
   # 允许用户使用 用户名或邮箱 登陆

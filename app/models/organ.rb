@@ -20,7 +20,7 @@ class Organ < ActiveRecord::Base
   #   add_member(user): 向组织中添加成员
   #   add_admin(user): 向组织中添加管理员
   # 
-  # 如果添加成功，返回当前组织下此角色的所有成员。如果成员已存在与该组织对应角色下，那么添加失败，返回 nil
+  # 如果添加成功，返回当前组织下此角色的所有成员。如果成员已存在于该组织对应角色下，那么添加失败，返回 nil
 
   Settings.system_roles.each do |method_name, v|
     if method_name.to_s.include? 'organ_'
