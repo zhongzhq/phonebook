@@ -62,13 +62,6 @@ EPBook::Application.routes.draw do
       end
     end
   end
-  
-  resources :default, :only => [:index] do
-    collection do
-      post 'login'
-      get 'logout'
-    end
-  end
 
   authenticated :user do
     root :to => 'dashboard#index'
