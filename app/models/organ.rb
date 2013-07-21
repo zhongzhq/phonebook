@@ -52,4 +52,9 @@ class Organ < ActiveRecord::Base
   def children_members
     children.map(&:members).flatten
   end
+
+  # 申请加入组织的成员
+  def apply_members
+    Actor.find_or_create(self, Membership.organ_member).applies.map(&:user)
+  end
 end

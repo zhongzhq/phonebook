@@ -59,6 +59,12 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.integer :actor_id
   end
 
+  create_table "applies", :force => true do |t|
+    t.integer :user_id
+    t.integer :actor_id
+    t.string :state
+  end
+
   create_table "users", :force => true do |t|
     t.string :username # 用户名
     t.string :name # 姓名

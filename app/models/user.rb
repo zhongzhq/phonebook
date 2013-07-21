@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :phone, format: {with: /^\d{11}$/}
 
   has_and_belongs_to_many :actors
+  has_many :applies
 
   # account 是一个虚拟属性，用于页面获取 用户名或邮箱
   attr_accessor :account

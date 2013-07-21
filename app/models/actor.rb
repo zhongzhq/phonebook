@@ -14,6 +14,7 @@ class Actor < ActiveRecord::Base
   belongs_to :organ
   belongs_to :membership
   has_and_belongs_to_many :users
+  has_many :applies
 
   class << self
     def find_by_organ_and_membership organ, membership

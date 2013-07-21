@@ -19,11 +19,15 @@
             th 姓名
             th 手机号
             td 邮箱
+            td 状态
             th 操作
         tbody
-          - members.each_with_index do |member, index|
+          - @organ.apply_members.each_with_index do |member, index|
             tr
               td= index + 1
               td= member.name
               td= member.phone
               td= member.email
+              td= t("state.apply.#{Apply.find_by_user_and_organ(member, @organ).state}")
+              td.operating
+                = link_to '通过', pass_user_organ_path(@organ, user_id: member.id), onclick: 'get(this);', class: 'btn btn-link'

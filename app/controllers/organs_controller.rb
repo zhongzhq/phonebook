@@ -36,16 +36,15 @@ class OrgansController < ApplicationController
 
   # 申请加入企业
   def join
-    redirect_to :back, alert: '已加入企业，不能同时加入多个企业' unless current_user.memberships
   end
 
   def join_create
     @organ = Organ.find(params[:id]) rescue nil
 
-    if @organ.try(:add_member, current_user)
-      redirect_to root_path, notice: '成功加入企业'
+    if Apply.add(current_user, @organ)
+      redirect_to root_path, notice: '组织申请成功，审核中'
     else
-      redirect_to root_path, alert: '加入组织失败'
+      redirect_to root_path, alert: '组织申请失败，你可能已申请过或者正在申请其它企业'
     end
   end
 
@@ -61,6 +60,18 @@ class OrgansController < ApplicationController
     render partial: 'members', :layout => false, :locals => { members: @organ.try(:children_members) }
   end
   
+  # 显示待申请的成员
+  def apply_members
+    @organ = Organ.find(params[:id])
+    render :layout => false
+  end
+
+  # 通过用户的申请
+  def pass_user
+    @organ = Organ.find(params[:id])
+    Apply.find_by_user_and_organ(User.find(params[:user_id]), @organ).pass
+    render 'apply_members', :layout => false
+  end
 
   # 编辑组织信息
   def edit
