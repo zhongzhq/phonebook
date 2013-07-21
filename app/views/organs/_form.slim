@@ -15,5 +15,5 @@
 
     .control-group
       .controls
-        = link_to '取消', organs_path, :class => 'btn btn-danger'
+        = link_to '取消', current_user.organs.blank? ? root_path : organs_path, :class => 'btn btn-danger'
         = f.button :submit, :class => "btn-info"

@@ -34,18 +34,18 @@ class OrgansController < ApplicationController
     render 'new_child'
   end
 
-  # 申请加入企业，并吧当前用户作为企业成员
+  # 申请加入企业
   def join
     redirect_to :back, alert: '已加入企业，不能同时加入多个企业' unless current_user.memberships
   end
 
   def join_create
-    @organ = Organ.find(params[:id])
+    @organ = Organ.find(params[:id]) rescue nil
 
     if @organ.try(:add_member, current_user)
       redirect_to root_path, notice: '成功加入企业'
     else
-      redirect_to root_path, alert: '加入企业失败, 已经加入该企业'
+      redirect_to root_path, alert: '加入组织失败'
     end
   end
 

@@ -43,6 +43,10 @@ EPBook::Application.routes.draw do
       post 'create_child'
       get 'children_members'
     end
+    collection do
+      get 'join'
+      post 'join_create'
+    end
   end
 
   resources :dashboard, :only=>[:index]

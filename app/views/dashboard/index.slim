@@ -20,13 +20,13 @@
           a.margin-right5 href="" gsdfg
           a.margin-right5 href="" asdfadf
 
-    - if current_user.memberships.blank?
-      .inforbox
-        .inforbox-title
+    .inforbox
+      .inforbox-title
+        -  if current_user.memberships.blank?
           h4
-            a href= new_organ_path 申请创建企业
-          h4
-            a href=join_organs_path 申请加入企业
+            = link_to '申请创建企业', new_organ_path
+        h4
+          a href=join_organs_path 申请加入企业
 
   - organ = current_user.organs.first
   - if organ
