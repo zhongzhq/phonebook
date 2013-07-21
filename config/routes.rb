@@ -34,17 +34,14 @@ EPBook::Application.routes.draw do
       end
     end
   end
-
   
-
   resources :phonebooks
 
-  resources :organs do
-    collection do
-      get 'join'
-      post 'join_create'
-      get 'members'
-      get 'sub_members'
+  resources :organs, :except => [:destroy] do
+    member do
+      get 'new_child'
+      post 'create_child'
+      get 'children_members'
     end
   end
 

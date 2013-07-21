@@ -15,4 +15,5 @@
 
     .control-group
       .controls
-        = f.button :submit,:class => "btn-info"
+        = link_to '取消', organs_path, :class => 'btn btn-danger'
+        = f.button :submit, :class => "btn-info"

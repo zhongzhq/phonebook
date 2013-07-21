@@ -1,0 +1,17 @@
+.widget
+  h4
+    i.icon-upload.text-large
+    span.text-info= "添加#{ @organ.parent.try(:name) }下级组织"
+
+  .widgetarea
+    = simple_form_for @organ, :url => create_child_organ_path, :html => {:class=>"form-horizontal form-mini"} do |f|
+      = f.input :name
+      = f.hidden_field :parent_id
+
+      -if @organ.parent
+        = f.input :rank_id, collection: @organ.parent.rank.descendants.map{|x| [x.name, x.id]}, prompt: '请选择...'
+
+      .control-group
+        .controls
+          = link_to '取消', organs_path, :class => 'btn btn-danger'
+          = f.button :submit, :class => "btn-info"

@@ -20,13 +20,15 @@ function refresh_captcha(){
     $('#captcha_img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
 }
 
-// 获取属性 path，并 get 请求 path
-function get_form_path(obj){
-  $.get($(obj).attr("path"), function(data){
-    $('#organ_info').html(data);
+// 点击 a 标签，获取 href
+function get(obj){
+  $.get($(obj).attr("href"), function(data){
+    $('#organs').html(data);
   });
+  event.returnValue = false;
 }
 
+// jsTree 设置
 $(document).ready(function () {
     // jstree 设置
     $("#organ_tree").jstree({
@@ -40,19 +42,15 @@ $(document).ready(function () {
         .bind("loaded.jstree", function (event, data) {
             $(".jstree-closed").removeClass("jstree-closed").addClass("jstree-open");
 
-            var init_open = $("#open").find("a:first")
+            var init_open = $("#open").find("a:first");
             init_open.addClass("jstree-clicked");
-            $.get(init_open.attr('path'), function(data){
-                $("#organ_info").html(data);
-            });
+            get(init_open);
         })
         .delegate("a", "click", function (event, data) {
             $('li[class^="jstree-"]').each(function(){
                 $(this).find("a").removeClass("jstree-clicked");
             });
             $(this).addClass("jstree-clicked");
-            $.get($(this).attr('path'), function(data){
-                $("#organ_info").html(data);
-            });
+            get(this);
         });
 });

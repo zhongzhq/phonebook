@@ -40,7 +40,7 @@
               | 企业信息
             .more.pull-right
               - if organ.success?
-                = link_to '管理组织', organs_path(:id => organ)
+                = link_to '管理组织', organs_path
         .inforbox-area
           h5= '企业名称：' + (organ.ancestors << organ).map{|x| x.name }.join(" / ")
           h6= '角色：' + current_user.memberships.map(&:name).join(" / ")

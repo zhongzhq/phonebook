@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
   def index
-    @organ = Organ.find(params[:id])
+    @organ = current_user.organs.first
   end
 
   # 申请创建一个企业
@@ -22,6 +22,18 @@ class OrgansController < ApplicationController
     end
   end
 
+  # 添加下级组织
+  def new_child
+    @organ = Organ.find(params[:id]).children.build
+  end
+
+  def create_child
+    @organ = Organ.new(params[:organ])
+
+    return redirect_to organs_path, notice: '添加成功' if @organ.save
+    render 'new_child'
+  end
+
   # 申请加入企业，并吧当前用户作为企业成员
   def join
     redirect_to :back, alert: '已加入企业，不能同时加入多个企业' unless current_user.memberships
@@ -37,25 +49,20 @@ class OrgansController < ApplicationController
     end
   end
 
-  # 指定组织下的所有成员
-  def members
-    @organ = Organ.find(params[:id])
-    @members = @organ.try(:all_member)
-    render :layout => false
-  end
-
-  # 指定组织的所有下级组织成员
-  def sub_members
-    @organ = Organ.find(params[:id])
-    @sub_members = @organ.sub_members
-    render :layout => false
-  end
-
+  # 显示组织信息和成员
   def show
     @organ = Organ.find(params[:id])
-    render :layout => false
+    render partial: 'members', :layout => false, :locals => { members: @organ.members }
   end
 
+  # 显示组织的子级成员
+  def children_members
+    @organ = Organ.find(params[:id])
+    render partial: 'members', :layout => false, :locals => { members: @organ.try(:children_members) }
+  end
+  
+
+  # 编辑组织信息
   def edit
     @organ = Organ.find(params[:id])
   end
@@ -63,21 +70,8 @@ class OrgansController < ApplicationController
   def update
     @organ = Organ.find(params[:id])
 
-    if @organ.update_attributes(params[:organ])
-      redirect_to organs_path( :id => @organ.id ), notice: '更新成功'
-    else
-      render 'edit'
-    end
-  end
-
-  def destroy
-    @organ = Organ.find(params[:id])
-
-    if @organ.destroy
-      redirect_to organs_path, notice: '删除成功'
-    else
-      redirect_to organs_path
-    end
+    return redirect_to organs_path, notice: '更新成功' if @organ.update_attributes(params[:organ])
+    render 'edit'
   end
 
 end
