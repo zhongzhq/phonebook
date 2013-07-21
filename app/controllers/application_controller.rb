@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -9,7 +10,12 @@ class ApplicationController < ActionController::Base
 
   # 用户登陆后跳转
   def after_sign_in_path_for(resource)
-    current_user.system_admin? ? master_index_path : root_path
+    current_user.system_admin? ? master_path : root_path
+  end
+
+  # CanCan::AccessDenied 异常捕获 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, alert: '权限拒绝'
   end
 
   # 设置 devise 页面 Layout

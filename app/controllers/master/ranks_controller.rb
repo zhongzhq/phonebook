@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class Master::RanksController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     @ranks = Rank.roots
   end

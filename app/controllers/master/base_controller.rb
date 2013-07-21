@@ -1,4 +1,4 @@
 class Master::BaseController < ApplicationController
-  def index    
+  def index
   end
 end
