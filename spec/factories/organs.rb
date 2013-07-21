@@ -23,5 +23,9 @@ FactoryGirl.define do
       name '软件测试部'
     end
 
+    factory :baidu do
+      name '百度'
+    end
+
   end
 end

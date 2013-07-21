@@ -14,6 +14,8 @@ describe Organ do
     @zhiyi = create :zhiyi, rank: @qi_ye
     @software = create :software, rank: @bu_men, parent: @zhiyi
 
+    @baidu = create :baidu, rank: @qi_ye
+
     # 用户
     @organ_admin = create(:organ_admin)
     @organ_member = create(:organ_member)
@@ -25,9 +27,14 @@ describe Organ do
       expect( Actor.find_or_create(@zhiyi, Membership.organ_admin).users ).to eq [@organ_admin]
       expect( @zhiyi.add_admin @organ_admin ).to be_nil
 
-      expect( @zhiyi.add_member @organ_admin ).to eq [@organ_admin]
-      expect( @zhiyi.add_member @organ_member ).to eq [@organ_admin, @organ_member]
-      expect( Actor.find_or_create(@zhiyi, Membership.organ_member).users ).to eq [@organ_admin, @organ_member]
+      expect( @zhiyi.add_member @organ_member ).to eq [@organ_member]
+      expect( Actor.find_or_create(@zhiyi, Membership.organ_member).users ).to eq [@organ_member]
+      expect( @zhiyi.add_member @organ_member ).to be_nil
+    end
+
+    it '如果用户已加入一个企业，再次加入另一个企业应该添加失败，返回 nil' do
+      expect( @zhiyi.add_admin @organ_admin ).to eq [@organ_admin]
+      expect( @baidu.add_admin User.find(@organ_admin.id) ).to be_nil
     end
   end
 

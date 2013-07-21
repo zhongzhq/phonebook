@@ -31,6 +31,12 @@ class Organ < ActiveRecord::Base
   Settings.system_roles.each do |method_name, v|
     if method_name.to_s.include? 'organ_'
       define_method method_name.to_s.sub(/organ/, 'add') do |user|
+        # 判断 user 是否加入组织，如果没有加入组织，则添加用户到该组织；
+        # 如果加入组织，判断要加入组织和已加入组织是否属于同一根组织，如果是则添加用户到该组织，否则返回 nil
+        unless user.organs.blank?
+          return unless root == user.organs.first.root
+        end
+
         actor_users = Actor.find_or_create(self, Membership.send(method_name)).users
         actor_users << user unless actor_users.include?(user)
       end
