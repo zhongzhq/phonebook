@@ -1,0 +1,21 @@
+.inforbox
+  h4
+    i.icon-hand-right
+    span.text-info 企业管理
+  .inforbox-area.widgetarea-height
+    table.table.table-bordered.table-hover
+      thead
+        tr.alert.alert-info
+          th.index_number 序号
+          th 企业名称
+          td 企业状态
+          th 操作
+      tbody
+        - @organs.each_with_index do |organ, index|
+          tr
+            td= index + 1
+            td= organ.name
+            td= t("state.organ.#{organ.state}")
+            td.operating
+              - unless organ.success?
+                = link_to '通过', pass_master_organ_path(organ)

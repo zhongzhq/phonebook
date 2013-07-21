@@ -56,7 +56,11 @@ EPBook::Application.routes.draw do
         post 'create_child'
       end
     end
-    resources :organs
+    resources :organs do
+      member do
+        get 'pass'
+      end
+    end
   end
   
   resources :default, :only => [:index] do

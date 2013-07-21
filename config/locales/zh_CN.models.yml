@@ -58,6 +58,6 @@ zh_CN:
 
   state:
     organ:
-      apply: 审核中
+      apply: 待审核
       success: 申请成功
       failure: 申请失败
