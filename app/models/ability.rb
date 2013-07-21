@@ -7,6 +7,8 @@ class Ability
     if user.system_admin?
         can :manage, Rank
         can :manage, Membership
+        can :manage, Organ
+        can :manage, Master
     end
 
     # Define abilities for the passed in user here. For example:

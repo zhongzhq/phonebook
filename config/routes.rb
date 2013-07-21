@@ -1,10 +1,13 @@
 EPBook::Application.routes.draw do
 
+  # devise
   devise_for :users, :controllers => {
     :registrations => "users/registrations",
     :sessions => "users/sessions",
     :passwords => "users/passwords"
   }
+  # 验证码
+  captcha_route
 
   namespace :api do
     resources :organs,:only=>[] do
@@ -32,7 +35,7 @@ EPBook::Application.routes.draw do
     end
   end
 
-  captcha_route
+  
 
   resources :phonebooks
 
@@ -47,8 +50,8 @@ EPBook::Application.routes.draw do
 
   resources :dashboard, :only=>[:index]
 
+  resources :master, :only => [:index]
   namespace :master do
-    get "/" => "base#index"
     resources :memberships, :except => [:show, :destroy]
     resources :ranks, :except => [:show, :destroy] do
       member do

@@ -6,6 +6,8 @@
       a href=master_ranks_path  等级管理
     .menu-block
       a href=master_memberships_path 角色管理
+    .menu-block
+      a href=root_path 用户界面
 
   -else
     .btn-group.menu-head
@@ -31,6 +33,12 @@
         p
           i.icon-book.text-xlarge
           | 个人电话本
+    - if current_user.system_admin?
+      .menu-block
+        a href= master_index_path
+          p
+            i.icon-user.text-xlarge
+            | 管理界面
     .menu-block
       a href=""
         p

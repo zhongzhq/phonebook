@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-class Master::MembershipsController < ApplicationController
-  load_and_authorize_resource
-  
+class Master::MembershipsController < MasterController    
   def index
     @memberships = Membership.all
   end
