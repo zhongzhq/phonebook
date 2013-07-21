@@ -41,6 +41,9 @@ describe User do
 
   it '如果用户是系统管理员，则返回 true，否则返回 false' do
     expect( @system_admin.system_admin? ).to be_true
+    expect( @organ_admin.organ_admin? ).to be_true
+
+    expect( @system_admin.organ_admin? ).to be_false
     expect( @organ_admin.system_admin? ).to be_false
   end
 

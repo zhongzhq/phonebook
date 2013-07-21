@@ -16,9 +16,15 @@ class User < ActiveRecord::Base
     confirmed_at && confirmation_token.blank?
   end
 
-  # 判断用户是否为系统管理员
-  def system_admin?
-    actors.map { |e| e.membership }.include? Membership.system_admin
+  # 判断用户是否为某种角色
+  #   - system_admin? 判断用户是否为 系统管理员
+  #   - organ_admin? 判断用户是否为 组织管理员
+  #   - organ_member? 判断用户是否为 组织成员
+
+  Settings.system_roles.each do |method_name, v|
+    define_method method_name.to_s + '?' do
+      actors.map { |e| e.membership }.include? Membership.send(method_name)
+    end
   end
 
   # 返回用户的所有角色
