@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class RanksController < ApplicationController
+class Master::RanksController < ApplicationController
   def index
     @ranks = Rank.roots
   end
@@ -11,7 +11,7 @@ class RanksController < ApplicationController
   def create
     @rank = Rank.new(params[:rank])
 
-    return redirect_to ranks_path, notice: '添加成功' if @rank.save
+    return redirect_to master_ranks_path, notice: '添加成功' if @rank.save
     render 'new'
   end
 
@@ -22,7 +22,7 @@ class RanksController < ApplicationController
   def update
     @rank = Rank.find(params[:id])
 
-    return redirect_to ranks_path, notice: '更新成功' if @rank.update_attributes(params[:rank])
+    return redirect_to master_ranks_path, notice: '更新成功' if @rank.update_attributes(params[:rank])
     render 'edit'
   end
 
@@ -34,7 +34,7 @@ class RanksController < ApplicationController
   def create_child
     @rank = Rank.new(params[:rank])
 
-    return redirect_to ranks_path, notice: '添加成功' if @rank.save
+    return redirect_to master_ranks_path, notice: '添加成功' if @rank.save
     render 'new_child'
   end
 end

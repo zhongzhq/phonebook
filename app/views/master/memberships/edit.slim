@@ -1,0 +1,8 @@
+.inforbox
+  h4
+    i.icon-edit.text-large.muted
+    span.text-info= "修改#{ @membership.name }角色"
+  .inforbox-area
+    = simple_form_for @membership, :url => master_membership_path, :html => {:class=>"form-horizontal form-mini"} do |f|
+      = render 'form', :f => f
+

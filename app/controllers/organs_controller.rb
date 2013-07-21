@@ -4,6 +4,7 @@ class OrgansController < ApplicationController
     @organ = Organ.find(params[:id])
   end
 
+  # 申请创建一个企业
   def new
     @organ = Organ.new
   end
@@ -12,10 +13,10 @@ class OrgansController < ApplicationController
     @organ = Organ.new(params[:organ])
 
     if @organ.save
-      # 把当前用户加入新创建组织的成员和管理员组
+      # 把当前申请用户加入新创建企业的成员和管理员组
       @organ.add_member(current_user)
       @organ.add_admin(current_user)
-      redirect_to organs_path( :id => @organ.id ), notice: '添加成功'
+      redirect_to root_path, notice: '申请成功，正在审核'
     else
       render 'new'
     end

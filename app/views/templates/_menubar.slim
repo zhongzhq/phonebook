@@ -1,13 +1,11 @@
 .menu-area
   -if request.fullpath.include?("master")
     .menu-block
-      a href=organs_path  组织结构管理
+      a href=master_organs_path  组织结构管理
     .menu-block
-      a href=users_path 用户管理
+      a href=master_ranks_path  等级管理
     .menu-block
-      a href=ranks_path  等级管理
-    .menu-block
-      a href=memberships_path 角色管理
+      a href=master_memberships_path 角色管理
 
   -else
     .btn-group.menu-head

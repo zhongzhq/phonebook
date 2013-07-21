@@ -47,18 +47,18 @@ EPBook::Application.routes.draw do
 
   resources :dashboard, :only=>[:index]
 
-  resources :master,:only=>[:index] do
-    collection do
-      resources :memberships, :except => [:show, :destroy]
-      resources :ranks, :except => [:show, :destroy] do
-        member do
-          get 'new_child'
-          post 'create_child'
-        end
+  namespace :master do
+    get "/" => "base#index"
+    resources :memberships, :except => [:show, :destroy]
+    resources :ranks, :except => [:show, :destroy] do
+      member do
+        get 'new_child'
+        post 'create_child'
       end
     end
+    resources :organs
   end
-
+  
   resources :default, :only => [:index] do
     collection do
       post 'login'
