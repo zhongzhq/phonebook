@@ -44,6 +44,8 @@ EPBook::Application.routes.draw do
       get 'children_members'
       get 'apply_members'
       get 'pass_user'
+      get 'adjust'
+      post 'adjust_post'
     end
     collection do
       get 'join'

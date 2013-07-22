@@ -27,3 +27,5 @@
               td= member.name
               td= member.phone
               td= member.email
+              td.operating
+                = link_to '调整组织', adjust_organ_path(@organ, user_id: member.id)

@@ -85,4 +85,16 @@ class OrgansController < ApplicationController
     render 'edit'
   end
 
+  # 调整用户所属组织
+  def adjust
+    @origin_organ = Organ.find(params[:id])
+    @user = User.find(params[:user_id])    
+  end
+
+  def adjust_post
+    @user = User.find(params[:organ][:user_id])
+    @user.actors.delete( Actor.find_or_create( Organ.find(params[:organ][:origin_organ_id]), Membership.organ_member ) )
+    @user.actors << Actor.find_or_create( Organ.find(params[:organ][:new_organ_id]), Membership.organ_member )
+    redirect_to organs_path, notice: '调整成功'
+  end
 end

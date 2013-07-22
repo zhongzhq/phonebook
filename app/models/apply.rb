@@ -33,6 +33,10 @@ class Apply < ActiveRecord::Base
       return unless organ.try(:root) == user.organs.first.root
     end
 
-    new(user_id: user.id, actor_id: Actor.find_or_create(organ, Membership.organ_member).id).save
+    # 找到组织和组织成员组合的 actor 记录
+    organ_member_actor = Actor.find_or_create(organ, Membership.organ_member)
+    unless organ_member_actor.users.include? user
+      new(user_id: user.id, actor_id: organ_member_actor.id).save
+    end
   end
 end
