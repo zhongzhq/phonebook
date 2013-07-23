@@ -12,12 +12,10 @@
             li adfad
         li.li-hr
         li
-          a href=""
+          a href= help_public_index_path
             i.icon-hand-right
-            | 帮助
+              | 帮助
+
         li.li-hr
         li
-          /a href="destroy_user_session_path"
-            i.icon-unlink
-            | 退出
           = link_to('退出', destroy_user_session_path, :method => :delete)

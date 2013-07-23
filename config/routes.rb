@@ -16,10 +16,20 @@ EPBook::Application.routes.draw do
     :sessions => "users/sessions",
     :passwords => "users/passwords"
   }
+
   # 验证码
   captcha_route
 
+
   resources :phonebooks
+
+  resources :public, :only => [] do
+    collection do
+      get 'help'
+      get 'about'
+    end
+  end
+
   resources :organs, :except => [:destroy] do
     member do
       get 'new_child'
