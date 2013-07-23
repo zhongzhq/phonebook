@@ -1,4 +1,4 @@
-class OrgansController < MasterController
+class Master::OrgansController  < MasterController
   def index
     @organs = Organ.roots
   end

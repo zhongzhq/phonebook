@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class RanksController < MasterController
+class Master::RanksController < MasterController
   def index
     @ranks = Rank.roots
   end

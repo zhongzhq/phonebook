@@ -38,7 +38,7 @@ EPBook::Application.routes.draw do
 
   resources :dashboard, :only=>[:index]
   namespace :master do
-    get "/" => "master#index"
+    match "/"=>"master#index"
     resources :memberships, :except => [:show, :destroy]
     resources :ranks, :except => [:show, :destroy] do
       member do
@@ -46,7 +46,7 @@ EPBook::Application.routes.draw do
         post 'create_child'
       end
     end
-    resources :organs do
+    resources :organs,:only=>[:index] do
       member do
         get 'pass'
       end

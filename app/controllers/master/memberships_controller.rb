@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class MembershipsController < MasterController
+class Master::MembershipsController < MasterController
   def index
     @memberships = Membership.all
   end
