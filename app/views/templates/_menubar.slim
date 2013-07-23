@@ -19,7 +19,7 @@
         | 添加联系人
       .clearfix
     .menu-block
-      a href=main_app.dashboard_index_path()
+      a href= root_path
         p
           i.icon-dashboard.text-xlarge
           | 仪表盘
@@ -33,7 +33,13 @@
         p
           i.icon-book.text-xlarge
           | 个人电话本
-    - if current_user.system_admin?
+    - if can? :manage, Organ
+      .menu-block
+        a href= organs_path
+          p
+            i.icon-book.text-xlarge
+            | 企业管理
+    - if can? :manage, :master
       .menu-block
         a href= master_root_path
           p

@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     @organ = current_user.organs.first
   end

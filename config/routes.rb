@@ -36,9 +36,9 @@ EPBook::Application.routes.draw do
     end
   end
 
-  resources :dashboard, :only=>[:index]
+  # Master routes
   namespace :master do
-    root :to => 'default#index'
+    root :to => 'master#index'
     resources :memberships, :except => [:show, :destroy]
     resources :ranks, :except => [:show, :destroy] do
       member do
@@ -53,7 +53,7 @@ EPBook::Application.routes.draw do
     end
   end
 
-# API routes
+  # API routes
   namespace :api do
     resources :organs,:only=>[] do
       collection do
