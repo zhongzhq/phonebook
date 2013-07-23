@@ -1,4 +1,6 @@
-class Master::OrgansController  < MasterController
+class Master::OrgansController < ApplicationController
+  load_and_authorize_resource :class => false
+
   def index
     @organs = Organ.roots
   end

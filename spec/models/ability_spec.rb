@@ -15,9 +15,23 @@ describe Ability do
     @system_admin_actor.users << @system_admin
   end
 
-  it '系统管理员可以管理 等级 和 角色' do
-    @ability = Ability.new(@system_admin)
-    @ability.should be_able_to(:manage, Membership.new)
-    @ability.should be_able_to(:manage, Rank.new)
+  describe "以系统管理员身份登陆" do
+    before :each do
+      @ability = Ability.new(@system_admin)
+    end
+
+    it '应该可以访问管理员首页' do
+      @ability.should be_able_to(:manage, :default)
+    end
+
+    it '应该可以管理等级 和 角色' do    
+      @ability.should be_able_to(:manage, Rank.new)
+      @ability.should be_able_to(:manage, Membership.new)
+    end
+
+    it '应该可以管理企业' do
+      @ability.should be_able_to(:manage, :organ)
+    end
+        
   end
 end

@@ -38,7 +38,7 @@ EPBook::Application.routes.draw do
 
   resources :dashboard, :only=>[:index]
   namespace :master do
-    match "/"=>"master#index"
+    root :to => 'default#index'
     resources :memberships, :except => [:show, :destroy]
     resources :ranks, :except => [:show, :destroy] do
       member do

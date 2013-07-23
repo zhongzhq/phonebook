@@ -5,10 +5,10 @@ class Ability
     user ||= User.new
 
     if user.system_admin?
+        can :manage, :default
+        can :manage, :organ
         can :manage, Rank
-        can :manage, Membership
-        can :manage, Organ
-        can :manage, Master
+        can :manage, Membership        
     end
 
     # Define abilities for the passed in user here. For example:
