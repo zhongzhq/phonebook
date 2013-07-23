@@ -3,10 +3,11 @@
     i.icon-hand-right
     span.text-info= "组织机构 - #{ @organ.name }"
     .pull-right
-      = link_to '编辑组织信息', edit_organ_path(@organ), class: 'btn btn-link'
-      = link_to '添加下级组织', new_child_organ_path(@organ), class: 'btn btn-link'
-      = link_to '查看下级成员', children_members_organ_path(@organ), onclick: 'get(this);return false', class: 'btn btn-link'
-      = link_to '审核用户', apply_members_organ_path(@organ), onclick: 'get(this);return false', class: 'btn btn-link'
+      - if can? :manage, Organ
+        = link_to '编辑组织信息', edit_organ_path(@organ), class: 'btn btn-link'
+        = link_to '添加下级组织', new_child_organ_path(@organ), class: 'btn btn-link'
+        = link_to '查看下级成员', children_members_organ_path(@organ), onclick: 'get(this);return false', class: 'btn btn-link'
+        = link_to '审核用户', apply_members_organ_path(@organ), onclick: 'get(this);return false', class: 'btn btn-link'
 
   .widgetarea.widgetarea-height
     #organs
@@ -28,4 +29,5 @@
               td= member.phone
               td= member.email
               td.operating
-                = link_to '调整组织', adjust_organ_path(@organ, user_id: member.id)
+                - if can? :manage, Organ
+                  = link_to '调整组织', adjust_organ_path(@organ, user_id: member.id)

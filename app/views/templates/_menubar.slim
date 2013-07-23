@@ -23,22 +23,26 @@
         p
           i.icon-dashboard.text-xlarge
           | 仪表盘
-    .menu-block
-      a href=phonebooks_path
-        p
-          i.icon-group.text-xlarge
-          | 企业电话本
-    .menu-block
-      a href=""
-        p
-          i.icon-book.text-xlarge
-          | 个人电话本
-    - if can? :manage, Organ
+
+    - if can? :read, Organ
+      .menu-block
+        a href=organs_path
+          p
+            i.icon-group.text-xlarge
+            | 企业电话本
+    - elsif can? :manage, Organ
       .menu-block
         a href= organs_path
           p
             i.icon-book.text-xlarge
             | 企业管理
+
+    .menu-block
+      a href=""
+        p
+          i.icon-book.text-xlarge
+          | 个人电话本
+              
     - if can? :manage, :master
       .menu-block
         a href= master_root_path

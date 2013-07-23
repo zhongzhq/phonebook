@@ -13,6 +13,10 @@ class Ability
         can :manage, Organ do |organ|
             user.organs.first.root == organ.root
         end
+    elsif user.organ_member?
+        can :read, Organ do |organ|
+            user.organs.first.root == organ.root
+        end
     end
 
     # Define abilities for the passed in user here. For example:
@@ -41,5 +45,5 @@ class Ability
     #
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
-  end
+end
 end
