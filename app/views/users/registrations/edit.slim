@@ -1,0 +1,16 @@
+.inforbox
+  .inforbox-title
+    h4
+      i.icon-edit.text-large.muted
+      span.text-info 修改密码
+    .inforbox-area
+      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class=>"form-horizontal form-mini" }) do |f|
+        = f.input :password
+        = f.input :password_confirmation
+        = f.input :current_password, :hint => "我们需要你的当前密码来确认是否本人修改", :required => true, :label => '当前密码'
+
+        .control-group
+          .controls            
+            = link_to '返回', root_path, :class => "btn margin-right5"
+            = f.button :submit,"保存", :class => "btn-info"
+

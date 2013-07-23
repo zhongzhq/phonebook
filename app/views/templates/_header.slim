@@ -6,10 +6,16 @@
       ul.nav.pull-right
         li
           a.dropdown-toggle#li-drop data-toggle="dropdown" href="#"
-            | 欢迎你，#{ current_user.email }
+            - if current_user.name.blank?
+              span style="color: red;"  请完善用户资料
+            - else 
+              | 欢迎你，#{ current_user.name }
             b.caret
           ul.dropdown-menu aria-labelledby="li-drop"
-            li adfad
+            li
+              a href=edit_info_users_path 修改资料
+            li
+              a href=edit_user_registration_path 修改密码
         li.li-hr
         li
           a href= help_public_index_path
