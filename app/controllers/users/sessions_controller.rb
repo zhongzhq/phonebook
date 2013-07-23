@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class SessionsController < Devise::SessionsController
+class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
     build_resource(params[:user])

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   #  POST /users
   def create
     build_resource(params[:user])

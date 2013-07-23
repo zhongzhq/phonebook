@@ -38,7 +38,7 @@ group :development do
   gem 'rb-inotify', :require => false # Guard needs this
   gem 'zeus'
   gem 'guard-bundler'
-  gem 'guard-livereload'  
+  gem 'guard-livereload'
   gem 'guard-rspec'
   gem 'guard-cucumber'
 

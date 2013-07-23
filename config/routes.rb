@@ -12,9 +12,9 @@ EPBook::Application.routes.draw do
 
   # devise
   devise_for :users, :controllers => {
-    :registrations => "registrations",
-    :sessions => "sessions",
-    :passwords => "passwords"
+    :registrations => "users/registrations",
+    :sessions => "users/sessions",
+    :passwords => "users/passwords"
   }
   # 验证码
   captcha_route
