@@ -1,63 +1,60 @@
-- if @user.confirm? 
-  .span4
-    //快速查找
-    .inforbox
-      .inforbox-title
-        h4
-          a href=phonebooks_path
-            i.icon-search.muted
-            | 快速查找
-          .more.pull-right
-            a href=""
-              .label.label-inverse 帮助
-      .inforbox-area
-        form.form-inline method="post"
-          input.margin-right5 style="width:70%;" type="text"
-          input.btn.btn-info type="submit" value="查 找"
-        .alert.alert-info.margin-bottom0
-          strong 最近查找：
-          a.margin-right5 href="" 12345654345
-          a.margin-right5 href="" gsdfg
-          a.margin-right5 href="" asdfadf
-
-    .inforbox
-      .inforbox-title
-        -  if current_user.memberships.blank?
-          h4
-            = link_to '申请创建企业', new_organ_path
-        h4
-          a href=join_organs_path 申请加入企业
-
-  - organ = current_user.organs.first
-  - if organ
-    .span4
-      //常用联系人
-      .inforbox
-        .inforbox-title
-          h4
-            a href=phonebooks_path
-              i.icon-exchange.muted
-              | 企业信息
-            .more.pull-right
-              a href="#" more
-        .inforbox-area
-          h5= '企业名称：' + (organ.ancestors << organ).map{|x| x.name }.join(" / ")
-          h6= '申请状态：' + t("state.organ.#{organ.state}")
-          p
-            | 地址：成都市府青路一段3号 邮编：610051 区号：028
-
-
-- else
+.span4
+  //快速查找
   .inforbox
-    .inforbox-area
+    .inforbox-title
       h4
-        i.icon-information
-        | 你的帐号尚未激活，不能登陆
-        = link_to "重新发送确认邮件?", new_confirmation_path(@user)
+        a href=phonebooks_path
+          i.icon-search.muted
+          | 快速查找
+        .more.pull-right
+          a href=""
+            .label.label-inverse 帮助
+    .inforbox-area
+      form.form-inline method="post"
+        input.margin-right5 style="width:70%;" type="text"
+        input.btn.btn-info type="submit" value="查 找"
+      .alert.alert-info.margin-bottom0
+        strong 最近查找：
+        a.margin-right5 href="" 12345654345
+        a.margin-right5 href="" gsdfg
+        a.margin-right5 href="" asdfadf
 
-    p 你的注册信息如下：
-    p 用户名：#{ @user.username }
-    p
-      | 邮箱： #{ @user.email } 
-      = @user.confirmed_at ? '<已验证>' : '<未验证>'
-    p 手机号码： #{ @user.phone }
+.span4
+  .inforbox
+    .inforbox-title
+      h4
+        a href=phonebooks_path
+          i.icon-exchange.muted
+          | 企业信息
+        .more.pull-right
+          a href="#" 更多
+
+    - if current_user.memberships.blank?
+      .inforbox-title
+        h4
+          = link_to '申请创建企业', new_organ_path
+        h4
+          = link_to '申请加入企业', join_organs_path
+
+    - organ = current_user.organs.first
+    - if organ
+      .inforbox-area
+        h5= '企业名称：' + (organ.ancestors << organ).map{|x| x.name }.join(" / ")
+        h6= '申请状态：' + t("state.organ.#{organ.state}")
+        p 地址：成都市府青路一段3号 邮编：610051 区号：028
+
+.span4
+  .inforbox
+    .inforbox-title
+      h4
+        a href=phonebooks_path
+          i.icon-user.muted
+          | 个人资料
+    .inforbox-area
+      ul
+        li 姓名： #{@user.name}
+        li 账号： #{@user.username}
+        li
+          | 邮箱： #{@user.email}
+          = link_to "验证邮箱", new_confirmation_path(@user) unless @user.confirmed?
+        li 手机： #{@user.phone}

@@ -1,4 +1,4 @@
-h2 重新发送激活邮件
+h2 发送验证邮件
 
 = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
   = f.error_notification
@@ -8,4 +8,4 @@ h2 重新发送激活邮件
     = f.input :email, :required => true, :autofocus => true
 
   .form-actions
-    = f.button :submit, "重新发送激活邮件"
+    = f.button :submit, "发送验证邮件"
