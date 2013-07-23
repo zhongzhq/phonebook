@@ -94,9 +94,9 @@ class OrgansController < ApplicationController
   end
 
   def adjust_post
-    @user = User.find(params[:organ][:user_id])
-    @user.actors.delete( Actor.find_or_create( Organ.find(params[:organ][:origin_organ_id]), Membership.organ_member ) )
-    @user.actors << Actor.find_or_create( Organ.find(params[:organ][:new_organ_id]), Membership.organ_member )
+    @user = User.find(params[:new_organ][:user_id])
+    @user.actors.delete( Actor.find_or_create( Organ.find(params[:new_organ][:origin_organ_id]), Membership.organ_member ) )
+    @user.actors << Actor.find_or_create( Organ.find(params[:new_organ][:new_organ_id]), Membership.organ_member )
     redirect_to organs_path, notice: '调整成功'
   end
 end
