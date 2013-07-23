@@ -2,8 +2,7 @@
 class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   def create
-    build_resource(params[:user])
-
+    self.resource = warden.authenticate!(auth_options)
     if request.post? && captcha_valid?(params[:captcha])
       @user = User.where( email: params[:user][:email] ).first
       super
