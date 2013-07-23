@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class Users::PasswordsController < Devise::PasswordsController
+class PasswordsController < Devise::PasswordsController
   def create
     self.resource = resource_class.send_reset_password_instructions(resource_params)
 
