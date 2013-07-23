@@ -21,6 +21,13 @@ describe Organ do
     @organ_member = create(:organ_member)
   end
 
+  it '应该获取所有审核通过的顶级组织' do
+    expect( Organ.available_organs ).to be_empty
+
+    @zhiyi.pass
+    expect( Organ.available_organs ).to eq [@zhiyi]
+  end
+
   context '当组织调用 add_member 或者 add_admin 方法时' do
     it '应该添加指定用户到组织中' do
       expect( @zhiyi.add_admin @organ_admin ).to eq [@organ_admin]

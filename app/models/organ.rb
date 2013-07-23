@@ -57,4 +57,9 @@ class Organ < ActiveRecord::Base
   def apply_members
     Actor.find_or_create(self, Membership.organ_member).applies.map(&:user)
   end
+
+  # 返回顶级组织，且组织审核通过（state: success）
+  def self.available_organs
+    roots.map{|x| x if x.success?}.compact
+  end
 end
