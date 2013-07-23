@@ -2,7 +2,7 @@
   - organ_root = @organ.root
   ul
    li id="#{ organ_root == @organ ? "open" : "" }"
-     = link_to organ_root.name, organ_path(organ_root), onclick: 'get(this);'
+     = link_to organ_root.name, organ_path(organ_root), onclick: 'get(this);return false'
      = render 'child_list', :organ => organ_root, :current_organ => @organ
 
 #organs.span9

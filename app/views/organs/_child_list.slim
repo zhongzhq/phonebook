@@ -1,7 +1,7 @@
 ul
   - organ.children.each do |child|
     li id="#{ child == current_organ ? "open" : "" }"
-      = link_to child.name, organ_path(child), onclick: 'get(this);'
+      = link_to child.name, organ_path(child), onclick: 'get(this);return false'
       - unless child.children.blank?
         ul
           = render 'child_list', :organ => child, :current_organ => current_organ

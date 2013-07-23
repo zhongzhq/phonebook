@@ -22,10 +22,9 @@ function refresh_captcha(){
 
 // 点击 a 标签，获取 href
 function get(obj){
-  $.get($(obj).attr("href"), function(data){
-    $('#organs').html(data);
-  });
-  event.returnValue = false;
+    $.get($(obj).attr("href"), function(data){
+        $('#organs').html(data);
+    });
 }
 
 // jsTree 设置

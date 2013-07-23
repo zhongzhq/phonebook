@@ -5,13 +5,13 @@
     .pull-right
       = link_to '编辑组织信息', edit_organ_path(@organ), class: 'btn btn-link'
       = link_to '添加下级组织', new_child_organ_path(@organ), class: 'btn btn-link'
-      = link_to '查看下级成员', children_members_organ_path(@organ), onclick: 'get(this);', class: 'btn btn-link'
-      = link_to '审核用户', apply_members_organ_path(@organ), onclick: 'get(this);', class: 'btn btn-link'
+      = link_to '查看下级成员', children_members_organ_path(@organ), onclick: 'get(this);return false', class: 'btn btn-link'
+      = link_to '审核用户', apply_members_organ_path(@organ), onclick: 'get(this);return false', class: 'btn btn-link'
 
   .widgetarea.widgetarea-height
     #organs
       h6 等级：  #{@organ.rank.name}
-      
+
       table.table.table-hover
         thead
           tr.alert.alert-info
