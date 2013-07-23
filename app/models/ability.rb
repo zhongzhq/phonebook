@@ -4,11 +4,11 @@ class Ability
   def initialize(user)
     user ||= User.new
 
+    # alias action form organ
+    alias_action :create, :join, :join_create, :to => :apply
+
     if user.system_admin?
-        can :manage, :master
-        can :manage, :organ
-        can :manage, Rank
-        can :manage, Membership
+        can :manage, [:master, :organ, Rank, Membership]
     elsif user.organ_admin?
         can :manage, Organ do |organ|
             user.organs.first.root == organ.root
@@ -18,6 +18,8 @@ class Ability
             user.organs.first.root == organ.root
         end
     end
+    
+    can :apply, Organ
 
     # Define abilities for the passed in user here. For example:
     #

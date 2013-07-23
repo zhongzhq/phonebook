@@ -24,18 +24,19 @@
           i.icon-dashboard.text-xlarge
           | 仪表盘
 
-    - if can? :read, Organ
-      .menu-block
-        a href=organs_path
-          p
-            i.icon-group.text-xlarge
-            | 企业电话本
-    - elsif can? :manage, Organ
-      .menu-block
-        a href= organs_path
-          p
-            i.icon-book.text-xlarge
-            | 企业管理
+    - if current_user.organs.first.root.success?
+      - if can? :manage, Organ
+        .menu-block
+          a href= organs_path
+            p
+              i.icon-book.text-xlarge
+              | 企业管理
+      - elsif can? :read, Organ
+        .menu-block
+          a href=organs_path
+            p
+              i.icon-group.text-xlarge
+              | 企业电话本
 
     .menu-block
       a href=""

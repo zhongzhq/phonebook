@@ -42,6 +42,7 @@
               a href="#" more
         .inforbox-area
           h5= '企业名称：' + (organ.ancestors << organ).map{|x| x.name }.join(" / ")
+          h6= '申请状态：' + t("state.organ.#{organ.state}")
           p
             | 地址：成都市府青路一段3号 邮编：610051 区号：028
 
