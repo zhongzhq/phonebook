@@ -87,4 +87,9 @@ class OrgansController < ApplicationController
     render 'edit'
   end
 
+  # 显示当前用户组织的顶级组织的所有成员
+  def members
+    @members = current_user.organs.first.members_and_descendants
+    render :layout => false
+  end
 end

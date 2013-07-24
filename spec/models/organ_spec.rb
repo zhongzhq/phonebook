@@ -65,5 +65,9 @@ describe Organ do
     it '应该获取组织的所有子级成员' do
       expect( @zhiyi.children_members ).to eq [@organ_member2]
     end
+
+    it '应该获取到组织的所有成员和后代成员' do
+      expect( @zhiyi.members_and_descendants.size ).to eq 3
+    end
   end
 end

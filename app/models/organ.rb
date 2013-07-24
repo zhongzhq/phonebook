@@ -53,6 +53,11 @@ class Organ < ActiveRecord::Base
     children.map(&:members).flatten
   end
 
+  # 组织及后代组织的成员
+  def members_and_descendants
+    root.subtree.map(&:members).flatten.uniq
+  end
+
   # 申请加入组织的成员
   def apply_members
     Actor.find_or_create(self, Membership.organ_member).applies.map(&:user)
