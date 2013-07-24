@@ -21,7 +21,6 @@ function refresh_captcha(){
     $('#captcha_img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
 }
 
-// 点击 a 标签，获取 href
 function get(obj){
     $.get($(obj).attr("href"), function(data){
         $('#organs').html(data);

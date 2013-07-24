@@ -10,6 +10,10 @@
         = link_to '审核用户', apply_members_organ_path(@organ), onclick: 'get(this);return false', class: 'btn btn-link'
 
   .widgetarea.widgetarea-height
+    = form_for :search_form, :url => search_organs_path, :html => { :class => "navbar-form", :id => 'search_form' } do |f|
+      = f.text_field :text, placeholder: '帐号/手机号/邮箱'
+      = f.submit '搜索', class: 'btn'
+
     #organs
       table.table.table-hover
         thead

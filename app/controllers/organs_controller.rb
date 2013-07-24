@@ -92,4 +92,12 @@ class OrgansController < ApplicationController
     @members = current_user.organs.first.members_and_descendants
     render :layout => false
   end
+
+  # 通过帐号/手机号/邮箱搜索当前组织的用户
+  def search
+    @members = current_user.organs.first.members_and_descendants.map do |member|
+      member if (member.username + member.phone + member.email).include? params[:search_form][:text]
+    end.compact
+    render 'members'
+  end
 end
