@@ -9,9 +9,7 @@
       = link_to '审核用户', apply_members_organ_path(@organ), onclick: 'get(this);return false', class: 'btn btn-link'
 
   .widgetarea.widgetarea-height
-    #organs
-      h6 等级：  #{@organ.rank.name}
-      
+    #organs      
       table.table.table-hover
         thead
           tr.alert.alert-info

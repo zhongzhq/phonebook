@@ -54,6 +54,8 @@ organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id
     User.create!(username: "lijia", name: "李佳", phone: 13308176710, email: "lijia@zhiyisoft.com",password: "13308176710",password_confirmation:  "13308176710")
     actor4.users << User.last
 
+Organ.all.map { |e| e.pass }
+
 # ---------- 其他测试数据 ----------
 organ2 = Organ.create!(name: '成都新东方烹饪学校', rank_id: rank1.id )
 

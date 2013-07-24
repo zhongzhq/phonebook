@@ -56,5 +56,6 @@
         li 账号： #{@user.username}
         li
           | 邮箱： #{@user.email}
-          = link_to "验证邮箱", new_confirmation_path(@user) unless @user.confirmed?
+          - if Devise.mappings[:user].confirmable?
+            = link_to "验证邮箱", new_confirmation_path(@user) unless @user.confirmed?
         li 手机： #{@user.phone}
