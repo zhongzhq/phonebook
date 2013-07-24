@@ -11,11 +11,6 @@ class User < ActiveRecord::Base
 
   # account 是一个虚拟属性，用于页面获取 用户名或邮箱
   attr_accessor :account
-  
-  # 判断用户邮箱是否激活
-  def confirm?
-    confirmed_at && confirmation_token.blank?
-  end
 
   # 判断用户是否为某种角色
   #   - system_admin? 判断用户是否为 系统管理员
@@ -45,6 +40,16 @@ class User < ActiveRecord::Base
       where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => account.downcase }]).first
     else
       where(conditions).first
+    end
+  end
+
+  # 调整用户组织关系，清除用户以前所属组织，把用户加入 new_organs，并返回新添加的组织
+  def adjust new_organs
+    (organs - new_organs).each do |organ|
+      actors.delete( Actor.find_or_create( organ, Membership.organ_member ) )
+    end
+    (new_organs - organs).each do |organ|
+      actors << Actor.find_or_create( organ, Membership.organ_member )
     end
   end
 end

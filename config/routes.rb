@@ -34,6 +34,10 @@ EPBook::Application.routes.draw do
       get 'edit_info'
       put 'update_info'
     end
+    member do
+      get 'adjust'
+      post 'adjust_post'
+    end
   end
 
   resources :organs, :except => [:destroy] do
@@ -42,9 +46,7 @@ EPBook::Application.routes.draw do
       post 'create_child'
       get 'children_members'
       get 'apply_members'
-      get 'pass_user'
-      get 'adjust'
-      post 'adjust_post'
+      get 'pass_user'      
     end
     collection do
       get 'join'

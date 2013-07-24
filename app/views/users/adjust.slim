@@ -1,0 +1,14 @@
+.widget
+  h4
+    i.icon-upload.text-large
+    span.text-info = '调整用户组织关系'
+
+  .widgetarea
+    = simple_form_for :new_organ, :url => adjust_post_user_path, :html => {:class=>"form-horizontal form-mini"} do |f|
+      = f.input :new_organ_ids, label: '组织名称' do
+        = recursive_tree @user.organs.first.root
+      
+      .control-group
+        .controls
+          = link_to '取消', organs_path, :class => 'btn btn-danger'
+          = f.button :submit, '调整', :class => "btn-info"

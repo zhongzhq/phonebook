@@ -29,16 +29,6 @@ describe User do
     @system_admin_actor.users << @system_admin
   end
 
-  it '如果用户验证邮箱后，返回 true；如果用户未验证邮箱，返回 nil 或 false' do
-    expect( @organ_admin.confirm? ).to be_nil
-
-    # 激活用户邮箱
-    @organ_admin.update_attribute(:confirmed_at, Time.now)
-    @organ_admin.update_attribute(:confirmation_token, nil)
-
-    expect( @organ_admin.confirm? ).to be_true
-  end
-
   it '如果用户是系统管理员，则返回 true，否则返回 false' do
     expect( @system_admin.system_admin? ).to be_true
     expect( @organ_admin.organ_admin? ).to be_true
@@ -55,5 +45,11 @@ describe User do
   it '返回用户所属的组织' do
     expect( @organ_admin.organs ).to eq [@zhiyi]
     expect( @system_admin.organs ).to be_empty
+  end
+
+  it '调整用户组织关系，清除用户以前所属组织，把用户加入 new_organs，并返回新添加的组织' do
+    expect( @organ_admin.adjust [@zhiyi, @software] ).to eq [@software]
+    expect( @organ_admin.adjust [@zhiyi] ).to be_empty
+    expect( @organ_admin.organs ).to eq [@zhiyi]
   end
 end

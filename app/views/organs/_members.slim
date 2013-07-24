@@ -28,4 +28,4 @@
               td= member.email
               td.operating
                 - if can? :manage, Organ
-                  = link_to '调整组织', adjust_organ_path(@organ, user_id: member.id)
+                  = link_to '调整组织', adjust_user_path(member)
