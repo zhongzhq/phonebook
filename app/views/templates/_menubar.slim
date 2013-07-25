@@ -21,7 +21,7 @@
     .menu-block
       a href= root_path
         p
-          i.icon-dashboard.text-xlarge
+          i.icon-dashboard.text-xlarge.success
           | 仪表盘
 
     - if current_user.organs.first.try(:root).try(:success?)
@@ -29,21 +29,21 @@
         .menu-block
           a href= organs_path
             p
-              i.icon-book.text-xlarge
+              i.icon-th.success
               | 企业管理
       - elsif can? :read, Organ
         .menu-block
           a href=organs_path
             p
-              i.icon-group.text-xlarge
+              i.icon-group.text-xlarge.success
               | 企业电话本
 
     .menu-block
       a href=""
         p
-          i.icon-book.text-xlarge
+          i.icon-book.text-xlarge.success
           | 个人电话本
-              
+
     - if can? :manage, :master
       .menu-block
         a href= master_root_path
@@ -53,13 +53,13 @@
     .menu-block
       a href= about_public_index_path
         p
-          i.icon-info-sign.text-xlarge
+          i.icon-info-sign.text-xlarge.success
           | 关于我们
 
   .clearfix
   //扫描二维码，下载手机端app
   .menu-block
-    h4 通讯录手机客户端下载
+    h5 手机客户端下载
     img src="https://chart.googleapis.com/chart?chs=116x116&cht=qr&chl=http://build.phonegap.com/apps/449089/install/?qr_key=7sqfgkLUPX6GDNUuMXWx&chld=L|1&choe=UTF-8"
 .footer
   p
