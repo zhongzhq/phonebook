@@ -4,11 +4,11 @@
       img src="/assets/banner1.jpg" alt=""
   .span4
     #login
-      .inforbox
+      .infobox
         h4
           i.icon-user.text-large.text-info
           | 用户登录
-        .inforbox-area
+        .infobox-area
           = simple_form_for( resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-horizontal margin-bottom0"} ) do |f|
             = f.input :account, :autofocus => true, :required => true, placeholder: "用户名 / 邮箱"
             = f.input :password
@@ -30,8 +30,8 @@
 
 
 .row-fluid
-  .inforbox
-    .inforbox-area
+  .infobox
+    .infobox-area
       .span4.index-search
         h4
           img src="/assets/1.png" alt=""

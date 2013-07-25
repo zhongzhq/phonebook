@@ -1,9 +1,9 @@
-.inforbox
-  .inforbox-title
+.infobox
+  .infobox-title
     h4
       i.icon-edit.text-large.muted
       span.text-info 修改个人信息
-    .inforbox-area
+    .infobox-area
       = simple_form_for @user, :url => update_info_users_path, :html => { :class=>"form-horizontal form-mini" } do |f|
         = f.input :name
         = f.input :email
@@ -11,6 +11,6 @@
 
 
         .control-group
-          .controls            
+          .controls
             = link_to '返回', root_path, :class => "btn margin-right5"
             = f.button :submit,"保存", :class => "btn-info"

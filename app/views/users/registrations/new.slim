@@ -1,9 +1,9 @@
-.inforbox
-  .inforbox-title
+.infobox
+  .infobox-title
     h4
       i.icon-edit.text-large.muted
       span.text-info 用户注册
-    .inforbox-area
+    .infobox-area
       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class=>"form-horizontal form-mini"}) do |f|
         = f.input :username, :autofocus => true
         = f.input :email
@@ -16,6 +16,6 @@
           = text_field_tag :captcha
 
         .control-group
-          .controls            
+          .controls
             = link_to '返回登录', root_path, :class => "btn margin-right5"
             = f.button :submit,"注册",:class => "btn-info"

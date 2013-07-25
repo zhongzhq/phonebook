@@ -1,9 +1,9 @@
-.inforbox
-  .inforbox-title
+.infobox
+  .infobox-title
     h4
       i.icon-edit
       span.text-info 找回密码
-  .inforbox-area
+  .infobox-area
     = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class=>"form-horizontal", :method => :post }) do |f|
 	    = f.input :username, :autofocus => true
 	    = f.input :email

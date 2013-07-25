@@ -1,7 +1,7 @@
 .span4
   //快速查找
-  .inforbox
-    .inforbox-title
+  .infobox
+    .infobox-title
       h4
         a href=phonebooks_path
           i.icon-search.muted
@@ -9,7 +9,7 @@
         .more.pull-right
           a href=""
             .label.label-inverse 帮助
-    .inforbox-area
+    .infobox-area
       form.form-inline method="post"
         input.margin-right5 style="width:70%;" type="text"
         input.btn.btn-info type="submit" value="查 找"
@@ -20,8 +20,8 @@
         a.margin-right5 href="" asdfadf
 
 .span4
-  .inforbox
-    .inforbox-title
+  .infobox
+    .infobox-title
       h4
         a href=phonebooks_path
           i.icon-exchange.muted
@@ -30,7 +30,7 @@
           a href="#" 更多
 
     - if current_user.memberships.blank?
-      .inforbox-title
+      .infobox-title
         h4
           = link_to '申请创建企业', new_organ_path
         h4
@@ -38,19 +38,19 @@
 
     - organ = current_user.organs.first
     - if organ
-      .inforbox-area
+      .infobox-area
         h5= '企业名称：' + (organ.ancestors << organ).map{|x| x.name }.join(" / ")
         h6= '申请状态：' + t("state.organ.#{organ.state}")
         p 地址：成都市府青路一段3号 邮编：610051 区号：028
 
 .span4
-  .inforbox
-    .inforbox-title
+  .infobox
+    .infobox-title
       h4
         a href=phonebooks_path
           i.icon-user.muted
           | 个人资料
-    .inforbox-area
+    .infobox-area
       ul
         li 姓名： #{@user.name}
         li 账号： #{@user.username}
