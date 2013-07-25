@@ -1,7 +1,9 @@
 - unless flash.blank?
   - unless flash[:notice].blank?
     .alert.alert-info
+      a class="close" data-dismiss="alert" ×
       = flash[:notice]
   - unless flash[:alert].blank?
     .alert.alert-error
+      a class="close" data-dismiss="alert" ×
       = flash[:alert]

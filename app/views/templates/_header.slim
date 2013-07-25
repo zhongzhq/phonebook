@@ -1,27 +1,30 @@
-.navbar.navbar-inner.navbar-fixed-top
-  .navbar-container
-    img.pull-left src="/assets/zhiyi_logo.png" alt=""
-    a.brand href="/"=t('site_name')
-    - if user_signed_in?
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      a.sitename_a href=root_path
+        img.pull-left src="/assets/zhiyi_logo.png" alt=t('site_name') title=t('site_name')
+        span.sitename =t('site_name')
       ul.nav.pull-right
-        li
-          a.dropdown-toggle#li-drop data-toggle="dropdown" href="#"
-            - if current_user.name.blank?
-              span style="color: red;"  请完善用户资料
-            - else 
-              | 欢迎你，#{ current_user.name }
-            b.caret
-          ul.dropdown-menu aria-labelledby="li-drop"
+        - if user_signed_in?
+          - if current_user.name.blank?
             li
-              a href=edit_info_users_path 修改资料
+              a href=edit_info_users_path
+                i.icon-warning-sign.warning
+                | 请完善用户资料
+          - else
             li
-              a href=edit_user_registration_path 修改密码
-        li.li-hr
-        li
-          a href= help_public_index_path
-            i.icon-hand-right
+              a href=edit_info_users_path
+                i.icon-user.success
+                =current_user.name
+          li
+            a href=edit_user_registration_path
+              i.icon-wrench.success
+              | 修改密码
+          li
+            a href=help_public_index_path
+              i.icon-question-sign.success
               | 帮助
-
-        li.li-hr
-        li
-          = link_to('退出', destroy_user_session_path, :method => :delete)
+          li
+            a href=destroy_user_session_path data-method="delete"
+              i.icon-power-off
+              |退出
