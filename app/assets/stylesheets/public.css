@@ -979,7 +979,7 @@ infobox
     box-shadow:0 1px 2px #E1E3E6;
     margin-top:10px;
     background-image: -moz-linear-gradient(center top , #FEFEFE, #EDEDED);
-    min-height:240px;
+    min-height:160px;
 }
 .infobox h4{
     margin:0 10px;
