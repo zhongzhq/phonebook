@@ -10,11 +10,11 @@
 -------------------------------------------------- */
 body {
   position: relative;
-  padding-top: 90px;
   background-color: #fff;
   background-image: url(../img/grid-18px-masked.png);
   background-repeat: repeat-x;
   background-position: 0 40px;
+  padding-top:45px;
 }
 
 
@@ -915,3 +915,112 @@ form.well {
 }
 
 .widget-hide{min-height: 35px !important;}
+/*++++++++++++++++++++++++++++++++++++++++++
+  widget
+--------------------------------------------*/
+#default #header .navbar-container,#footer{
+	width:960px;
+	margin:0 auto;
+	}
+
+#working-area{
+    margin-left:214px;
+}
+/*****************
+menubar
+*****************/
+#menubar{
+    border-right:1px solid #E1E3E6;
+	position:fixed;
+	top:55px;
+	width:200px;
+	min-height:500px;
+	background-color:#FAFAFA;
+	padding-right:2px;
+	box-shadow:0 1px 2px #E1E3E6;
+}
+#menubar .footer{position:absolute;bottom:0;left:10px;}
+.menu-block{
+	margin:5px;
+	}
+.menu-head{
+	padding:5px 10px;
+	border-bottom:1px dashed #666;
+	background-color:#D9EDF7;
+
+}
+.menu-block p{
+	margin:0;
+	}
+.menu-block a{
+	display:block;
+	padding:10px 15px;
+	background:-moz-linear-gradient(center top , #F9F9F9 0%, #EFEFEF 100%) repeat scroll 0 0 transparent;
+	color:#333;
+	border-radius:5px;
+	border:1px solid #E1E3E6;
+	box-shadow:0 1px 2px #E1E3E6;
+	}
+.menu-block a:hover{
+	text-decoration:none;
+	color:#0088CC;
+	border:1px solid #D2E1F1;
+}
+.adduser{
+	padding:10px;
+}
+/*****************
+inforbox
+*****************/
+.inforbox{
+	background-color:#FEFEFE;
+	border:1px solid #E1E3E6;
+	box-shadow:0 1px 2px #E1E3E6;
+	margin-top:10px;
+	}
+.inforbox h4{
+	margin:0 10px;
+	border-bottom:1px solid #eaeaea;
+	height:40px;
+	line-height:40px;
+	font-size:16px;
+	font-weight:normal;
+	}
+.inforbox h4 a{
+	font-size:16px;
+	font-weight:normal;
+}
+.inforbox h4 .more a{
+	color:#ccc;
+	font-size:12px;
+}
+.inforbox .inforbox-area{
+	padding:10px;
+}
+/****************************
+#login
+*****************************/
+#login label{
+	width:60px;
+	}
+#login .controls{
+	margin-left:65px;
+}
+#login .inforbox{
+	margin-top:0;
+}
+
+/************************
+default index
+*************************/
+.index-search,.index-safe,.index-contain{
+	height:150px;
+	padding:10px 20px;
+	}
+.index-search,.index-safe{
+	border-right:1px solid #f1f1f1;
+}
+.index-search h4,.index-safe h4,.index-easy h4,.index-contain h4{
+	border:0 none;
+	margin-bottom:20px;
+}

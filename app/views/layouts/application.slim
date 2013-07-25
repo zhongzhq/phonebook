@@ -11,12 +11,13 @@ html lang="en"
   body
       #header
         =render "templates/header"
-      #menubar
-        =render "templates/menubar"
-      .container-fluid
-        #content.dashboard
+      #content.container-fluid
+        .row-fluid
+          #menubar
+            =render "templates/menubar"
           #working-area
             .row-fluid
               = render 'templates/flash', :flash => flash
-            .row-fluid
               = yield
+      #footer
+        /!=render "templates/footer"
