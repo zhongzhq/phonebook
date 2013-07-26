@@ -25,6 +25,9 @@ gem 'validates_existence'
 gem 'settingslogic'
 gem 'state_machine'
 
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 
 if File.readable?(gemfile_local)

@@ -89,13 +89,13 @@ class OrgansController < ApplicationController
 
   # 显示当前用户组织的顶级组织的所有成员
   def members
-    @members = current_user.organs.first.members_and_descendants
+    @members = current_user.organs.first.root.members_and_descendants.paginate(:page => params[:page], :per_page => 5)
     render :layout => false
   end
 
   # 通过帐号/手机号/邮箱搜索当前组织的用户
   def search
-    @members = current_user.organs.first.members_and_descendants.map do |member|
+    @members = current_user.organs.first.root.members_and_descendants.map do |member|
       member if (member.username + member.phone + member.email).include? params[:search_form][:text]
     end.compact
     render 'members'

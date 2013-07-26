@@ -21,7 +21,7 @@ class UsersController < ApplicationController
 
   def adjust_post
     @user = User.find(params[:id])
-    @user.adjust( params[:new_organ_ids].map { |i| Organ.find(i) })
+    @user.adjust( Organ.find( params[:new_organ_ids] ) )
     redirect_to organs_path, notice: '调整成功'
   end
 end
