@@ -8,6 +8,10 @@ body#default{
 /****************************/
 #default #login label{
     width:60px;
+    letter-spacing:3px;
+}
+#default #login label[for=user_account],#default #login label[for=user_password]{
+    letter-spacing:12px;
 }
 #default #login .controls{
     margin-left:65px;
