@@ -12,7 +12,8 @@ end
 
 gem 'jquery-rails'
 gem 'slim-rails'
-gem 'thin'
+
+gem 'unicorn'
 gem "simple_form"
 gem "font-awesome-rails"
 gem "pg"
