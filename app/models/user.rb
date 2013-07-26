@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if account = conditions.delete(:account)
-      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => account.downcase }]).first
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value OR phone = :value", { :value => account.downcase }]).first
     else
       where(conditions).first
     end
