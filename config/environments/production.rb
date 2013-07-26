@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 EPBook::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -64,4 +65,16 @@ EPBook::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+# Disable Rails's static asset server (Apache or nginx will already do this)
+  config.serve_static_assets = false
+  # Compress JavaScripts and CSS
+  config.assets.compress = true
+  # Don't fallback to assets pipeline if a precompiled asset is missed
+  config.assets.compile = true
+  # Generate digests for assets URLs
+  config.assets.digest = true
+  # 指定需要预先编译的css和js
+  config.assets.precompile += %w[js css].map {|ext| Dir[Rails.root.join("app/assets/*/*.#{ext}")] }.flatten.map {|f| f.split('/')[-1] }
+
 end

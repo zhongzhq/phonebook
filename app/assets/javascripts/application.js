@@ -26,9 +26,40 @@ function get(obj){
         $('#organs').html(data);
     });
 }
+function show_message(txt){
+    //IE6位置
+    if (!window.XMLHttpRequest) {
+	$("#targetFixed").css("top", $(document).scrollTop() + 2);
+}
+    //创建半透明遮罩层
+    if (!$("#overLay").size()) {
+	$('<div id="overLay"></div>').prependTo($("body"));
+	$("#overLay").css({
+	    width: "100%",
+	    backgroundColor: "#000",
+	    opacity: 0.2,
+	    position: "absolute",
+	    left: 0,
+	    top: 0,
+	    zIndex: 10000
+	}).height($(document).height());
+    }
+    //显示操作提示，最关键核心代码
+    $("#floatBox_doing").show().html("提示：" + txt)
+    //定时关闭，测试用
+    setTimeout(function() {
+	$("#overLay").remove();
+	$("#floatBox_doing").hide();
+    }, 3000);
+
+}
+
+
+
+
 
 // jsTree 设置
-$(document).ready(function () {
+function organ_tree() {
     // jstree 设置
     $("#organ_tree").jstree({
         "themes" : {
@@ -38,18 +69,18 @@ $(document).ready(function () {
         },
         "plugins" : [ "themes", "html_data" ]
     })
-        .bind("loaded.jstree", function (event, data) {
-            $(".jstree-closed").removeClass("jstree-closed").addClass("jstree-open");
+	.bind("loaded.jstree", function (event, data) {
+	    $(".jstree-closed").removeClass("jstree-closed").addClass("jstree-open");
 
-            var init_open = $("#open").find("a:first");
-            init_open.addClass("jstree-clicked");
-            get(init_open);
-        })
-        .delegate("a", "click", function (event, data) {
-            $('li[class^="jstree-"]').each(function(){
-                $(this).find("a").removeClass("jstree-clicked");
-            });
-            $(this).addClass("jstree-clicked");
-            get(this);
-        });
-});
+	    var init_open = $("#open").find("a:first");
+	    init_open.addClass("jstree-clicked");
+	    get(init_open);
+	})
+	.delegate("a", "click", function (event, data) {
+	    $('li[class^="jstree-"]').each(function(){
+		$(this).find("a").removeClass("jstree-clicked");
+	    });
+	    $(this).addClass("jstree-clicked");
+	    get(this);
+	});
+};

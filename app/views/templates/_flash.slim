@@ -1,9 +1,8 @@
+.float_doing_box.target_fixed#floatBox_doing
 - unless flash.blank?
   - unless flash[:notice].blank?
-    .alert.alert-info
-      a class="close" data-dismiss="alert" ×
-      = flash[:notice]
+    javascript:
+      show_message("#{flash[:notice]}")
   - unless flash[:alert].blank?
-    .alert.alert-error
-      a class="close" data-dismiss="alert" ×
-      = flash[:alert]
+    javascript:
+      show_message("#{flash[:alert]}")
