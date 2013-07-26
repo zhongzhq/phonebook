@@ -919,7 +919,6 @@ form.well {
   widget
 --------------------------------------------*/
 #default #header .navbar-container,#footer{
-    width:960px;
     margin:0 auto;
 }
 
@@ -1005,31 +1004,4 @@ infobox
 }
 .infobox .infobox-area{
     padding:10px;
-}
-/****************************
-#login
-*****************************/
-#login label{
-    width:60px;
-}
-#login .controls{
-    margin-left:65px;
-}
-#login .infobox{
-    margin-top:0;
-}
-
-/************************
-default index
-*************************/
-.index-search,.index-safe,.index-contain{
-    height:150px;
-    padding:10px 20px;
-}
-.index-search,.index-safe{
-    border-right:1px solid #f1f1f1;
-}
-.index-search h4,.index-safe h4,.index-easy h4,.index-contain h4{
-    border:0 none;
-    margin-bottom:20px;
 }
