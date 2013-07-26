@@ -9,11 +9,10 @@ html
     = javascript_include_tag 'application'
     = csrf_meta_tag
   body#default
-      #header
-        =render "templates/header"     
-      #content.default
-        #working-area
-          = render 'templates/flash', :flash => flash
-          = yield
-      #footer
-        =render "templates/footer"
+    #header
+      =render "templates/default_header"
+    #content
+      .container
+        = yield
+    #footer
+      =render "templates/default_footer"
