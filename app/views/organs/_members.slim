@@ -11,7 +11,7 @@
 
   .widgetarea.widgetarea-height
     = form_for :search_form, :url => search_organs_path, :html => { :class => "navbar-form", :id => 'search_form' } do |f|
-      = f.text_field :text, placeholder: '帐号/手机号/邮箱'
+      = f.text_field :text, placeholder: '姓名/手机号/邮箱'
       = f.submit '搜索', class: 'btn'
 
     #organs
