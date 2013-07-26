@@ -101,4 +101,20 @@ class OrgansController < ApplicationController
     .paginate(:page => params[:page], :per_page => 5)
     render 'members'
   end
+
+  # 向某个组织添加联系人
+  def new_member
+    @user = User.new
+  end
+
+  def create_member
+    @user = User.new(params[:user])
+
+    if @user.save
+      @user.adjust( Organ.find( params[:new_organ_ids] ) )
+      redirect_to organs_path, :notice => '添加联系人成功'
+    else
+      render 'new_member'
+    end
+  end
 end

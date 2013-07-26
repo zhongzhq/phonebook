@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   attr_accessible :username, :password, :name, :email, :phone, :password_confirmation, :account
   devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :validatable, :timeoutable#, :confirmable
 
-  validates_presence_of :username, :email, :phone
+  validates_presence_of :email, :phone
+  validates_uniqueness_of :username, :phone
   validates :phone, format: {with: /^\d{11}$/}
 
   has_and_belongs_to_many :actors
