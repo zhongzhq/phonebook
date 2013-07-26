@@ -2,3 +2,27 @@
 #default #footer{
     margin-top: 20px;
 }
+body#default{
+    padding-top: 0px;
+}
+/****************************/
+#default #login label{
+    width:60px;
+}
+#default #login .controls{
+    margin-left:65px;
+}
+#default #login .infobox{
+    margin-top:0;
+}
+#default .infobox h4{
+    height: 50px;
+}
+#default .infobox .span3{
+    height:150px;
+    padding:10px 20px;
+    border-right:1px solid #f1f1f1;
+}
+#default .infobox .span3:first{
+    border: 0;
+}
