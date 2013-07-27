@@ -2,7 +2,7 @@ doctype 5
 html lang="en"
   head
     meta http-equiv="Content-Type" content="text/html; charset=utf-8"
-    meta name="viewport" content="width=device-width, initial-scale=1"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"
 
     title =t('site_name')
     = stylesheet_link_tag 'application', media: 'all'
@@ -17,7 +17,7 @@ html lang="en"
             =render "templates/menubar"
           #working-area
             .row-fluid
-              = render 'templates/flash', :flash => flash
               = yield
+              = render 'templates/flash', :flash => flash
       #footer
         /!=render "templates/footer"
