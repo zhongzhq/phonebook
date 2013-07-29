@@ -7,4 +7,12 @@ class Membership < ActiveRecord::Base
 
   belongs_to :organ
   has_many :actors
+
+  before_save :assign_organ_id
+
+  private
+  # 根据赋值的 organ_id 找到 organ 的 root；并把 root.id 作为当前 Membership 的 organ_id
+  def assign_organ_id
+    self.organ_id = Organ.find(organ_id).root.id
+  end
 end
