@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
 
   create_table "memberships", :force => true do |t|
     t.string :name
-    t.integer :status, :default => 0 # 0 普通角色（如： 经理） 1 系统角色（如：组织管理员）
+    t.integer :organ_id
 
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
