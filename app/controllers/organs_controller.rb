@@ -89,15 +89,32 @@ class OrgansController < ApplicationController
 
   # 显示当前用户组织的顶级组织的所有成员
   def members
-    @members = current_user.organs.first.members_and_descendants
+    @members = current_user.organs.first.root.members_and_descendants
+    .paginate(:page => params[:page], :per_page => 5)
     render :layout => false
   end
 
-  # 通过帐号/手机号/邮箱搜索当前组织的用户
+  # 通过姓名/手机号/邮箱搜索当前组织的用户
   def search
-    @members = current_user.organs.first.members_and_descendants.map do |member|
-      member if (member.username + member.phone + member.email).include? params[:search_form][:text]
-    end.compact
+    @members = current_user.organs.first.root.members_and_descendants
+    .where("name LIKE :text OR phone LIKE :text OR email LIKE :text", {:text => "%#{params[:search_form][:text]}%"})
+    .paginate(:page => params[:page], :per_page => 5)
     render 'members'
+  end
+
+  # 向某个组织添加联系人
+  def new_member
+    @user = User.new
+  end
+
+  def create_member
+    @user = User.new(params[:user])
+
+    if @user.save
+      @user.adjust( Organ.find( params[:new_organ_ids] ) )
+      redirect_to organs_path, :notice => '添加联系人成功'
+    else
+      render 'new_member'
+    end
   end
 end

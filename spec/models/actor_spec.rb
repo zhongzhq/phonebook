@@ -25,9 +25,13 @@ describe Actor do
   end
 
   it '通过指定的 组织和角色 查找 actor 记录' do
-    actor = Actor.find_by_organ_and_membership @zhiyi, Membership.organ_admin
+    actor = Actor.find_by_organ_and_membership( @zhiyi, Membership.organ_admin ).first
     expect( actor.organ ).to eq @zhiyi
     expect( actor.membership ).to eq Membership.organ_admin
+  end
+
+  it '应该查到指定组织的所有 actor' do
+    expect( Actor.find_by_organ @zhiyi ).to eq [@zhiyi_admin_actor, @zhiyi_member_actor]
   end
 
   context '调用 find_or_create 方法' do
@@ -38,7 +42,7 @@ describe Actor do
     end
 
     it '如果 actor 不存在，应该创建并返回对应 actor 记录' do
-      expect( Actor.find_by_organ_and_membership(@software, Membership.organ_member) ).to be_nil
+      expect( Actor.find_by_organ_and_membership(@software, Membership.organ_member) ).to be_empty
       
       actor = Actor.find_or_create @software, Membership.organ_member
       expect( actor.organ ).to eq @software

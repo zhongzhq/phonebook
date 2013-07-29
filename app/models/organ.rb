@@ -45,17 +45,17 @@ class Organ < ActiveRecord::Base
 
   # 组织的所有成员
   def members
-    actors.map(&:users).flatten.uniq
+    User.find_by_organ(self)
   end
 
   # 组织的所有子级成员
   def children_members
-    children.map(&:members).flatten
+    User.find_by_organ(children)
   end
 
   # 组织及后代组织的成员
   def members_and_descendants
-    root.subtree.map(&:members).flatten.uniq
+    User.find_by_organ(subtree)
   end
 
   # 申请加入组织的成员

@@ -29,6 +29,10 @@ describe User do
     @system_admin_actor.users << @system_admin
   end
 
+  it '应该可以返回用户指定组织的所有成员' do
+    expect( User.find_by_organ(@zhiyi) ).to eq [@organ_admin]
+  end
+
   it '如果用户是系统管理员，则返回 true，否则返回 false' do
     expect( @system_admin.system_admin? ).to be_true
     expect( @organ_admin.organ_admin? ).to be_true

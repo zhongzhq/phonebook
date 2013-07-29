@@ -53,6 +53,8 @@ EPBook::Application.routes.draw do
       post 'join_create'
       get 'members'
       post 'search'
+      get 'new_member'
+      post 'create_member'
     end
   end
 

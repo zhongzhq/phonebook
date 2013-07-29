@@ -3,11 +3,14 @@ class User < ActiveRecord::Base
   attr_accessible :username, :password, :name, :email, :phone, :password_confirmation, :account
   devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :validatable, :timeoutable#, :confirmable
 
-  validates_presence_of :username, :email, :phone
+  validates_presence_of :email, :phone
+  validates_uniqueness_of :username, :phone
   validates :phone, format: {with: /^\d{11}$/}
 
   has_and_belongs_to_many :actors
   has_many :applies
+
+  scope :find_by_organ, -> organ { joins(:actors).where(actors: { id: Actor.find_by_organ(organ)} ).uniq }
 
   # account 是一个虚拟属性，用于页面获取 用户名或邮箱
   attr_accessor :account
@@ -37,7 +40,7 @@ class User < ActiveRecord::Base
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if account = conditions.delete(:account)
-      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => account.downcase }]).first
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value OR phone = :value", { :value => account.downcase }]).first
     else
       where(conditions).first
     end

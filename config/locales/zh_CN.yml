@@ -15,3 +15,7 @@ zh_CN:
     submit:
       create: 保存
       update: 更新
+
+  will_paginate:
+    previous_label: 前一页
+    next_label: 后一页
