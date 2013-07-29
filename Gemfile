@@ -40,6 +40,7 @@ gem 'apotomo'
 # Gems for test
 group :development do
   gem 'rb-inotify', :require => false # Guard needs this
+  gem 'libnotify', :require => false # Guard needs this
   gem 'zeus'
   gem 'guard-bundler'
   gem 'guard-livereload'
