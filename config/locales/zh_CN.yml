@@ -17,5 +17,5 @@ zh_CN:
       update: 更新
 
   will_paginate:
-    previous_label: 前一页
-    next_label: 后一页
+    previous_label: 上一页
+    next_label: 下一页
