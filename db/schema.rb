@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
 
   create_table "organs",:force => true do |t|
     t.string :name
-    t.integer :rank_id
     t.string  :ancestry
 
     t.string :address
@@ -24,15 +23,6 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.string :areacode
 
     t.string :state
-
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "ranks", :force => true do |t|
-    t.string :name
-    t.string :ancestry
-    # t.integer :level ,:defaut=>1 # 1企业级 0系统级
 
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

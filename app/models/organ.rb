@@ -1,12 +1,10 @@
 # -*- coding: utf-8 -*-
 
 class Organ < ActiveRecord::Base
-  attr_accessible :name, :rank_id, :parent_id, :address, :postalcode, :areacode, :description
+  attr_accessible :name, :parent_id, :address, :postalcode, :areacode, :description
 
-  validates_presence_of :name, :rank_id
-  validates_existence_of :rank_id
+  validates_presence_of :name
 
-  belongs_to :rank
   has_many :actors
   has_ancestry
 
