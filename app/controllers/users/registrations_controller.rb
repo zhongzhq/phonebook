@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout "default", except: [:edit, :update]
+
   #  POST /users
   def create
     build_resource(params[:user])
