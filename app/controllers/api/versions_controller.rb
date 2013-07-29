@@ -4,11 +4,10 @@ class Api::VersionsController < Api::BaseController
 
   def update
     result = Version.config
-
     if !params[:callback]
       render :json=>'{"status":400,"message":"请求方式错误，请使用jsonp方式请求数据"}'
     else
-      render :json=>result,:callback=>params[:callback]
+      render :json=>result["client"].last,:callback=>params[:callback]
     end
   end
 
