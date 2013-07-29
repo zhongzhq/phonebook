@@ -1,4 +1,12 @@
-update:
-  version: "0.02"
-  name: "企业通讯录"
-  url: "/public/soft/phonebook.apk"
+server:
+  - version:
+      number: "1.0"
+      description: "电话簿的基本管理功能"
+  - version:
+      number: "1.1"
+      description: "电话簿的基本管理功能1"
+client:
+  - version:
+      number: "0.02"
+      download: "/public/soft/phonebook.apk"
+      description: "按组织查询功能"

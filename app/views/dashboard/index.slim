@@ -8,7 +8,7 @@
           | 快速查找
         .more.pull-right
           a href=""
-            .label.label-inverse 帮助
+            .label.label-success 帮助
     .infobox-area
       form.form-inline method="post"
         input.margin-right5 style="width:70%;" type="text"
@@ -41,7 +41,6 @@
       .infobox-area
         h5= '企业名称：' + (organ.ancestors << organ).map{|x| x.name }.join(" / ")
         h6= '申请状态：' + t("state.organ.#{organ.state}")
-        p 地址：成都市府青路一段3号 邮编：610051 区号：028
 
 .span4
   .infobox
@@ -59,3 +58,16 @@
           - if Devise.mappings[:user].confirmable?
             = link_to "验证邮箱", new_confirmation_path(@user) unless @user.confirmed?
         li 手机： #{@user.phone}
+  .infobox
+    .infobox-title
+      h4
+        span 软件版本
+        .more.pull-right
+          a href=version_public_index_path 软件动态
+
+
+    .infobox-area
+      h5 当前版本：
+      p web端 暂无信息
+      p 客户端：
+

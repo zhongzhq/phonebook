@@ -1,11 +1,3 @@
-/* Add additional stylesheets below
--------------------------------------------------- */
-/*
-  Bootstrap's documentation styles
-  Special styles for presenting Bootstrap's documentation and examples
-*/
-
-
 /* Body and structure
 -------------------------------------------------- */
 body {
@@ -999,7 +991,7 @@ infobox
     font-weight:normal;
 }
 .infobox h4 .more a{
-    color:#ccc;
+    color:#666;
     font-size:12px;
 }
 .infobox .infobox-area{

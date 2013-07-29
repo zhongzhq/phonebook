@@ -1,0 +1,17 @@
+.infobox
+  .infobox-title
+    h4
+      span 软件动态
+  .infobox-area
+    h5 server 端版本
+    -@versions["server"].each do |s|
+      p
+        =s["version"]["number"]
+        =s["version"]["description"]
+
+    h5 client 端版本
+    -@versions["client"].each do |s|
+      p
+        =s["version"]["number"]
+        =s["version"]["description"]
+
