@@ -48,6 +48,7 @@ group :development do
   gem 'guard-cucumber'
 
   gem 'pry-rails'
+  gem "better_errors"
 end
 
 group :test do
