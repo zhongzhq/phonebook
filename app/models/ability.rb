@@ -6,8 +6,14 @@ class Ability
 
     # alias action form organ
     alias_action :create, :join, :join_create, :to => :apply
-
-    can :manage, :all
+    
+    if user.system_groups?
+      can :manage, :all
+    else
+      can :manage, Organ do |organ|
+        user.root_organ == organ.root
+      end
+    end
 
     # Define abilities for the passed in user here. For example:
     #
