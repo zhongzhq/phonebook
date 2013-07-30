@@ -7,19 +7,7 @@ class Ability
     # alias action form organ
     alias_action :create, :join, :join_create, :to => :apply
 
-    if user.system_admin?
-        can :manage, [:master, :organ, Rank, Membership]
-    elsif user.organ_admin?
-        can :manage, Organ do |organ|
-            user.organs.first.root == organ.root
-        end
-    elsif user.organ_member?
-        can :read, Organ do |organ|
-            user.organs.first.root == organ.root
-        end
-    end
-    
-    can :apply, Organ
+    can :manage, :all
 
     # Define abilities for the passed in user here. For example:
     #

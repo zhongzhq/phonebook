@@ -8,9 +8,6 @@
       = f.input :name
       = f.hidden_field :parent_id
 
-      -if @organ.parent
-        = f.input :rank_id, collection: @organ.parent.rank.descendants.map{|x| [x.name, x.id]}, prompt: '请选择...'
-
       .control-group
         .controls
           = link_to '取消', organs_path, :class => 'btn btn-danger'

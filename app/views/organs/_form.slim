@@ -2,12 +2,6 @@
   = simple_form_for @organ, :html => {:class=>"form-horizontal form-mini"} do |f|
     = f.input :name
     = f.hidden_field :parent_id
-
-    -if @organ.parent
-      = f.input :rank_id, collection: @organ.parent.rank.descendants.map{|x| [x.name, x.id]}, prompt: '请选择...'
-    -else
-      = f.input :rank_id, collection: Rank.roots.map{|x| [x.name, x.id]}, prompt: '请选择...'
-
     = f.input :address
     = f.input :description,:input_html => {:style=>"width:400px;height:100px"}
     = f.input :postalcode

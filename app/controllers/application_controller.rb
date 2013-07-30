@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
   after_filter :reset_last_captcha_code!
 
   # Devise Filter
-  before_filter :authenticate_user!, :except => [:activate]
+  before_filter :authenticate_user!
 
   # 用户登陆后跳转
   def after_sign_in_path_for(resource)
-    current_user.system_admin? ? master_root_path : root_path
+    current_user.system_groups? ? master_root_path : root_path
   end
 
   # CanCan::AccessDenied 异常捕获

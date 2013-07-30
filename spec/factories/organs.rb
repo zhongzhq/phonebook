@@ -18,5 +18,9 @@ FactoryGirl.define do
       name '百度'
     end
 
+    factory :system_organ do
+      name Settings.system_organ
+    end
+
   end
 end

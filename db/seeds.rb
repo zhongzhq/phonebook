@@ -66,7 +66,7 @@ actor51 = Actor.create!(membership_id: membership1.id, organ_id: organ1.id)
 actor5.users << User.create!(username: "tianbymy",name:"知一软件-谢刚",email:"tianbymy@163.com",password:"adminxg",password_confirmation:"adminxg",phone: "18628171674")
 actor51.users << User.last
 
-actor6 = Actor.create!(membership_id: membership3.id)
+actor6 = Actor.create!(membership_id: membership3.id, organ_id: system_organ.id)
 actor6.users << User.create!(username: "system",name:"知一软件系统管理员",email:"system_admin@163.com",password:"123456",password_confirmation:"123456",phone: "12345612347")
 
 # 激活所有账户

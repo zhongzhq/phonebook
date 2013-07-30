@@ -37,8 +37,15 @@ class Organ < ActiveRecord::Base
   #   Actor.find_or_create(self, Membership.organ_member).applies.map(&:user)
   # end
 
-  # 返回顶级组织，且组织审核通过（state: success）
-  def self.available_organs
-    roots.map{|x| x if x.success?}.compact
+  class << self
+    # 返回顶级组织，且组织审核通过（state: success）
+    def available_organs
+      roots.map{|x| x if x.success?}.compact
+    end
+
+    # 返回系统管理组记录
+    def system_organ
+      where(name: Settings.system_organ).first
+    end
   end
 end

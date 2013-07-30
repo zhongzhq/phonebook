@@ -6,6 +6,7 @@ describe Organ do
     # 企业组织
     @zhiyi = create :zhiyi
     @software = create :software, parent: @zhiyi
+    @system_organ = create :system_organ
 
     # 角色
     @zhiyi_admin = create :zhiyi_admin, organ_id: @zhiyi.id
@@ -38,5 +39,9 @@ describe Organ do
 
   it '应该获取到组织的所有成员和后代成员' do
     expect( @zhiyi.members_and_descendants.size ).to eq 1
+  end
+
+  it 'system_organ 应该返回系统管理组记录' do
+    expect( Organ.system_organ ).to eq @system_organ
   end
 end

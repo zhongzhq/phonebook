@@ -29,7 +29,7 @@
         .more.pull-right
           a href="#" 更多
 
-    - if current_user.memberships.blank?
+    - if current_user.organs.blank?
       .infobox-title
         h4
           = link_to '申请创建企业', new_organ_path

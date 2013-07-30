@@ -25,18 +25,11 @@
           | 仪表盘
 
     - if current_user.organs.first.try(:root).try(:success?)
-      - if can? :manage, Organ
-        .menu-block
-          a href= organs_path
-            p
-              i.icon-th.success
-              | 企业管理
-      - elsif can? :read, Organ
-        .menu-block
-          a href=organs_path
-            p
-              i.icon-group.text-xlarge.success
-              | 企业电话本
+      .menu-block
+        a href= organs_path
+          p
+            i.icon-th.success
+            | 企业管理
 
     .menu-block
       a href=""
