@@ -10,6 +10,7 @@ spec/dummy/tmp/*
 db/*.sqlite3
 public/uploads/*
 public/*.pdf
+public/download/*
 config/mongoid.yml
 .sass-cache/
 db/migrate/
