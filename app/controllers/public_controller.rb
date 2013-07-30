@@ -2,6 +2,10 @@ class PublicController < ApplicationController
   def help
   end
 
-  def about    
+  def about
+  end
+
+  def version
+    @versions = Version.config
   end
 end
