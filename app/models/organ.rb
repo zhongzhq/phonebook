@@ -7,6 +7,8 @@ class Organ < ActiveRecord::Base
   has_many :actors
   has_ancestry
 
+  set_callback :save, :after, :init_membership, unless: :parent
+
   state_machine :initial => :apply do
     event :pass do
       transition :apply => :success
@@ -32,10 +34,22 @@ class Organ < ActiveRecord::Base
     User.find_by_organ(subtree)
   end
 
+  # 添加指定用户到当前组织的指定角色下
+  def add user, membership
+    # 判断 user 是否加入组织，如果没有加入组织，则添加用户到该组织；
+    # 如果加入组织，判断要加入组织和已加入组织是否属于同一根组织，如果是则添加用户到该组织，否则返回 nil
+    unless user.organs.blank?
+      return unless root == user.root_organ
+    end
+
+    actor_users = Actor.find_or_create(self, membership).users
+    actor_users << user unless actor_users.include?(user)
+  end
+
   # 申请加入组织的成员
-  # def apply_members
-  #   Actor.find_or_create(self, Membership.organ_member).applies.map(&:user)
-  # end
+  def apply_members
+    Actor.find_or_create(self, Membership.find_or_create( self, Settings.member )).applies.map(&:user)
+  end
 
   class << self
     # 返回顶级组织，且组织审核通过（state: success）
@@ -47,5 +61,12 @@ class Organ < ActiveRecord::Base
     def system_organ
       where(name: Settings.system_organ).first
     end
+  end
+
+  private
+  # 初始化新建组织角色
+  def init_membership
+    Membership.find_or_create(self, Settings.admin)
+    Membership.find_or_create(self, Settings.member)
   end
 end

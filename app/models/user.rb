@@ -20,6 +20,10 @@ class User < ActiveRecord::Base
     actors.map(&:organ).uniq.compact
   end
 
+  def root_organ
+    organs.first.try(:root)
+  end
+
   def system_groups?
     organs.include? Organ.system_organ
   end

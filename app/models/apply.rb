@@ -24,7 +24,7 @@ class Apply < ActiveRecord::Base
   end
 
   def self.find_by_user_and_organ user, organ
-    find(:first, conditions: {user_id: user.id, actor_id: Actor.find_or_create(organ, Membership.organ_member).id})
+    find(:first, conditions: {user_id: user.id, actor_id: Actor.find_or_create(organ, Membership.find_or_create( organ, Settings.member )).id})
   end
 
   # 把用户加入组织的成员中
@@ -34,7 +34,7 @@ class Apply < ActiveRecord::Base
     end
 
     # 找到组织和组织成员组合的 actor 记录
-    organ_member_actor = Actor.find_or_create(organ, Membership.organ_member)
+    organ_member_actor = Actor.find_or_create(organ, Membership.find_or_create(organ, Settings.member))
     unless organ_member_actor.users.include? user
       new(user_id: user.id, actor_id: organ_member_actor.id).save
     end

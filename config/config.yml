@@ -1,5 +1,7 @@
 defaults: &defaults
   system_organ: 系统管理组
+  member: 成员
+  admin: 管理员
 
 development:
   <<: *defaults

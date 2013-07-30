@@ -19,4 +19,11 @@ class Actor < ActiveRecord::Base
 
   scope :find_by_organ_and_membership, -> organ, membership { where organ_id: organ, membership_id: membership }
   scope :find_by_organ, -> organ { where organ_id: organ }
+
+  class << self
+    # 查找或者新建由 organ 和 membership 组成的 actor 记录
+    def find_or_create organ, membership
+      find_by_organ_and_membership( organ, membership ).first_or_create
+    end
+  end
 end

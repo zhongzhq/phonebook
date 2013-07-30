@@ -11,9 +11,9 @@ system_organ = Organ.create!(name: Settings.system_organ )
 organ1 = Organ.create!(name: '成都知一软件有限公司' )
 
 # 初始化公司角色
-membership1 = Membership.create!(name: '组织管理员', organ_id: organ1.id)
-membership2 = Membership.create!(name: '组织成员', organ_id: organ1.id)
-membership3 = Membership.create!(name: '系统管理员', organ_id: system_organ.id)
+membership1 = Membership.find_or_create(organ1, Settings.admin)
+membership2 = Membership.find_or_create(organ1, Settings.member)
+membership3 = Membership.find_or_create(system_organ, Settings.admin)
 
   organ11 = Organ.create!(name: '软件开发部', parent_id: organ1 )
     organ11_1 = Organ.create!(name: '前台开发部', parent_id: organ11 )
@@ -55,7 +55,7 @@ membership3 = Membership.create!(name: '系统管理员', organ_id: system_organ
 Organ.all.map { |e| e.pass }
 
 # ---------- 其他测试数据 ----------
-organ2 = Organ.create!(name: '百度' )
+organ2 = Organ.create!(name: '成都大学' )
 
 User.create!(username: "guest",name:"no enterprise",email:"guest@163.com",password:"123456",password_confirmation:"123456",phone: "12345612345")
 

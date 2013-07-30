@@ -10,12 +10,12 @@
         tr.alert.alert-info
           th.index_number 序号
           th 角色名
-          th 角色类型
+          th 隶属组织
           th 操作
       tbody
         - @memberships.each_with_index do |membership, index|
           tr
             td= index + 1
             td= membership.name
-            td= membership.status == 0 ? '普通角色' : '系统角色'
+            td= membership.organ.name
             td.operating = link_to '修改', edit_master_membership_path(membership)

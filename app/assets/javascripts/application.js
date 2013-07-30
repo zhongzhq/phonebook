@@ -54,10 +54,6 @@ function show_message(txt){
 
 }
 
-
-
-
-
 // jsTree 设置
 function organ_tree() {
     // jstree 设置
@@ -84,3 +80,8 @@ function organ_tree() {
 	    get(this);
 	});
 };
+
+
+$(function(){
+  organ_tree();  
+})
