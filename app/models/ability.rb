@@ -10,6 +10,7 @@ class Ability
     user.permissions.each do |permission|
       eval permission.code
     end
-    
+
+    can :apply, Organ
   end
 end
