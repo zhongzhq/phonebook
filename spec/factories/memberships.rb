@@ -4,7 +4,10 @@ FactoryGirl.define do
 
     factory :zhiyi_admin do
       name '知一软件 - 管理员'
-      association :organ, factory: :zhiyi
+    end
+
+    factory :zhiyi_member do
+      name '知一软件 - 成员'
     end
 
   end

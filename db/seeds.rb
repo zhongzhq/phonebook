@@ -1,26 +1,24 @@
 # -*- coding: utf-8 -*-
 
 # ---------- 系统初始化数据 ----------
-# 初始化系统角色
-Settings.system_roles.each { |key, value| Membership.create!( :name => value ).update_attribute(:status, 1) }
+# 初始化 系统管理组
+system_organ = Organ.create!(name: Settings.system_organ )
+
+# 权限初始化
+
 
 # ---------- 初始化本公司数据  测试数据 ----------
-rank1 = Rank.create!(name: "企业")
+organ1 = Organ.create!(name: '成都知一软件有限公司' )
 
-rank11 = Rank.create!(name: "部门",parent_id: rank1)
-rank111 = Rank.create!(name: "科室",parent_id: rank11)
+# 初始化公司角色
+membership1 = Membership.create!(name: '组织管理员', organ_id: organ1.id)
+membership2 = Membership.create!(name: '组织成员', organ_id: organ1.id)
+membership3 = Membership.create!(name: '系统管理员', organ_id: system_organ.id)
 
-membership1 = Membership.create!(name: "总经理")
-membership2 = Membership.organ_member
-membership3 = Membership.organ_admin
-membership4 = Membership.system_admin
-
-
-organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id )
-  organ11 = Organ.create!(name: '软件开发部', rank_id: rank11.id, parent_id: organ1 )
-    organ11_1 = Organ.create!(name: '前台开发部', rank_id: rank11.id, parent_id: organ11 )
+  organ11 = Organ.create!(name: '软件开发部', parent_id: organ1 )
+    organ11_1 = Organ.create!(name: '前台开发部', parent_id: organ11 )
     # 后台开发部
-    organ11_2 = Organ.create!(name: '后台开发部', rank_id: rank11.id, parent_id: organ11 )
+    organ11_2 = Organ.create!(name: '后台开发部', parent_id: organ11 )
       User.create!(username: "suyu", name: "苏渝", phone: 18602881279, email: "suyu@zhiyisoft.com",password: "18602881279",password_confirmation:  "18602881279")
       User.create!(username: "xiegang", name: "谢刚", phone: 18628171676, email: "xiegang@zhiyisoft.com",password: "18628171676",password_confirmation:  "18628171676")
       User.create!(username: "zhongzhengquan", name: "钟正权", phone: 13551147353, email: "zhongzhengquan@zhiyisoft.com",password: "13551147353",password_confirmation:  "13551147353")
@@ -31,24 +29,24 @@ organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id
       User.create!(username: "recurlamlisp", name: "黄德洲", phone: 18782902305, email: "recurlamlisp@gamil.com",password: "18782902305",password_confirmation:  "18782902305")
       User.create!(username: "zhangtao", name: "张涛", phone: 15202826031, email: "zhangtao@zhiyisoft.com",password: "15202826031",password_confirmation:  "15202826031")
       User.create!(username: "yinchangxin", name: "尹常鑫", phone: 15184469287, email: "yinchangxin@zhiyisoft.com",password: "15184469287",password_confirmation:  "15184469287")
-      actor1 = Actor.create!(membership_id: membership2.id, organ_id: organ11_2.id)
+      actor1 = Actor.create!(membership_id: membership1.id, organ_id: organ11_2.id)
       User.all.map { |e| actor1.users << e  }
 
   # 测试部
-  organ12 = Organ.create!(name: '测试部', rank_id: rank11.id, parent_id: organ1)
-    actor2 = Actor.create!(membership_id: membership2.id, organ_id: organ12.id)
+  organ12 = Organ.create!(name: '测试部', parent_id: organ1)
+    actor2 = Actor.create!(membership_id: membership1.id, organ_id: organ12.id)
     User.create!(username: "tanghao", name: "唐浩", phone: 13880129915, email: "tanghao@zhiyisoft.com",password: "13880129915",password_confirmation:  "13880129915")
     actor2.users << User.last
 
   # 行政部
-  organ13 = Organ.create!(name: '行政部', rank_id: rank11.id, parent_id: organ1)
-    actor3 = Actor.create!(membership_id: membership2.id, organ_id: organ13.id)
+  organ13 = Organ.create!(name: '行政部', parent_id: organ1)
+    actor3 = Actor.create!(membership_id: membership1.id, organ_id: organ13.id)
     User.create!(username: "yanqiuyun", name: "闫秋云", phone: 13808229662, email: "yanqiuyun@zhiyisoft.com",password: "13808229662",password_confirmation:  "13808229662")
     actor3.users << User.last
 
   # 财务部
-  organ14 = Organ.create!(name: '财务部', rank_id: rank11.id, parent_id: organ1 )
-    actor4 = Actor.create!(membership_id: membership2.id, organ_id: organ14.id)
+  organ14 = Organ.create!(name: '财务部', parent_id: organ1 )
+    actor4 = Actor.create!(membership_id: membership1.id, organ_id: organ14.id)
     User.create!(username: "liuling", name: "刘玲", phone: 13541386053, email: "liuling@zhiyisoft.com",password: "13541386053",password_confirmation:  "13541386053")
     actor4.users << User.last
     User.create!(username: "lijia", name: "李佳", phone: 13308176710, email: "lijia@zhiyisoft.com",password: "13308176710",password_confirmation:  "13308176710")
@@ -57,18 +55,18 @@ organ1 = Organ.create!(name: '成都知一软件有限公司', rank_id: rank1.id
 Organ.all.map { |e| e.pass }
 
 # ---------- 其他测试数据 ----------
-organ2 = Organ.create!(name: '成都新东方烹饪学校', rank_id: rank1.id )
+organ2 = Organ.create!(name: '百度' )
 
 User.create!(username: "guest",name:"no enterprise",email:"guest@163.com",password:"123456",password_confirmation:"123456",phone: "12345612345")
 
 actor1.users << User.create!(username: "member",name:"enterprise member",email:"member@163.com",password:"123456",password_confirmation:"123456",phone: "12345612346")
 
-actor5 = Actor.create!(membership_id: membership3.id, organ_id: organ1.id)
-actor51 = Actor.create!(membership_id: membership2.id, organ_id: organ1.id)
-actor5.users << User.create!(username: "tianbymy",name:"知一软件-谢刚",email:"tianbymy@163.com",password:"adminxg",password_confirmation:"adminxg",phone: "18628171676")
+actor5 = Actor.create!(membership_id: membership2.id, organ_id: organ1.id)
+actor51 = Actor.create!(membership_id: membership1.id, organ_id: organ1.id)
+actor5.users << User.create!(username: "tianbymy",name:"知一软件-谢刚",email:"tianbymy@163.com",password:"adminxg",password_confirmation:"adminxg",phone: "18628171674")
 actor51.users << User.last
 
-actor6 = Actor.create!(membership_id: membership4.id)
+actor6 = Actor.create!(membership_id: membership3.id)
 actor6.users << User.create!(username: "system",name:"知一软件系统管理员",email:"system_admin@163.com",password:"123456",password_confirmation:"123456",phone: "12345612347")
 
 # 激活所有账户

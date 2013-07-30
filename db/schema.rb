@@ -36,6 +36,18 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "permissions", :force => true do |t|
+    t.string :name
+    t.string :action
+    t.string :subject_class
+    t.integer :level, default: 1        # 0 表示企业可用， 1 表示系统组可用。权限默认为系统组
+  end
+
+  create_table "actors_permissions", :force => true do |t|
+    t.integer :permission_id
+    t.integer :actor_id
+  end
+
   create_table "actors", :force => true do |t|
     t.integer :membership_id
     t.integer :organ_id
@@ -47,12 +59,6 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
   create_table "actors_users", :force => true do |t|
     t.integer :user_id
     t.integer :actor_id
-  end
-
-  create_table "applies", :force => true do |t|
-    t.integer :user_id
-    t.integer :actor_id
-    t.string :state
   end
 
   create_table "users", :force => true do |t|
@@ -80,6 +86,12 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
 
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "applies", :force => true do |t|
+    t.integer :user_id
+    t.integer :actor_id
+    t.string :state
   end
 
   create_table "phonebooks", :force => true do |t|

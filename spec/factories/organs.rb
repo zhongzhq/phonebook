@@ -7,10 +7,10 @@ FactoryGirl.define do
     end
 
       factory :software do
-        name '软件开发部'
+        name '软件研究部'
       end
 
-        factory :backgroud do
+        factory :behind do
           name '后台开发部'
         end
 

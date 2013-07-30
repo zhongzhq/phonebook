@@ -1,8 +1,5 @@
 defaults: &defaults
-  system_roles:
-    organ_member: 组织成员
-    organ_admin: 组织管理员
-    system_admin: 系统管理员
+  system_organ: 系统管理组
 
 development:
   <<: *defaults

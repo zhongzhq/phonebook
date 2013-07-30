@@ -14,17 +14,9 @@ class Actor < ActiveRecord::Base
   belongs_to :organ
   belongs_to :membership
   has_and_belongs_to_many :users
+  has_and_belongs_to_many :permissions
   has_many :applies
 
   scope :find_by_organ_and_membership, -> organ, membership { where organ_id: organ, membership_id: membership }
   scope :find_by_organ, -> organ { where organ_id: organ }
-
-  class << self
-    # 查找或者新建由 organ 和 membership 组成的 actor 记录
-    def find_or_create organ, membership
-      find_by_organ_and_membership( organ, membership ).first.tap do |actor|
-        return create( organ_id: organ.id, membership_id: membership.id ) if actor.blank?
-      end
-    end
-  end
 end
