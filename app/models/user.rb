@@ -28,6 +28,10 @@ class User < ActiveRecord::Base
     organs.include? Organ.system_organ
   end
 
+  def permissions
+    actors.map(&:permissions).flatten.uniq
+  end
+
   # 允许用户使用 用户名或邮箱 登陆
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

@@ -5,7 +5,16 @@
 system_organ = Organ.create!(name: Settings.system_organ )
 
 # 权限初始化
-
+all =  Permission.new(name: '管理系统', code: 'can :manage, :all')
+manage_organ = Permission.new(name: '管理所属企业', code: '
+  can :manage, Organ do |organ|
+    user.root_organ == organ.root
+  end', level: 0)
+read_organ = Permission.new(name: '查看所属企业', code: '
+  can :read, Organ do |organ|
+    user.root_organ == organ.root
+  end
+  ', level: 0)
 
 # ---------- 初始化本公司数据  测试数据 ----------
 organ1 = Organ.create!(name: '成都知一软件有限公司' )
@@ -29,7 +38,7 @@ membership3 = Membership.find_or_create(system_organ, Settings.admin)
       User.create!(username: "recurlamlisp", name: "黄德洲", phone: 18782902305, email: "recurlamlisp@gamil.com",password: "18782902305",password_confirmation:  "18782902305")
       User.create!(username: "zhangtao", name: "张涛", phone: 15202826031, email: "zhangtao@zhiyisoft.com",password: "15202826031",password_confirmation:  "15202826031")
       User.create!(username: "yinchangxin", name: "尹常鑫", phone: 15184469287, email: "yinchangxin@zhiyisoft.com",password: "15184469287",password_confirmation:  "15184469287")
-      actor1 = Actor.create!(membership_id: membership1.id, organ_id: organ11_2.id)
+      actor1 = Actor.create!(membership_id: membership1.id, organ_id: organ11_2.id)     
       User.all.map { |e| actor1.users << e  }
 
   # 测试部
@@ -53,6 +62,7 @@ membership3 = Membership.find_or_create(system_organ, Settings.admin)
     actor4.users << User.last
 
 Organ.all.map { |e| e.pass }
+Actor.all.map { |e| e.permissions << read_organ }
 
 # ---------- 其他测试数据 ----------
 organ2 = Organ.create!(name: '成都大学' )
@@ -62,11 +72,14 @@ User.create!(username: "guest",name:"no enterprise",email:"guest@163.com",passwo
 actor1.users << User.create!(username: "member",name:"enterprise member",email:"member@163.com",password:"123456",password_confirmation:"123456",phone: "12345612346")
 
 actor5 = Actor.create!(membership_id: membership2.id, organ_id: organ1.id)
+actor5.permissions << read_organ
 actor51 = Actor.create!(membership_id: membership1.id, organ_id: organ1.id)
+actor51.permissions << manage_organ
 actor5.users << User.create!(username: "tianbymy",name:"知一软件-谢刚",email:"tianbymy@163.com",password:"adminxg",password_confirmation:"adminxg",phone: "18628171674")
 actor51.users << User.last
 
 actor6 = Actor.create!(membership_id: membership3.id, organ_id: system_organ.id)
+actor6.permissions << all
 actor6.users << User.create!(username: "system",name:"知一软件系统管理员",email:"system_admin@163.com",password:"123456",password_confirmation:"123456",phone: "12345612347")
 
 # 激活所有账户

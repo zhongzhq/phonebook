@@ -38,8 +38,8 @@ ActiveRecord::Schema.define(:version => 20130617083036) do
 
   create_table "permissions", :force => true do |t|
     t.string :name
-    t.string :action
-    t.string :subject_class
+    t.string :code
+    t.string :description
     t.integer :level, default: 1        # 0 表示企业可用， 1 表示系统组可用。权限默认为系统组
   end
 
