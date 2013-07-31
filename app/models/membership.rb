@@ -12,7 +12,7 @@ class Membership < ActiveRecord::Base
   before_save :assign_organ_id
 
   def self.find_or_create organ, name
-    where(organ_id: organ.id, name: name).first_or_create
+    where(organ_id: organ.root.id, name: name).first_or_create
   end
 
   private

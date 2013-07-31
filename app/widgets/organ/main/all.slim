@@ -16,6 +16,7 @@
             th 姓名
             th 手机号
             td 邮箱
+            td 角色
             th 操作
         tbody
           - @members.each_with_index do |member, index|
@@ -24,6 +25,7 @@
               td= member.name
               td= member.phone
               td= member.email
+              td= member.actors.map{|x| [x.organ.name, x.membership.name].join("-")}.join('/')
               td.operating
                 - if can? :manage, Organ
                   = link_to '编辑', adjust_user_path(member)

@@ -23,6 +23,7 @@ class Organ::MainWidget < ApplicationWidget
     replace "##{widget_id} #organ_panel", {:view => :all}
   end
 
+  # 通过姓名/手机号/邮箱搜索当前组织的用户
   def search
     @members = current_user.root_organ.members_and_descendants
     .where("name LIKE :text OR phone LIKE :text OR email LIKE :text", {:text => "%#{params[:text]}%"})
