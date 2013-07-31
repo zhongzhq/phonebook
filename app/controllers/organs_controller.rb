@@ -2,6 +2,10 @@
 class OrgansController < ApplicationController
   load_and_authorize_resource
   
+  has_widgets do |root|
+    root << widget('organ/search', :search)
+  end
+
   def index
     @organ = current_user.organs.first
   end

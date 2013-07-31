@@ -45,10 +45,10 @@ class User < ActiveRecord::Base
   # 调整用户组织关系，清除用户以前所属组织，把用户加入 new_organs，并返回新添加的组织
   def adjust new_organs
     (organs - new_organs).each do |organ|
-      actors.delete( Actor.find_or_create( organ, Membership.organ_member ) )
+      actors.delete( Actor.find_or_create( organ, Membership.find_or_create( organ,Settings.member) ) )
     end
     (new_organs - organs).each do |organ|
-      actors << Actor.find_or_create( organ, Membership.organ_member )
+      actors << Actor.find_or_create( organ, Membership.find_or_create( organ,Settings.member) )
     end
   end
 end
