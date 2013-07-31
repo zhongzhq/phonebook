@@ -1,30 +1,29 @@
 .navbar.navbar-fixed-top
   .navbar-inner
-    .container
-      a.sitename_a href=root_path
-        img.pull-left src="/assets/zhiyi_logo.png" alt=t('site_name') title=t('site_name')
-        span.sitename =t('site_name')
-      ul.nav.pull-right
-        - if user_signed_in?
-          - if current_user.name.blank?
-            li
-              a href=edit_info_users_path
-                i.icon-warning-sign.warning
-                | 请完善用户资料
-          - else
-            li
-              a href=edit_info_users_path
-                i.icon-user.success
-                =current_user.name
+    a.sitename_a href=root_path
+      img.pull-left src="/assets/zhiyi_logo.png" alt=t('site_name') title=t('site_name')
+      span.sitename =t('site_name')
+    ul.nav.pull-right
+      - if user_signed_in?
+        - if current_user.name.blank?
           li
-            a href=edit_user_registration_path
-              i.icon-wrench.success
-              | 修改密码
+            a href=edit_info_users_path
+              i.icon-warning-sign.warning
+              | 请完善用户资料
+        - else
           li
-            a href=help_public_index_path
-              i.icon-question-sign.success
-              | 帮助
-          li
-            a href=destroy_user_session_path data-method="delete"
-              i.icon-power-off
-              |退出
+            a href=edit_info_users_path
+              i.icon-user.success
+              =current_user.name
+        li
+          a href=edit_user_registration_path
+            i.icon-wrench.success
+            | 修改密码
+        li
+          a href=help_public_index_path
+            i.icon-question-sign.success
+            | 帮助
+        li
+          a href=destroy_user_session_path data-method="delete"
+            i.icon-power-off
+            |退出

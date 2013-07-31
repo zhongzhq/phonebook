@@ -958,7 +958,8 @@ menubar
     border:1px solid #D2E1F1;
 }
 .adduser{
-    padding:10px;
+    padding:10px 0;
+    width: 100%;
 }
 /*****************
 infobox

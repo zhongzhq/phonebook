@@ -47,8 +47,8 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-cucumber'
 
-  gem 'pry-rails'
-  gem "better_errors"
+  gem 'pry'
+  gem "pry-debugger"
 end
 
 group :test do
