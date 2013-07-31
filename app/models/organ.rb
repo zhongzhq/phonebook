@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Organ < ActiveRecord::Base
-  attr_accessible :name, :parent_id, :address, :postalcode, :areacode, :description
+  attr_accessible :name, :parent_id, :description
 
   validates :name, presence: true
 

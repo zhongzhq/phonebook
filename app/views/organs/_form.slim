@@ -2,10 +2,7 @@
   = simple_form_for @organ, :html => {:class=>"form-horizontal form-mini"} do |f|
     = f.input :name
     = f.hidden_field :parent_id
-    = f.input :address
     = f.input :description,:input_html => {:style=>"width:400px;height:100px"}
-    = f.input :postalcode
-    = f.input :areacode
 
     .control-group
       .controls
