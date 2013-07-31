@@ -11,92 +11,89 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130617083036) do
+ActiveRecord::Schema.define(:version => 20130729020129) do
 
-  create_table "organs",:force => true do |t|
-    t.string :name
-    t.string  :ancestry
-
-    t.string :address
-    t.text :description
-    t.integer :postalcode
-    t.string :areacode
-
-    t.string :state
-
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "memberships", :force => true do |t|
-    t.string :name
-    t.integer :organ_id
-
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "permissions", :force => true do |t|
-    t.string :name
-    t.string :code
-    t.string :description
-    t.integer :level, default: 1        # 0 表示企业可用， 1 表示系统组可用。权限默认为系统组
+  create_table "actors", :force => true do |t|
+    t.integer  "membership_id"
+    t.integer  "organ_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
   end
 
   create_table "actors_permissions", :force => true do |t|
-    t.integer :permission_id
-    t.integer :actor_id
-  end
-
-  create_table "actors", :force => true do |t|
-    t.integer :membership_id
-    t.integer :organ_id
-
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer "permission_id"
+    t.integer "actor_id"
   end
 
   create_table "actors_users", :force => true do |t|
-    t.integer :user_id
-    t.integer :actor_id
+    t.integer "user_id"
+    t.integer "actor_id"
   end
 
-  create_table "users", :force => true do |t|
-    t.string :username # 用户名
-    t.string :name # 姓名
-    t.string :phone
+  create_table "applies", :force => true do |t|
+    t.integer "user_id"
+    t.integer "actor_id"
+    t.string  "state"
+  end
 
-    ## devise field
-    # Database authenticatable
-    t.string :email,              :null => false, :default => ""
-    t.string :encrypted_password, :null => false, :default => ""
-
-    # Recoverable
-    t.string   :reset_password_token
-    t.datetime :reset_password_sent_at
-
-    # Confirmable
-    t.string   :confirmation_token
-    t.datetime :confirmed_at
-    t.datetime :confirmation_sent_at
-    t.string   :unconfirmed_email # Only if using reconfirmable
-
-    # Token authenticatable
-    t.string :authentication_token
-
+  create_table "memberships", :force => true do |t|
+    t.string   "name"
+    t.integer  "organ_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "applies", :force => true do |t|
-    t.integer :user_id
-    t.integer :actor_id
-    t.string :state
+  create_table "organs", :force => true do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.string   "address"
+    t.text     "description"
+    t.integer  "postalcode"
+    t.string   "areacode"
+    t.string   "state"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "permissions", :force => true do |t|
+    t.string  "name"
+    t.string  "code"
+    t.string  "description"
+    t.integer "level",       :default => 1
   end
 
   create_table "phonebooks", :force => true do |t|
     t.string   "name"
     t.string   "phone"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ranks", :force => true do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.string   "authentication_token"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  create_table "versions", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
