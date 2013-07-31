@@ -10,3 +10,9 @@
 
       .span9
         #organ_panel
+
+javascript:
+  var init_open = $("#open").find("a:first");
+
+  init_open.addClass("jstree-clicked");
+  $.get( init_open.attr("href"));
