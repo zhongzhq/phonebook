@@ -24,13 +24,6 @@
           p
             i.icon-th.success
             | 企业管理
-
-    .menu-block
-      a href=""
-        p
-          i.icon-book.text-xlarge.success
-          | 个人电话本
-
     - if can? :manage, :master
       .menu-block
         a href= master_root_path
@@ -47,11 +40,5 @@
   .menu-block
     h5 手机客户端下载
     img src="/liantu.png" style="width:100px;"
-.footer
-  p
-    | &copy; 2013 知一软件
-    a href="http://zhiyisoft.uservoice.com/" target="_blank"
-      i.icon-pencil
-        | 意见反馈
 
 

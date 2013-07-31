@@ -1,14 +1,10 @@
 /* Body and structure
 -------------------------------------------------- */
 body {
-    position: relative;
     background-color: #fff;
-    background-image: url(../img/grid-18px-masked.png);
-    background-repeat: repeat-x;
     background-position: 0 40px;
     padding-top:45px;
 }
-
 
 /* Tweak navbar brand link to be super sleek
 -------------------------------------------------- */
@@ -925,7 +921,6 @@ menubar
     position:fixed;
     top:55px;
     width:200px;
-    min-height:500px;
     background-color:#FAFAFA;
     padding-right:2px;
     box-shadow:0 1px 2px #E1E3E6;
