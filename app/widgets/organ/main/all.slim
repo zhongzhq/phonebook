@@ -26,6 +26,6 @@
               td= member.email
               td.operating
                 - if can? :manage, Organ
-                  = link_to '调整组织', adjust_user_path(member)
+                  = link_to '编辑', adjust_user_path(member)
 
       = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}

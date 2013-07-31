@@ -37,7 +37,7 @@ EPBook::Application.routes.draw do
     end
     member do
       get 'adjust'
-      post 'adjust_post'
+      put 'adjust_post'
     end
   end
 
