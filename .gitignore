@@ -13,4 +13,3 @@ public/*.pdf
 public/download/*
 config/mongoid.yml
 .sass-cache/
-db/migrate/
