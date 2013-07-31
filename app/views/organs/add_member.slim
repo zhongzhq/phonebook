@@ -1,0 +1,16 @@
+.widget
+  h4
+    i.icon-upload.text-large
+    span.text-info = @organ.name + ' - 添加成员'
+
+  .widgetarea
+    = simple_form_for @user, :url => save_member_organ_path, :html => {:class=>"form-horizontal form-mini"} do |f|
+      = f.input :name, :autofocus => true
+      = f.input :email
+      = f.input :phone
+      = hidden_field_tag :organ_id, @organ.id 
+      
+      .control-group
+        .controls
+          = link_to '取消', organs_path, :class => 'btn btn-danger'
+          = f.button :submit, '添加', :class => "btn-info"

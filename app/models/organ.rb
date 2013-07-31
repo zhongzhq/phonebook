@@ -24,11 +24,6 @@ class Organ < ActiveRecord::Base
     User.find_by_organ(self)
   end
 
-  # 组织的所有子级成员
-  def children_members
-    User.find_by_organ(children)
-  end
-
   # 组织及后代组织的成员
   def members_and_descendants
     User.find_by_organ(subtree)

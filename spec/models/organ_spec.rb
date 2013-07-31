@@ -33,10 +33,6 @@ describe Organ do
     expect( @zhiyi.members ).to match_array [@organ_admin] 
   end
 
-  it '应该获取组织的所有子级成员' do 
-    expect( @zhiyi.children_members ).to be_empty
-  end
-
   it '应该获取到组织的所有成员和后代成员' do
     expect( @zhiyi.members_and_descendants.size ).to eq 1
   end
