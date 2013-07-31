@@ -5,7 +5,8 @@
 
   .widgetarea
     = simple_form_for @user, :url => create_member_organs_path, :html => {:class=>"form-horizontal form-mini"} do |f|
-      = f.input :name, :autofocus => true
+      = f.input :name, :autofocus => true      
+      = f.input :username
       = f.input :email
       = f.input :password
       = f.input :password_confirmation
