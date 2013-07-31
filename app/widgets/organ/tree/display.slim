@@ -1,0 +1,5 @@
+= widget_div do
+  ul
+    li
+      = link_to @organ_root.name, url_for_event(:show_organ, organ_id: @organ_root.id), :remote => true
+      = render :view => :children_list, locals: { organ: @organ_root }

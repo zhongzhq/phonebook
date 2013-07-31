@@ -1,0 +1,7 @@
+ul
+  - organ.children.each do |child|
+    li
+      = link_to child.name, url_for_event(:show_organ, organ_id: child.id), :remote => true
+      - unless child.children.blank?
+        ul
+          = render :view => :children_list, locals: { organ: child }

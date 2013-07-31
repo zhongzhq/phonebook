@@ -1,14 +1,2 @@
-.span3
-  h6 按组织结构显示
-  #organ_tree
-    - organ_root = @organ.root
-    ul
-     li id="#{ organ_root == @organ ? "open" : "" }"
-       = link_to organ_root.name, organ_path(organ_root), onclick: 'get(this);return false'
-       = render 'child_list', :organ => organ_root, :current_organ => @organ
+= render_widget :organ
 
-  h6 按企业用户显示
-  = link_to '查看企业所有用户', members_organs_path, onclick: 'get(this);return false'
-  javascript:
-    organ_tree();
-#organs.span9
