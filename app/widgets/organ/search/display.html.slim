@@ -23,4 +23,4 @@
               - if can? :manage, Organ
                 = link_to '调整组织', adjust_user_path(member)
  
-    /= paginate @members, params: {source: 'search', type: 'search'}, :remote => true
+    = will_paginate @members, params: {source: 'search', type: 'search'}, :renderer => Bootstrap::PaginateHelper::Remote
