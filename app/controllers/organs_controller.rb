@@ -85,6 +85,7 @@ class OrgansController < ApplicationController
   end
 
   def create_member
+    params[:user][:password] = SecureRandom.hex(8)
     @user = User.new(params[:user])
 
     if @user.save

@@ -1,4 +1,6 @@
-p 欢迎你 #{ @email } ! 注册 成都知一软件有限公司 企业通讯录
+p 欢迎你 #{ @email } ! 加入 成都知一软件有限公司 企业通讯录
+
+p 你收到此邮件可能是因为你最近注册了 企业通讯录，或你所在企业在本系统添加了你的信息
 
 p 你可以通过下面连接激活你的账户：
 p= link_to '激活你的账户', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)

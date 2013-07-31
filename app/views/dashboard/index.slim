@@ -52,7 +52,6 @@
     .infobox-area
       ul
         li 姓名： #{@user.name}
-        li 账号： #{@user.username}
         li
           | 邮箱： #{@user.email}
           - if Devise.mappings[:user].confirmable?
