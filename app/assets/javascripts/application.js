@@ -30,7 +30,7 @@ function show_message(txt){
     //IE6位置
     if (!window.XMLHttpRequest) {
 	$("#targetFixed").css("top", $(document).scrollTop() + 2);
-}
+    }
     //创建半透明遮罩层
     if (!$("#overLay").size()) {
 	$('<div id="overLay"></div>').prependTo($("body"));
@@ -50,7 +50,7 @@ function show_message(txt){
     setTimeout(function() {
 	$("#overLay").remove();
 	$("#floatBox_doing").hide();
-    }, 2000);
+    }, 1000);
 
 }
 
@@ -80,8 +80,3 @@ function organ_tree() {
 	    get(this);
 	});
 };
-
-
-$(function(){
-  organ_tree();
-})
