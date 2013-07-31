@@ -2,12 +2,12 @@
   .widget
     h4
       i.icon-hand-right
-      span.text-info= "组织机构 - #{ @organ.name }"
+      span.text-info=@organ.name
       .pull-right
         - if can? :manage, Organ
           = link_to '编辑组织信息', edit_organ_path(@organ), class: 'btn btn-link'
-          = link_to '添加下级组织', new_child_organ_path(@organ), class: 'btn btn-link'
-          = link_to '查看下级成员', url_for_event(:children, organ_id: @organ.id), class: 'btn btn-link', remote: true
+          = link_to '添加组织', new_child_organ_path(@organ), class: 'btn btn-link'
+          = link_to '查看成员=>添加成员', url_for_event(:children, organ_id: @organ.id), class: 'btn btn-link', remote: true
           = link_to '审核用户', apply_members_organ_path(@organ), onclick: 'get(this);return false', class: 'btn btn-link'
 
     = form_tag url_for_event(:search), :class => "navbar-form", :remote => true do
@@ -17,4 +17,4 @@
     .widgetarea.widgetarea-height
       #members
         = render({state: :list}, @organ.members)
-      
+
