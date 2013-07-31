@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 class User < ActiveRecord::Base  
-  attr_accessible :username, :password, :name, :email, :phone, :password_confirmation, :account
+  attr_accessible :password, :name, :email, :phone, :password_confirmation, :account
   devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :validatable, :timeoutable#, :confirmable
 
   validates_presence_of :email, :phone
-  validates_uniqueness_of :username, :phone
+  validates_uniqueness_of :phone
   validates :phone, format: {with: /^\d{11}$/}
 
   has_and_belongs_to_many :actors
@@ -32,11 +32,11 @@ class User < ActiveRecord::Base
     actors.map(&:permissions).flatten.uniq
   end
 
-  # 允许用户使用 用户名或邮箱 登陆
+  # 允许用户使用 手机号或邮箱 登陆
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if account = conditions.delete(:account)
-      where(conditions).where(["lower(username) = :value OR lower(email) = :value OR phone = :value", { :value => account.downcase }]).first
+      where(conditions).where(["lower(email) = :value OR phone = :value", { :value => account.downcase }]).first
     else
       where(conditions).first
     end

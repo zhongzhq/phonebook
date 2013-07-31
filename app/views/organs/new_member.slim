@@ -5,11 +5,8 @@
 
   .widgetarea
     = simple_form_for @user, :url => create_member_organs_path, :html => {:class=>"form-horizontal form-mini"} do |f|
-      = f.input :name, :autofocus => true      
-      = f.input :username
+      = f.input :name, :autofocus => true
       = f.input :email
-      = f.input :password
-      = f.input :password_confirmation
       = f.input :phone
 
       = f.input :new_organ_ids, label: '组织名称' do

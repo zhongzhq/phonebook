@@ -79,7 +79,7 @@ class OrgansController < ApplicationController
     render 'edit'
   end
 
-  # 向某个组织添加联系人
+  # 向组织添加联系人
   def new_member
     @user = User.new
   end

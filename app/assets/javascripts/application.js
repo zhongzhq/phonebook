@@ -67,10 +67,6 @@ function organ_tree() {
     })
 	.bind("loaded.jstree", function (event, data) {
 	    $(".jstree-closed").removeClass("jstree-closed").addClass("jstree-open");
-
-	    var init_open = $("#open").find("a:first");
-	    init_open.addClass("jstree-clicked");
-	    get(init_open);
 	})
 	.delegate("a", "click", function (event, data) {
 	    $('li[class^="jstree-"]').each(function(){
