@@ -23,7 +23,7 @@
         a href= organs_path
           p
             i.icon-th.success
-            | 企业管理
+            = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
     - if can? :manage, :master
       .menu-block
         a href= master_root_path

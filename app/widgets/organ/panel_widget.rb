@@ -22,7 +22,7 @@ class Organ::PanelWidget < ApplicationWidget
   # 把用户从指定组织中移除
   def remove
     @organ = Organ.find(params[:organ_id])
-    p @organ
+
     User.find(params[:user_id]).actors.delete(
       Actor.find_or_create(@organ, Membership.find_or_create(@organ, Settings.member) )
       )

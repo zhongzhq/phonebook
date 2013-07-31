@@ -5,7 +5,7 @@ class Ability
     user ||= User.new
 
     # alias action form organ
-    alias_action :create, :join, :join_create, :to => :apply
+    alias_action :create, :join, :join_create, :render_event_response, :to => :apply
     
     user.permissions.each do |permission|
       eval permission.code
