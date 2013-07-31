@@ -26,7 +26,7 @@ gem 'settingslogic'
 gem 'state_machine'
 
 gem 'will_paginate'
-gem 'will_paginate-bootstrap'
+gem 'bootstrap-will_paginate'
 
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 

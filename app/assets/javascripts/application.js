@@ -50,7 +50,7 @@ function show_message(txt){
     setTimeout(function() {
 	$("#overLay").remove();
 	$("#floatBox_doing").hide();
-    }, 3000);
+    }, 2000);
 
 }
 
@@ -83,5 +83,5 @@ function organ_tree() {
 
 
 $(function(){
-  organ_tree();  
+  organ_tree();
 })
