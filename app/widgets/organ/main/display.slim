@@ -1,0 +1,10 @@
+= widget_div do
+  .span3
+    h6 按组织结构显示
+    = render_widget :organ_tree
+
+    h6 按企业用户显示
+    = link_to '查看企业所有用户', url_for_event(:all), remote: true
+
+  .span9
+    #organ_panel

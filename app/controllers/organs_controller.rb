@@ -3,7 +3,7 @@ class OrgansController < ApplicationController
   load_and_authorize_resource
   
   has_widgets do |root|
-    root << widget('organ/search', :search)
+    root << widget('organ/main', :organ)
   end
 
   def index
@@ -53,18 +53,6 @@ class OrgansController < ApplicationController
       redirect_to root_path, alert: '组织申请失败，你可能已申请过或者正在申请其它企业'
     end
   end
-
-  # 显示组织信息和成员
-  def show
-    @organ = Organ.find(params[:id])
-    render partial: 'members', :layout => false, :locals => { members: @organ.members }
-  end
-
-  # 显示组织的子级成员
-  def children_members
-    @organ = Organ.find(params[:id])
-    render partial: 'members', :layout => false, :locals => { members: @organ.try(:children_members) }
-  end
   
   # 显示待申请的成员
   def apply_members
@@ -89,21 +77,6 @@ class OrgansController < ApplicationController
 
     return redirect_to organs_path, notice: '更新成功' if @organ.update_attributes(params[:organ])
     render 'edit'
-  end
-
-  # 显示当前用户组织的顶级组织的所有成员
-  def members
-    @members = current_user.organs.first.root.members_and_descendants
-    .paginate(:page => params[:page], :per_page => 5)
-    render :layout => false
-  end
-
-  # 通过姓名/手机号/邮箱搜索当前组织的用户
-  def search
-    @members = current_user.organs.first.root.members_and_descendants
-    .where("name LIKE :text OR phone LIKE :text OR email LIKE :text", {:text => "%#{params[:search_form][:text]}%"})
-    .paginate(:page => params[:page], :per_page => 5)
-    render 'members'
   end
 
   # 向某个组织添加联系人
