@@ -9,7 +9,7 @@
 
   -else
     .menu-head
-      = form_tag "#",:class => "form-inline", :remote => true do
+      = form_tag search_organs_path, :class => "form-inline", method: "get" do
         = text_field_tag 'text', nil, placeholder: '姓名/手机号/邮箱',class: "input-small"
         = submit_tag "搜索", class: 'btn'
 

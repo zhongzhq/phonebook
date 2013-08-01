@@ -21,9 +21,15 @@
               td= member.name
               td= member.phone
               td= member.email
-              td= member.actors.map{|x| [x.organ.name, x.membership.name].join("-")}.join('<br/>').html_safe
+              td
+                - member.actors.each do |x|
+                  | #{x.organ.name} - #{x.membership.name}
+                  - unless current_user == member
+                    = link_to '移除', remove_member_organ_path(x.organ, user_id: member.id, membership_id: x.membership.id)
+                  br
+
               td.operating
                 - if can? :manage, Organ
                   = link_to '编辑', adjust_user_path(member)
 
-      = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}
+      = will_paginate @members

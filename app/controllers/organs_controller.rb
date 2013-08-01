@@ -60,6 +60,23 @@ class OrgansController < ApplicationController
     render :layout => false
   end
 
+  # 通过姓名/手机号/邮箱搜索当前组织的用户
+  def search
+    @members = current_user.root_organ.members_and_descendants
+    .where("name LIKE :text OR phone LIKE :text OR email LIKE :text", {:text => "%#{params[:text]}%"})
+    .paginate(:page => params[:page])
+  end
+
+  # 从组织中移除用户
+  def remove_member
+    @organ = Organ.find(params[:id])
+
+    User.find(params[:user_id]).actors.delete(
+      Actor.find_or_create(@organ, Membership.find(params[:membership_id]) )
+      )
+    redirect_to search_organs_path, notice: '移除成功'
+  end
+
   # 通过用户的申请
   def pass_user
     @organ = Organ.find(params[:id])
@@ -113,4 +130,5 @@ class OrgansController < ApplicationController
       render 'add_member'
     end
   end
+
 end
