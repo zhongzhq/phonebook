@@ -66,6 +66,13 @@ ActiveRecord::Schema.define(:version => 20130731102837) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "ranks", :force => true do |t|
+    t.string   "name"
+    t.string   "ancestry"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "phone"
@@ -80,6 +87,11 @@ ActiveRecord::Schema.define(:version => 20130731102837) do
     t.string   "authentication_token"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+  end
+
+  create_table "versions", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end

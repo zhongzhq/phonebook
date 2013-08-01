@@ -2,8 +2,11 @@
 class Api::UsersController < Api::BaseController
   respond_to :json
 
-  def get_users
+  def get_all_users
 
+  end
+
+  def get_users
     if params[:organ_id]
       organ = Organ.where(id: params[:organ_id]).first
       actors = Actor.where(organ_id: params[:organ_id])

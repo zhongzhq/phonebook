@@ -3,11 +3,7 @@
     h4
       i.icon-hand-right
       span.text-info 企业所有成员
-  
-    = form_tag url_for_event(:search), :class => "navbar-form", :remote => true do
-      = text_field_tag 'text', nil, placeholder: '姓名/手机号/邮箱'
-      = submit_tag "搜索", class: 'btn'
-      
+
     .widgetarea.widgetarea-height
       table.table.table-hover
         thead
