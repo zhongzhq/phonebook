@@ -93,6 +93,7 @@ EPBook::Application.routes.draw do
     resources :users,:only => [] do
       collection do
         get "get_users"
+        get "all_users"
       end
     end
     resources :versions,:only=>[] do
