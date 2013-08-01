@@ -2,8 +2,18 @@
 class Api::UsersController < Api::BaseController
   respond_to :json
 
-  def get_all_users
-
+  def all_users
+    root = Organ.where(id: params[:organ_id]).first
+    users = root.members_and_descendants.order("name ASC")
+    users.each
+    users.inject({}) do |index,user|
+      user[:organname] = full_name(root)
+    end
+    if !params[:callback]
+      render :json=>'{"status":400,"message":"请求方式错误，请使用jsonp方式请求数据"}'
+    else
+      render :json=>users,:callback=>params[:callback]
+    end
   end
 
   def get_users
