@@ -10,10 +10,6 @@
           = link_to '添加成员', add_member_organ_path(@organ), class: 'btn btn-link'
           = link_to '审核用户', apply_members_organ_path(@organ), onclick: 'get(this);return false', class: 'btn btn-link'
 
-    = form_tag url_for_event(:search), :class => "navbar-form", :remote => true do
-      = text_field_tag 'text', nil, placeholder: '姓名/手机号/邮箱'
-      = submit_tag "搜索", class: 'btn'
-
     .widgetarea.widgetarea-height
       #members
         = render({state: :members}, @organ)

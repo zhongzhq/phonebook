@@ -49,12 +49,14 @@ EPBook::Application.routes.draw do
       get 'pass_user'
       get 'add_member'
       post 'save_member'
+      get 'remove_member'
     end
     collection do
       get 'join'
       post 'join_create'
       get 'new_member'
       post 'create_member'
+      get 'search'
     end
   end
 

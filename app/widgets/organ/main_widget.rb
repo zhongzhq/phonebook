@@ -1,7 +1,6 @@
 class Organ::MainWidget < ApplicationWidget
   responds_to_event :show_organ
   responds_to_event :all
-  responds_to_event :search
 
   has_widgets do
     self <<  widget('organ/tree', :organ_tree)
@@ -21,15 +20,6 @@ class Organ::MainWidget < ApplicationWidget
   def all
     @members = current_user.root_organ.members_and_descendants.paginate(:page => params[:page])
     replace "##{widget_id} #organ_panel", {:view => :all}
-  end
-
-  # 通过姓名/手机号/邮箱搜索当前组织的用户
-  def search
-    @members = current_user.root_organ.members_and_descendants
-    .where("name LIKE :text OR phone LIKE :text OR email LIKE :text", {:text => "%#{params[:text]}%"})
-    .paginate(:page => params[:page])
-
-    replace "##{widget_id} #organ_panel", { view: :all }
   end
 
 end
