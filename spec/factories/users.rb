@@ -1,37 +1,18 @@
 # -*- coding: utf-8 -*-
 FactoryGirl.define do
   factory :user do
-    password '123456'
-    password_confirmation '123456'
+    password '12345678'
+    password_confirmation '12345678'
 
-    factory :guest do
-      name '游客'
-      phone '18782943143'
-      email 'guest@zhiyisoft.com'
+    trait :email_and_phone do
+      sequence(:email) {|n| "person#{n}@example.com" }
+      sequence(:phone){|n| "1234567890#{n}"}
     end
 
-    factory :organ_member do
-      name '组织成员'
-      phone '18782943144'
-      email 'member@zhiyisoft.com'
-    end
-
-    factory :organ_member2 do
-      name '组织成员2'
-      phone '18782943145'
-      email 'member2@zhiyisoft.com'
-    end
-
-    factory :organ_admin do
-      name '组织管理员'
-      phone '18782943146'
-      email 'organ_admin@zhiyisoft.com'
-    end
-
-    factory :system_admin do
-      name '系统管理员'
-      phone '18782943147'
-      email 'system_admin@zhiyisoft.com'
+    [:guest_user, :behind_user_one, :behind_user_two, :zhiyi_admin_user, :system_admin_user].each do |user|
+      factory user do
+        email_and_phone
+      end
     end
   end
 end

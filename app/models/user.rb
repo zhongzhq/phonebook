@@ -4,14 +4,16 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :validatable, :timeoutable#, :confirmable
 
   validates_presence_of :email, :phone
-  validates_uniqueness_of :phone
-  validates :phone, format: {with: /^\d{11}$/}
+  validates :phone, :uniqueness => true, format: {with: /^\d{11}$/}
 
   has_and_belongs_to_many :actors
+  # discard
   has_many :applies
-#================== 此方法有问题  导致初始化 schema:load 无法执行
+  
+  #================== 此方法有问题  导致初始化 schema:load 无法执行
   scope :find_by_organ, -> organ { joins(:actors).where(actors: { id: Actor.find_by_organ(organ)} ).uniq }
-#================== 此方法有问题
+  #================== 此方法有问题
+
   # account 是一个虚拟属性，用于页面获取 用户名、邮箱或手机号
   attr_accessor :account
 

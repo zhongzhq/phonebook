@@ -15,8 +15,8 @@ describe Actor do
     end
 
     it '调用 find_by_organ 时，应该返回指定 organ 下的所有 actor 记录' do
-      @zhiyi = create :zhiyi_actors
-      expect( Actor.find_by_organ( @zhiyi ).size ).to eq 2
+      @zhiyi_software_behind = create :zhiyi_software_behind_with_actors
+      expect( Actor.find_by_organ( @zhiyi_software_behind ).size ).to eq 2
     end
   end
 end
