@@ -2,12 +2,18 @@
 class Organ < ActiveRecord::Base
   attr_accessible :name, :parent_id, :description
 
-  validates :name, presence: true
+  validates :name, :presence => true
 
   has_many :actors
+  has_many :memberships
   has_ancestry
 
-  set_callback :save, :after, :init_membership, unless: :parent
+  # 系统管理组信息不能修改
+  before_update { false if id == Organ.system_organ.try(:id);}
+  # 顶级组织在创建后自动初始化组织基本角色
+  after_save {Membership.initinlize_memberships_by_organ self unless parent}
+  # 子级组织在保存后自动通过
+  after_save {pass if parent}
 
   state_machine :initial => :apply do
     event :pass do
@@ -47,21 +53,15 @@ class Organ < ActiveRecord::Base
   end
 
   class << self
-    # 返回顶级组织，且组织审核通过（state: success）
+    # 返回顶级组织，且组织审核通过（:state => success）
     def available_organs
       roots.map{|x| x if x.success?}.compact
     end
 
-    # 返回系统管理组记录
+    # 返回系统管理组顶级的记录
     def system_organ
-      where(name: Settings.system_organ).first
+      where(:name => Settings.system_organ).first
     end
   end
 
-  private
-  # 初始化新建组织角色
-  def init_membership
-    Membership.find_or_create(self, Settings.admin)
-    Membership.find_or_create(self, Settings.member)
-  end
 end

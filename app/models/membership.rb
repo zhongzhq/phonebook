@@ -11,6 +11,11 @@ class Membership < ActiveRecord::Base
 
   before_save :assign_organ_id
 
+  def self.initinlize_memberships_by_organ organ
+    create :name => Settings.member, :organ_id => organ.root.id
+    create :name => Settings.admin, :organ_id => organ.root.id
+  end
+
   def self.find_or_create organ, name
     where(organ_id: organ.root.id, name: name).first_or_create
   end
