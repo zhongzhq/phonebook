@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class User < ActiveRecord::Base  
+class User < ActiveRecord::Base
   attr_accessible :password, :name, :email, :phone, :password_confirmation, :account
   devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :validatable, :timeoutable#, :confirmable
 
@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :actors
   has_many :applies
 
-  scope :find_by_organ, -> organ { joins(:actors).where(actors: { id: Actor.find_by_organ(organ)} ).uniq }
+#  scope :find_by_organ, -> organ { joins(:actors).where(actors: { id: Actor.find_by_organ(organ)} ).uniq }
 
   # account 是一个虚拟属性，用于页面获取 用户名、邮箱或手机号
   attr_accessor :account
