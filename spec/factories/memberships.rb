@@ -2,12 +2,16 @@
 FactoryGirl.define do
   factory :membership do
 
-    factory :zhiyi_admin do
-      name '知一软件 - 管理员'
+    factory :member do
+      name Settings.member
     end
 
-    factory :zhiyi_member do
-      name '知一软件 - 成员'
+    factory :admin do
+      name Settings.admin
+    end
+
+    factory :manager do
+      name '经理'
     end
 
   end
