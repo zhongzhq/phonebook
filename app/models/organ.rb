@@ -3,13 +3,14 @@ class Organ < ActiveRecord::Base
   attr_accessible :name, :parent_id, :description
 
   validates :name, :presence => true
+  validate { errors.add(:name, :taken) if siblings.reject{|x| x if x.id == self.id}.map(&:name).include?(self.name) }
 
   has_many :actors
   has_many :memberships
   has_ancestry
 
   # 系统管理组信息不能修改
-  before_update { false if id == Organ.system_organ.try(:id);}
+  before_update { false if id == Organ.system_organ.try(:id) }
   # 顶级组织在创建后自动初始化组织基本角色
   after_save {Membership.initinlize_memberships_by_organ self unless parent}
   # 子级组织在保存后自动通过
