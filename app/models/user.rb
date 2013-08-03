@@ -9,11 +9,12 @@ class User < ActiveRecord::Base
 
   has_and_belongs_to_many :actors
   has_many :applies
-
-#  scope :find_by_organ, -> organ { joins(:actors).where(actors: { id: Actor.find_by_organ(organ)} ).uniq }
-
+#================== 此方法有问题  导致初始化 schema:load 无法执行
+  scope :find_by_organ, -> organ { joins(:actors).where(actors: { id: Actor.find_by_organ(organ)} ).uniq }
+#================== 此方法有问题
   # account 是一个虚拟属性，用于页面获取 用户名、邮箱或手机号
   attr_accessor :account
+
 
   # 返回用户所属的所有组织，如果用户未加入任何组织，则返回 []
   def organs
