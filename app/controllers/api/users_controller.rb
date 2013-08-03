@@ -7,8 +7,9 @@ class Api::UsersController < Api::BaseController
     users = root.members_and_descendants.order("name ASC")
     users.each
     users.inject({}) do |index,user|
-      user[:organname] = full_name(root)
+      user[:organname] = full_name(user.organs.first)
     end
+
     if !params[:callback]
       render :json=>'{"status":400,"message":"请求方式错误，请使用jsonp方式请求数据"}'
     else
@@ -24,9 +25,6 @@ class Api::UsersController < Api::BaseController
       actors.each do |actor|
         result = result + actor.users
       end
-      result.inject({}) do |index,user|
-        user[:organname] = full_name(organ)
-      end
       result
     end
 
@@ -38,7 +36,10 @@ class Api::UsersController < Api::BaseController
   end
 
   def full_name organ
-    return organ.name unless organ.parent
+    if organ.parent ==nil
+      return ""
+    end
+    return  organ.name unless organ.parent
     full_name(organ.parent) + "/" + organ.name
   end
 

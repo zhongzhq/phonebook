@@ -32,7 +32,7 @@ function show_message(txt){
 	$("#targetFixed").css("top", $(document).scrollTop() + 2);
     }
     //创建半透明遮罩层
-    if (!$("#overLay").size()) {
+/*    if (!$("#overLay").size()) {
 	$('<div id="overLay"></div>').prependTo($("body"));
 	$("#overLay").css({
 	    width: "100%",
@@ -44,7 +44,7 @@ function show_message(txt){
 	    zIndex: 10000
 	}).height($(document).height());
     }
-    //显示操作提示，最关键核心代码
+*/    //显示操作提示，最关键核心代码
     $("#floatBox_doing").show().html("提示：" + txt)
     //定时关闭，测试用
     setTimeout(function() {
