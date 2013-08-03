@@ -1,82 +1,66 @@
-# # -*- coding: utf-8 -*-
-# require 'spec_helper'
+# -*- coding: utf-8 -*-
+require 'spec_helper'
 
-# describe Ability do
-#   before :each do
-#     # 角色
-#     Settings.system_roles.each { |key, value| Membership.create!( :name => value ).update_attribute(:status, 1) }
+describe Ability do
+  let(:ability) { Ability.new(create :guest_user) }
+  it '所有用户可以申请企业，或者申请加入企业' do
+    ability.should be_able_to(:apply, Organ)
+  end
 
-#     # 用户
-#     @system_admin = create :system_admin
-#     @organ_admin = create :organ_admin
-#     @organ_member = create :organ_member
+  describe '普通企业成员' do
+    before :each do
+      @behind_user_one = create :behind_user_one
 
-#     # Actor
-#     @system_admin_actor = Actor.create(membership_id: Membership.system_admin.id)
-#     @system_admin_actor.users << @system_admin
+      @zhiyi_software_behind = create :zhiyi_software_behind_with_actors      
+      Actor.find_by_organ_and_membership(
+        @zhiyi_software_behind, Membership.organ_member(@zhiyi_software_behind)
+        ).tap do |x|
+        x.users << @behind_user_one
+        x.permissions << (create :read_organ)
+      end
+    end
 
-#     # 等级
-#     @qi_ye = create(:qi_ye)
+    let(:ability) { Ability.new(@behind_user_one) }
+    it '可以查看所属企业' do
+      ability.should be_able_to(:read, Organ)
+    end
+  end
 
-#     # 部门
-#     @zhiyi = create :zhiyi, rank: @qi_ye
-#     @baidu = create :baidu, rank: @qi_ye
+  describe '企业管理员' do
+    before :each do
+      @zhiyi_admin_user = create :zhiyi_admin_user
 
-#     @zhiyi_admin_actor = Actor.create(organ_id: @zhiyi.id, membership_id: Membership.organ_admin.id)
-#     @zhiyi_admin_actor.users << @organ_admin
-#     @zhiyi_member_actor = Actor.create(organ_id: @zhiyi.id, membership_id: Membership.organ_member.id)
-#     @zhiyi_member_actor.users << @organ_member
-#   end
+      @zhiyi_software_behind = create :zhiyi_software_behind_with_actors      
+      Actor.find_by_organ_and_membership(
+        @zhiyi_software_behind, Membership.organ_admin(@zhiyi_software_behind)
+        ).tap do |x|
+        x.users << @zhiyi_admin_user
+        x.permissions << (create :manage_organ)
+      end
+    end
 
-#   describe '以系统管理员身份登陆' do
-#     before :each do
-#       @ability = Ability.new(@system_admin)
-#     end
+    let(:ability) { Ability.new(@zhiyi_admin_user) }
+    it '可以查看所属企业' do
+      ability.should be_able_to(:manage, Organ)
+    end
+  end
 
-#     it '应该可以访问管理员首页' do
-#       @ability.should be_able_to(:manage, :master) 
-#     end
+  describe '系统管理员' do
+    before :each do
+      @system_admin_user = create :system_admin_user
 
-#     it '应该可以管理等级 和 角色' do    
-#       @ability.should be_able_to(:manage, Rank.new)
-#       @ability.should be_able_to(:manage, Membership.new)
-#     end
+      @zhiyi_software_behind = create :zhiyi_software_behind_with_actors      
+      Actor.find_by_organ_and_membership(
+        @zhiyi_software_behind, Membership.organ_admin(@zhiyi_software_behind)
+        ).tap do |x|
+        x.users << @system_admin_user
+        x.permissions << (create :manage_all)
+      end
+    end
 
-#     it '应该可以管理企业' do
-#       @ability.should be_able_to(:manage, :organ)
-#     end        
-#   end
-
-#   describe '以组织管理员身份登陆' do
-#     before :each do
-#       @ability = Ability.new(@organ_admin)
-#     end
-
-#     it '应该可以管理自己的组织' do
-#       @ability.should be_able_to(:manage, @zhiyi)
-#       @ability.should_not be_able_to(:manage, @baidu)
-#     end
-#   end
-
-#   describe '以组织成员身份登陆' do
-#     before :each do
-#       @ability = Ability.new(@organ_member)
-#     end
-
-#     it '应该可以查看加入的组织的信息' do
-#       @ability.should be_able_to(:read, @zhiyi)
-#       @ability.should_not be_able_to(:manage, @baidu)
-#     end
-#   end
-
-#   describe '以系统任一用户登陆' do
-#     before :each do
-#       @ability = Ability.new(User.new)
-#     end
-
-#     it '应该可以 创建企业或申请加入企业' do
-#       @ability.should be_able_to(:apply, @zhiyi)
-#       @ability.should be_able_to(:apply, @baidu)
-#     end
-#   end
-# end
+    let(:ability) { Ability.new(@system_admin_user) }
+    it '可以查看所属企业' do
+      ability.should be_able_to(:manage, :all)
+    end
+  end
+end

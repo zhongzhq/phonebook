@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe User do
   before :each do
-    @zhiyi_software_behind = create :zhiyi_software_behind_with_actors, :parent => create(:zhiyi_software_with_actors)    
+    @zhiyi_software_behind = create :zhiyi_software_behind_with_actors, :parent => create(:zhiyi_software_with_actors)
     # user
     @guest_user = create :guest_user
     @behind_user_one = create :behind_user_one
