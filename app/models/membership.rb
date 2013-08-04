@@ -16,11 +16,6 @@ class Membership < ActiveRecord::Base
   scope :find_all_by_organ, -> organ { where(:organ_id => organ.root.id) }
 
   class << self
-    # discard
-    def find_or_create organ, name
-      where(organ_id: organ.root.id, name: name).first_or_create
-    end
-
     def organ_member organ
       find_all_by_organ(organ).where(:name => Settings.member).first
     end

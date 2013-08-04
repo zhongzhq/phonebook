@@ -22,7 +22,7 @@ describe Membership do
 
     it '每个组织的初始化角色不能修改' do
       expect( Membership.organ_member(create :zhiyi).update_attributes(:name => 'test') ).to be_false
-      expect( Membership.organ_admin(create :zhiyi).update_attributes(:name => 'test') ).to be_false
+      expect( Membership.organ_admin(create :system_organ).update_attributes(:name => 'test') ).to be_false
     end
 
     it '如果不是组织的初始化角色，则可以修改' do
