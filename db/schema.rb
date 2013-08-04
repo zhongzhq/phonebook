@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731102837) do
+ActiveRecord::Schema.define(:version => 20130804032125) do
 
   create_table "actors", :force => true do |t|
     t.integer  "membership_id"
@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(:version => 20130731102837) do
   end
 
   create_table "applies", :force => true do |t|
-    t.integer "user_id"
-    t.integer "actor_id"
-    t.string  "state"
+    t.integer  "user_id"
+    t.integer  "actor_id"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "memberships", :force => true do |t|

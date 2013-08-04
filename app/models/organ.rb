@@ -49,11 +49,6 @@ class Organ < ActiveRecord::Base
     actor_users << user unless actor_users.include?(user)
   end
 
-  # 申请加入组织的成员
-  def apply_members
-    Actor.find_or_create(self, Membership.find_or_create( self, Settings.member )).applies.map(&:user)
-  end
-
   class << self
     # 返回顶级组织，且组织审核通过（:state => success）
     def available_organs

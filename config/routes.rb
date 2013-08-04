@@ -43,20 +43,18 @@ EPBook::Application.routes.draw do
     member do
       get 'new_child'
       post 'create_child'
-      get 'apply_members'
-      get 'pass_user'
       get 'add_member'
       post 'save_member'
       get 'remove_member'
     end
     collection do
-      get 'join'
-      post 'join_create'
       get 'new_member'
       post 'create_member'
       get 'search'
     end
   end
+
+  resources :applies, :only => [:new, :create]
 
   # Master routes
   namespace :master do

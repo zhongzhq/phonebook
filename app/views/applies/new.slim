@@ -3,8 +3,8 @@
     i.icon-upload.text-large
     span.text-info = '申请加入企业'
   .widgetarea
-    = simple_form_for :organ, :url => join_create_organs_path, :html => {:class=>"form-horizontal form-mini"} do |f|
-      = f.input :id, collection: Organ.available_organs.map{|x| [x.name, x.id]}, as: :radio_buttons, input_html: {name: 'id'}, label: '企业名称'
+    = simple_form_for :apply, :url => applies_path, :html => {:class=>"form-horizontal form-mini"} do |f|
+      = f.input :organ_id, collection: Organ.available_organs.map{|x| [x.name, x.id]}, as: :radio_buttons, label: '企业信息'
       
       .control-group
         .controls

@@ -1,0 +1,22 @@
+#members
+  table.table.table-hover
+    thead
+      tr.alert.alert-info
+        th.index_number 序号
+        th 姓名
+        th 手机号
+        td 邮箱
+        td 状态
+        th 操作
+    tbody
+      = '暂无数据' if @applies.blank?
+      - @applies.each_with_index do |apply, index|
+        - user = User.find(apply.user_id)
+        tr
+          td= index + 1
+          td= user.name
+          td= user.phone
+          td= user.email
+          td= t("state.apply.#{apply.state}")
+          td.operating
+            = link_to '通过', url_for_event(:pass, id: apply.id), remote: true, class: 'btn btn-link'

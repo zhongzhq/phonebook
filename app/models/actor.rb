@@ -9,8 +9,6 @@ class Actor < ActiveRecord::Base
   belongs_to :membership
   has_and_belongs_to_many :users
   has_and_belongs_to_many :permissions
-  # discard
-  has_many :applies
 
   scope :find_by_organ, -> organ { where organ_id: organ }
 

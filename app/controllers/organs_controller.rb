@@ -36,26 +36,6 @@ class OrgansController < ApplicationController
     render 'new_child'
   end
 
-  # 申请加入企业
-  def join
-  end
-
-  def join_create
-    @organ = Organ.find(params[:id]) rescue nil
-
-    if Apply.add(current_user, @organ)
-      redirect_to root_path, notice: '组织申请成功，审核中'
-    else
-      redirect_to root_path, alert: '组织申请失败，你可能已申请过或者正在申请其它企业'
-    end
-  end
-  
-  # 显示待申请的成员
-  def apply_members
-    @organ = Organ.find(params[:id])
-    render :layout => false
-  end
-
   # 通过姓名/手机号/邮箱搜索当前组织的用户
   def search
     @members = current_user.root_organ.members_and_descendants
@@ -71,13 +51,6 @@ class OrgansController < ApplicationController
       Actor.first_or_create( :organ => @organ, :membership => Membership.find(params[:membership_id]) )
       )
     redirect_to search_organs_path, notice: '移除成功'
-  end
-
-  # 通过用户的申请
-  def pass_user
-    @organ = Organ.find(params[:id])
-    Apply.find_by_user_and_organ(User.find(params[:user_id]), @organ).pass
-    render 'apply_members', :layout => false
   end
 
   # 编辑组织信息
