@@ -20,9 +20,9 @@ read_organ = Permission.new(name: '查看所属企业', code: '
 organ1 = Organ.create!(name: '成都知一软件有限公司' )
 
 # 初始化公司角色
-membership1 = Membership.find_or_create(organ1, Settings.member)
-membership2 = Membership.find_or_create(organ1, Settings.admin)
-membership3 = Membership.find_or_create(system_organ, Settings.admin)
+membership1 = Membership.organ_member(organ1)
+membership2 = Membership.organ_admin(organ1)
+membership3 = Membership.organ_admin(system_organ)
 
   organ11 = Organ.create!(name: '软件开发部', parent_id: organ1 )
     organ11_1 = Organ.create!(name: '前台开发部', parent_id: organ11 )

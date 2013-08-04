@@ -44,8 +44,8 @@ class Organ < ActiveRecord::Base
     unless user.organs.blank?
       return unless root == user.root_organ
     end
-
-    actor_users = Actor.find_or_create(self, membership).users
+    
+    actor_users = Actor.first_or_create( :organ => self, :membership => membership ).users
     actor_users << user unless actor_users.include?(user)
   end
 

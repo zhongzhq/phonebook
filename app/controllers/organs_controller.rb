@@ -16,8 +16,8 @@ class OrgansController < ApplicationController
 
     if @organ.save
       # 把当前申请用户加入新创建企业的成员和管理员组
-      @organ.add(current_user, Membership.find_or_create(@organ, Settings.admin))
-      @organ.add(current_user, Membership.find_or_create(@organ, Settings.member))
+      @organ.add(current_user, Membership.organ_admin(@organ))
+      @organ.add(current_user, Membership.organ_member(@organ))
       redirect_to root_path, notice: '申请成功，正在审核'
     else
       render 'new'
