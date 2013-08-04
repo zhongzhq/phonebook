@@ -10,11 +10,7 @@ class OrgansController < ApplicationController
     @organ = current_user.organs.first
   end
 
-  # 申请创建一个企业
-  def new
-    @organ = Organ.new
-  end
-  
+  # 申请创建一个企业  
   def create
     @organ = Organ.new(params[:organ])
 

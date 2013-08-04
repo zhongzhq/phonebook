@@ -20,8 +20,6 @@ EPBook::Application.routes.draw do
   # 验证码
   captcha_route
 
-  resources :phonebooks
-
   resources :public, :only => [] do
     collection do
       get 'help'

@@ -3,12 +3,10 @@
   .infobox
     .infobox-title
       h4
-        a href=phonebooks_path
-          i.icon-search.muted
-          | 快速查找
+        .icon-search 快速查找
         .more.pull-right
           a href=""
-            .label.label-success 帮助
+            .label.label-success 
     .infobox-area
       form.form-inline method="post"
         input.margin-right5 style="width:70%;" type="text"
@@ -21,11 +19,9 @@
   .infobox
     .infobox-title
       h4
-        a href=phonebooks_path
-          i.icon-exchange.muted
-          | 企业信息
+        span.icon-exchange 企业信息
         .more.pull-right
-          a href="#" 更多
+          a href="#" 
 
     - if current_user.organs.blank?
       .infobox-title
@@ -44,17 +40,15 @@
   .infobox
     .infobox-title
       h4
-        a href=phonebooks_path
-          i.icon-user.muted
-          | 个人资料
+        .icon-user 个人资料
     .infobox-area
       ul
-        li 姓名： #{@user.name}
+        li 姓名： #{current_user.name}
         li
-          | 邮箱： #{@user.email}
+          | 邮箱： #{current_user.email}
           - if Devise.mappings[:user].confirmable?
-            = link_to "验证邮箱", new_confirmation_path(@user) unless @user.confirmed?
-        li 手机： #{@user.phone}
+            = link_to "验证邮箱", new_confirmation_path(current_user) unless current_user.confirmed?
+        li 手机： #{current_user.phone}
   .infobox
     .infobox-title
       h4
