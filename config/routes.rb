@@ -6,7 +6,7 @@ EPBook::Application.routes.draw do
   end
   unauthenticated :user do
     devise_scope :user do
-      get "/" => "devise/sessions#new"
+      get "/" => "users/sessions#new"
     end
   end
 
