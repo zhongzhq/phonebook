@@ -35,16 +35,6 @@ class User < ActiveRecord::Base
     actors.map(&:permissions).flatten.uniq
   end
 
-  # 允许用户使用 手机号或邮箱 登陆
-  def self.find_first_by_auth_conditions(warden_conditions)
-    conditions = warden_conditions.dup
-    if account = conditions.delete(:account)
-      where(conditions).where(["lower(email) = :value OR phone = :value", { :value => account.downcase }]).first
-    else
-      where(conditions).first
-    end
-  end
-
   # 调整用户组织关系，清除用户以前所属组织，把用户加入 new_organs，并返回新添加的组织
   def adjust new_organs
     (organs - new_organs).each do |organ|
@@ -53,6 +43,16 @@ class User < ActiveRecord::Base
 
     (new_organs - organs).each do |organ|
       actors << Actor.first_or_create( :organ => organ, :membership => Membership.organ_member(organ) )
+    end
+  end
+  
+  # 允许用户使用 手机号或邮箱 登陆
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if account = conditions.delete(:account)
+      where(conditions).where(["lower(email) = :value OR phone = :value", { :value => account.downcase }]).first
+    else
+      where(conditions).first
     end
   end
 end

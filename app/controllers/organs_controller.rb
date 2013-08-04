@@ -68,7 +68,7 @@ class OrgansController < ApplicationController
     @organ = Organ.find(params[:id])
 
     User.find(params[:user_id]).actors.delete(
-      Actor.find_or_create(@organ, Membership.find(params[:membership_id]) )
+      Actor.first_or_create( :organ => @organ, :membership => Membership.find(params[:membership_id]) )
       )
     redirect_to search_organs_path, notice: '移除成功'
   end
