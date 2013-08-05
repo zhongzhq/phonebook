@@ -18,24 +18,29 @@ class Organ < ActiveRecord::Base
   after_save {pass if parent}
 
   state_machine :initial => :apply do
-    event :pass do
+    event :review do
+      transition :apply => :review
+    end
+
+    event :success do
       transition :apply => :success
     end
 
-    event :not_pass do
+    event :fill do
       transition :apply => :failure
     end
   end
 
-  # 组织的所有成员
+  # 当前组织的所有成员
   def members
     User.find_by_organ(self)
   end
 
-  # 组织及后代组织的成员
-  def members_and_descendants
+  # 组织所有成员
+  def all_members
     User.find_by_organ(subtree)
   end
+
 
   # 添加指定用户到当前组织的指定角色下
   def add user, membership
@@ -44,7 +49,7 @@ class Organ < ActiveRecord::Base
     unless user.organs.blank?
       return unless root == user.root_organ
     end
-    
+
     actor_users = Actor.first_or_create( :organ => self, :membership => membership ).users
     actor_users << user unless actor_users.include?(user)
   end

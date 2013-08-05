@@ -61,13 +61,6 @@ ActiveRecord::Schema.define(:version => 20130804032125) do
     t.integer "level",       :default => 1
   end
 
-  create_table "phonebooks", :force => true do |t|
-    t.string   "name"
-    t.string   "phone"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "phone"
