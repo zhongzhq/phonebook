@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
   load_and_authorize_resource
-  
+
   has_widgets do |root|
     root << widget('organ/main', :organ)
   end
@@ -10,14 +10,11 @@ class OrgansController < ApplicationController
     @organ = current_user.organs.first
   end
 
-  # 申请创建一个企业  
+  # 申请创建一个企业
   def create
     @organ = Organ.new(params[:organ])
 
     if @organ.save
-      # 把当前申请用户加入新创建企业的成员和管理员组
-      @organ.add(current_user, Membership.organ_admin(@organ))
-      @organ.add(current_user, Membership.organ_member(@organ))
       redirect_to root_path, notice: '申请成功，正在审核'
     else
       render 'new'

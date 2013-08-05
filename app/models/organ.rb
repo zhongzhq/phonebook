@@ -13,13 +13,13 @@ class Organ < ActiveRecord::Base
   # 子级组织在保存后自动通过
   after_save {pass if parent}
 
-  state_machine :initial => :review do
-    event :pass do
-      transition :apply => :success
+  state_machine :initial => :enabled do
+    event :open do
+      transition :disable => :enabled
     end
 
-    event :fail do
-      transition :apply => :failure
+    event :close do
+      transition :enabled => :disable
     end
   end
 
