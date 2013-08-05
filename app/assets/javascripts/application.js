@@ -21,11 +21,7 @@ function refresh_captcha(){
     $('#captcha_img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
 }
 
-function get(obj){
-    $.get($(obj).attr("href"), function(data){
-        $('#organs').html(data);
-    });
-}
+
 function show_message(txt){
     //IE6位置
     if (!window.XMLHttpRequest) {
@@ -54,25 +50,3 @@ function show_message(txt){
 
 }
 
-// jsTree 设置
-function organ_tree() {
-    // jstree 设置
-    $("#organ_tree").jstree({
-        "themes" : {
-            "theme" : "default",
-            "dots" : true,
-            "icons" : true
-        },
-        "plugins" : [ "themes", "html_data" ]
-    })
-	.bind("loaded.jstree", function (event, data) {
-	    $(".jstree-closed").removeClass("jstree-closed").addClass("jstree-open");
-	})
-	.delegate("a", "click", function (event, data) {
-	    $('li[class^="jstree-"]').each(function(){
-		$(this).find("a").removeClass("jstree-clicked");
-	    });
-	    $(this).addClass("jstree-clicked");
-	    get(this);
-	});
-};

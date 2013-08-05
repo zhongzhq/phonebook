@@ -1,18 +1,12 @@
 = widget_div do
   .infobox
     .infobox-area
-      .span3
-        h6 按组织结构显示
-        = render_widget :organ_tree
-        javascript:
-          organ_tree();
-        h6 = link_to '查看企业所有用户', url_for_event(:all), remote: true
+      .container-fluid
+        .row-fluid
+          .span3
+            p 按组织结构显示
+            = render_widget :organ_tree
+            p = link_to '查看所有用户', url_for_event(:all), remote: true
+          .span9
+            #organ_panel
 
-      .span9
-        #organ_panel
-
-javascript:
-  var init_open = $("#open").find("a:first");
-
-  init_open.addClass("jstree-clicked");
-  $.get( init_open.attr("href"));
