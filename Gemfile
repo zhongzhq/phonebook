@@ -11,7 +11,7 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'slim'
+gem 'slim-rails'
 
 gem 'unicorn'
 gem "simple_form"

@@ -28,6 +28,11 @@
           p
             i.icon-th.success
             = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
+    .menu-block
+      a href= memberships_path
+        p
+          i.icon-user.text-xlarge.success
+          | 角色管理
     - if can? :manage, :master
       .menu-block
         a href= master_root_path

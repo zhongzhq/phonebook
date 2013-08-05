@@ -1,0 +1,21 @@
+.infobox
+  h4
+    i.icon-hand-right
+    span.text-info 角色管理
+    .pull-right
+      = link_to "添加角色", new_membership_path
+  .infobox-area.widgetarea-height
+    table.table.table-bordered.table-hover
+      thead
+        tr.alert.alert-info
+          th.index_number 序号
+          th 角色名
+          th 操作
+      tbody
+        - @memberships.each_with_index do |membership, index|
+          tr
+            td= index + 1
+            td= membership.name
+            td.operating
+              - unless ( Membership.organ_member(current_user.root_organ).name + Membership.organ_admin(current_user.root_organ).name ).include? membership.name
+                 = link_to '修改', edit_membership_path(membership)
