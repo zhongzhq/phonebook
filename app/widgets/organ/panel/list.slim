@@ -8,7 +8,9 @@
         td 邮箱
         th 操作
     tbody
-      = '暂无成员信息' if @members.empty?
+      -if @members.empty?
+        tr
+          td colspan="5" style="text-align:center;color:red" 此部门下无成员
       - @members.each_with_index do |member, index|
         tr
           td= index + 1
