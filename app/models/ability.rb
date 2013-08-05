@@ -15,7 +15,7 @@ class Ability
     can :apply, Organ
   end
 
-# 临时 定义3种权限
+# 定义3种权限
   private
 
   def master

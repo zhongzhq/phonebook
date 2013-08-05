@@ -18,7 +18,7 @@ class Apply < ActiveRecord::Base
       transition :apply => :success
     end
 
-    event :not_pass do
+    event :fail do
       transition :apply => :failure
     end
   end
