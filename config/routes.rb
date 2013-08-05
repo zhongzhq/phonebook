@@ -57,6 +57,8 @@ EPBook::Application.routes.draw do
     end
   end
 
+  resources :memberships
+
   resources :applies, :only => [:new, :create]
 
   # Master routes

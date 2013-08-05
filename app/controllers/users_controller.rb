@@ -25,4 +25,5 @@ class UsersController < ApplicationController
     @user.adjust( Organ.find( params[:new_organ_ids] ) )
     redirect_to organs_path, notice: '调整成功'
   end
+
 end
