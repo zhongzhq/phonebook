@@ -7,4 +7,9 @@ class Permission < ActiveRecord::Base
   validates :level, :inclusion => { :in => [0, 1] }
 
   has_and_belongs_to_many :actors
+
+
+  def self.master
+    where(level: 0)
+  end
 end
