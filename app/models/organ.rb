@@ -10,9 +10,6 @@ class Organ < ActiveRecord::Base
   has_many :memberships
   has_ancestry
 
-  # 子级组织在保存后自动通过
-  after_save {pass if parent}
-
   state_machine :initial => :enabled do
     event :open do
       transition :disable => :enabled
@@ -23,13 +20,11 @@ class Organ < ActiveRecord::Base
     end
   end
 
-  # 当前组织的所有成员
   def members
     User.find_by_organ(self)
   end
 
-  # 组织所有成员
-  def all_members
+  def subtree_members
     User.find_by_organ(subtree)
   end
 

@@ -5,6 +5,7 @@ zh_CN:
       organ: 组织
       membership: 角色
       user: 用户
+      organ_apply: 申请企业
     attributes:
       rank:
         name: 级别
@@ -30,6 +31,8 @@ zh_CN:
         email: 电子邮箱
         phone: 手机号码
         captcha: 验证码
+      organ_apply:
+        organ_name: 企业名称
 
     errors:
       messages:
@@ -62,6 +65,10 @@ zh_CN:
       success: 申请成功
       failure: 申请失败
     apply:
-      apply: 待审核
+      review: 待审核
+      success: 申请成功
+      failure: 申请失败
+    organ_apply:
+      review: 待审核
       success: 申请成功
       failure: 申请失败

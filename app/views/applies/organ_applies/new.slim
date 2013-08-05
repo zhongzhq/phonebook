@@ -1,0 +1,12 @@
+.widget
+  h4
+    i.icon-upload.text-large
+    span.text-info = '申请创建企业'
+  .widgetarea
+    = simple_form_for @organ_apply, :url => applies_organ_applies_path, :html => {:class=>"form-horizontal form-mini"} do |f|
+      = f.input :organ_name
+      
+      .control-group
+        .controls
+          = link_to '取消', root_path, :class => 'btn btn-danger'
+          = f.button :submit, '申请企业', :class => "btn-info"

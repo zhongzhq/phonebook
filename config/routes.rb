@@ -59,7 +59,15 @@ EPBook::Application.routes.draw do
 
   resources :memberships
 
-  resources :applies, :only => [:new, :create]
+  namespace :applies do
+    resources :user_applies, :only => [:new, :create]
+    resources :organ_applies do
+      member do
+        get 'init'
+        post 'init_create'
+      end
+    end
+  end  
 
   # Master routes
   namespace :master do

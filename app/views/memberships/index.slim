@@ -17,5 +17,4 @@
             td= index + 1
             td= membership.name
             td.operating
-              - unless ( Membership.organ_member(current_user.root_organ).name + Membership.organ_admin(current_user.root_organ).name ).include? membership.name
-                 = link_to '修改', edit_membership_path(membership)
+               = link_to '修改', edit_membership_path(membership)

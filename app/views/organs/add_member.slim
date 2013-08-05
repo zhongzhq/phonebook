@@ -8,7 +8,11 @@
       = f.input :name, :autofocus => true
       = f.input :email
       = f.input :phone
-      = hidden_field_tag :organ_id, @organ.id 
+      = f.input :membership, :label => '角色' do
+        - memberships = Membership.where(:organ_id => current_user.organs.first.root.id)
+        = select_tag "membership_id", options_from_collection_for_select(memberships, "id", "name")
+
+      = hidden_field_tag :organ_id, @organ.id
       
       .control-group
         .controls

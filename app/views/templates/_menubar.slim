@@ -22,12 +22,11 @@
           i.icon-dashboard.text-xlarge.success
           | 仪表盘
 
-    - if current_user.organs.first.try(:root).try(:success?)
-      .menu-block
-        a href= organs_path
-          p
-            i.icon-th.success
-            = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
+    .menu-block
+      a href= organs_path
+        p
+          i.icon-th.success
+          = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
     .menu-block
       a href= memberships_path
         p

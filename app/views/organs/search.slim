@@ -29,7 +29,6 @@
                   br
 
               td.operating
-                - if can? :manage, Organ
-                  = link_to '编辑', adjust_user_path(member)
+                = link_to '编辑', adjust_user_path(member)
 
       = will_paginate @members

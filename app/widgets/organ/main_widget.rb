@@ -18,7 +18,7 @@ class Organ::MainWidget < ApplicationWidget
 
   # 显示当前用户组织的顶级组织的所有成员
   def all
-    @members = current_user.root_organ.members_and_descendants.paginate(:page => params[:page])
+    @members = current_user.organs.first.root.subtree_members.paginate(:page => params[:page])
     replace "##{widget_id} #organ_panel", {:view => :all}
   end
 

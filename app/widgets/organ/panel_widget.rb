@@ -26,16 +26,16 @@ class Organ::PanelWidget < ApplicationWidget
 
   def apply_members evt
     @organ = Organ.find evt[:organ_id]
-    @applies = Apply.members(@organ)
+    @applies = UserApply.members(@organ)
 
     replace "##{widget_id} #members", :view => :apply_members
   end
 
   def pass_apply evt
-    @apply = Apply.find evt[:id]
+    @apply = UserApply.find evt[:id]
 
     @organ = @apply.actor.organ
-    @applies = Apply.members(@organ)
+    @applies = UserApply.members(@organ)
 
     @apply.pass
     

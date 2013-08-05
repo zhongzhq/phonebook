@@ -1,13 +1,12 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
-  load_and_authorize_resource
+  #load_and_authorize_resource
 
   has_widgets do |root|
     root << widget('organ/main', :organ)
   end
 
   def index
-    @organ = current_user.organs.first
   end
 
   # 申请创建一个企业
@@ -35,7 +34,7 @@ class OrgansController < ApplicationController
 
   # 通过姓名/手机号/邮箱搜索当前组织的用户
   def search
-    @members = current_user.root_organ.members_and_descendants
+    @members = current_user.organs.first.root.subtree_members
     .where("name LIKE :text OR phone LIKE :text OR email LIKE :text", {:text => "%#{params[:text]}%"})
     .paginate(:page => params[:page])
   end
@@ -86,11 +85,14 @@ class OrgansController < ApplicationController
   end
 
   def save_member
+    @organ = Organ.find params[:organ_id]
+
     params[:user][:password] = SecureRandom.hex(8)
     @user = User.new(params[:user])
 
     if @user.save
-      @user.adjust( [ Organ.find( params[:organ_id] ) ] )
+      actor = Actor.first_or_create :organ => @organ, :membership => Membership.find(params[:membership_id])
+      @user.adjust( [ actor ] )
       redirect_to organs_path, :notice => '添加联系人成功'
     else
       render 'add_member'

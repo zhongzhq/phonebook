@@ -22,15 +22,10 @@ class User < ActiveRecord::Base
     actors.map(&:permissions).flatten.uniq
   end
 
-  # 调整用户组织关系，清除用户以前所属组织，把用户加入 new_organs，并返回新添加的组织
-  def adjust new_organs
-    (organs - new_organs).each do |organ|
-      actors.delete Actor.first_or_create( :organ => organ, :membership => Membership.organ_member(organ) )
-    end
-
-    (new_organs - organs).each do |organ|
-      actors << Actor.first_or_create( :organ => organ, :membership => Membership.organ_member(organ) )
-    end
+  # 调用用户所拥有的 actors
+  def adjust new_actors
+    (actors - new_actors).each { |actor| actors.delete actor }
+    (new_actors - actors).each { |actor| actors << actor }
   end
 
   # 允许用户使用 手机号或邮箱 登陆

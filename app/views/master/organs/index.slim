@@ -11,11 +11,11 @@
           td 企业状态
           th 操作
       tbody
-        - @organs.each_with_index do |organ, index|
+        - @organ_applies.each_with_index do |organ_apply, index|
           tr
             td= index + 1
-            td= organ.name
-            td= t("state.organ.#{organ.state}")
+            td= organ_apply.organ_name
+            td= t("state.organ_apply.#{organ_apply.state}")
             td.operating
-              - unless organ.success?
-                = link_to '通过', pass_master_organ_path(organ)
+              - unless organ_apply.success?
+                = link_to '通过', pass_master_organ_path(organ_apply)

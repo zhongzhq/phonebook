@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # 临时存放用户申请加入某个组织记录的状态，如果用户申请成功，则从表中删除记录
 
-class Apply < ActiveRecord::Base
+class UserApply < ActiveRecord::Base
   attr_accessible :user_id, :actor_id
 
   validates :user_id, :actor_id, presence: true, existence: true
@@ -49,6 +49,6 @@ class Apply < ActiveRecord::Base
 
   # 返回指定组织的申请记录
   def self.members organ
-    Apply.where(:actor_id => Actor.find_by_organ(organ).map(&:id))
+    where(:actor_id => Actor.find_by_organ(organ).map(&:id))
   end
 end

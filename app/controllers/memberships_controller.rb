@@ -2,7 +2,7 @@
 class MembershipsController < ApplicationController
 
     def index
-      @memberships = Membership.find_all_by_organ current_user.root_organ
+      @memberships = Membership.all_by_organ current_user.organs.first.root
     end
 
     def new
@@ -10,7 +10,7 @@ class MembershipsController < ApplicationController
     end
 
     def create
-      params[:membership][:organ_id] = current_user.root_organ.id
+      params[:membership][:organ_id] = current_user.organs.first.root.id
       @membership = Membership.new(params[:membership])
 
       return redirect_to memberships_path, notice: '添加成功' if @membership.save

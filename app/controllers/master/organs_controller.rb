@@ -1,13 +1,13 @@
 module Master
   class OrgansController < ApplicationController
-    authorize_resource :class => false
+    #authorize_resource :class => false
 
     def index
-      @organs = Organ.roots
+      @organ_applies = OrganApply.all
     end
 
     def pass
-      Organ.find(params[:id]).try(:pass)
+      OrganApply.find(params[:id]).try(:pass)
       redirect_to master_organs_path
     end
   end
