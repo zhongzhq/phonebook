@@ -23,6 +23,7 @@
               td= member.email
               td= member.actors.map{|x| [x.organ.name, x.membership.name].join("-")}.join('<br/>').html_safe
               td.operating
-                = link_to '编辑', adjust_user_path(member)
+                - if can? :manage, Organ
+                  = link_to '编辑', adjust_user_path(member)
 
       = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}

@@ -5,32 +5,28 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    # alias action form organ
-    alias_action :create, :join, :join_create, :render_event_response, :to => :apply
+    read_organ unless user.organs.empty?
 
     user.permissions.each do |permission|
       eval permission.code
     end
 
-    can :apply, Organ
   end
 
-# 定义3种权限
+  # 定义 3 种权限
   private
 
   def master
     can :manage ,:all
   end
 
-  def organ_master
-    can manage,Organ
-    can manage,Membership
+  def master_organ
+    can :manage, Organ
+    can :manage, Membership
   end
 
-  def organ_read
-    can read,Organ
-    can read,Membership
+  def read_organ
+    can :read, Organ
   end
-
 
 end

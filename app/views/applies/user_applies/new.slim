@@ -7,10 +7,6 @@
       
       = f.input :organ, label: '企业信息' do
         = select_tag "organ_id", options_from_collection_for_select(Organ.roots, "id", "name"), prompt: '请选择'
-
-      = f.input :membership, :label => '角色' do
-        - memberships = Membership.where(:organ_id => current_user.organs.first.root.id)
-        = select_tag "membership_id", options_from_collection_for_select(memberships, "id", "name")
       
       .control-group
         .controls

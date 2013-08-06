@@ -22,17 +22,19 @@
           i.icon-dashboard.text-xlarge.success
           | 仪表盘
 
-    .menu-block
-      a href= organs_path
-        p
-          i.icon-th.success
-          = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
-    .menu-block
-      a href= memberships_path
-        p
-          i.icon-user.text-xlarge.success
-          | 角色管理
-    - if can? :manage, :master
+    - if can? :read, Organ
+      .menu-block
+        a href= organs_path
+          p
+            i.icon-th.success
+            = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
+    - if can? :manage, Organ
+      .menu-block
+        a href= memberships_path
+          p
+            i.icon-user.text-xlarge.success
+            | 角色管理
+    - if can? :manage, :all
       .menu-block
         a href= master_root_path
           p
