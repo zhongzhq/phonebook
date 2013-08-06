@@ -22,22 +22,22 @@
           i.icon-dashboard.text-xlarge.success
           | 仪表盘
 
-    .menu-block
-      a href= organs_path
-        p
-          i.icon-th.success
-          = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
-    .menu-block
-      a href= memberships_path
-        p
-          i.icon-user.text-xlarge.success
-          | 角色管理
-    - if can? :manage, :master
+    - unless current_user.organs.empty?
       .menu-block
-        a href= master_root_path
+        a href= organs_path
           p
-            i.icon-user.text-xlarge
-            | 管理界面
+            i.icon-th.success
+            = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
+      .menu-block
+        a href= memberships_path
+          p
+            i.icon-user.text-xlarge.success
+            | 角色管理
+    .menu-block
+      a href= master_root_path
+        p
+          i.icon-user.text-xlarge
+          | 管理界面
     .menu-block
       a href= about_public_index_path
         p
