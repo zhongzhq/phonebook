@@ -25,9 +25,13 @@ module Applies
       @organ_apply = OrganApply.find(params[:id])
 
       @organ = Organ.create(:name => @organ_apply.organ_name)
+
       @membership = Membership.create(:name => params[:membership][:name], :organ_id => @organ.id)
 
-      Actor.first_or_create(:organ => @organ, :membership => @membership).users << current_user
+      @actor = Actor.first_or_create(:organ => @organ, :membership => @membership)
+      
+      @actor.users << current_user
+      Permission.where(:code => 'master_organ').first.actors << @actor
 
       redirect_to root_path, :notice => '企业信息初始化成功'
     end

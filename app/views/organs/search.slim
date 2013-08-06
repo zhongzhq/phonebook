@@ -24,11 +24,13 @@
               td
                 - member.actors.each do |x|
                   | #{x.organ.name} - #{x.membership.name}
-                  - unless current_user == member
-                    = link_to '移除', remove_member_organ_path(x.organ, user_id: member.id, membership_id: x.membership.id)
+                  - if can? :manage, Organ
+                    - unless current_user == member
+                      = link_to '移除', remove_member_organ_path(x.organ, user_id: member.id, membership_id: x.membership.id)
                   br
 
               td.operating
-                = link_to '编辑', adjust_user_path(member)
+                - if can? :manage, Organ
+                  = link_to '编辑', adjust_user_path(member)
 
       = will_paginate @members

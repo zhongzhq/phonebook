@@ -18,8 +18,9 @@
           td= member.phone
           td= member.email
           td.operating
-            = link_to '编辑', adjust_user_path(member)
-            - if @organ
-              = link_to '删除', url_for_event(:remove, organ_id: @organ.id, user_id: member.id), remote: true
+            - if can? :manage, Organ
+              = link_to '编辑', adjust_user_path(member)
+              - if @organ
+                = link_to '删除', url_for_event(:remove, organ_id: @organ.id, user_id: member.id), remote: true
 
   = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}

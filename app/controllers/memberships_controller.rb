@@ -2,7 +2,7 @@
 class MembershipsController < ApplicationController
 
     def index
-      @memberships = Membership.all_by_organ current_user.organs.first.root
+      @memberships = Membership.find_by_organ current_user.organs.first.root
     end
 
     def new

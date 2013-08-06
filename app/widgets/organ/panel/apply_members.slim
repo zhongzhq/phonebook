@@ -19,4 +19,5 @@
           td= user.email
           td= t("state.apply.#{apply.state}")
           td.operating
-            = link_to '通过', url_for_event(:pass, id: apply.id), remote: true, class: 'btn btn-link'
+            - if can? :manage, Organ
+              = link_to '通过', url_for_event(:pass, id: apply.id), remote: true, class: 'btn btn-link'

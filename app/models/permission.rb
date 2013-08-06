@@ -8,8 +8,7 @@ class Permission < ActiveRecord::Base
 
   has_and_belongs_to_many :actors
 
-
   def self.master
-    where(level: 0)
+    where(:level => 0)
   end
 end
