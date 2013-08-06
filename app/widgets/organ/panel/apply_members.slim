@@ -17,7 +17,7 @@
           td= user.name
           td= user.phone
           td= user.email
-          td= t("state.apply.#{apply.state}")
+          td= t("state.user_apply.#{apply.state}")
           td.operating
             - if can? :manage, Organ
               = link_to '通过', url_for_event(:pass, id: apply.id), remote: true, class: 'btn btn-link'

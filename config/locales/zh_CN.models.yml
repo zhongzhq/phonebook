@@ -64,7 +64,7 @@ zh_CN:
       apply: 待审核
       success: 申请成功
       failure: 申请失败
-    apply:
+    user_apply:
       review: 待审核
       success: 申请成功
       failure: 申请失败

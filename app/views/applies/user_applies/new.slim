@@ -4,11 +4,20 @@
     span.text-info = '申请加入企业'
   .widgetarea
     = simple_form_for :apply, :url => applies_user_applies_path, :html => {:class=>"form-horizontal form-mini"} do |f|
-      
+
       = f.input :organ, label: '企业信息' do
-        = select_tag "organ_id", options_from_collection_for_select(Organ.roots, "id", "name"), prompt: '请选择'
-      
+        = f.hidden_field :organ_id
+
+      = f.input :organ, label: '角色' do
+        = f.hidden_field :membership_id
+
+
       .control-group
         .controls
           = link_to '取消', root_path, :class => 'btn btn-danger'
           = f.button :submit, '申请加入企业', :class => "btn-info"
+
+javascript:
+  option_tree($("#apply_organ_id"), '/applies/user_applies/children_organs', function(){
+    option_tree($("#apply_membership_id"), '/applies/user_applies/memberships?organ_id=' + $(this).val(), null, {on_each_change: false} )
+  })

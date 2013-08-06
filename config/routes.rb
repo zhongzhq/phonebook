@@ -60,7 +60,12 @@ EPBook::Application.routes.draw do
   resources :memberships
 
   namespace :applies do
-    resources :user_applies, :only => [:new, :create]
+    resources :user_applies, :only => [:new, :create] do
+      collection do
+        get 'children_organs'
+        get 'memberships'
+      end
+    end
     resources :organ_applies do
       member do
         get 'init'

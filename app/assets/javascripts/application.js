@@ -21,7 +21,6 @@ function refresh_captcha(){
     $('#captcha_img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
 }
 
-
 function show_message(txt){
     //IE6位置
     if (!window.XMLHttpRequest) {
@@ -50,3 +49,15 @@ function show_message(txt){
 
 }
 
+// Ajax 动态下拉框
+function option_tree(selector, url, func, options ){
+  options = $.extend({
+    indexed: true,
+    on_each_change: url,
+    choose: '请选择...'
+  }, options || {});
+
+  $.getJSON(url, function(data){
+    selector.optionTree(data, options).change(func);
+  });
+}
