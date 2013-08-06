@@ -1,9 +1,9 @@
 server:
   - version:
-      number: "1.0"
+      number: "0.01"
       description: "电话簿的基本管理功能"
   - version:
-      number: "1.1"
+      number: "0.02"
       description: "电话簿的基本管理功能1"
 client:
   - version:
