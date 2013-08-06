@@ -8,7 +8,7 @@
         = f.input :phone
         = f.input :email, :autofocus => true
         = f.input :password
-        = f.input :password_confirmation        
+        = f.input :password_confirmation
 
         // 验证码
         = f.input :captcha, hint: captcha_tag(id: 'captcha_img') + "<a onclick='refresh_captcha();' href='javascript:void(0)'>看不清，换一张</a>".html_safe, required: true do
@@ -16,5 +16,6 @@
 
         .control-group
           .controls
-            = link_to '返回登录', root_path, :class => "btn margin-right5"
             = f.button :submit,"注册",:class => "btn-info"
+            = link_to '已有帐号？返回直接登录', root_path, :class => "btn margin-right5"
+
