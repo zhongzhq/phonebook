@@ -1,7 +1,8 @@
 #login.widget
   h4
     i.icon-user.text-large.text-info
-    | 用户登录
+    =t("site_name")
+    |- 用户登录
   .workarea
     = simple_form_for( resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-horizontal"} ) do |f|
       = f.input :account, :autofocus => true, placeholder: "邮箱 / 已验证手机号"

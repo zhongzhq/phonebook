@@ -6,14 +6,14 @@
         .icon-search 快速查找
         .more.pull-right
           a href=""
-            .label.label-success 
+            .label.label-success
     .infobox-area
       form.form-inline method="post"
         input.margin-right5 style="width:70%;" type="text"
         input.btn.btn-info type="submit" value="查 找"
       .alert.alert-info.margin-bottom0
         strong 最近查找：
-        a.margin-right5 href="" 
+        a.margin-right5 href=""
 
 .span4
   .infobox
@@ -21,7 +21,7 @@
       h4
         span.icon-exchange 企业信息
         .more.pull-right
-          a href="#" 
+          a href="#"
 
     - organ = current_user.organs.first.try(:root)
     - if organ.nil?
@@ -66,7 +66,7 @@
 
 
     .infobox-area
-      h5 当前版本：
-      p web端 暂无信息
-      p 客户端：
+      h5 当前版本
+      p 桌面端：V#{Version.config['server'].last['version']['number']}
+      p 客户端：V#{Version.config['client'].last['version']['number']}
 
