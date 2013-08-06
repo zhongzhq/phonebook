@@ -19,7 +19,8 @@ class Organ::PanelWidget < ApplicationWidget
     @organ = Organ.find(params[:organ_id])
 
     User.find(params[:user_id]).actors.delete(
-      Actor.first_or_create( :organ => @organ, :membership => Membership.organ_member(@organ) )
+      Actor.first_or_create( :organ => Organ.find(params[:organ_id]),
+        :membership => Membership.find(params[:membership_id]) )  
       )
     replace view: :display
   end

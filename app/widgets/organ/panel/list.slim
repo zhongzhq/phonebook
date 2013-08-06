@@ -5,7 +5,8 @@
         th.index_number 序号
         th 姓名
         th 手机号
-        td 邮箱
+        th 邮箱
+        th 角色
         th 操作
     tbody
       -if @members.empty?
@@ -17,10 +18,16 @@
           td= member.name
           td= member.phone
           td= member.email
+          td
+            - member.actors.where(:organ_id => @organ.id).each do |x|
+              | #{x.membership.name}
+              - if can? :manage, Organ
+                - unless current_user == member
+                  = link_to '移除', url_for_event(:remove, :organ_id => x.organ.id, :membership_id => x.membership.id, :user_id => member.id ), remote: true
+              br
+
           td.operating
             - if can? :manage, Organ
               = link_to '编辑', adjust_user_path(member)
-              - if @organ
-                = link_to '删除', url_for_event(:remove, organ_id: @organ.id, user_id: member.id), remote: true
 
   = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}

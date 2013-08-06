@@ -21,7 +21,14 @@
               td= member.name
               td= member.phone
               td= member.email
-              td= member.actors.map{|x| [x.organ.name, x.membership.name].join("-")}.join('<br/>').html_safe
+              td
+                - member.actors.each do |x|
+                  | #{x.organ.name} - #{x.membership.name}
+                  - if can? :manage, Organ
+                    - unless current_user == member
+                      = link_to '移除', url_for_event(:remove_membership, :organ_id => x.organ.id, :membership_id => x.membership.id, :user_id => member.id ), remote: true
+                  br
+
               td.operating
                 - if can? :manage, Organ
                   = link_to '编辑', adjust_user_path(member)
