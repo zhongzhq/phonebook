@@ -23,7 +23,8 @@ module OrgansHelper
 
   def membership_box node, memberships
     '——' + memberships.map { |e|
-      check_box_tag( "memberships[organ_#{node.id}][]", e.id ) + content_tag( :span, e.name )
+      check_box_tag( "memberships[organ_#{node.id}][]", e.id,
+       !@user.actors.where(organ_id: node.id, membership_id: e.id).blank? ) + content_tag( :span, e.name )
     }.join('')
   end
 end

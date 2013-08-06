@@ -22,7 +22,15 @@ class UsersController < ApplicationController
   def adjust_post
     @user = User.find(params[:id])
     @user.update_attributes(params[:user])
-    @user.adjust( Organ.find( params[:new_organ_ids] ) )
+
+    actors = (params[:memberships] || []).map do |organ_name, membership_ids|
+      organ = Organ.find organ_name.split("_").last
+      membership_ids.map do |membership_id|
+        Actor.first_or_create :organ => organ, :membership => Membership.find(membership_id)
+      end
+    end.flatten
+    
+    @user.adjust( actors )
     redirect_to organs_path, notice: '调整成功'
   end
 
