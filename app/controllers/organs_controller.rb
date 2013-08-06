@@ -70,8 +70,15 @@ class OrgansController < ApplicationController
     params[:user][:password] = SecureRandom.hex(8)
     @user = User.new(params[:user])
 
+    actors = (params[:memberships] || []).map do |organ_name, membership_ids|
+      organ = Organ.find organ_name.split("_").last
+      membership_ids.map do |membership_id|
+        Actor.first_or_create :organ => organ, :membership => Membership.find(membership_id)
+      end
+    end.flatten
+
     if @user.save
-      @user.adjust( Organ.find( params[:new_organ_ids] ) )
+      @user.adjust( actors )
       redirect_to organs_path, :notice => '添加联系人成功'
     else
       render 'new_member'

@@ -1,21 +1,29 @@
+# -*- coding: utf-8 -*-
 module OrgansHelper
-  def recursive_tree(node, html = '')
+  def recursive_tree(node, memberships, html = '')
     html << ''
     if node.children.blank?
-      html << li(node)
+      html << li(node, memberships)
       return html.html_safe
     else
-      html << li(node) # Explanation 2
+      html << li(node, memberships) # Explanation 2
       for child in node.children
-        html << "<ul>#{recursive_tree(child)}</ul>"
+        html << "<ul>#{recursive_tree(child, memberships)}</ul>"
       end
     end
     return html.html_safe
   end
 
-  def li node
+  def li node, memberships
     content_tag :li do
-      check_box_tag( 'new_organ_ids[]', node.id, @user.organs.include?(node) ) + content_tag( :span, node.name )
+      #  @user.organs.include?(node)
+      content_tag( :span, node.name ) + membership_box(node, memberships).html_safe
     end
+  end
+
+  def membership_box node, memberships
+    '——' + memberships.map { |e|
+      check_box_tag( "memberships[organ_#{node.id}][]", e.id ) + content_tag( :span, e.name )
+    }.join('')
   end
 end

@@ -18,18 +18,13 @@ module Applies
     def children_organs
       hash = {}
       @organs = params[:id] ? Organ.find(params[:id]).children : Organ.roots
-
       @organs.map { |organ| hash[organ.id] = organ.name }
-
       render :json => hash
     end
 
     def memberships      
       hash = {}
-
-      Membership.where(organ_id: Organ.find(params[:organ_id]).root.id)
-      .map { |membership| hash[membership.id] = membership.name }
-
+      Membership.find_by_organ(Organ.find(params[:organ_id])).map { |m| hash[m.id] = m.name }
       render :json => hash
     end
   end
