@@ -1,11 +1,49 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require twitter/bootstrap
+ *= require twitter/bootstrap-responsive
+ *= require font-awesome
+ *= require font-awesome-ie7.min
+ *= require_self
+
+ */
+
 /* public page styles */
+
+#default #header{
+    background: url("top.jpg") repeat-x;
+    height:90px;
+}
+
 #default #footer{
-    margin-top: 20px;
+    background: url("foot.jpg") repeat-x;
+    height:51px;
+    line-height:51px;
+    text-align:center;
 }
-body#default{
-    padding-top: 0px;
+#default #content{
+    background-color: #afdaeb;
 }
-/****************************/
+#default #content .area{
+    background: url("content.jpg") repeat-x center;
+    height: 634px;
+    width:100%;
+}
+
+#default #login{
+    width:400px;
+    margin:auto;
+    top:220px;
+    position: relative;
+}
 #default #login label{
     width:60px;
     letter-spacing:3px;
@@ -16,17 +54,52 @@ body#default{
 #default #login .controls{
     margin-left:65px;
 }
-#default #login .infobox{
+#default #login .workarea{
     margin-top:0;
 }
-#default .infobox h4{
+#default .workarea h4{
     height: 50px;
 }
-#default .infobox .span3{
+#default .workarea .span3{
     height:150px;
     padding:10px 20px;
     border-right:1px solid #f1f1f1;
 }
-#default .infobox .span3:first{
+#default .workarea .span3:first{
     border: 0;
+}
+
+.widget{
+    background-color:#FEFEFE;
+    border:1px solid #E1E3E6;
+    border-top:2px solid #206F96;
+    box-shadow:0 1px 2px #E1E3E6;
+    margin-top:10px;
+    background-image: -moz-linear-gradient(center top , #FEFEFE, #EDEDED);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(254, 254, 254)), to(rgb(237, 237, 237)));
+    background-image: -webkit-linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));
+    background-image: -moz-linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));
+    background-image: -o-linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));
+    background-image: -ms-linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));
+    background-image: linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));
+    min-height:300px;
+}
+.widget h4{
+    margin:0 10px;
+    border-bottom:1px solid #eaeaea;
+    height:40px;
+    line-height:40px;
+    font-size:16px;
+    font-weight:normal;
+}
+.widget h4 a{
+    font-size:16px;
+    font-weight:normal;
+}
+.widget h4 .more a{
+    color:#666;
+    font-size:12px;
+}
+.widget .workarea{
+    padding:10px;
 }

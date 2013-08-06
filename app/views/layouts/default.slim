@@ -5,14 +5,25 @@ html
     meta name="viewport" content="width=device-width, initial-scale=1"
 
     title =t('site_name')
-    = stylesheet_link_tag 'application', media: 'all'
+    = stylesheet_link_tag 'default', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tag
   body#default
     #header
       =render "templates/default_header"
     #content
-      .container
+      .area
         = yield
     #footer
       =render "templates/default_footer"
+javascript:
+  setContentCss();
+  setInterval("setContentCss()",1000)
+  function setContentCss(){
+    height = $(window).height()-51-90;
+    if (height <= 634){
+      height=634
+    }
+    $("#content").height(height);
+    $("#content").width($(window).width());
+  };

@@ -1,56 +1,24 @@
-.row-fluid
-  .span8
-    img src="/assets/banner1.jpg" alt="" style="height:250px;width:100%"
-  .span4
-    #login
-      .infobox
-        h4
-          i.icon-user.text-large.text-info
-          | 用户登录
-        .infobox-area
-          = simple_form_for( resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-horizontal margin-bottom0"} ) do |f|
-            = f.input :account, :autofocus => true, placeholder: "邮箱 / 已验证手机号"
-            = f.input :password, placeholder: "********"
-            = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
+#login.widget
+  h4
+    i.icon-user.text-large.text-info
+    =t("site_name")
+    |- 用户登录
+  .workarea
+    = simple_form_for( resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-horizontal"} ) do |f|
+      = f.input :account, :autofocus => true, placeholder: "邮箱 / 已验证手机号"
+      = f.input :password, placeholder: "********"
+      = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
 
-            // 验证码
-            = f.input :captcha do
-              = text_field_tag :captcha,'', :style=>"width:80px"
-              = captcha_tag id: 'captcha_img'
-              a onclick='refresh_captcha();' href='javascript:void(0)'
-                | 看不清？换一张
+      // 验证码
+      = f.input :captcha do
+        = text_field_tag :captcha,'', :style=>"width:80px"
+        = captcha_tag id: 'captcha_img'
+        a onclick='refresh_captcha();' href='javascript:void(0)'
+          | 看不清？换一张
 
-            .control-group.margin-bottom0
-              .controls
-                = f.button :submit, '登录', :class => "btn-info"
-                a.margin-right5 href=new_registration_path(resource_name) 立即注册
-                span.margin-right5 |
-                a.margin-right5 href=new_password_path(resource_name) 忘记密码
-
-
-
-.row-fluid
-  .infobox
-    .infobox-area
-      .span3.index-cloud
-        h4
-          img src="/assets/1.png"
-          | 云端存储
-        p 云存储数据，保障数据安全
-      .span3.index-search
-        h4
-          img src="/assets/1.png" alt=""
-          | 查询快捷
-        p 一键查询所有数据
-      .span3.index-safe
-        h4
-          img src="/assets/3.png" alt=""
-          | 信息安全
-        p 数据全程加密
-      .span3.index-contain
-        h4
-          img src="/assets/2.png" alt=""
-          | 容量超大
-        p 云存储
-
-      .clearfix
+      .control-group.margin-bottom0
+        .controls
+          = f.button :submit, '登录', :class => "btn-info"
+          a.margin-right5 href=new_registration_path(resource_name) 立即注册
+          span.margin-right5 |
+          a.margin-right5 href=new_password_path(resource_name) 忘记密码
