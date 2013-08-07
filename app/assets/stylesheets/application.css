@@ -8,13 +8,12 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  *= require twitter/bootstrap
  *= require twitter/bootstrap-responsive
  *= require font-awesome
  *= require font-awesome-ie7.min
+ *= require_self
  *= require powerFloat
- *= require public
 
  */
 .target_fixed { height:25px; padding:1px; position:fixed; _position:absolute; top:0; right:0; z-index:11000}
