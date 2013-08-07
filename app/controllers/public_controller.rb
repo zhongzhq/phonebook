@@ -1,4 +1,8 @@
-class PublicController < ApplicationController
+class PublicController < ActionController::Base #ApplicationController
+  layout "default"
+  def index
+  end
+
   def help
   end
 

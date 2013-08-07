@@ -1,12 +1,24 @@
 # -*- coding: utf-8 -*-
 EPBook::Application.routes.draw do
 
+  # public
+  resources :products,:only =>[:index]
+  resources :clouds,:only =>[:index]
+  resources :downloads,:only =>[:index]
+  resources :news,:only =>[:index]
+  resources :helps,:only =>[:index]
+  resources :purchases,:only =>[:index]
+
+
+
+
+
   authenticated :user do
     root :to => 'dashboard#index'
   end
   unauthenticated :user do
     devise_scope :user do
-      get "/" => "users/sessions#new"
+      get "/" => "public#index"
     end
   end
 
@@ -18,7 +30,7 @@ EPBook::Application.routes.draw do
       :passwords => "users/passwords"
     }
   rescue Exception => e;end
-  
+
 
   # 验证码
   captcha_route
@@ -72,7 +84,7 @@ EPBook::Application.routes.draw do
         post 'init_create'
       end
     end
-  end  
+  end
 
   # Master routes
   namespace :master do
