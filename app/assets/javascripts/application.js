@@ -63,6 +63,7 @@ function option_tree(selector, url, func, options ){
 }
 
 $(function(){
+    $(".organtree").children("li").children("img").click()
     $(".organtree").children("li").children("a").click()
 })
 
