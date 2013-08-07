@@ -1,0 +1,19 @@
+.infobox
+  .infobox-title
+    h4
+      .icon-user 个人资料
+  .infobox-area
+    ul
+      li 姓名： #{current_user.name}
+      li
+        | 邮箱： #{current_user.email}
+        - if Devise.mappings[:user].confirmable?
+          = link_to "验证邮箱", new_confirmation_path(current_user) unless current_user.confirmed?
+      li 手机： #{current_user.phone}
+      li
+        | 角色：
+        - current_user.actors.group_by(&:organ_id).each do |organ_id, actors|
+          - organ = Organ.find(organ_id)
+          = (organ.ancestors << organ).map(&:name).join("/")
+          = actors.map{|x| x.membership.name }
+          br
