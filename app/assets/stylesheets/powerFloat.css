@@ -212,7 +212,9 @@ infobox
 }
 
 
-
+.organtree img {
+    margin-right: 5px;
+}
 .organtree, .organtree ul, .organtree li{
     list-style:none
 }

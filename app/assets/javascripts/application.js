@@ -63,10 +63,15 @@ function option_tree(selector, url, func, options ){
 }
 
 $(function(){
-  //  $(".organtree li").toggle()
+    $(".organtree").children("li").children("a").click()
 })
 
 function toggle_tree(obj){
-    obj.attr("src","/assets/tv-collapsable.gif")
-    obj.siblings("ul").show()
+    if (obj.siblings("ul").is(":hidden")){
+	obj.siblings("ul").show()
+	obj.attr("src","/assets/tv-collapsable.gif");
+    }else{
+	obj.siblings("ul").hide()
+	obj.attr("src","/assets/tv-expandable.gif");
+    }
 }
