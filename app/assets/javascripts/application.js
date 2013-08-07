@@ -61,3 +61,12 @@ function option_tree(selector, url, func, options ){
     selector.optionTree(data, options).change(func);
   });
 }
+
+$(function(){
+  //  $(".organtree li").toggle()
+})
+
+function toggle_tree(obj){
+    obj.attr("src","/assets/tv-collapsable.gif")
+    obj.siblings("ul").show()
+}

@@ -210,3 +210,9 @@ infobox
 .infobox .infobox-area{
     padding:10px;
 }
+
+
+
+.organtree, .organtree ul, .organtree li{
+    list-style:none
+}

@@ -1,6 +1,11 @@
 = widget_div do
-  ul
-    li#open
-      = link_to @organ_root.name, url_for_event(:show_organ, organ_id: @organ_root.id), :remote => true
-      = render :view => :children_list, locals: { organ: @organ_root }
-  .clear
+  ul.organtree
+    li
+      -if @organ_root.children
+        img src="/assets/tv-expandable.gif" onclick="toggle_tree($(this))"
+        = link_to @organ_root.name, url_for_event(:show_organ, organ_id: @organ_root.id), :remote => true
+        = render :view => :children_list, locals: { organ: @organ_root }
+      -else
+        img src="/assets/tv-collapsable.gif"
+        = link_to @organ_root.name, url_for_event(:show_organ, organ_id: @organ_root.id), :remote => true
+
