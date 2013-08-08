@@ -3,7 +3,8 @@ class OrgansController < ApplicationController
   #load_and_authorize_resource
 
   has_widgets do |root|
-    root << widget('organ/main', :organ)
+    root << widget('organ/panel', :organ_panel)
+    root << widget('organ/tree', :organ_tree)
   end
 
   def index
@@ -18,18 +19,6 @@ class OrgansController < ApplicationController
     else
       render 'new'
     end
-  end
-
-  # 添加下级组织
-  def new_child
-    @organ = Organ.find(params[:id]).children.build
-  end
-
-  def create_child
-    @organ = Organ.new(params[:organ])
-
-    return redirect_to organs_path, notice: '添加成功' if @organ.save
-    render 'new_child'
   end
 
   # 通过姓名/手机号/邮箱搜索当前组织的用户
@@ -47,18 +36,6 @@ class OrgansController < ApplicationController
       Actor.first_or_create( :organ => @organ, :membership => Membership.find(params[:membership_id]) )
       )
     redirect_to search_organs_path, notice: '移除成功'
-  end
-
-  # 编辑组织信息
-  def edit
-    @organ = Organ.find(params[:id])
-  end
-
-  def update
-    @organ = Organ.find(params[:id])
-
-    return redirect_to organs_path, notice: '更新成功' if @organ.update_attributes(params[:organ])
-    render 'edit'
   end
 
   # 向组织添加联系人

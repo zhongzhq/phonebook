@@ -1,8 +1,8 @@
 class Organ::PanelWidget < ApplicationWidget
   responds_to_event :remove
 
-  def display
-    @organ = Organ.find(params[:organ_id])
+  def display args    
+    @organ = Organ.find(args[:organ_id])
     render
   end
 

@@ -3,11 +3,6 @@ class Organ::MainWidget < ApplicationWidget
   responds_to_event :all
   responds_to_event :remove_membership
 
-  has_widgets do
-    self <<  widget('organ/tree', :organ_tree)
-    self <<  widget('organ/panel', :organ_panel)
-  end
-
   def display
     render
   end

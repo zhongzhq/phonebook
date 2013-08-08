@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-// require twitter/bootstrap
+//= require twitter/bootstrap
 //= require twitter/bootstrap/dropdown
 //= require_tree .
 
@@ -61,11 +61,6 @@ function option_tree(selector, url, func, options ){
     selector.optionTree(data, options).change(func);
   });
 }
-
-$(function(){
-    $(".organtree").children("li").children("img").click()
-    $(".organtree").children("li").children("a").click()
-})
 
 function toggle_tree(obj){
     if (obj.siblings("ul").is(":hidden")){

@@ -1,2 +1,14 @@
-= render_widget :organ
+.infobox
+    .infobox-area
+      .container-fluid
+        .row-fluid
+          .span3
+            p 
+              | 按组织结构显示
+              span
+                a href=applies_user_applies_path(:organ_id => current_user.organs.first.root.id) 审核用户
 
+            = render_widget :organ_tree
+            /p = link_to '查看所有用户', url_for_event(:all), remote: true
+          .span9
+            = render_widget :organ_panel, :display, :organ_id => current_user.organs.first.root.id
