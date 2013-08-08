@@ -31,7 +31,7 @@
                   | #{x.membership.name}
                   - if can? :manage, Organ
                     - unless current_user == member
-                      = link_to '移除', url_for_event(:remove, :organ_id => x.organ.id, :membership_id => x.membership.id, :user_id => member.id ), remote: true
+                      = link_to '删除', url_for_event(:remove_from_show, :id => x.organ.id, :membership_id => x.membership.id, :user_id => member.id ), remote: true
                   br
 
               td.operating
