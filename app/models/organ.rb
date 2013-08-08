@@ -28,4 +28,9 @@ class Organ < ActiveRecord::Base
     User.find_by_organ(subtree)
   end
 
+  def fullname
+    return name unless parent
+    parent.fullname + "/" + name
+  end
+
 end
