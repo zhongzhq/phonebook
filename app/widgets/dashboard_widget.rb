@@ -4,7 +4,7 @@ class DashboardWidget < ApplicationWidget
     render
   end
 
-  def personal
+  def person
     render
   end
 
