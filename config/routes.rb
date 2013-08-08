@@ -10,9 +10,6 @@ EPBook::Application.routes.draw do
   resources :purchases,:only =>[:index]
 
 
-
-
-
   authenticated :user do
     root :to => 'dashboard#index'
   end
