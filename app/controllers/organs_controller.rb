@@ -106,9 +106,4 @@ class OrgansController < ApplicationController
     end
   end
 
-  def applies
-    @organ = Organ.find params[:id]
-    @applies = UserApply.members(@organ)
-  end
-
 end

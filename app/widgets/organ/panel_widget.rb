@@ -1,7 +1,5 @@
 class Organ::PanelWidget < ApplicationWidget
   responds_to_event :remove
-  responds_to_event :applies, :with => :apply_members
-  responds_to_event :pass, :with => :pass_apply
 
   def display
     @organ = Organ.find(params[:organ_id])
@@ -25,21 +23,4 @@ class Organ::PanelWidget < ApplicationWidget
     replace view: :display
   end
 
-  def apply_members evt
-    @organ = Organ.find evt[:organ_id]
-    @applies = UserApply.members(@organ)
-
-    replace "##{widget_id} #members", :view => :apply_members
-  end
-
-  def pass_apply evt
-    @apply = UserApply.find evt[:id]
-
-    @organ = @apply.actor.organ
-    @applies = UserApply.members(@organ)
-
-    @apply.pass
-    
-    replace "##{widget_id} #members", :view => :apply_members
-  end
 end

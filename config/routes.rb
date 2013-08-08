@@ -61,7 +61,6 @@ EPBook::Application.routes.draw do
       get 'add_member'
       post 'save_member'
       get 'remove_member'
-      get 'applies'
     end
     collection do
       get 'new_member'
@@ -73,7 +72,7 @@ EPBook::Application.routes.draw do
   resources :memberships
 
   namespace :applies do
-    resources :user_applies, :only => [:new, :create] do
+    resources :user_applies, :only => [:index, :new, :create, :update] do
       collection do
         get 'children_organs'
         get 'memberships'
