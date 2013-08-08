@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap
-//= require twitter/bootstrap/dropdown
+//= require twitter/bootstrap/transition
+//= require twitter/bootstrap/modal
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_tree .
 
 // 刷新验证码
