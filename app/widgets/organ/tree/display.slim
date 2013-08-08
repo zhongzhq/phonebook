@@ -3,7 +3,7 @@
     li
       -if @organ_root.children
         img src="/assets/tv-expandable.gif" onclick="toggle_tree($(this))"
-        = link_to @organ_root.name, url_for_event(:show_organ, organ_id: @organ_root.id), :remote => true
+        = link_to @organ_root.name, url_for_event(:show, :source => :organ_panel, id: @organ_root.id), :remote => true
         span.offset1.hide
           = link_to '编辑', url_for_event(:edit, :id => @organ_root), remote: true
           = link_to '添加', url_for_event(:add, :id => @organ_root), remote: true
@@ -31,5 +31,4 @@ javascript:
     })
   })
 
-  $(".organtree").children("li").children("img").click()
-  $(".organtree").children("li").children("a").click()
+  $(".organtree li").children("img").click()
