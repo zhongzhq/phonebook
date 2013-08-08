@@ -11,7 +11,7 @@ class Organ < ActiveRecord::Base
   has_ancestry
 
   state_machine :initial => :enabled do
-    event :open do
+    event :start do
       transition :disable => :enabled
     end
 

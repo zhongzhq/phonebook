@@ -19,5 +19,8 @@
           = '申请状态：' + t("state.organ_apply.#{organ_apply.state}")
           = link_to '初始化企业', init_applies_organ_apply_path(organ_apply) if organ_apply.success?
     - else
-      p= '企业名称：' + organ.name
+      p= '企业名称: ' + organ.name
+      p
+        = '企业成员: ' + organ.subtree_members.size.to_s
+        a href=applies_organ_path(organ) = ' 待审核: ' + UserApply.where(:actor_id => Actor.find_by_organ(organ.subtree) ).size.to_s
       p= '企业简介：' + organ.description

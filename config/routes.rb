@@ -61,6 +61,7 @@ EPBook::Application.routes.draw do
       get 'add_member'
       post 'save_member'
       get 'remove_member'
+      get 'applies'
     end
     collection do
       get 'new_member'
