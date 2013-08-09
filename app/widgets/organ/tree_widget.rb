@@ -12,7 +12,7 @@ class Organ::TreeWidget < ApplicationWidget
   # 编辑组织信息
   def edit
     @organ = Organ.find params[:id]
-    replace "##{widget_id} #organ-dialog", {:view => :edit}
+    replace dialog, {:view => :edit}
   end
 
   def edit_submit
@@ -21,14 +21,14 @@ class Organ::TreeWidget < ApplicationWidget
     if @organ.update_attributes(params[:organ])
       replace :state => :display
     else
-      replace "##{widget_id} #organ-dialog", {:view => :edit}
+      replace dialog, {:view => :edit}
     end
   end
 
   # 添加下级组织
   def add
     @organ = Organ.find( params[:id] ).children.build
-    replace "##{widget_id} #organ-dialog", {:view => :add}
+    replace dialog, {:view => :add}
   end
 
   def add_submit
@@ -37,8 +37,12 @@ class Organ::TreeWidget < ApplicationWidget
     if @organ.save
       replace :state => :display
     else
-      replace "##{widget_id} #organ-dialog", {:view => :add}
+      replace dialog, {:view => :add}
     end
   end
 
+  private
+  def dialog
+    "##{widget_id} #organ-dialog"
+  end
 end
