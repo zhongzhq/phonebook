@@ -1,4 +1,4 @@
-#organ-dialog.modal.hide.fade
+#organ-dialog.modal.hide
   = simple_form_for @organ, :url => url_for_event(:edit_submit, :id => @organ.id), :remote => true, :html => {:class=>"form-horizontal form-mini"} do |f|
     .modal-header
       button.close data-dismiss="modal" &times;

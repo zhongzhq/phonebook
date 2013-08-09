@@ -1,6 +1,8 @@
 class Organ::PanelWidget < ApplicationWidget
   responds_to_event :show
   responds_to_event :all
+  responds_to_event :add_user
+  responds_to_event :add_user_submit
   responds_to_event :edit_user
   responds_to_event :edit_user_submit
   responds_to_event :remove_from_show
@@ -23,6 +25,30 @@ class Organ::PanelWidget < ApplicationWidget
   def all
     @members = current_user.organs.first.root.subtree_members.paginate(:page => params[:page])
     replace :view => :all
+  end
+
+  # 添加组织成员
+  def add_user
+    @organ = Organ.find params[:id]
+    @user = User.new
+    replace "##{widget_id} #user-edit-dialog", {:view => :add}
+  end
+
+  def add_user_submit
+    @organ = Organ.find params[:id]
+    params[:user][:password] = SecureRandom.hex(8)
+    @user = User.new(params[:user])
+
+    actors = (params[:membership_ids] || []).map do |id|
+      Actor.first_or_create :organ => @organ, :membership => Membership.find(id)
+    end
+
+    if @user.save
+      @user.adjust actors
+      render :state => :show
+    else
+      replace "##{widget_id} #user-edit-dialog", {:view => :add}
+    end
   end
 
   # 修改用户信息

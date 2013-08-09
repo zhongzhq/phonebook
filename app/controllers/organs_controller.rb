@@ -62,25 +62,4 @@ class OrgansController < ApplicationController
     end
   end
 
-  # 添加联系人到指定组织
-  def add_member
-    @organ = Organ.find(params[:id])
-    @user = User.new
-  end
-
-  def save_member
-    @organ = Organ.find params[:organ_id]
-
-    params[:user][:password] = SecureRandom.hex(8)
-    @user = User.new(params[:user])
-
-    if @user.save
-      actor = Actor.first_or_create :organ => @organ, :membership => Membership.find(params[:membership_id])
-      @user.adjust( [ actor ] )
-      redirect_to organs_path, :notice => '添加联系人成功'
-    else
-      render 'add_member'
-    end
-  end
-
 end

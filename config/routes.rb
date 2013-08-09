@@ -53,8 +53,6 @@ EPBook::Application.routes.draw do
 
   resources :organs, :except => [:destroy] do
     member do
-      get 'add_member'
-      post 'save_member'
       get 'remove_member'
     end
     collection do
