@@ -3,10 +3,12 @@
     li
       -if @organ_root.children
         img src="/assets/tv-expandable.gif" onclick="toggle_tree($(this))"
-        = link_to @organ_root.name, url_for_event(:show, :source => :organ_panel, id: @organ_root.id), :remote => true
-        span.offset1.hide
-          = link_to '编辑', url_for_event(:edit, :id => @organ_root), remote: true
-          = link_to '添加', url_for_event(:add, :id => @organ_root), remote: true
+        span.hover
+          = link_to @organ_root.name, url_for_event(:show, :source => :organ_panel, id: @organ_root.id), :remote => true
+          - if can? :manage, Organ
+            span.offset1.hide
+              = link_to '编辑', url_for_event(:edit, :id => @organ_root), remote: true
+              = link_to '添加', url_for_event(:add, :id => @organ_root), remote: true
         = render :view => :children_list, locals: { organ: @organ_root }
       -else
         img src="/assets/tv-collapsable.gif"
@@ -17,17 +19,10 @@
 javascript:
   $('.modal-backdrop').remove()
 
-  $('.organtree li').each(function(){
+  $('.hover').each(function(){
     $(this).mouseenter(function(){
-      $(this).find('span:first').css({
-        display: 'inline'
-      })
-    })
-
-    $(this).mouseleave(function(){
-      $(this).find('span:first').css({
-        display: 'none'
-      })
+      $('.hover').find('span').addClass('hide');
+      $(this).find('span').removeClass('hide');
     })
   })
 

@@ -4,7 +4,8 @@
       i.icon-hand-right
       span.text-info #{@organ.name}
       .pull-right
-        = link_to '添加成员', add_member_organ_path(@organ), class: 'btn btn-link'        
+        - if can? :manage, Organ
+          = link_to '添加成员', add_member_organ_path(@organ), class: 'btn btn-link'        
 
     .widgetarea.widgetarea-height
       table.table.table-hover
