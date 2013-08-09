@@ -1,9 +1,8 @@
 .navbar.navbar-fixed-top
-  .navbar-inner
-    a.sitename_a href=root_path
-      img.pull-left src="/assets/zhiyi_logo.png" alt=t('site_name') title=t('site_name')
-      span.sitename =t('site_name')
-      span V#{Version.config['server'].last['version']['number']}
+  .navbar-inner.topbar
+    ul.nav.pull-left
+      li
+        a href="javascript:void(0)" 客户电话 028-85197020
     ul.nav.pull-right
       - if user_signed_in?
         - if current_user.name.blank?
@@ -28,3 +27,11 @@
           a href=destroy_user_session_path data-method="delete"
             i.icon-power-off
             |退出
+
+  .navigation
+    .container
+      a.sitename_a href=root_path
+        img.pull-left src="/assets/zhiyi_logo.png" alt=t('site_name') title=t('site_name')
+        span.sitename
+          =t('site_name')
+          | V#{Version.config['server'].last['version']['number']}

@@ -12,6 +12,10 @@ class Actor < ActiveRecord::Base
 
   scope :find_by_organ, -> organ { where organ_id: organ }
 
+  def fullname
+    return organ.fullname + ":" + membership.name
+  end
+
   class << self
     def first_or_create args = {}
       result = where(organ_id: args[:organ], membership_id: args[:membership])

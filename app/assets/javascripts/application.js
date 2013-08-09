@@ -61,3 +61,18 @@ function option_tree(selector, url, func, options ){
     selector.optionTree(data, options).change(func);
   });
 }
+
+$(function(){
+    $(".organtree").children("li").children("img").click()
+    $(".organtree").children("li").children("a").click()
+})
+
+function toggle_tree(obj){
+    if (obj.siblings("ul").is(":hidden")){
+	obj.siblings("ul").show()
+	obj.attr("src","/assets/tv-collapsable.gif");
+    }else{
+	obj.siblings("ul").hide()
+	obj.attr("src","/assets/tv-expandable.gif");
+    }
+}

@@ -1,6 +1,8 @@
-ul
+ul style="display:none"
   - organ.children.each do |child|
     li
+      - unless child.children.blank?
+        img src="/assets/tv-expandable.gif" onclick="toggle_tree($(this))"
       = link_to child.name, url_for_event(:show_organ, organ_id: child.id), :remote => true
       - unless child.children.blank?
         = render :view => :children_list, locals: { organ: child }
