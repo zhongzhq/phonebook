@@ -60,7 +60,7 @@ module EPBook
     config.assets.version = '1.0'
 
     # mail config
-    config.action_mailer.default_url_options = { host: "http://phonebook.zhiyisoft.com" }
+    config.action_mailer.default_url_options = { host: "phonebook.zhiyisoft.com" }
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       :address              => "smtp.ym.163.com",
