@@ -14,7 +14,11 @@ gem 'jquery-rails'
 gem 'slim-rails'
 
 gem 'unicorn'
+
 gem "simple_form"
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
+
 gem "font-awesome-rails"
 gem "pg"
 gem 'easy_captcha'

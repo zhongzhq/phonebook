@@ -10,9 +10,6 @@ EPBook::Application.routes.draw do
   resources :purchases,:only =>[:index]
 
 
-
-
-
   authenticated :user do
     root :to => 'dashboard#index'
   end
@@ -56,10 +53,6 @@ EPBook::Application.routes.draw do
 
   resources :organs, :except => [:destroy] do
     member do
-      get 'new_child'
-      post 'create_child'
-      get 'add_member'
-      post 'save_member'
       get 'remove_member'
     end
     collection do

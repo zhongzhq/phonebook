@@ -1,0 +1,26 @@
+#user-edit-dialog.modal.hide
+  = simple_form_for @user, :url => url_for_event(:add_user_submit, :id => @organ.id, :user_id => @user.id), :remote => true, :html => {:class=>"form-horizontal form-mini"} do |f|
+    .modal-header
+      button.close data-dismiss="modal" &times;
+      h3 #{@organ.name} 添加成员
+  
+    .modal-body    
+      = f.input :name, :autofocus => true
+      = f.input :phone
+      = f.input :email
+
+      = f.input :membership, :label => "#{@organ.name}角色" do
+        - membership_ids = @user.actors.where(organ_id: @organ.id).map(&:membership).map(&:id)
+        - Membership.select([:id, :name]).find_by_organ(@organ).each do |membership|
+          = check_box_tag 'membership_ids[]', membership.id, membership_ids.include?(membership.id)
+          span #{membership.name}
+
+    = hidden_field_tag :organ_id, @organ.id
+
+    .modal-foote
+      button.btn data-dismiss="modal" 关闭      
+      = f.button :submit, :class => "btn btn-primary"
+
+  javascript:
+    $('.modal-backdrop').remove()
+    $('#user-edit-dialog').modal('show')

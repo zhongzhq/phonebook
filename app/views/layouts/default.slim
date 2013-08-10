@@ -11,19 +11,9 @@ html
   body#default
     #header
       =render "templates/default_header"
-    #content
-      .area
-        = yield
+    #navigation
+      =render "templates/navigation"
+    #content      
+      = yield
     #footer
       =render "templates/default_footer"
-javascript:
-  setContentCss();
-  setInterval("setContentCss()",1000)
-  function setContentCss(){
-    height = $(window).height()-51-90;
-    if (height <= 634){
-      height=634
-    }
-    $("#content").height(height);
-    $("#content").width($(window).width());
-  };

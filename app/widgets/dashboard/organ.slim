@@ -24,4 +24,4 @@
         = '企业成员: ' + organ.subtree_members.size.to_s
         - if can? :manage, Organ
           a href=applies_user_applies_path(:organ_id => organ.id) = ' 待审核: ' + UserApply.where(:actor_id => Actor.find_by_organ(organ.subtree) ).size.to_s
-      p= '企业简介：' + organ.description
+      p= '企业简介：' + (organ.description || '暂无描述')

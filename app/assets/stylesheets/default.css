@@ -18,25 +18,7 @@
 
 /* public page styles */
 
-#default #header{
-    background: url("top.jpg") repeat-x;
-    height:90px;
-}
 
-#default #footer{
-    background: url("foot.jpg") repeat-x;
-    height:51px;
-    line-height:51px;
-    text-align:center;
-}
-#default #content{
-    background-color: #afdaeb;
-}
-#default #content .area{
-    background: url("content.jpg") repeat-x center;
-    height: 634px;
-    width:100%;
-}
 
 #default #login{
     width:400px;
@@ -103,3 +85,84 @@
 .widget .workarea{
     padding:10px;
 }
+
+
+
+
+/*-------------------------index------------------------------*/
+#default{
+    font-size: 14px !important;
+}
+#header{
+    height: 70px;
+    padding-top: 10px;
+  }
+  #header .head-con{
+    width: 960px;
+    margin: 0 auto; 
+  }
+  #header .head-con .head-connect{
+    margin-top:20px;
+  }
+  #navigation{
+    background:-moz-linear-gradient(top, #1b85cf, #0570ad ); 
+    background-image:-webkit-linear-gradient(top, #1b85cf, #0570ad);
+    height:40px;
+  }
+  #navigation .navigation-con{      
+    width:960px;
+    margin:0 auto;
+  }
+  #navigation .navigation-con ul li a{
+    color: #f9fbfc;
+  }
+  
+  .ul-inline{
+     display:block;
+     margin:0 !important;
+  }
+  .ul-inline li{
+    float: left;
+    list-style: none;
+    display:block;
+    
+  }
+  .ul-inline li a{
+    display:block;
+    padding: 10px 30px;     
+    text-decoration: none;
+  }
+  .active-a{
+    background:-moz-linear-gradient(top, #7fc445, #67ac2d ); 
+    background-image:-webkit-linear-gradient(top, #7fc445, #67ac2d);    
+  }
+  .li-seprate{
+    border-left: 1px solid #0467a3;
+    border-right: 1px solid #4993c4;
+    height: 40px;
+  }
+  #content{  
+    background-color: #f7f7f7;
+    padding:10px 0;
+  }
+  #content #banner-show{ 
+    padding: 10px 0;
+  }
+  #content #banner-show .banner-con{
+    width: 960px;
+    margin: 0 auto;
+  }
+   #web-info{
+    width: 960px;
+    margin: 20px auto 0;
+  }
+  #web-info .info-box{
+    height:200px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    box-shadow: 1px 1px 2px #eaeaea;
+  }
+  .text-orange{
+    color: #f5ab24 !important;
+  }
