@@ -13,4 +13,4 @@ system_actor      = Actor.create!(organ_id: system_group.id, membership_id: syst
 # 将 系统管理组/超级管理员 加入 超级管理员权限组
 manage_system.actors << system_actor
 
-system_actor.users << User.create!(name:"谢刚",email:"tianbymy@163.com",password:"123456",password_confirmation:"123456",phone: "18628171676")
+system_actor.users << User.create!(name:"谢刚", email:"tianbymy@163.com", password:"123456", phone: "18628171676")

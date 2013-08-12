@@ -12,10 +12,10 @@
       = form_tag search_organs_path, :class => "form-inline", method: "get" do
         = text_field_tag 'text', nil, placeholder: '姓名/手机号/邮箱',class: "input-small"
         = submit_tag "搜索", class: 'btn'
-
-      a.adduser.btn.btn-info href=new_member_organs_path
-        i.icon-plus
-        | 添加联系人
+      - if can? :manage, Organ
+        a.adduser.btn.btn-info href=new_member_organs_path
+          i.icon-plus
+          | 添加联系人
     .menu-block
       a href= root_path
         p

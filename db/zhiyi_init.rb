@@ -1,70 +1,76 @@
 # -*- coding: utf-8 -*-
-# ---------- 初始化  成都知一软件有限本公司 数据   ----------
-organ1 = Organ.create!(name: '成都知一软件有限公司' )
+# 部门初始化
+zhiyi = Organ.create!(name: '成都知一软件有限公司' )
+  software = Organ.create!(name: '软件研发部', parent_id: zhiyi )
+    front = Organ.create!(name: '前台开发部', parent_id: software )
+    behind = Organ.create!(name: '后台开发部', parent_id: software )
+  testing = organ12 = Organ.create!(name: '测试部', parent_id: zhiyi)
+  xingzheng = Organ.create!(name: '行政部', parent_id: zhiyi)
+  caiwu = Organ.create!(name: '财务部', parent_id: zhiyi )
+  zservice = Organ.create!(name: '极服务', parent_id: zhiyi)
 
-# 初始化公司角色
-membership1 = Membership.organ_member(organ1)
-membership2 = Membership.organ_admin(organ1)
-membership3 = Membership.organ_admin(system_organ)
+# 角色初始化
+member = Membership.create!(name: '成员', organ_id: zhiyi.id)
+admin = Membership.create!(name: '管理员', organ_id: zhiyi.id)
 
-  organ11 = Organ.create!(name: '软件开发部', parent_id: organ1 )
-    organ11_1 = Organ.create!(name: '前台开发部', parent_id: organ11 )
-    # 后台开发部
-    organ11_2 = Organ.create!(name: '后台开发部', parent_id: organ11 )
-      User.create!(name: "苏渝", phone: 18602881279, email: "suyu@zhiyisoft.com",password: "18602881279",password_confirmation:  "18602881279")
-      User.create!(name: "谢刚", phone: 18628171676, email: "xiegang@zhiyisoft.com",password: "18628171676",password_confirmation:  "18628171676")
-      User.create!(name: "钟正权", phone: 13551147353, email: "zhongzhengquan@zhiyisoft.com",password: "13551147353",password_confirmation:  "13551147353")
-      User.create!(name: "杨峻峰", phone: 15881151751, email: "yangjunfeng@zhiyisoft.com",password: "15881151751",password_confirmation:  "15881151751")
-      User.create!(name: "陈健斌", phone: 15882357025, email: "chenjianbin@zhiyisoft.com",password: "15882357025",password_confirmation:  "15882357025")
-      User.create!(name: "杨丹", phone: 13281283611, email: "yangdan@zhiyisoft.com",password: "13281283611",password_confirmation:  "13281283611")
-      User.create!(name: "何源", phone: 13320963363, email: "heyuan@zhiyisoft.com",password: "13320963363",password_confirmation:  "13320963363")
-      User.create!(name: "黄德洲", phone: 18782902305, email: "recurlamlisp@gamil.com",password: "18782902305",password_confirmation:  "18782902305")
-      User.create!(name: "张涛", phone: 15202826031, email: "zhangtao@zhiyisoft.com",password: "15202826031",password_confirmation:  "15202826031")
-      User.create!(name: "尹常鑫", phone: 15184469287, email: "yinchangxin@zhiyisoft.com",password: "15184469287",password_confirmation:  "15184469287")
-      actor1 = Actor.create!(membership_id: membership1.id, organ_id: organ11_2.id)
-      User.all.map { |e| actor1.users << e  }
+# 成员初始化
+behind_users = [
+  User.create!(name: "苏渝", phone: 18602881279, email: "suyu@zhiyisoft.com", password: "18602881279"),
+  User.find(:first, :conditions => {name: '谢刚'}),
+  #User.create!(name: "谢刚", phone: 18628171676, email: "xiegang@zhiyisoft.com", password: "18628171676"),
+  User.create!(name: "钟正权", phone: 13551147353, email: "zhongzhengquan@zhiyisoft.com", password: "13551147353"),
+  User.create!(name: "杨峻峰", phone: 15881151751, email: "yangjunfeng@zhiyisoft.com", password: "15881151751"),
+  User.create!(name: "陈健斌", phone: 15882357025, email: "chenjianbin@zhiyisoft.com", password: "15882357025"),
+  User.create!(name: "杨丹", phone: 13281283611, email: "yangdan@zhiyisoft.com", password: "13281283611"),
+  User.create!(name: "何源", phone: 13320963363, email: "heyuan@zhiyisoft.com", password: "13320963363"),
+  User.create!(name: "黄德洲", phone: 18782902305, email: "recurlamlisp@gamil.com", password: "18782902305"),
+  User.create!(name: "张涛", phone: 15202826031, email: "zhangtao@zhiyisoft.com", password: "15202826031"),
+  User.create!(name: "尹常鑫", phone: 15184469287, email: "yinchangxin@zhiyisoft.com", password: "15184469287"),
+  User.create!(name: "唐久军", phone: 18782943143, email: "1549907179@qq.com", password: "123456")
+  ]
+  behind_actor = Actor.create!(membership_id: member.id, organ_id: behind.id)
+  behind_users.each { |e| e.actors << behind_actor }
 
-  # 测试部
-  organ12 = Organ.create!(name: '测试部', parent_id: organ1)
-    actor2 = Actor.create!(membership_id: membership1.id, organ_id: organ12.id)
-    User.create!(name: "唐浩", phone: 13880129915, email: "tanghao@zhiyisoft.com",password: "13880129915",password_confirmation:  "13880129915")
-    actor2.users << User.last
+testing_users = [
+  User.create!(name: "唐浩", phone: 13880129915, email: "tanghao@zhiyisoft.com", password: "13880129915")
+  ]
+  testing_actor = Actor.create!(membership_id: member.id, organ_id: testing.id)
+  testing_users.each { |e| e.actors << testing_actor }
 
-  # 行政部
-  organ13 = Organ.create!(name: '行政部', parent_id: organ1)
-    actor3 = Actor.create!(membership_id: membership1.id, organ_id: organ13.id)
-    User.create!(name: "闫秋云", phone: 13808229662, email: "yanqiuyun@zhiyisoft.com",password: "13808229662",password_confirmation:  "13808229662")
-    actor3.users << User.last
+xingzheng_users = [
+  User.create!(name: "闫秋云", phone: 13808229662, email: "yanqiuyun@zhiyisoft.com", password: "13808229662")
+  ]
+  xingzheng_actor = Actor.create!(membership_id: member.id, organ_id: xingzheng.id)
+  xingzheng_users.each { |e| e.actors << xingzheng_actor }
 
-  # 财务部
-  organ14 = Organ.create!(name: '财务部', parent_id: organ1 )
-    actor4 = Actor.create!(membership_id: membership1.id, organ_id: organ14.id)
-    User.create!(name: "刘玲", phone: 13541386053, email: "liuling@zhiyisoft.com",password: "13541386053",password_confirmation:  "13541386053")
-    actor4.users << User.last
-    User.create!(name: "李佳", phone: 13308176710, email: "lijia@zhiyisoft.com",password: "13308176710",password_confirmation:  "13308176710")
-    actor4.users << User.last
+caiwu_users = [
+  User.create!(name: "刘玲", phone: 13541386053, email: "liuling@zhiyisoft.com", password: "13541386053"),
+  User.create!(name: "李佳", phone: 13308176710, email: "lijia@zhiyisoft.com", password: "13308176710")
+  ]
+  caiwu_actor = Actor.create!(membership_id: member.id, organ_id: caiwu.id)
+  caiwu_users.each { |e| e.actors << caiwu_actor }
 
-Organ.all.map { |e| e.pass }
-Actor.all.map { |e| e.permissions << read_organ }
-
-# ---------- 其他测试数据 ----------
-organ2 = Organ.create!(name: '成都大学' )
-
-User.create!(name:"no enterprise",email:"guest@163.com",password:"123456",password_confirmation:"123456",phone: "12345612345")
-
-actor1.users << User.create!(name:"enterprise member",email:"member@163.com",password:"123456",password_confirmation:"123456",phone: "12345612346")
-
-actor5 = Actor.create!(membership_id: membership2.id, organ_id: organ1.id)
-actor5.permissions << read_organ
-actor51 = Actor.create!(membership_id: membership1.id, organ_id: organ1.id)
-actor51.permissions << manage_organ
-actor5.users << User.create!(name:"知一软件-谢刚",email:"tianbymy@163.com",password:"adminxg",password_confirmation:"adminxg",phone: "18628171674")
-actor51.users << User.last
-
-actor6 = Actor.create!(membership_id: membership3.id, organ_id: system_organ.id)
-actor6.permissions << all
-actor6.users << User.create!(name:"知一软件系统管理员",email:"system_admin@163.com",password:"123456",password_confirmation:"123456",phone: "12345612347")
+zservice_users = [
+  User.create!(name: "甘华丽", phone: 15281039267, email: "ganhuali@zservice.cn", password: "15281039267"),
+  User.create!(name: "周英", phone: 13438800586, email: "zhouying@zservice.cn", password: "13438800586"),
+  User.create!(name: "邓宇晶", phone: 18600160167, email: "dengyujing@zservice.cn", password: "18600160167"),
+  User.create!(name: "邹瑜", phone: 18008055031, email: "zouyu@zservice.cn", password: "18008055031"),
+  User.create!(name: "文靖", phone: 15199925679, email: "wenjing@zservice.cn", password: "15199925679"),
+  User.create!(name: "李源冰", phone: 13350081882, email: "liyuanbin@zservice.cn", password: "13350081882"),
+  User.create!(name: "廖肖韦", phone: 15202859971, email: "liaoxiaowei@zservice.cn", password: "15202859971"),
+  User.create!(name: "钟刘梅", phone: 15196634082, email: "zhongliumei@zservice.cn", password: "15196634082")
+ ]
+ zservice_actor = Actor.create!(membership_id: member.id, organ_id: zservice.id)
+ zservice_users.each { |e| e.actors << zservice_actor }
 
 # 激活所有账户
 User.all.map { |e| e.update_attribute(:confirmation_token, nil) }
 User.all.map { |e| e.update_attribute(:confirmed_at, Time.now) }
+
+# 初始化管理员
+manage_organ = Permission.find :first, :conditions => {:name => '管理所属企业'}
+zhiyi_admin_actor = Actor.create!(membership_id: admin.id, organ_id: zhiyi.id)
+manage_organ.actors << zhiyi_admin_actor
+['苏渝', '谢刚', '唐久军', '闫秋云'].each do |name|
+  User.where(:name => name).each { |e| e.actors << zhiyi_admin_actor }
+end
