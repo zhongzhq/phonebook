@@ -7,7 +7,11 @@ module Master
     end
 
     def check
-      OrganApply.find(params[:id]).send(params[:state])
+      @organ_apply = OrganApply.find(params[:id])
+
+      @organ_apply.send(params[:state])
+      OrganMailer.pass( @organ_apply.user_id ).deliver if @organ_apply.success?
+
       redirect_to master_organs_path
     end
   end

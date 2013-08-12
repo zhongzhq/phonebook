@@ -1,8 +1,12 @@
 defaults: &defaults
-  system_organ: 系统管理组
-  member: 成员
-  admin: 管理员
-  sites: http://phonebook.zhiyisoft.com
+  organ:
+    system: 系统管理组
+  membership:
+    member: 成员
+    admin: 管理员
+  domain: phonebook.zhiyisoft.com
+  email_sender: 成都知一软件有限公司 <office@zhiyisoft.com>
+  
 development:
   <<: *defaults
 

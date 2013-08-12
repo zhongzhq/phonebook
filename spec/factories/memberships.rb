@@ -3,11 +3,11 @@ FactoryGirl.define do
   factory :membership do
 
     factory :member do
-      name Settings.member
+      name Settings.membership.member
     end
 
     factory :admin do
-      name Settings.admin
+      name Settings.membership.admin
     end
 
     factory :manager do

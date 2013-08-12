@@ -47,7 +47,7 @@ FactoryGirl.define do
 
     # 系统管理组
     factory :system_organ do
-      name Settings.system_organ
+      name Settings.organ.system
 
       factory :system_organ_with_actors do
         after :create do |organ|
