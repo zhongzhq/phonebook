@@ -11,6 +11,8 @@ class Ability
       eval permission.code
     end
 
+    can :render_event_response, :all
+
   end
 
   # 定义 3 种权限

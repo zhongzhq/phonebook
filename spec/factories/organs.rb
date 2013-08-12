@@ -11,6 +11,11 @@ FactoryGirl.define do
           end
         end
       end
+
+      after :create do |organ|
+        create :admin, :organ_id => organ.id
+        create :member, :organ_id => organ.id
+      end
     end
 
     factory :software do

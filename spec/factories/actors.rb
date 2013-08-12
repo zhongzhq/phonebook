@@ -11,7 +11,7 @@ FactoryGirl.define do
       zhiyi_organ 
       after :build do |actor|
         organ = Organ.find actor.organ_id
-        actor.membership_id = Membership.organ_admin( organ ).id
+        actor.membership_id = Membership.where( :name => build(:admin).name ).first.id
       end
     end
     
@@ -19,7 +19,7 @@ FactoryGirl.define do
       zhiyi_organ
       after :build do |actor|
         organ = Organ.find actor.organ_id
-        actor.membership_id = Membership.organ_member( organ ).id
+        actor.membership_id = Membership.where( :name => build(:member).name ).first.id
       end
     end
 
