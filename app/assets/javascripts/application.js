@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap/transition
+//= require twitter/bootstrap/alert
 //= require twitter/bootstrap/modal
 //= require rails.validations
 //= require rails.validations.simple_form
@@ -23,13 +24,13 @@ function refresh_captcha(){
     $('#captcha_img').attr('src', '/captcha?action=captcha&i=' + new Date().getTime())
 }
 
-function show_message(txt){
+/*function show_message(txt){
     //IE6位置
     if (!window.XMLHttpRequest) {
 	$("#targetFixed").css("top", $(document).scrollTop() + 2);
     }
     //创建半透明遮罩层
-/*    if (!$("#overLay").size()) {
+    if (!$("#overLay").size()) {
 	$('<div id="overLay"></div>').prependTo($("body"));
 	$("#overLay").css({
 	    width: "100%",
@@ -41,7 +42,7 @@ function show_message(txt){
 	    zIndex: 10000
 	}).height($(document).height());
     }
-*/    //显示操作提示，最关键核心代码
+    //显示操作提示，最关键核心代码
     $("#floatBox_doing").show().html("提示：" + txt)
     //定时关闭，测试用
     setTimeout(function() {
@@ -50,7 +51,7 @@ function show_message(txt){
     }, 1000);
 
 }
-
+*/
 // Ajax 动态下拉框
 function option_tree(selector, url, func, options ){
   options = $.extend({

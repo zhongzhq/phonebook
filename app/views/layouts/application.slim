@@ -16,8 +16,9 @@ html lang="en"
         #menubar
           =render "templates/menubar"
         #working-area
+          = render 'templates/flash', :flash => flash
           .row-fluid
             = yield
-            = render 'templates/flash', :flash => flash
+
     #footer
       /!=render "templates/footer"
