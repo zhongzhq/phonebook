@@ -17,5 +17,6 @@
             td= organ_apply.organ_name
             td= t("state.organ_apply.#{organ_apply.state}")
             td.operating
-              - unless organ_apply.success?
-                = link_to '通过', pass_master_organ_path(organ_apply)
+              - if organ_apply.review?
+                = link_to '通过', check_master_organ_path(organ_apply, :state => 'pass'), confirm: '你确定要通过？'
+                = link_to '拒绝', check_master_organ_path(organ_apply, :state => 'refuse'), confirm: '你确定要拒绝？'

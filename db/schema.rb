@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 20130805124831) do
   create_table "organ_applies", :force => true do |t|
     t.integer  "user_id",    :null => false
     t.string   "organ_name", :null => false
+    t.string   "description"
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
