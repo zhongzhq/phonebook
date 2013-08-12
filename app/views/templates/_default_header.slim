@@ -1,18 +1,22 @@
-a href=new_user_session_path 登录
-a href=new_user_registration_path 注册
-a href=new_user_password_path 忘记密码
-ul
-  li
-    a href=root_path 首页
-  li
-    a href=products_path 产品介绍
-  li
-    a href=clouds_path 私有云部署模式
-  li
-    a href=downloads_path 下载中心
-  li
-    a href=news_index_path 新闻中心
-  li
-    a href=helps_path 帮助中心
-  li
-    a href=purchases_path 体验申请
+.head-con.navbar
+  .head-logo.pull-left
+    img alt="知一软件/phonebook" src="/assets/zylogo.png"
+  .head-connect.pull-right
+    ul.nav
+      li
+        a href=new_user_session_path
+          i.icon-user
+          | 会员登录
+      li
+        a href=new_user_registration_path
+          i.icon-edit
+          | 免费注册
+      li
+        a href=new_user_password_path
+          i.icon-question
+          | 忘记密码
+      li
+        a.text-orange href="#"
+          i.icon-phone
+          | 服务热线:028-85179020
+  
