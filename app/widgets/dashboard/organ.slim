@@ -17,7 +17,6 @@
         p= '企业名称：' + organ_apply.organ_name
         p
           = '申请状态：' + t("state.organ_apply.#{organ_apply.state}")
-          = link_to '初始化企业', init_applies_organ_apply_path(organ_apply) if organ_apply.success?
     - else
       p= '企业名称: ' + organ.name
       p

@@ -33,6 +33,7 @@ zh_CN:
         captcha: 验证码
       organ_apply:
         organ_name: 企业名称
+        description: 描述
 
     errors:
       messages:

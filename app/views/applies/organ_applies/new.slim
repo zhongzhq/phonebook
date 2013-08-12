@@ -5,8 +5,8 @@
   .widgetarea
     = simple_form_for @organ_apply, :url => applies_organ_applies_path, :html => {:class=>"form-horizontal form-mini"} do |f|
       = f.input :organ_name
-      
+      = f.input :description
       .control-group
         .controls
           = link_to '取消', root_path, :class => 'btn btn-danger'
-          = f.button :submit, '申请企业', :class => "btn-info"
+          = f.button :submit, '申请', :class => "btn-info"
