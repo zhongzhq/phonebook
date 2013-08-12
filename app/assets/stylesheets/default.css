@@ -20,36 +20,6 @@
 
 
 
-#default #login{
-    width:400px;
-    margin:auto;
-    top:220px;
-    position: relative;
-}
-#default #login label{
-    width:60px;
-    letter-spacing:3px;
-}
-#default #login label[for=user_account],#default #login label[for=user_password]{
-    letter-spacing:12px;
-}
-#default #login .controls{
-    margin-left:65px;
-}
-#default #login .workarea{
-    margin-top:0;
-}
-#default .workarea h4{
-    height: 50px;
-}
-#default .workarea .span3{
-    height:150px;
-    padding:10px 20px;
-    border-right:1px solid #f1f1f1;
-}
-#default .workarea .span3:first{
-    border: 0;
-}
 
 .widget{
     background-color:#FEFEFE;
@@ -142,11 +112,11 @@
   height: 40px;
 }
 #content{  
-
+  background: url("bg-f.png");
+  min-height: 400px;
 }
 #content #banner-show{ 
-  padding: 10px 0 5px;
-  background: url("bg-f.png");
+  padding: 10px 0 3px;  
 }
 #content #banner-show .banner-con{
   width: 960px;
@@ -173,7 +143,7 @@
   color:#1B85CF !important;
 }
 .div-separate-deep{
-  border-top: 2px dashed #d5d5d5;
+  border-top: 2px dashed #dedede;
   margin-top: 10px;
 }
 .div-separate-light{
@@ -196,3 +166,71 @@
   width: 960px;
   margin: auto;
 }
+
+/*---------------------login--------------------------------*/
+#default #login{
+    width:340px;
+    margin:0 auto;
+    top:50px;
+    position: relative;
+    padding: 5px 20px;
+
+    background-color:#FEFEFE;
+    border:1px solid #E1E3E6;    
+    box-shadow:0 1px 2px #E1E3E6;    
+    background-image: -moz-linear-gradient(center top , #FEFEFE, #EDEDED);
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgb(254, 254, 254)), to(rgb(237, 237, 237)));
+    background-image: -webkit-linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));
+    background-image: -moz-linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));
+    background-image: -o-linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));
+    background-image: -ms-linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));
+    background-image: linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));   
+}
+#default #login h4{
+    margin:10px auto;
+    border-bottom:1px solid #eaeaea;    
+    font-size:16px;
+    font-weight:normal;
+    padding:5px 0;
+}
+#default #login label{
+    width:55px;    
+    font-size: 14px;
+    text-align: justify;
+    -moz-text-align-last: justify;/*ff*/
+    text-justify:distribute-all-lines;/*ie6-8*/
+    text-align-last:justify;/* ie9*/
+    -webkit-text-align-last:justify;/*chrome 20+*/
+}
+#default #login label[for=user_account],#default #login label[for=user_password]{
+    
+}
+#default #login .control-group{
+  margin-bottom: 10px;
+}
+#default #login .controls{
+    margin-left:65px;
+}
+#default #login .controls img{
+  margin: 0 5px;
+  border: 1px solid #eaeaea;
+}
+#default #login .workarea{
+    margin-top:0;
+}
+#default .workarea h4{
+    height: 50px;
+}
+#default .workarea .span3{
+    height:150px;
+    padding:10px 20px;
+    border-right:1px solid #f1f1f1;
+}
+#default .workarea .span3:first{
+    border: 0;
+}
+.btn-login{
+  padding: 5px 15px;
+  font-size: 14px;
+}
+
