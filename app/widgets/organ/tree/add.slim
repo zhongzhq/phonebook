@@ -1,0 +1,18 @@
+#organ-dialog.modal.hide
+  = simple_form_for @organ, :url => url_for_event(:add_submit, :id => @organ.id), :remote => true, :html => {:class => "form-horizontal form-mini"}, :validate => true do |f|
+    .modal-header
+      button.close data-dismiss="modal" &times;
+      h3 添加下级组织
+  
+    .modal-body    
+      = f.input :name
+      = f.hidden_field :parent_id
+      = f.input :description, :input_html => {:style=>"width:250px;height:100px"}
+
+    .modal-foote
+      button.btn data-dismiss="modal" 关闭      
+      = f.button :submit, :class => "btn btn-primary"
+
+  javascript:
+    $('.modal-backdrop').remove()
+    $('#organ-dialog').modal('show')

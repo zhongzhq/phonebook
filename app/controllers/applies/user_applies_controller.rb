@@ -1,6 +1,12 @@
 # -*- coding: utf-8 -*-
 module Applies
   class UserAppliesController < ApplicationController
+
+    def index
+      @organ = Organ.find params[:organ_id]
+      @applies = UserApply.members(@organ.subtree)
+    end
+
     def new
     end
 
@@ -13,6 +19,12 @@ module Applies
       else
         redirect_to root_path, alert: '组织申请失败，你可能已申请过或者正在申请其它企业'
       end
+    end
+
+    def update
+      @apply = UserApply.find params[:id]
+      @apply.pass
+      redirect_to applies_user_applies_path(:organ_id => @apply.actor.organ.root), notice: '成功通过组织申请'
     end
 
     def children_organs
