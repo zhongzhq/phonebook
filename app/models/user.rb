@@ -22,10 +22,11 @@ class User < ActiveRecord::Base
     actors.map(&:permissions).flatten.uniq
   end
 
-  # 调用用户所拥有的 actors
-  def adjust new_actors
-    (actors - new_actors).each { |actor| actors.delete actor }
-    (new_actors - actors).each { |actor| actors << actor }
+  # 调整用户某个组织下的角色
+  def adjust organ, new_actors
+    old_actors = actors.where(:organ_id => organ)
+    (old_actors - new_actors).each { |actor| actors.delete actor }
+    (new_actors - old_actors).each { |actor| actors << actor }
   end
 
   # 允许用户使用 手机号或邮箱 登陆

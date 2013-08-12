@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       end
     end.flatten
     
-    @user.adjust( actors )
+    @user.adjust current_user.organs.first.root.subtree, actors
     redirect_to organs_path, notice: '调整成功'
   end
 

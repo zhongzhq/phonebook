@@ -55,7 +55,7 @@ class OrgansController < ApplicationController
     end.flatten
 
     if @user.save
-      @user.adjust( actors )
+      @user.adjust current_user.organs.first.root.subtree, actors
       redirect_to organs_path, :notice => '添加联系人成功'
     else
       render 'new_member'

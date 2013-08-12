@@ -44,7 +44,7 @@ class Organ::PanelWidget < ApplicationWidget
     end
 
     if @user.save
-      @user.adjust actors
+      @user.adjust @organ, actors
       render :state => :show
     else
       replace "##{widget_id} #user-edit-dialog", {:view => :add}
@@ -67,7 +67,7 @@ class Organ::PanelWidget < ApplicationWidget
     end
 
     if @user.update_attributes params[:user]
-      @user.adjust( actors )
+      @user.adjust @organ, actors
       @members = @organ.members.paginate(:page => params[:page])
       replace :view => :show
     else
