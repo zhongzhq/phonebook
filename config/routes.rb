@@ -71,12 +71,7 @@ EPBook::Application.routes.draw do
         get 'memberships'
       end
     end
-    resources :organ_applies do
-      member do
-        get 'init'
-        post 'init_create'
-      end
-    end
+    resources :organ_applies, :only => [:new, :create]
   end
 
   # Master routes
@@ -91,7 +86,7 @@ EPBook::Application.routes.draw do
     end
     resources :organs,:only=>[:index] do
       member do
-        get 'pass'
+        get 'check'
       end
     end
   end

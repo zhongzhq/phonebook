@@ -6,8 +6,8 @@ module Master
       @organ_applies = OrganApply.all
     end
 
-    def pass
-      OrganApply.find(params[:id]).try(:pass)
+    def check
+      OrganApply.find(params[:id]).send(params[:state])
       redirect_to master_organs_path
     end
   end

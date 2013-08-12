@@ -16,25 +16,5 @@ module Applies
         render 'new'
       end
     end
-
-    def init
-      @organ_apply = OrganApply.find(params[:id])
-    end
-
-    def init_create
-      @organ_apply = OrganApply.find(params[:id])
-
-      @organ = Organ.create(:name => @organ_apply.organ_name)
-
-      @membership = Membership.create(:name => params[:membership][:name], :organ_id => @organ.id)
-
-      @actor = Actor.first_or_create(:organ => @organ, :membership => @membership)
-      
-      @actor.users << current_user
-      Permission.where(:code => 'master_organ').first.actors << @actor
-
-      redirect_to root_path, :notice => '企业信息初始化成功'
-    end
-
   end
 end
