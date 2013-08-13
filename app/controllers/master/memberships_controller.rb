@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 module Master
   class MembershipsController < ApplicationController
+    layout 'master'
     load_and_authorize_resource
 
     def index

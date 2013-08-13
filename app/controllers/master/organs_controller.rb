@@ -1,18 +1,17 @@
+# -*- coding: utf-8 -*-
 module Master
   class OrgansController < ApplicationController
+    layout 'master'
     #authorize_resource :class => false
 
     def index
-      @organ_applies = OrganApply.all
+      @organs = Organ.roots
     end
 
-    def check
-      @organ_apply = OrganApply.find(params[:id])
-
-      @organ_apply.send(params[:state])
-      OrganMailer.pass( @organ_apply.user_id ).deliver
-
-      redirect_to master_organs_path
-    end
+    def update
+      @organ = Organ.find params[:id]
+      @organ.send params[:state]
+      redirect_to master_organs_path, notice: '操作成功'
+    end    
   end
 end
