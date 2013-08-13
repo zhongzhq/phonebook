@@ -108,6 +108,8 @@
   background: url("bg-f.png");
   min-height: 400px;
   padding: 15px 0;
+  border-bottom: 1px solid #eaeaea;
+
 }
 #content #banner-show{ 
   padding: 0 0 3px;  
@@ -188,7 +190,7 @@
     -webkit-text-align-last:justify;/*chrome 20+*/
 }
 #default #login label{
-  width:55px; 
+  width:50px; 
 }
 #default #login label[for=user_account],#default #login label[for=user_password]{
     
@@ -197,7 +199,7 @@
   margin-bottom: 10px;
 }
 #default #login .controls{
-    margin-left:65px;
+    margin-left:60px;
 }
 #default #login .controls img,.help-block img{
   margin: 0 5px;
@@ -223,10 +225,10 @@
   padding: 20px 40px;
 }
 #default #register label{
-  width: 70px;
+  width: 60px;
 }
 #default #register .form-horizontal .controls{
-  margin-left: 85px;
+  margin-left: 75px;
 }
 #default #register .left-con{
   width: 500px;
