@@ -17,4 +17,7 @@
             td= index + 1
             td= membership.name
             td.operating
-               = link_to '修改', edit_membership_path(membership)
+              - if Settings.membership.values.include? membership.name
+                | 系统角色
+              - else
+                = link_to '修改', edit_membership_path(membership)

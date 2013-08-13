@@ -7,9 +7,10 @@ read_organ  = Permission.create!(name: '查看所属企业', code: 'read_organ',
 
 # 系统初始化 超级管理员
 system_group      = Organ.create!(name: "系统管理组" )
-system_membership = Membership.create!(name: "超级管理员", organ_id: system_group.id)
+admin_membership = Membership.create!(name: Settings.membership.admin, organ_id: system_group.id)
+member_membership = Membership.create!(name: Settings.membership.member, organ_id: system_group.id)
 
-system_actor      = Actor.create!(organ_id: system_group.id, membership_id: system_membership.id)
+system_actor      = Actor.create!(organ_id: system_group.id, membership_id: admin_membership.id)
 # 将 系统管理组/超级管理员 加入 超级管理员权限组
 manage_system.actors << system_actor
 
