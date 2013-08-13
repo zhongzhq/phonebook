@@ -8,12 +8,16 @@ class OrganApply < ActiveRecord::Base
 
   state_machine :initial => :review do
   	event :pass do
-  		transition :review => :success
+  		transition [:review, :failure] => :success
   	end
 
   	event :refuse do
   		transition :review => :failure
   	end
+
+    event :apply do
+      transition :failure => :review
+    end
   end
 
   private

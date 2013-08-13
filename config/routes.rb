@@ -71,7 +71,7 @@ EPBook::Application.routes.draw do
         get 'memberships'
       end
     end
-    resources :organ_applies, :only => [:new, :create]
+    resources :organ_applies, :except => [:index, :show]
   end
 
   # Master routes

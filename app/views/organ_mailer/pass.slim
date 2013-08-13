@@ -1,6 +1,10 @@
-h1 恭喜你，#{ @user.name || @user.email }
-h3 你申请的企业 #{@organ.name} 已经通过审核
-
-abbr
-  | 通过时间:
-  = Time.now
+- if @organ.blank?
+  h1 对不起，#{ @user.name || @user.email }
+  h3
+    | 你申请的企业 #{@organ_apply.organ_name} 未能通过审核, 你可以
+    = link_to '修改申请信息', edit_applies_organ_apply_url(@organ_apply)
+    | ，并重新申请
+  
+- else
+  h1 恭喜你，#{ @user.name || @user.email }
+  h3 你申请的企业 #{@organ_apply.organ_name} 已经通过审核
