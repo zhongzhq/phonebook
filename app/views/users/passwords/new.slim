@@ -1,11 +1,9 @@
-.infobox
-  .infobox-title
-    h4
-      i.icon-edit
-      span.text-info 找回密码
-  .infobox-area
-    = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class=>"form-horizontal", :method => :post }) do |f|
-	    = f.input :email, :autofocus => true
-	    .control-group
-	      .controls
-	        = f.button :submit, "发送重置密码邮件",:class => "btn-info"
+.content-box
+  #get-pwd
+    .h1-title 找回密码
+    .infobox-area
+      = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => {:class=>"form-horizontal ", :method => :post }) do |f|
+  	    = f.input :email, :autofocus => true
+  	    .control-group
+  	      .controls
+  	        = f.button :submit, "发送重置密码邮件",:class => "btn-success btn-login"
