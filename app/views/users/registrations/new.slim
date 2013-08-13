@@ -1,21 +1,33 @@
-.infobox
-  .infobox-title
-    h4
-      i.icon-edit.text-large.muted
-      span.text-info 用户注册
-    .infobox-area
-      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class=>"form-horizontal form-mini"}, :validate => true) do |f|
-        = f.input :phone
-        = f.input :email, :autofocus => true
-        = f.input :password, :validate => true
-        = f.input :password_confirmation
+.content-box
+  #register
+    .left-con.pull-left
+      .h1-title 用户注册
+      .infobox-area
+        = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class=>"form-horizontal label-justify"}, :validate => true) do |f|
+          = f.input :phone, label: "手机号码"
+          = f.input :email, :autofocus => true, label: "电子邮箱"
+          = f.input :password, :validate => true, label: "密&emsp; 码"
+          = f.input :password_confirmation, label: "确认密码"
 
-        // 验证码
-        = f.input :captcha, hint: captcha_tag(id: 'captcha_img') + "<a onclick='refresh_captcha();' href='javascript:void(0)'>看不清，换一张</a>".html_safe, required: true do
-          = text_field_tag :captcha
+          // 验证码
+          = f.input :captcha, label: "验证码", hint: captcha_tag(id: 'captcha_img') + "<a onclick='refresh_captcha();' href='javascript:void(0)'>看不清，换一张</a>".html_safe, required: true do
+            = text_field_tag :captcha
 
-        .control-group
-          .controls
-            = f.button :submit,"注册",:class => "btn-info"
-            = link_to '已有帐号？返回直接登录', root_path, :class => "btn margin-right5"
+          .control-group
+            .controls
+              = f.button :submit,"立 即 注 册",:class => "btn-success btn-login"
+              = link_to '已有帐号？返回直接登录', root_path, :class => "btn margin-right5"
+    .right-con.pull-left
+      .alert.alert-warning
+        | 已有帐号？
+        a href="" 直接登录
+      p.h1-title 企业通讯录客户端
+      p
+        a.btn.btn-info.btn-large
+          i.icon-download-alt.text-large
+          span 免费下载
+      p 下载到手机！扫描二维码
+      p
+        img src="/liantu.png" alt="" style="width:130px;height:130px;"
+    .clearfix
 
