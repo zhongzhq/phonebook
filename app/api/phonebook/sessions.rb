@@ -5,21 +5,22 @@ module Phonebook
     use Rack::JSONP
     format :json
 
-    post "login" do
-      #      resource = User.find_for_database_authentication(:email => params[:account])
-      #      if resource.valid_password?(params[:password])
-      #        Devise.sign_in(:user, resource)
-      #        resource.ensure_authentication_token!
-      #        return {:status => "success", :auth_token => resource.authentication_token, :email=>resource.email}
-      #      end
+    desc "登录系统"
+    get "login" do
+ #     resource = User.find_for_database_authentication(:email => params[:account])
+ #     if resource.valid_password?(params[:password])
+ #       sign_in(:user, resource)
+ #       resource.ensure_authentication_token!
+ #       return {:status => "success", :auth_token => resource.authentication_token, :email=>resource.email}
+ #     end
     end
 
     desc "退出系统"
     get "logout" do
-      resource = User.find_for_database_authentication(:email => params[:email])
-      if resource && resource.update_attribute(:authentication_token, nil)
+#      resource = User.find_for_database_authentication(:email => params[:email])
+#      if resource && resource.update_attribute(:authentication_token, nil)
         return {:status => 'success', :message => '退出成功'}
-      end
+#      end
     end
 
 
