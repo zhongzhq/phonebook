@@ -84,6 +84,7 @@ EPBook::Application.routes.draw do
     resources :memberships, :except => [:show, :destroy]
     resources :organs, :only => [:index, :update]
   end
+
   mount API => 'api'
 end
 

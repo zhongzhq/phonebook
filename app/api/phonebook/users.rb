@@ -1,10 +1,24 @@
 # -*- coding: utf-8 -*-
 module Phonebook
-  class User < Grape::API
-    user Rack::JSONP
+  require 'rack/contrib'
+  class Users < Grape::API
+    use Rack::JSONP
     format  :json
 
     get "/all_users" do
+
+    end
+  end
+end
+
+
+
+
+
+
+
+
+=begin
       root = Organ.where(id: params[:organ_id]).first
       users = root.members_and_descendants.order("name ASC")
       users.each
@@ -13,7 +27,8 @@ module Phonebook
       end
 
       return users
-    end
+=end
+#    end
 =begin
     def get_users
       if params[:organ_id]
@@ -36,6 +51,7 @@ module Phonebook
       full_name(organ.parent) + "/" + organ.name
     end
 
-=end
+
   end
 end
+=end
