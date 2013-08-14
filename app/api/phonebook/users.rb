@@ -6,8 +6,23 @@ module Phonebook
     format  :json
 
     get "/all_users" do
-
+      root = Organ.where(id: params[:organ_id]).first
+      users = root.subtree_members.order("name ASC")
+      users.inject({}) do |index,user|
+        user[:organname] = user.organs.first.fullname#full_name(user.organs.first)
+      end
+      users
     end
+
+    def full_name organ
+      if organ.parent ==nil
+        return ""
+      end
+      return  organ.name unless organ.parent
+      full_name(organ.parent) + "/" + organ.name
+    end
+
+
   end
 end
 
@@ -18,16 +33,7 @@ end
 
 
 
-=begin
-      root = Organ.where(id: params[:organ_id]).first
-      users = root.members_and_descendants.order("name ASC")
-      users.each
-      users.inject({}) do |index,user|
-        user[:organname] = full_name(user.organs.first)
-      end
 
-      return users
-=end
 #    end
 =begin
     def get_users
@@ -43,13 +49,7 @@ end
       return result
     end
 
-    def full_name organ
-      if organ.parent ==nil
-        return ""
-      end
-      return  organ.name unless organ.parent
-      full_name(organ.parent) + "/" + organ.name
-    end
+
 
 
   end

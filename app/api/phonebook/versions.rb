@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 module Phonebook
   require 'rack/contrib'
-  class Version < Grape::API
+  class Versions < Grape::API
     use Rack::JSONP
     format :json
     get "/version" do
