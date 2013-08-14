@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
-class Api::OrgansController < Api::BaseController
-  respond_to :json
+module Phonebook
+  require 'rack/contrib'
+  class Organs < Grape::API
+    use Rack::JSONP
+    format :json
 
   def get_root
 
@@ -53,4 +56,5 @@ class Api::OrgansController < Api::BaseController
 
   end
 
+end
 end
