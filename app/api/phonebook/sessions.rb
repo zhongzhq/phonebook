@@ -5,7 +5,7 @@ module Phonebook
     use Rack::JSONP
     format :json
 
-    get "/login" do
+    get "login" do
 
 
       #      resource = User.find_for_database_authentication(:email => params[:account])
