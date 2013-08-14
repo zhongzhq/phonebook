@@ -64,3 +64,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'
 end
+
+# API
+gem 'grape'
+gem 'rack-contrib'

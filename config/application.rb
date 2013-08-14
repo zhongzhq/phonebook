@@ -59,6 +59,9 @@ module EPBook
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
 
+    config.paths.add "app/api", glob: "**/*.rb"
+    config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
+
     # mail config
     config.action_mailer.default_url_options = { host: "phonebook.zhiyisoft.com" }
     config.action_mailer.delivery_method = :smtp
