@@ -1,23 +1,14 @@
 zh_CN:
   activerecord:
     models:
-      rank: 等级
       organ: 组织
       membership: 角色
       user: 用户
       organ_apply: 申请企业
     attributes:
-      rank:
-        name: 级别
-        parent_id: 隶属上级
       organ:
         name: 组织名
-        parent_id: 隶属上级组织
-        rank_id: 等级
-        address: 地址
         description: 描述
-        postalcode: 邮编
-        areacode: 区号
       membership:
         name: 角色名
       user:
@@ -62,9 +53,8 @@ zh_CN:
 
   state:
     organ:
-      apply: 待审核
-      success: 申请成功
-      failure: 申请失败
+      enabled: 启用
+      disabled: 禁用
     user_apply:
       review: 待审核
       success: 申请成功

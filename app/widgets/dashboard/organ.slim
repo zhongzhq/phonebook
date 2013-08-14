@@ -17,6 +17,10 @@
         p= '企业名称：' + organ_apply.organ_name
         p
           = '申请状态：' + t("state.organ_apply.#{organ_apply.state}")
+          - if organ_apply.failure?
+            = link_to '重新申请', edit_applies_organ_apply_path(organ_apply) 
+            | 或者
+          = link_to '取消申请', applies_organ_apply_path(organ_apply), method: :delete, confirm: '你确定要取消？'
     - else
       p= '企业名称: ' + organ.name
       p

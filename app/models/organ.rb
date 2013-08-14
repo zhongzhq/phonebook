@@ -12,11 +12,11 @@ class Organ < ActiveRecord::Base
 
   state_machine :initial => :enabled do
     event :start do
-      transition :disable => :enabled
+      transition :disabled => :enabled
     end
 
     event :close do
-      transition :enabled => :disable
+      transition :enabled => :disabled
     end
   end
 

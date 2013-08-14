@@ -71,24 +71,18 @@ EPBook::Application.routes.draw do
         get 'memberships'
       end
     end
-    resources :organ_applies, :only => [:new, :create]
+    resources :organ_applies, :except => [:show] do
+      member do
+        get 'check'
+      end
+    end
   end
 
   # Master routes
   namespace :master do
     root :to => 'master#index'
     resources :memberships, :except => [:show, :destroy]
-    resources :ranks, :except => [:show, :destroy] do
-      member do
-        get 'new_child'
-        post 'create_child'
-      end
-    end
-    resources :organs,:only=>[:index] do
-      member do
-        get 'check'
-      end
-    end
+    resources :organs, :only => [:index, :update]
   end
   mount API => 'api'
 end

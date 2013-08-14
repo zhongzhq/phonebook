@@ -2,6 +2,9 @@
   h4
     i.icon-hand-right
     span.text-info 企业管理
+    .pull-right
+      = link_to '审核申请企业', applies_organ_applies_path
+
   .infobox-area.widgetarea-height
     table.table.table-bordered.table-hover
       thead
@@ -11,12 +14,13 @@
           td 企业状态
           th 操作
       tbody
-        - @organ_applies.each_with_index do |organ_apply, index|
+        - @organs.each_with_index do |organ, index|
           tr
             td= index + 1
-            td= organ_apply.organ_name
-            td= t("state.organ_apply.#{organ_apply.state}")
+            td= organ.name
+            td= t("state.organ.#{organ.state}")
             td.operating
-              - if organ_apply.review?
-                = link_to '通过', check_master_organ_path(organ_apply, :state => 'pass'), confirm: '你确定要通过？'
-                = link_to '拒绝', check_master_organ_path(organ_apply, :state => 'refuse'), confirm: '你确定要拒绝？'
+              - if organ.disabled?              
+                = link_to '启用', master_organ_path(organ, :state => 'start'), confirm: '你确定要启用？', method: :put
+              - if organ.enabled?
+                = link_to '禁用', master_organ_path(organ, :state => 'close'), confirm: '你确定要禁用？', method: :put

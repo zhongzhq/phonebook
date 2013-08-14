@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 module Applies
   class OrganAppliesController < ApplicationController
+    def index
+      @organ_applies = OrganApply.all
+      render :layout => 'master'
+    end
+
     def new
       @organ_apply = OrganApply.new
     end
@@ -16,5 +21,35 @@ module Applies
         render 'new'
       end
     end
+
+    def edit
+      @organ_apply = OrganApply.find params[:id]
+    end
+
+    def update
+      @organ_apply = OrganApply.find params[:id]
+
+      if @organ_apply.update_attributes(params[:organ_apply])
+        @organ_apply.apply
+        redirect_to root_path, notice: '申请信息修改成功，正在审核...'
+      else
+        render 'edit'
+      end
+    end
+    
+    def destroy
+      @organ_apply = OrganApply.find params[:id]
+      @organ_apply.destroy
+      redirect_to root_path, notice: '申请已取消'
+    end
+  end
+
+  def check
+    @organ_apply = OrganApply.find(params[:id])
+
+    @organ_apply.send(params[:state])
+    OrganMailer.pass( @organ_apply.user_id ).deliver
+
+    redirect_to applies_organ_applies_path
   end
 end

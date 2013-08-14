@@ -1,48 +1,39 @@
 .menu-area
-  -if request.fullpath.include?("master")
-    .menu-block
-      a href=master_organs_path  企业管理
-    .menu-block
-      a href=master_memberships_path 角色管理
-    .menu-block
-      a href=root_path 用户界面
-
-  -else
-    .menu-head
-      = form_tag search_organs_path, :class => "form-inline", method: "get" do
-        = text_field_tag 'text', nil, placeholder: '姓名/手机号/邮箱',class: "input-small"
-        = submit_tag "搜索", class: 'btn'
-      - if can? :manage, Organ
-        a.adduser.btn.btn-info href=new_member_organs_path
-          i.icon-plus
-          | 添加联系人
-    .menu-block
-      a href= root_path
-        p
-          i.icon-dashboard.text-xlarge.success
-          | 仪表盘
-
-    - if can? :read, Organ
-      .menu-block
-        a href= organs_path
-          p
-            i.icon-th.success
-            = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
+  .menu-head
+    = form_tag search_organs_path, :class => "form-inline", method: "get" do
+      = text_field_tag 'text', nil, placeholder: '姓名/手机号/邮箱',class: "input-small"
+      = submit_tag "搜索", class: 'btn'
     - if can? :manage, Organ
-      .menu-block
-        a href= memberships_path
-          p
-            i.icon-user.text-xlarge.success
-            | 角色管理
-    - if can? :manage, :all
-      .menu-block
-        a href= master_root_path
-          p
-            i.icon-user.text-xlarge
-            | 管理界面
+      a.adduser.btn.btn-info href=new_member_organs_path
+        i.icon-plus
+        | 添加联系人
+  .menu-block
+    a href= root_path
+      p
+        i.icon-dashboard.text-xlarge.success
+        | 仪表盘
+
+  - if can? :read, Organ
     .menu-block
-      a href= about_public_index_path
+      a href= organs_path
         p
-          i.icon-info-sign.text-xlarge.success
-          | 关于我们
+          i.icon-th.success
+          = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
+  - if can? :manage, Organ
+    .menu-block
+      a href= memberships_path
+        p
+          i.icon-user.text-xlarge.success
+          | 角色管理
+  - if can? :manage, :all
+    .menu-block
+      a href= master_root_path
+        p
+          i.icon-user.text-xlarge
+          | 管理界面
+  .menu-block
+    a href= about_public_index_path
+      p
+        i.icon-info-sign.text-xlarge.success
+        | 关于我们
 
