@@ -4,11 +4,12 @@
       img alt="知一软件/phonebook" src="/assets/zylogo.png"
   .head-connect.pull-right
     ul.ul-inline.ul-help
+      
       li
         a href= new_user_session_path
           i.icon-user
           | 登录      
-      li
+      li.margin-right5
         a href=  new_user_registration_path
           i.icon-edit
           | 注册     
@@ -16,11 +17,10 @@
       //li
         a href= new_user_password_path
           i.icon-question
-          | 忘记密码
-      li
-        span.text-orange
-          i.icon-phone
-          | 服务热线:400-028-3690
+          | 忘记密码      
+    p.text-orange.pull-right     
+      i.icon-phone.margin-right5.text-xlarge
+      span style="font-size:17px;" 400-028-3690
     .help-line
   javascript:
     $.move(300);
