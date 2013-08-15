@@ -56,10 +56,10 @@ zh_CN:
       enabled: 启用
       disabled: 禁用
     user_apply:
-      review: 待审核
-      success: 申请成功
-      failure: 申请失败
+      review: 审核中
+      success: 成功
+      failure: 失败
     organ_apply:
-      review: 待审核
-      success: 申请成功
-      failure: 申请失败
+      review: 审核中
+      success: 成功
+      failure: 失败

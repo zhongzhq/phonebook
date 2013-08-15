@@ -2,29 +2,33 @@
   h4
     i.icon-exchange.success
     | 我的企业
-    .more.pull-right
-      a href="#" 企业通讯录
+
   .workarea
-    - organ = current_user.organs.first.try(:root)
-    - if organ.nil?
-      - organ_apply = OrganApply.where(:user_id => current_user.id).first
-      - if organ_apply.blank?
-        p
-          = link_to '申请创建企业', new_applies_organ_apply_path
-        p
-          = link_to '申请加入企业', new_applies_user_apply_path
-      - else
-        p= '企业名称：' + organ_apply.organ_name
-        p
+    - if current_user.organs.blank?
+      a.btn href= new_applies_organ_apply_path 申请创建企业
+      a.btn href= new_applies_user_apply_path 申请加入企业
+
+      - OrganApply.where(:user_id => current_user.id).each do |organ_apply|
+        h5
+          = '企业名称：' + organ_apply.organ_name
+        p.label
           = '申请状态：' + t("state.organ_apply.#{organ_apply.state}")
-          - if organ_apply.failure?
-            = link_to '重新申请', edit_applies_organ_apply_path(organ_apply) 
-            | 或者
-          = link_to '取消申请', applies_organ_apply_path(organ_apply), method: :delete, confirm: '你确定要取消？'
+        - if organ_apply.failure?
+          a.btn href= edit_applies_organ_apply_path(organ_apply) 重新申请
+        = link_to '取消申请', applies_organ_apply_path(organ_apply), method: :delete, confirm: '你确定要取消？', class: 'btn'
+
     - else
-      p= '企业名称: ' + organ.name
-      p
-        = '企业成员: ' + organ.subtree_members.size.to_s
-        - if can? :manage, Organ
-          a href=applies_user_applies_path(:organ_id => organ.id) = ' 待审核: ' + UserApply.where(:actor_id => Actor.find_by_organ(organ.subtree) ).size.to_s
-      p= '企业简介：' + (organ.description || '暂无描述')
+      - current_user.organs.map(&:root).uniq.each do |organ|
+        h5
+          = '企业名称：' + organ.name
+        p
+          | 企业成员总数：
+          span.badge.badge-info = organ.subtree_members.size.to_s
+        p
+          - if can? :manage, Organ
+            a.btn.btn-mini href= applies_user_applies_path(:organ_id => organ.id)
+              | 待审核
+              span.badge = UserApply.where(:actor_id => Actor.find_by_organ(organ.subtree) ).size.to_s
+        p
+          = '企业简介：' + (organ.description || '暂无描述')
+        hr
