@@ -85,6 +85,10 @@ EPBook::Application.routes.draw do
     resources :organs, :only => [:index, :update]
   end
 
+  mount API => 'api'
+end
+
+=begin
   # API routes
   namespace :api do
     resources :organs,:only=>[] do
@@ -112,5 +116,4 @@ EPBook::Application.routes.draw do
       end
     end
   end
-
-end
+=end

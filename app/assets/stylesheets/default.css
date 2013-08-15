@@ -53,7 +53,6 @@
     padding:10px;
 }
 
-
 /*-------------------------index------------------------------*/
 #default{
     font-size: 14px !important;
@@ -67,15 +66,32 @@
   margin: 0 auto; 
 }
 #header .head-con .head-connect{
-  margin-top: 30px;
+  margin-top: 20px;
+  position: relative;
+  width: 250px;
+  overflow: hidden;
 }
-#header .head-con .head-connect ul li a{
-  padding: 0 10px;
+.ul-help{
+  
+}
+.help-line{
+  height: 2px;
+  width: 50px;
+  position: absolute;
+  bottom: 5px;
+  background-color: #F5AB24;
+  left: -60px;  
+}
+
+.ul-help li a{
+  padding: 10px 5px;
   color: #666;
+  display: block;  
 }
-#header .head-con .head-connect ul li a:hover{
-  color: #08c;
+.head-connect p{
+  margin: 7px 0 0;
 }
+
 #navigation{
   background:-moz-linear-gradient(top, #1b85cf, #0570ad ); 
   background-image:-webkit-linear-gradient(top, #1b85cf, #0570ad);
@@ -105,7 +121,7 @@
   height: 40px;
 }
 #content{  
-  background: url("bg-f.png");
+  background-color: #f8f8f8;
   min-height: 400px;
   padding: 15px 0;
   border-bottom: 1px solid #eaeaea;
@@ -120,24 +136,27 @@
 }
 #web-info{
   background: url("bg-g.jpg");
-  padding:20px 0 5px;
+  padding:20px 0;
+  margin: 10px 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.03);
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) inset, 0 -1px 0 rgba(255, 255, 255, 0.25);
+ 
 }
 #web-info .web-con{
   width: 960px;
   margin: 0 auto;
+  position: relative;
 }
-#web-info .info-box{
-      
+#web-info .info-connect{
+  height:300px;
+  background-color: #fff;
+  position: absolute;
+  z-index: 100;
+  right: 0;
+  top: -20px;
 }
 
-.div-separate-deep{
-  border-top: 2px dashed #dedede;
-  margin-top: 10px;
-}
-.div-separate-light{
-  border-top: 2px dashed #f9f9f9;
-  margin-top: 10px;
-}
 .ul-info{
   margin: 10px 5px;
 }
@@ -160,6 +179,11 @@
   background-color: #fff;
   box-shadow: 1px 1px 5px #eaeaea; 
   min-height: 370px;   
+}
+
+#web-ad{
+  width: 960px;
+  margin: 10px auto;
 }
 /*---------------------login--------------------------------*/
 #default #login{
