@@ -152,9 +152,9 @@
   height:365px;  
   position: absolute;
   z-index: 100;
-  right: 0;
+  right: -50px;
   top: -40px;
-  width: 370px;
+  width: 423px;
 }
 #web-info .info-connect .connect-top{
   position: absolute;
