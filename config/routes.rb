@@ -24,11 +24,14 @@ EPBook::Application.routes.draw do
     devise_for :users, :controllers => {
       :registrations => "users/registrations",
       :sessions => "users/sessions",
-      :passwords => "users/passwords"
+      :passwords => "users/passwords",
     }
   rescue Exception => e;end
 
-
+  devise_scope :user do
+    get "/users/login" => "users/sessions#login"
+    get "/users/logout" => "users/sessions#logout"
+  end
   # 验证码
   captcha_route
 
