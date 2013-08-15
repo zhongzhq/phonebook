@@ -25,28 +25,28 @@ module Phonebook
 
 
 
-
-    desc "获取组织 root"
-    get "get_root" do
-      user = User.where(email: params[:email]).first
-      if user
-        if !user.actors.blank?
-          organ_id = user.actors.first.organ_id
-          organ = Organ.find(organ_id)
-          organ.is_root? ? result = organ : result = organ.root
+    namespace "organs" do
+      desc "获取组织 root"
+      get "get_root" do
+        user = User.where(email: params[:email]).first
+        if user
+          if !user.actors.blank?
+            organ_id = user.actors.first.organ_id
+            organ = Organ.find(organ_id)
+            organ.is_root? ? result = organ : result = organ.root
+          end
         end
+        return result
       end
-      return result
-    end
 
-    desc "获取 组织树"
-    get "get_organ_tree" do
-      if organ = Organ.where(id: params[:organ_id]).first
-        result = tree organ
+      desc "获取 组织树"
+      get "get_organ_tree" do
+        if organ = Organ.where(id: params[:organ_id]).first
+          result = tree organ
+        end
+        return result
       end
-      return result
     end
-
   end
 end
 
