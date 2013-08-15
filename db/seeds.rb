@@ -6,7 +6,7 @@ manage_organ = Permission.create!(name: '管理所属企业', code: 'master_orga
 read_organ  = Permission.create!(name: '查看所属企业', code: 'read_organ', level: 1)
 
 # 系统初始化 超级管理员
-system_group      = Organ.create!(name: "系统管理组" )
+system_group      = Organ.create!(name: Settings.organ.system )
 admin_membership = Membership.create!(name: Settings.membership.admin, organ_id: system_group.id)
 member_membership = Membership.create!(name: Settings.membership.member, organ_id: system_group.id)
 

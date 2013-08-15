@@ -33,4 +33,7 @@ class Organ < ActiveRecord::Base
     parent.fullname + "/" + name
   end
 
+  def self.system_organ
+    where(:name => Settings.organ.system).first
+  end
 end
