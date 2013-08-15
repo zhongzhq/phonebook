@@ -3,15 +3,6 @@
       .container-fluid
         .row-fluid
           .span3
-            .dropdown
-              a.dropdown-toggle.btn.btn-block data-toggle="dropdown"
-                | 切换组织
-                b.caret
-              ul.dropdown-menu
-                - @root_organs.each do |organ|
-                  li
-                    = link_to organ.name, organs_path(:id => organ.id)
-
             p 
               | 按组织结构显示
               span

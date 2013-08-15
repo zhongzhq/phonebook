@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
     Organ.joins(:actors).where(:actors => {:id => actors}).uniq
   end
 
+  def root_organs
+    organs.map(&:root).uniq
+  end
+
   def permissions
     actors.map(&:permissions).flatten.uniq
   end

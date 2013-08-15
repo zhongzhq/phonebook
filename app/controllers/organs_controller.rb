@@ -10,6 +10,7 @@ class OrgansController < ApplicationController
   def index
     @root_organs = current_user.organs.map(&:root).uniq
     @root_organ = params[:id].blank? ? @root_organs.first : Organ.find(params[:id])
+    session[:current_root_organ] = @root_organ
   end
 
   # 申请创建一个企业

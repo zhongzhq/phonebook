@@ -16,7 +16,7 @@
         = link_to '取消申请', applies_organ_apply_path(organ_apply), method: :delete, confirm: '你确定要取消？', class: 'btn'
 
     - else
-      - current_user.organs.map(&:root).uniq.each do |organ|
+      - current_user.root_organs.each do |organ|
         h5 企业名称： #{organ.name}
         p
           | 企业成员总数：

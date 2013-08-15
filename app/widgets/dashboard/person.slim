@@ -17,5 +17,6 @@
         br
         - current_user.actors.order(:organ_id).group_by(&:organ).each do |k, v|          
           = k.fullname
-          span.badge= v.map { |e| e.membership.name }.join('/')
+          - v.each do |e|
+            span.badge = e.membership.name
           br
