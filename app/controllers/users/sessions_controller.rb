@@ -26,16 +26,17 @@ class Users::SessionsController < Devise::SessionsController
       sign_in(:user, resource)
       resource.ensure_authentication_token!
       render :json=> {:status => "success", :auth_token => resource.authentication_token, :email=>resource.email}
+    else
+      render :json=> {:status => "failed"}
     end
-
   end
   # get json
   def logout
     resource = User.find_for_database_authentication(:email => params[:email])
     if resource && resource.update_attribute(:authentication_token, nil)
-      render :json => {:status => 'success', :message => '退出成功'}
+      render :json => {:status => 'success'}
     else
-      render :json => {:status => 'failed', :message => '退出失败 需要参数 email'}
+      render :json => {:status => 'failed'}
     end
   end
 

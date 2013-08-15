@@ -6,7 +6,9 @@ defaults: &defaults
     admin: 管理员
   domain: phonebook.zhiyisoft.com
   email_sender: 成都知一软件有限公司 <office@zhiyisoft.com>
-  
+
+
+
 development:
   <<: *defaults
 

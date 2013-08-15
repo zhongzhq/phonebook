@@ -7,6 +7,11 @@ html
     title =t('site_name')
     = stylesheet_link_tag 'default', media: 'all'
     = javascript_include_tag 'application'
+    -keyword = params[:controller]+".keyword"
+    meta name="Keywords"  content=t("#{keyword}")
+    -desc = params[:controller]+".description"
+    meta name="description"  content=t("#{desc}")
+
     = csrf_meta_tag
     link href="/assets/zylogo.ico" type="image/x-icon" rel="Shortcut Icon"
     link href="/favicon.ico" type="image/x-icon" rel="icon"
