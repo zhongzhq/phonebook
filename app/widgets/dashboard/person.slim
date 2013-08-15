@@ -1,18 +1,21 @@
 .widget
   h4
     i.icon-user.success
-    |我的名片
+    | 我的名片
+
   .workarea
     ul
-      li 姓名： #{current_user.name}
+      li 姓名： #{ current_user.name || link_to('未填写，请完善', edit_info_users_path) }
       li
         | 邮箱： #{current_user.email}
         - if Devise.mappings[:user].confirmable?
           = link_to "验证邮箱", new_confirmation_path(current_user) unless current_user.confirmed?
+
       li 手机： #{current_user.phone}
       li
         | 我的角色：
         br
-        -current_user.actors.each do |actor|
-          =actor.fullname
+        - current_user.actors.order(:organ_id).group_by(&:organ).each do |k, v|          
+          = k.fullname
+          span.badge= v.map { |e| e.membership.name }.join('/')
           br
