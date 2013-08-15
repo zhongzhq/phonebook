@@ -3,7 +3,6 @@ class API < Grape::API
 
   mount Phonebook::Versions
   mount Phonebook::Users
-  mount Phonebook::Sessions
   mount Phonebook::Organs
 
 
