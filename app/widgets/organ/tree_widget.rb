@@ -4,9 +4,14 @@ class Organ::TreeWidget < ApplicationWidget
   responds_to_event :add
   responds_to_event :add_submit
 
-  def display
-    @organ_root = current_user.organs.first.try(:root)
+  def display args
+    @organ_root = Organ.find( args[:id] ).root
     render
+  end
+
+  def show
+    @organ_root = Organ.find( params[:id] ).root
+    replace :view => :display
   end
 
   # 编辑组织信息
@@ -19,7 +24,7 @@ class Organ::TreeWidget < ApplicationWidget
     @organ = Organ.find params[:id]
 
     if @organ.update_attributes(params[:organ])
-      replace :state => :display
+      render :state => :show
     else
       replace dialog, {:view => :edit}
     end
@@ -33,9 +38,10 @@ class Organ::TreeWidget < ApplicationWidget
 
   def add_submit
     @organ = Organ.new params[:organ]
+    params[:id] = params[:organ][:parent_id]
 
     if @organ.save
-      replace :state => :display
+      render :state => :show
     else
       replace dialog, {:view => :add}
     end

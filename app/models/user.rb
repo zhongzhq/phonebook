@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   # 返回用户所属的所有组织，如果用户未加入任何组织，则返回 []
   def organs
-    actors.map(&:organ).uniq.compact
+    Organ.joins(:actors).where(:actors => {:id => actors}).uniq
   end
 
   def permissions

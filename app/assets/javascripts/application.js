@@ -15,6 +15,7 @@
 //= require twitter/bootstrap/transition
 //= require twitter/bootstrap/alert
 //= require twitter/bootstrap/modal
+//= require twitter/bootstrap/dropdown
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require_tree .

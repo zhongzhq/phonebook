@@ -23,7 +23,7 @@ class Organ::PanelWidget < ApplicationWidget
 
   # 显示组织及下级所有成员
   def all
-    @members = current_user.organs.first.root.subtree_members.paginate(:page => params[:page])
+    @members = Organ.find(params[:id]).root.subtree_members.paginate(:page => params[:page])
     replace :view => :all
   end
 

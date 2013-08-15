@@ -8,6 +8,8 @@ class OrgansController < ApplicationController
   end
 
   def index
+    @root_organs = current_user.organs.where :ancestry => nil
+    @root_organ = params[:id].blank? ? @root_organs.first : @root_organs.find(params[:id])
   end
 
   # 申请创建一个企业
