@@ -9,10 +9,9 @@
       = f.input :phone
 
       = f.input :new_organ_ids, label: '组织名称' do
-        - organ = @user.organs.first.root
-        = recursive_tree organ, Membership.find_by_organ(organ)
+        = recursive_tree session[:current_root_organ], Membership.find_by_organ(session[:current_root_organ])
       
       .control-group
         .controls
-          = link_to '取消', organs_path, :class => 'btn btn-danger'
+          = link_to '取消', :back, :class => 'btn btn-danger'
           = f.button :submit, '调整', :class => "btn-info"

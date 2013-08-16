@@ -4,15 +4,13 @@
     span.text-info = '新建联系人'
 
   .widgetarea
-    = simple_form_for @user, :url => create_member_organs_path, :html => {:class=>"form-horizontal form-mini"} do |f|
+    = simple_form_for @user, :url => create_member_organs_path, :html => {:class=>"form-horizontal form-mini"}, :validate => true do |f|
       = f.input :name, :autofocus => true
       = f.input :email
       = f.input :phone
 
       = f.input :new_organ_ids, label: '组织名称' do
-        - organ = current_user.organs.first.root
-        = recursive_tree organ, Membership.find_by_organ(organ)
-      
+        = recursive_tree session[:current_root_organ], Membership.find_by_organ(session[:current_root_organ])      
       
       .control-group
         .controls

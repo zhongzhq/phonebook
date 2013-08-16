@@ -9,9 +9,8 @@ class OrgansController < ApplicationController
 
   def index
     @root_organs = current_user.organs.map(&:root).uniq
-    @root_organ = params[:id].blank? ? @root_organs.first : Organ.find(params[:id])
-    session[:current_root_organ] = @root_organ
-    redirect_to master_root_path if Organ.system_organ == @root_organ
+    session[:current_root_organ] = Organ.find(params[:id]) unless params[:id].blank?
+    redirect_to master_root_path if Organ.system_organ == session[:current_root_organ]
   end
 
   # 申请创建一个企业
@@ -27,7 +26,7 @@ class OrgansController < ApplicationController
 
   # 通过姓名/手机号/邮箱搜索当前组织的用户
   def search
-    @members = current_user.organs.first.root.subtree_members
+    @members = session[:current_root_organ].subtree_members
     .where("name LIKE :text OR phone LIKE :text OR email LIKE :text", {:text => "%#{params[:text]}%"})
     .paginate(:page => params[:page])
   end
@@ -59,7 +58,7 @@ class OrgansController < ApplicationController
     end.flatten
 
     if @user.save
-      @user.adjust current_user.organs.first.root.subtree, actors
+      @user.adjust session[:current_root_organ].subtree, actors
       redirect_to organs_path, :notice => '添加联系人成功'
     else
       render 'new_member'
