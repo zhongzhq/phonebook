@@ -9,9 +9,7 @@ class Users::SessionsController < Devise::SessionsController
 
     if request.post? && captcha_valid?(params[:captcha])
       super
-
-      # session 当前用户的 roots 的第一条记录
-      session[:current_root_organ] = current_user.organs.map(&:root).uniq.first
+      session[:current_root_organ] ||= current_user.root_organs.first
     else
       @user.errors.add(:captcha, '验证码错误')
       render 'new',layout: "default"

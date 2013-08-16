@@ -10,7 +10,12 @@ class ApplicationController < ActionController::Base
 
   # 用户登陆后跳转
   def after_sign_in_path_for(resource)
-    current_user.organs.include?(Organ.system_organ) ? master_root_path : root_path
+    if current_user.organs.include?(Organ.system_organ)
+      session[:current_root_organ] = Organ.system_organ
+      master_root_path
+    else
+      root_path
+    end
   end
 
   # CanCan::AccessDenied 异常捕获
