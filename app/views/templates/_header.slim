@@ -5,9 +5,10 @@
         a href="javascript:void(0)" 客户电话 028-85197020
 
     ul.nav.pull-right
+      a href="#" 
       - if user_signed_in?
         li
-          a href=edit_info_users_path
+          a href=edit_info_users_path data-toggle="tooltip" data-placement="bottom" title="修改用户信息"
             - if current_user.name.blank?
               i.icon-warning-sign.warning
               | 请完善用户资料
@@ -30,8 +31,8 @@
   .navigation
     .container
       h4.pull-right
-        .dropdown
-          btn.dropdown-toggle data-toggle="dropdown" href='' data-target='#'
+        .dropdown data-toggle="tooltip" data-placement="top" title="切换组织"
+          a.dropdown-toggle data-toggle="dropdown" href='#' data-target='#' style='color: #f8f8f8;'
             = session[:current_root_organ].name
             b.caret
           ul.dropdown-menu

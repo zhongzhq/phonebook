@@ -16,6 +16,7 @@
 //= require twitter/bootstrap/alert
 //= require twitter/bootstrap/modal
 //= require twitter/bootstrap/dropdown
+//= require twitter/bootstrap/tooltip
 //= require rails.validations
 //= require rails.validations.simple_form
 //= require_tree .
@@ -93,3 +94,7 @@ function toggle_tree(obj){
         }
     });
 }(jQuery));
+
+$(function(){
+    $("[data-toggle~=tooltip]").tooltip();
+})
