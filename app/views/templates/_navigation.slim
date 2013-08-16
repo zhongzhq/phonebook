@@ -22,3 +22,10 @@
     li
       a href=purchases_path 体验申请
     li.li-seprate
+javascript:
+  $(".navigation-con li a").removeClass("active-a")
+  $(".navigation-con li a").each(function(){
+    if ($(this).attr("href") == "#{request.fullpath}"){
+      $(this).addClass("active-a")
+    }
+  })

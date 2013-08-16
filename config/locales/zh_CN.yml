@@ -3,6 +3,27 @@
 
 zh_CN:
   site_name: "企业通讯录"
+  public:
+    description: 成都知一软件有限公司,企业通讯录,企业云办公解决方案
+    keyword: 企业电话簿,企业通讯录
+  products:
+    description: 成都知一软件有限公司,企业通讯录,企业云办公解决方案,产品介绍
+    keyword: 企业电话簿,企业通讯录,产品介绍
+  clouds:
+    description: 成都知一软件有限公司,企业通讯录,企业云办公解决方案,私有云部署模式
+    keyword: 企业电话簿,企业通讯录,私有云部署模式
+  downloads:
+    description: 成都知一软件有限公司,企业通讯录,企业云办公解决方案,下载中心
+    keyword: 企业电话簿,企业通讯录,下载中心
+  news:
+    description: 成都知一软件有限公司,企业通讯录,企业云办公解决方案,新闻中心
+    keyword: 企业电话簿,企业通讯录,新闻中心
+  helps:
+    description: 成都知一软件有限公司,企业通讯录,企业云办公解决方案,帮助中心
+    keyword: 企业电话簿,企业通讯录,帮助中心
+  purchases:
+    description: 成都知一软件有限公司,企业通讯录,企业云办公解决方案,体验申请
+    keyword: 企业电话簿,企业通讯录,体验中心
 
   simple_form:
     required:
