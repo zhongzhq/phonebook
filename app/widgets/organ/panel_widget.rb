@@ -38,12 +38,14 @@ class Organ::PanelWidget < ApplicationWidget
     @organ = Organ.find params[:id]
     params[:user][:password] = SecureRandom.hex(8)
     @user = User.new(params[:user])
+    @user.skip_confirmation!
 
     actors = (params[:membership_ids] || []).map do |id|
       Actor.first_or_create :organ => @organ, :membership => Membership.find(id)
     end
 
     if @user.save
+      @user.send_reset_password_instructions
       @user.adjust @organ, actors
       render :state => :show
     else

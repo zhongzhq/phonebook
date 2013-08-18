@@ -31,14 +31,17 @@
   .navigation
     .container
       h4.pull-right
-        .dropdown data-toggle="tooltip" data-placement="top" title="切换组织"
-          a.dropdown-toggle data-toggle="dropdown" href='#' data-target='#' style='color: #f8f8f8;'
-            = session[:current_root_organ].name
-            b.caret
-          ul.dropdown-menu
-            - current_user.root_organs.each do |organ|
-              li
-                = link_to organ.name, organs_path(:id => organ.id)
+        - if session[:current_root_organ].blank?
+          | 暂无组织，赶快加入吧
+        - else
+          .dropdown data-toggle="tooltip" data-placement="top" title="切换组织"
+            a.dropdown-toggle data-toggle="dropdown" href='#' data-target='#' style='color: #f8f8f8;'
+              = session[:current_root_organ].try(:name)
+              b.caret
+            ul.dropdown-menu
+              - current_user.root_organs.each do |organ|
+                li
+                  = link_to organ.name, organs_path(:id => organ.id)
 
       a.sitename_a href=root_path
         img.pull-left src="/assets/zhiyi_logo.png" alt=t('site_name') title=t('site_name')
