@@ -9,6 +9,9 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+# Load settings
+require File.expand_path('../settings.rb', __FILE__)
+
 module EPBook
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
@@ -63,7 +66,7 @@ module EPBook
     config.autoload_paths += Dir["#{Rails.root}/app/api/*"]
 
     # mail config
-    config.action_mailer.default_url_options = { host: "phonebook.zhiyisoft.com" }
+    config.action_mailer.default_url_options = { host: Settings.domain }
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
       :address              => "smtp.ym.163.com",

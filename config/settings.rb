@@ -1,4 +1,4 @@
 class Settings < Settingslogic
-  source "#{Rails.root}/config/config.yml"
+  source File.expand_path('../config.yml', __FILE__)
   namespace Rails.env
 end
