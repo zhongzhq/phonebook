@@ -36,20 +36,21 @@ module Applies
         render 'edit'
       end
     end
-    
+
     def destroy
       @organ_apply = OrganApply.find params[:id]
       @organ_apply.destroy
       redirect_to root_path, notice: '申请已取消'
     end
-  end
 
-  def check
-    @organ_apply = OrganApply.find(params[:id])
 
-    @organ_apply.send(params[:state])
-    OrganMailer.pass( @organ_apply.user_id ).deliver
+    def check
+      @organ_apply = OrganApply.find(params[:id])
 
-    redirect_to applies_organ_applies_path
+      @organ_apply.send(params[:state])
+      OrganMailer.pass( @organ_apply.user_id ).deliver
+
+      redirect_to applies_organ_applies_path
+    end
   end
 end
