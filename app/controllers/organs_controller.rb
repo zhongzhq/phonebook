@@ -26,9 +26,10 @@ class OrgansController < ApplicationController
 
   # 通过姓名/手机号/邮箱搜索当前组织的用户
   def search
-    @members = session[:current_root_organ].subtree_members
-    .where("name LIKE :text OR phone LIKE :text OR email LIKE :text", {:text => "%#{params[:text]}%"})
-    .paginate(:page => params[:page])
+    session[:current_root_organ].subtree_members.where("name LIKE :text OR phone LIKE :text OR email LIKE :text", {:text => "%#{params[:text]}%"}).tap do |x|
+      @members = x.paginate(:page => params[:page])
+      @sum = x.count
+    end
   end
 
   # 从组织中移除用户
