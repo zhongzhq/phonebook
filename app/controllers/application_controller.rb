@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
 
   def initapp
-    session[:current_root_organ] ||= current_user.root_organs.first
+    # session[:current_root_organ] ||= current_user.root_organs.first
 
   end
 

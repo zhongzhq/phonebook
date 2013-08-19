@@ -154,7 +154,7 @@
   position: absolute;
   z-index: 100;
   right: -50px;
-  top: -40px;
+  top: -35px;
   width: 423px;
 }
 #web-info .info-connect .connect-top{
@@ -166,7 +166,7 @@
   
 }
 #web-info .info-connect .connect-con{
-  background-color: #fff;
+  background-color: #f8f8f8;
   height: 345px;
   width: 280px;
   position: absolute;
@@ -179,6 +179,14 @@
   right: -6px;
   bottom: -6px;
 }
+#web-info .info-connect .connect-con .connect-detail{
+  padding: 20px;
+}
+#web-info .info-connect .connect-con .connect-detail p{
+  border-bottom: 1px dashed #ccc;
+  padding: 5px 0;
+}
+
 #web-info .info-connect .connect-bottom{
   z-index: 5;
   left: 50px;
@@ -273,7 +281,7 @@
 }
 
 /*---------------------register--------------------------------------------------*/
-#register,#get-pwd{
+#register,#get-pwd,#download{
   padding: 20px 40px;
 }
 #default #register label{
