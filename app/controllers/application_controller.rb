@@ -6,12 +6,10 @@ class ApplicationController < ActionController::Base
   after_filter :reset_last_captcha_code!
 
   # Devise Filter
-  before_filter :authenticate_user!,:initapp
+  before_filter :authenticate_user!, :init_root_organ
 
-
-  def initapp
-    session[:current_root_organ] ||= current_user.root_organs.first
-
+  def init_root_organ
+    session[:current_root_organ] ||= (current_user || User.new).root_organs.first
   end
 
   # 用户登陆后跳转
