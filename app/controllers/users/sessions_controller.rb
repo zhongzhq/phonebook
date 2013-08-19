@@ -9,7 +9,6 @@ class Users::SessionsController < Devise::SessionsController
 
     if request.post? && captcha_valid?(params[:captcha])
       super
-      session[:current_root_organ] ||= current_user.root_organs.first
     else
       @user.errors.add(:captcha, '验证码错误')
       render 'new',layout: "default"

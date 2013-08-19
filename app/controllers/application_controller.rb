@@ -6,7 +6,13 @@ class ApplicationController < ActionController::Base
   after_filter :reset_last_captcha_code!
 
   # Devise Filter
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!,:initapp
+
+
+  def initapp
+    session[:current_root_organ] ||= current_user.root_organs.first
+
+  end
 
   # 用户登陆后跳转
   def after_sign_in_path_for(resource)
