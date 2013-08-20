@@ -3,10 +3,10 @@
     =t("site_name")
     |- 用户登录
   .workarea
-    = simple_form_for( resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-horizontal label-justify"}, :validate => true) do |f|
+    = render 'templates/flash', :flash => flash
+    = simple_form_for( resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-horizontal label-justify"}) do |f|
       = f.input :account, :autofocus => true, placeholder: "邮箱 / 已验证手机号",label:"账&emsp; 号"
       = f.input :password, placeholder: "********",label:"密&emsp; 码"
-      = f.input :remember_me, :as => :boolean if devise_mapping.rememberable?
 
       // 验证码
       = f.input :captcha,label:"验 证 码" do
