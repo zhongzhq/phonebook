@@ -40,7 +40,7 @@ else
   gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails", :git => "git@github.com:zhiyisoft/bootstrap-rails.git", :ref => "HEAD"
 end
 gem 'apotomo'
-
+gem 'cells'
 # Gems for test
 group :development do
   gem 'rb-inotify', :require => false # Guard needs this
