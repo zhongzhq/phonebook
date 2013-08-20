@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   after_filter :reset_last_captcha_code!
 
   # Devise Filter
+
   before_filter :authenticate_user!, :init_root_organ
 
   def init_root_organ
