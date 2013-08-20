@@ -10,8 +10,8 @@ class Users::SessionsController < Devise::SessionsController
     if request.post? && captcha_valid?(params[:captcha])
       super
     else
-      @user.errors.add(:captcha, '验证码错误')
-      render 'new',layout: "default"
+      flash[:alert] = '验证码错误'
+      render 'new', layout: "default"
     end
   end
 
