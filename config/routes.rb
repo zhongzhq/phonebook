@@ -2,6 +2,9 @@
 EPBook::Application.routes.draw do
   root :to => 'public#index'
 
+  # 验证码
+  captcha_route
+
   # public
   resources :products, :only => [:index]
   resources :clouds, :only => [:index]
@@ -24,20 +27,23 @@ EPBook::Application.routes.draw do
     get "/users/login" => "users/sessions#login"
     get "/users/logout" => "users/sessions#logout"
   end
-  # 验证码
-  captcha_route
+  
 
-  resources :users, :only => [:index] do
-    collection do
-      get 'edit_info'
-      put 'update_info'
-      get 'resend_email_confirmation'
-    end
-    member do
-      get 'adjust'
-      put 'adjust_post'
-    end
+  resources :users do
+    get 'resend_email_confirmation', :on => :collection
   end
+
+  # resources :users, :only => [:index] do
+  #   collection do
+  #     get 'edit_info'
+  #     put 'update_info'
+  #     get 'resend_email_confirmation'
+  #   end
+  #   member do
+  #     get 'adjust'
+  #     put 'adjust_post'
+  #   end
+  # end
 
   resources :organs, :except => [:destroy] do
     member do

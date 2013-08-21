@@ -1,18 +1,25 @@
 # -*- coding: utf-8 -*-
-class UsersController < ApplicationController
-  
-  def edit_info
+class UsersController < ApplicationController  
+  # 修改用户信息
+  def edit
     @user = current_user
   end
 
-  def update_info
+  def update
     @user = current_user
 
     if @user.update_attributes(params[:user])
       redirect_to dashboards_path, notice: '用户资料更新成功'
     else
-      render 'edit_info'
+      render 'edit'
     end
+  end
+
+  # 发送邮箱验证邮件
+  def resend_email_confirmation    
+    User.send_confirmation_instructions( :email =>
+      current_user.confirmed? ? current_user.unconfirmed_email : current_user.email )
+    redirect_to :back, :notice => t('devise.confirmations.send_instructions')
   end
 
   # 调整用户所属组织
@@ -34,11 +41,4 @@ class UsersController < ApplicationController
     @user.adjust session[:current_root_organ].subtree, actors
     redirect_to organs_path, notice: '调整成功'
   end
-
-  def resend_email_confirmation    
-    User.send_confirmation_instructions( :email =>
-      current_user.confirmed? ? current_user.unconfirmed_email : current_user.email )
-    redirect_to :back, :notice => t('devise.confirmations.send_instructions')
-  end
-
 end

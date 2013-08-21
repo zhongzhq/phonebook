@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   # 用户登陆后跳转
   def after_sign_in_path_for(resource)
-    if current_user.organs.include?(Organ.system_organ)
+    if resource.organs.include?(Organ.system_organ)
       session[:current_root_organ] = Organ.system_organ
       master_root_path
     else
