@@ -1,24 +1,15 @@
-# -*- coding: utf-8 -*-
+  # -*- coding: utf-8 -*-
 EPBook::Application.routes.draw do
+  root :to => 'public#index'
 
   # public
-  resources :products,:only =>[:index]
-  resources :clouds,:only =>[:index]
-  resources :downloads,:only =>[:index]
-  resources :news,:only =>[:index]
-  resources :helps,:only =>[:index]
-  resources :purchases,:only =>[:index]
-
-
-  authenticated :user do
-    root :to => 'dashboard#index'
-  end
-  unauthenticated :user do
-    devise_scope :user do
-      get "/" => "public#index"
-    end
-  end
-
+  resources :products, :only => [:index]
+  resources :clouds, :only => [:index]
+  resources :downloads, :only => [:index]
+  resources :news, :only => [:index]
+  resources :helps, :only => [:index]
+  resources :purchases, :only => [:index]
+  
   # devise
   begin
     devise_for :users, :controllers => {
@@ -28,6 +19,8 @@ EPBook::Application.routes.draw do
     }
   rescue Exception => e;end
 
+  resources :dashboards, :only => [:index]
+
   devise_scope :user do
     get "/users/login" => "users/sessions#login"
     get "/users/logout" => "users/sessions#logout"
@@ -35,18 +28,11 @@ EPBook::Application.routes.draw do
   # 验证码
   captcha_route
 
-  resources :public, :only => [] do
-    collection do
-      get 'help'
-      get 'about'
-      get 'version'
-    end
-  end
-
-  resources :users, :only => [] do
+  resources :users, :only => [:index] do
     collection do
       get 'edit_info'
       put 'update_info'
+      get 'welcome'
     end
     member do
       get 'adjust'

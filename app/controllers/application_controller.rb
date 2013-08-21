@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
   def init_app
     # 切换 组织
     session[:current_root_organ] ||= (current_user || User.new).root_organs.first
-
   end
 
   # 用户登陆后跳转
@@ -20,7 +19,7 @@ class ApplicationController < ActionController::Base
       session[:current_root_organ] = Organ.system_organ
       master_root_path
     else
-      root_path
+      dashboards_path
     end
   end
 

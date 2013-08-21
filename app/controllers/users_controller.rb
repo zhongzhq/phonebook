@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
+  # welcome
+  def welcome
+    @user = current_user
+  end
+
   def edit_info
     @user = current_user
   end

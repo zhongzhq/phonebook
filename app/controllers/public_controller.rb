@@ -1,15 +1,3 @@
-class PublicController < ActionController::Base #ApplicationController
+class PublicController < ActionController::Base
   layout "default"
-  def index
-  end
-
-  def help
-  end
-
-  def about
-  end
-
-  def version
-    @versions = Version.config
-  end
 end
