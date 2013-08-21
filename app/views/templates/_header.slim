@@ -8,7 +8,7 @@
       a href="#" 
       - if user_signed_in?
         li
-          a href=edit_info_users_path data-toggle="tooltip" data-placement="bottom" title="修改用户信息"
+          a href=edit_info_users_path data-toggle="tooltip" data-placement="bottom" title="个人资料设置"
             - if current_user.name.blank?
               i.icon-warning-sign.warning
               | 请完善用户资料

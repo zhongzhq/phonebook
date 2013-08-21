@@ -1,10 +1,6 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
-  # welcome
-  def welcome
-    @user = current_user
-  end
-
+  
   def edit_info
     @user = current_user
   end
@@ -13,7 +9,7 @@ class UsersController < ApplicationController
     @user = current_user
 
     if @user.update_attributes(params[:user])
-      redirect_to root_path, notice: '用户资料更新成功'
+      redirect_to dashboards_path, notice: '用户资料更新成功'
     else
       render 'edit_info'
     end
@@ -37,6 +33,12 @@ class UsersController < ApplicationController
     
     @user.adjust session[:current_root_organ].subtree, actors
     redirect_to organs_path, notice: '调整成功'
+  end
+
+  def resend_email_confirmation    
+    User.send_confirmation_instructions( :email =>
+      current_user.confirmed? ? current_user.unconfirmed_email : current_user.email )
+    redirect_to :back, :notice => t('devise.confirmations.send_instructions')
   end
 
 end

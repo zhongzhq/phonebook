@@ -9,7 +9,12 @@
       li
         | 邮箱： #{current_user.email}
         - if Devise.mappings[:user].confirmable?
-          = link_to "验证邮箱", new_confirmation_path(current_user) unless current_user.confirmed?
+          = link_to "验证邮箱", resend_email_confirmation_users_path unless current_user.confirmed?
+
+      - if current_user.pending_reconfirmation?
+        li
+          | 当前等待确认邮箱： #{current_user.unconfirmed_email}
+          = link_to "验证邮箱", resend_email_confirmation_users_path
 
       li 手机： #{current_user.phone}
       li

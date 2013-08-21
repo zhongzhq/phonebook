@@ -1,18 +1,11 @@
-.widget
-  h4
-    i.icon-upload.text-large
-    span.text-info 修改密码
-  .widgetarea
-    = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
-      = f.error_notification
-      = f.full_error :confirmation_token
-
-      = f.input :reset_password_token, :as => :hidden
-      = f.full_error :reset_password_token
-
-      = f.input :password, :autofocus => true
-      = f.input :password_confirmation
-
-      .control-group
-        .controls
-          = f.button :submit, "修改我的密码"
+.content-box
+  #get-pwd
+    .h1-title 重置密码
+    .infobox-area
+      = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class=>"form-horizontal ", :method => :put }, :validate => true) do |f|
+        = f.input :reset_password_token, :as => :hidden
+        = f.input :password, :autofocus => true, :validate => true
+        = f.input :password_confirmation
+        .control-group
+          .controls
+            = f.button :submit, "重置密码",:class => "btn-success btn-login"

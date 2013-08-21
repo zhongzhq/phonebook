@@ -14,8 +14,7 @@ EPBook::Application.routes.draw do
   begin
     devise_for :users, :controllers => {
       :registrations => "users/registrations",
-      :sessions => "users/sessions",
-      :passwords => "users/passwords",
+      :sessions => "users/sessions"
     }
   rescue Exception => e;end
 
@@ -32,7 +31,7 @@ EPBook::Application.routes.draw do
     collection do
       get 'edit_info'
       put 'update_info'
-      get 'welcome'
+      get 'resend_email_confirmation'
     end
     member do
       get 'adjust'

@@ -6,7 +6,7 @@ class Users::SessionsController < Devise::SessionsController
   use Rack::JSONP
   def create
     @user = User.new(params[:user])
-    session[:current_root_organ] ||= current_user.root_organs.first
+    
     if request.post? && captcha_valid?(params[:captcha])
       super
     else
@@ -14,7 +14,6 @@ class Users::SessionsController < Devise::SessionsController
       render 'new', layout: "default"
     end
   end
-
 
   # get json
   def login

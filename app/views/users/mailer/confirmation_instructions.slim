@@ -1,7 +1,7 @@
 p #{ @resource.name || @resource.email  }，您好：
 .context style="margin-left: 20px;"
   p 感谢您使用#{ t 'site_name' }！
-  p 请点击以下连接，来激活您的账号：
+  p 请点击以下连接，来激活您的邮箱：
   p
     = link_to confirmation_url(@resource, :confirmation_token => @resource.confirmation_token), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
     br

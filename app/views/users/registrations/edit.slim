@@ -7,10 +7,9 @@
       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class=>"form-horizontal form-mini" }) do |f|
         = f.input :current_password, :hint => "我们需要你原来的密码来确认是否本人修改", :required => true, :label => '旧密码'
         = f.input :password, :label => '新密码'
-        = f.input :password_confirmation
-        
+        = f.input :password_confirmation        
 
         .control-group
           .controls
-            = link_to '返回', root_path, :class => "btn margin-right5"
+            = link_to '返回', :back, :class => "btn margin-right5"
             = f.button :submit,"保存", :class => "btn-info"
