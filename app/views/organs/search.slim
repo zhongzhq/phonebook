@@ -27,7 +27,7 @@
                   =x.fullname
                   - if can? :manage, Organ
                     - unless current_user == member
-                      = link_to '移除', remove_member_organ_path(x.organ, user_id: member.id, membership_id: x.membership.id)
+                      = link_to '删除', remove_member_organ_path(x.organ, user_id: member.id, membership_id: x.membership.id)
                   br
 
               td.operating

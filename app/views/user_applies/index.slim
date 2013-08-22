@@ -10,8 +10,8 @@
           th.index_number 序号
           th 姓名
           th 手机号
-          td 邮箱
-          td 状态
+          td 申请部门
+          td 申请状态
           th 操作
       tbody
         -if @applies.blank?
@@ -23,7 +23,7 @@
             td= index + 1
             td= user.name
             td= user.phone
-            td= user.email
+            td= apply.actor.organ.fullname
             td= t("state.user_apply.#{apply.state}")
             td.operating
              - if can? :manage, Organ

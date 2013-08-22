@@ -44,12 +44,18 @@ class OrgansController < ApplicationController
 
   # 向组织添加联系人
   def new_member
-    @user = User.new
+    @user = User.where(:phone => params[:phone].blank? ? nil : params[:phone] ).first
+    @user ||= User.new
   end
 
   def create_member
-    params[:user][:password] = SecureRandom.hex(8)
-    @user = User.new(params[:user])
+    @user = User.where(params[:user]).first
+    is_new_user = @user.blank?
+    if is_new_user      
+      params[:user][:password] = SecureRandom.hex(8)
+      @user = User.new(params[:user])
+      @user.skip_confirmation!
+    end
 
     actors = (params[:memberships] || []).map do |organ_name, membership_ids|
       organ = Organ.find organ_name.split("_").last
@@ -59,6 +65,7 @@ class OrgansController < ApplicationController
     end.flatten
 
     if @user.save
+      @user.send_reset_password_instructions if is_new_user
       @user.adjust session[:current_root_organ].subtree, actors
       redirect_to organs_path, :notice => '添加联系人成功'
     else

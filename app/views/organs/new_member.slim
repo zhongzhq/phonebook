@@ -1,13 +1,19 @@
 .widget
   h4
     i.icon-upload.text-large
-    span.text-info = '新建联系人'
+    span.text-info 新建联系人
+      
 
   .widgetarea
-    = simple_form_for @user, :url => create_member_organs_path, :html => {:class=>"form-horizontal form-mini"}, :validate => true do |f|
-      = f.input :name, :autofocus => true
-      = f.input :email
+    = simple_form_for @user, :url => create_member_organs_path, :method => :post, :html => {:class=>"form-horizontal form-mini"} do |f|
+      = f.input :search, :label => '通过手机号查找' do
+        = text_field_tag 'phone'
+        button.btn#search_btn type='button' 查找
+
       = f.input :phone
+      = f.input :name
+      = f.input :email
+      
 
       = f.input :new_organ_ids, label: '组织名称' do
         = recursive_tree session[:current_root_organ], Membership.find_by_organ(session[:current_root_organ])      
@@ -16,3 +22,8 @@
         .controls
           = link_to '取消', organs_path, :class => 'btn btn-danger'
           = f.button :submit, '添加', :class => "btn-info"
+
+javascript:
+  $("#search_btn").click(function(){
+    $(location).attr('href', '/organs/new_member?phone=' + $("#phone").val())
+  })

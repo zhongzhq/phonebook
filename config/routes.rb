@@ -31,19 +31,11 @@ EPBook::Application.routes.draw do
 
   resources :users do
     get 'resend_email_confirmation', :on => :collection
+    member do
+      get 'adjust'
+      put 'adjust_post'
+    end
   end
-
-  # resources :users, :only => [:index] do
-  #   collection do
-  #     get 'edit_info'
-  #     put 'update_info'
-  #     get 'resend_email_confirmation'
-  #   end
-  #   member do
-  #     get 'adjust'
-  #     put 'adjust_post'
-  #   end
-  # end
 
   resources :organs, :except => [:destroy] do
     member do
