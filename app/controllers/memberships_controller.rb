@@ -28,4 +28,9 @@ class MembershipsController < ApplicationController
       render 'edit'
     end
     
+    def destroy
+      @membership = Membership.find(params[:id])
+      @membership.destroy ? flash[:notice] = '删除成功' : flash[:alert] = '删除失败，角色正在被使用'
+      redirect_to memberships_path
+    end
   end

@@ -3,7 +3,7 @@
     i.icon-upload.text-large
     span.text-info = '申请加入企业'
   .widgetarea
-    = simple_form_for :apply, :html => {:class=>"form-horizontal form-mini"} do |f|
+    = simple_form_for :apply, :url => user_applies_path, :html => {:class=>"form-horizontal form-mini"} do |f|
 
       = f.input :organ, label: '企业信息' do
         = f.hidden_field :organ_id

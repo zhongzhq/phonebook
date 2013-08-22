@@ -27,4 +27,4 @@
             td= t("state.user_apply.#{apply.state}")
             td.operating
              - if can? :manage, Organ
-               = link_to '通过', applies_user_apply_path(apply), :method => :put
+               = link_to '通过', user_apply_path(apply), :method => :put

@@ -21,3 +21,4 @@
                 | 系统角色
               - else
                 = link_to '修改', edit_membership_path(membership)
+                = link_to '删除', membership_path(membership), :method => :delete, :confirm => '你确定要删除吗？'

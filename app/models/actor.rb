@@ -12,6 +12,8 @@ class Actor < ActiveRecord::Base
 
   scope :find_by_organ, -> organ { where organ_id: organ }
 
+  before_destroy {p users.blank? && permissions.blank? }
+
   def fullname
     return organ.fullname + ":" + membership.name
   end

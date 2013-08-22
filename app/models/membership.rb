@@ -11,4 +11,7 @@ class Membership < ActiveRecord::Base
   # 根据 organ_id 找到 root；并把 root.id 作为当前 Membership记录 的 organ_id
   before_validation { self.organ_id = Organ.find(self.organ_id).root.id; true }
   scope :find_by_organ, -> organ { where(:organ_id => organ.root.id) }
+
+  # 清除未使用的 actor，再判断 actor 是否为空
+  before_destroy { actors.map(&:destroy); self.class.find(self).actors.blank? }
 end

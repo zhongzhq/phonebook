@@ -56,7 +56,7 @@ EPBook::Application.routes.draw do
     end
   end
 
-  resources :memberships
+  resources :memberships, :except => [:show]
 
   resources :user_applies, :only => [:index, :new, :create, :update] do
     collection do
