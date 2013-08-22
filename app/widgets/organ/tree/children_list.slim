@@ -9,5 +9,6 @@ ul style="display:none"
           span.offset1.hide
             = link_to '编辑', url_for_event(:edit, :id => child), remote: true
             = link_to '添加', url_for_event(:add, :id => child), remote: true
+            = link_to '删除', url_for_event(:delete, :id => child), remote: true
       - unless child.children.blank?
         = render :view => :children_list, locals: { organ: child }

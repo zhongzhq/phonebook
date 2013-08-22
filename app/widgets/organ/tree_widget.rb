@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
 class Organ::TreeWidget < ApplicationWidget
   responds_to_event :edit
   responds_to_event :edit_submit
   responds_to_event :add
   responds_to_event :add_submit
+  responds_to_event :delete
 
   def display args
     @organ_root = Organ.find( args[:id] ).root
@@ -45,6 +47,16 @@ class Organ::TreeWidget < ApplicationWidget
     else
       replace dialog, {:view => :add}
     end
+  end
+
+  # 删除组织
+  def delete
+    @organ = Organ.find(params[:id])    
+    return render :text => "alert(\"#{@organ.name}存在下级组织\");" unless @organ.children.blank?
+    return render :text => "alert(\"#{@organ.name}下成员不为空\");" unless @organ.actors.blank?
+    @organ.destroy
+    params[:id] = @organ.root.id
+    render :state => :show
   end
 
   private
