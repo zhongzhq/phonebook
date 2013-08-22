@@ -23,6 +23,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_out_path_for(resource)
+    session[:current_root_organ] = nil
+    super
+  end
+
   # CanCan::AccessDenied 异常捕获
   rescue_from CanCan::AccessDenied do |exception|
     redirect_to root_url, alert: '您没有该权限！'

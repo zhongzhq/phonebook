@@ -2,7 +2,7 @@
 class Organ < ActiveRecord::Base
   attr_accessible :name, :parent_id, :description
 
-  validates :name, :presence => true
+  validates :name, :presence => true, :uniqueness => true
   # 同一父级的组织名不能重复
   validate { errors.add(:name, :taken) if siblings.reject{|x| x if x.id == self.id}.map(&:name).include?(self.name) }
 

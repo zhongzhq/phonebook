@@ -17,7 +17,8 @@
         = link_to '取消申请', organ_apply_path(@organ_apply), method: :delete, confirm: '你确定要取消？', class: 'btn'
 
     - else
-      a.btn href= new_user_apply_path 申请加入其它部门
+      - unless can? :manage, Organ
+        a.btn href= new_user_apply_path 申请加入其它部门
       - current_user.root_organs.each do |organ|
         h5 企业名称： #{organ.name}
         p
