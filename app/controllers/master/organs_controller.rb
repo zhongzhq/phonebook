@@ -3,7 +3,7 @@ class Master::OrgansController < Master::ApplicationController
   #authorize_resource :class => false
 
   def index
-    @organs = Organ.roots
+    @organs = Organ.roots.reject{ |organ| organ == Organ.system_organ }
   end
 
   def update

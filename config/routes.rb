@@ -74,6 +74,7 @@ EPBook::Application.routes.draw do
   namespace :master do
     root :to => 'home#index'
     resources :organs, :only => [:index, :update]
+    resources :systems, :only => [:index]
   end
 
   mount API => 'api'
