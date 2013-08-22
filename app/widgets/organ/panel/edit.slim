@@ -8,9 +8,8 @@
       = f.input :name, :autofocus => true
       = f.input :phone
       = f.input :membership, :label => "#{@organ.name}角色" do
-        - membership_ids = @user.actors.where(organ_id: @organ.id).map(&:membership).map(&:id)
-        - Membership.select([:id, :name]).find_by_organ(@organ).each do |membership|
-          = check_box_tag 'membership_ids[]', membership.id, membership_ids.include?(membership.id)
+        - @memberships.each do |membership|
+          = check_box_tag 'membership_ids[]', membership.id, @exist_membership_ids.include?(membership.id)
           span #{membership.name}
 
     .modal-foote

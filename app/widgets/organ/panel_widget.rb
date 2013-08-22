@@ -30,22 +30,29 @@ class Organ::PanelWidget < ApplicationWidget
   # 添加组织成员
   def add_user
     @organ = Organ.find params[:id]
-    @user = User.new
+    # 根据 params[:user][:phone] 查找用户
+    @user = User.where(:phone => params[:user].blank? ? nil : params[:user][:phone] ).first
+    @user ||= User.new(params[:user])
     replace "##{widget_id} #user-edit-dialog", {:view => :add}
   end
 
   def add_user_submit
     @organ = Organ.find params[:id]
-    params[:user][:password] = SecureRandom.hex(8)
-    @user = User.new(params[:user])
-    @user.skip_confirmation!
+
+    @user = User.where(params[:user]).first
+    is_new_user = @user.blank?
+    if is_new_user
+      params[:user][:password] = SecureRandom.hex(8)
+      @user = User.new(params[:user])
+      @user.skip_confirmation!
+    end
 
     actors = (params[:membership_ids] || []).map do |id|
       Actor.first_or_create :organ => @organ, :membership => Membership.find(id)
     end
 
     if @user.save
-      @user.send_reset_password_instructions
+      @user.send_reset_password_instructions if is_new_user
       @user.adjust @organ, actors
       render :state => :show
     else
@@ -57,6 +64,9 @@ class Organ::PanelWidget < ApplicationWidget
   def edit_user
     @organ = Organ.find params[:id]
     @user = User.find params[:user_id]
+
+    @exist_membership_ids = @user.actors.where(organ_id: @organ.id).map(&:membership).map(&:id)
+    @memberships = Membership.select([:id, :name]).find_by_organ(@organ)
     replace "##{widget_id} #user-edit-dialog", {:view => :edit}
   end
 

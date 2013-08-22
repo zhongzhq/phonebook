@@ -31,13 +31,14 @@
                 - member.actors.where(:organ_id => @organ.id).each do |x|
                   | #{x.membership.name}
                   - if can? :manage, Organ
-                    - unless current_user == member
+                    - unless current_user == member && x.membership.name == Settings.membership.admin
                       = link_to '删除', url_for_event(:remove_from_show, :id => x.organ.id, :membership_id => x.membership.id, :user_id => member.id ), remote: true
                   br
 
               td.operating
-                - if can? :manage, Organ                  
-                  = link_to '编辑', url_for_event(:edit_user, :id => @organ.id, :user_id => member.id), remote: true
+                - if can? :manage, Organ
+                  - unless current_user == member
+                    = link_to '编辑', url_for_event(:edit_user, :id => @organ.id, :user_id => member.id), remote: true
 
       = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}
 
