@@ -73,7 +73,6 @@ EPBook::Application.routes.draw do
   # Master routes
   namespace :master do
     root :to => 'home#index'
-    resources :memberships, :except => [:show, :destroy]
     resources :organs, :only => [:index, :update]
   end
 
