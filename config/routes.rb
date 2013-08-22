@@ -58,23 +58,21 @@ EPBook::Application.routes.draw do
 
   resources :memberships
 
-  namespace :applies do
-    resources :user_applies, :only => [:index, :new, :create, :update] do
-      collection do
-        get 'children_organs'
-        get 'memberships'
-      end
+  resources :user_applies, :only => [:index, :new, :create, :update] do
+    collection do
+      get 'children_organs'
+      get 'memberships'
     end
-    resources :organ_applies, :except => [:show] do
-      member do
-        get 'check'
-      end
+  end
+  resources :organ_applies, :except => [:show] do
+    member do
+      get 'check'
     end
   end
 
   # Master routes
   namespace :master do
-    root :to => 'master#index'
+    root :to => 'home#index'
     resources :memberships, :except => [:show, :destroy]
     resources :organs, :only => [:index, :update]
   end

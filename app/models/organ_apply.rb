@@ -2,7 +2,8 @@
 class OrganApply < ActiveRecord::Base
   attr_accessible :user_id, :organ_name, :description
 
-  validates :user_id, :organ_name, presence: true
+  validates :user_id, :organ_name, presence: true, :uniqueness => true
+  validate { errors.add(:organ_name, :taken) unless Organ.where(:name => self.organ_name).blank? }
 
   after_save :init_organ, :if => :success?
 

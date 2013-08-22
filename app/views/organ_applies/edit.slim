@@ -3,7 +3,7 @@
     i.icon-upload.text-large
     span.text-info = '申请信息修改'
   .widgetarea
-    = simple_form_for @organ_apply, :url => applies_organ_apply_path, :html => {:class=>"form-horizontal form-mini"} do |f|
+    = simple_form_for @organ_apply, :html => {:class=>"form-horizontal form-mini"} do |f|
       = f.input :organ_name
       = f.input :description, :input_html => {:style=>"width:250px;height:100px"}
       

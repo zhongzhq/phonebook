@@ -1,6 +1,7 @@
 class DashboardWidget < ApplicationWidget
 
   def organ
+    @organ_apply = OrganApply.find :first, :conditions => {:user_id => current_user.id}
     render
   end
 
@@ -9,6 +10,10 @@ class DashboardWidget < ApplicationWidget
   end
 
   def version
+    render
+  end
+
+  def todo
     render
   end
 

@@ -1,10 +1,6 @@
-- if @organ.blank?
-  h1 对不起，#{ @user.name || @user.email }
-  h3
-    | 你申请的企业 #{@organ_apply.organ_name} 未能通过审核, 你可以
-    = link_to '修改申请信息', edit_applies_organ_apply_url(@organ_apply)
-    | ，并重新申请
-  
-- else
-  h1 恭喜你，#{ @user.name || @user.email }
-  h3 你申请的企业 #{@organ_apply.organ_name} 已经通过审核
+p #{ @user.name || @user.email }，您好：
+.context style="margin-left: 20px;"
+  - if @organ.blank?
+    p 对不起，您申请的企业《#{@organ_apply.organ_name}》未能通过审核，你可以登陆后修改申请信息，并重新申请
+  - else
+    p 恭喜你，您申请的企业《#{@organ_apply.organ_name}》已经通过审核，您现在可以管理你的企业了

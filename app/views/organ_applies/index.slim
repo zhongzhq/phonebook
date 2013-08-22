@@ -1,7 +1,8 @@
 .infobox
   h4
     i.icon-hand-right
-    span.text-info 待审核企业
+    span.text-info 审核企业
+
   .infobox-area.widgetarea-height
     table.table.table-bordered.table-hover
       thead
@@ -18,7 +19,7 @@
             td= t("state.organ_apply.#{organ_apply.state}")
             td.operating
               - if organ_apply.review?
-                = link_to '通过', check_applies_organ_apply_path(organ_apply, :state => 'pass'), confirm: '你确定要通过？'
-                = link_to '拒绝', check_applies_organ_apply_path(organ_apply, :state => 'refuse'), confirm: '你确定要拒绝？'
+                = link_to '通过', check_organ_apply_path(organ_apply, :state => 'pass'), confirm: '你确定要通过？'
+                = link_to '拒绝', check_organ_apply_path(organ_apply, :state => 'refuse'), confirm: '你确定要拒绝？'
               - if organ_apply.failure?
-                = link_to '恢复通过', check_applies_organ_apply_path(organ_apply, :state => 'pass'), confirm: '你确定要通过？'              
+                = link_to '恢复通过', check_organ_apply_path(organ_apply, :state => 'pass'), confirm: '你确定要通过？'              

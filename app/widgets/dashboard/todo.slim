@@ -1,0 +1,11 @@
+.widget
+  h4
+    span 待办事件
+
+    .workarea
+    
+    p
+      - if can? :manage, Organ
+        a.btn.btn-mini href= user_applies_path(:organ_id => organ.id)
+          | 待审核
+          span.badge = UserApply.where(:actor_id => Actor.find_by_organ(organ.subtree) ).size.to_s
