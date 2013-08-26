@@ -12,7 +12,7 @@ EPBook::Application.routes.draw do
   resources :news, :only => [:index]
   resources :helps, :only => [:index]
   resources :purchases, :only => [:index]
-  
+
   # devise
   begin
     devise_for :users, :controllers => {
@@ -27,7 +27,7 @@ EPBook::Application.routes.draw do
     get "/users/login" => "users/sessions#login"
     get "/users/logout" => "users/sessions#logout"
   end
-  
+
 
   resources :users do
     get 'resend_email_confirmation', :on => :collection
@@ -71,33 +71,3 @@ EPBook::Application.routes.draw do
 
   mount API => 'api'
 end
-
-=begin
-  # API routes
-  namespace :api do
-    resources :organs,:only=>[] do
-      collection do
-        get "get_root"
-        get "get_organ_tree"
-      end
-    end
-    resources :sessions, :only => [] do
-      collection do
-        get 'login'
-        get 'logout'
-        get 'get_user'
-      end
-    end
-    resources :users,:only => [] do
-      collection do
-        get "get_users"
-        get "all_users"
-      end
-    end
-    resources :versions,:only=>[] do
-      collection do
-        get "update"
-      end
-    end
-  end
-=end
