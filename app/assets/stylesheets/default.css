@@ -59,7 +59,7 @@
 }
 #header{
     height: 70px;
-    padding-top: 10px;
+    padding-top: 20px;
   }
 #header .head-con{
   width: 960px;
@@ -67,9 +67,9 @@
 }
 #header .head-con .head-connect{
   margin-top: 20px;
-  position: relative;
-  width: 250px;
+  width: 235px;
   overflow: hidden;
+  border-bottom: 1px solid #ccc;
 }
 .ul-help{
   
@@ -83,10 +83,14 @@
   left: -60px;  
 }
 
-.ul-help li a{
-  padding: 10px 5px;
+.ul-help li a,.ul-help li span{
+  padding: 5px;
   color: #666;
   display: block;  
+}
+.ul-help li a:hover{
+  color: #fff;
+  background-color: #F5AB24;
 }
 .head-connect p{
   margin: 7px 0 0;
@@ -121,14 +125,14 @@
   height: 40px;
 }
 #content{  
-  background:url("bg-f.png");
-  min-height: 400px;
+  background:url("bg-f.png");  
   padding: 15px 0;
   border-bottom: 1px solid #eaeaea;
 
 }
 #content #banner-show{ 
-  padding: 0 0 3px;  
+  background-color: #fff;
+  margin-top: -15px;
 }
 #content #banner-show .banner-con{
   width: 960px;
@@ -138,7 +142,7 @@
   /*background: url("bg-g.jpg");*/
   background-color: rgba(0, 0, 0, 0.03);
   padding:20px 0;
-  margin: 20px 0;
+  margin: 0 0 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.03);
   border-bottom: 1px solid #eaeaea;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02) inset, 0 -1px 0 rgba(255, 255, 255, 0.25);
@@ -223,12 +227,9 @@
 }
 /*---------------------login--------------------------------*/
 #default #login{
-    width:340px;
-    margin:0 auto;
-    top:50px;
-    position: relative;
+    width:350px;
+    margin: 50px auto;    
     padding: 10px 20px;
-
     background-color:#FEFEFE;
     border:1px solid #E1E3E6;    
     box-shadow:0 1px 2px #E1E3E6;    
@@ -241,26 +242,14 @@
     background-image: linear-gradient(top, rgb(254, 254, 254), rgb(237, 237, 237));   
 }
 
-.label-justify label{       
-    font-size: 14px;
-    text-align: justify;
-    -moz-text-align-last: justify;/*ff*/
-    text-justify:distribute-all-lines;/*ie6-8*/
-    text-align-last:justify;/* ie9*/
-    -webkit-text-align-last:justify;/*chrome 20+*/
-}
-#default #login label{
-  width:50px; 
-}
+
 #default #login label[for=user_account],#default #login label[for=user_password]{
     
 }
 #default #login .control-group{
   margin-bottom: 10px;
 }
-#default #login .controls{
-    margin-left:60px;
-}
+
 #default #login .controls img,.help-block img{
   margin: 0 5px;
   border: 1px solid #eaeaea;
@@ -281,15 +270,10 @@
 }
 
 /*---------------------register--------------------------------------------------*/
-#register,#get-pwd,#download{
+#register,#get-pwd,#download,#exprience{
   padding: 20px 40px;
 }
-#default #register label{
-  width: 60px;
-}
-#default #register .form-horizontal .controls{
-  margin-left: 75px;
-}
+
 #default #register .left-con{
   width: 500px;
   padding: 0 20px;
@@ -298,6 +282,15 @@
 #default #register .right-con{
   padding: 15px 20px;
   width: 270px;
+}
+
+/*---------------------------------expience--------------------------------------*/
+.exprience-con{
+  padding: 10px 20px;
+  line-height: 21px;
+}
+.exprience-fill{
+  padding: 10px 20px;
 }
 
 /*--------------------------public--------------------------------------------*/
@@ -327,6 +320,9 @@
 .text-blue{
   color:#1B85CF !important;
 }
+.text-gray{
+  color: #333;
+}
 .ul-inline{
    display:block;
    margin:0 !important;
@@ -339,4 +335,16 @@
 .ul-inline li a{
   display:block;       
   text-decoration: none;
+}
+.label-justify label{       
+    font-size: 14px;
+    text-align: justify important;
+    -moz-text-align-last: justify;/*ff*/
+    text-justify:distribute-all-lines;/*ie6-8*/
+    text-align-last:justify;/* ie9*/
+    -webkit-text-align-last:justify;/*chrome 20+*/
+    width: 60px !important;
+}
+.label-justify .controls{
+  margin-left: 75px;
 }

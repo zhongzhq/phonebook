@@ -77,24 +77,6 @@ function toggle_tree(obj){
     }
 }
 
-(function ($) {
-    $.extend({
-        'move': function (con) {
-            con = typeof con === 'number' ? con : 400;
-            var $lis = $('.ul-help>li>a'), $h = $('.help-line')
-            $lis.hover(function () {
-                $h.stop().animate({
-                    'left': $(this).offsetParent().context.offsetLeft
-                }, con);
-            }, function () {
-                $h.stop().animate({
-                    'left': '-60px'
-                }, con);
-            })
-        }
-    });
-}(jQuery));
-
 $(function(){
     $("[data-toggle~=tooltip]").tooltip();
 })
