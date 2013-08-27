@@ -49,28 +49,33 @@ class OrgansController < ApplicationController
   end
 
   def create_member
-    @user = User.where(params[:user]).first
-    is_new_user = @user.blank?
-    if is_new_user      
-      params[:user][:password] = SecureRandom.hex(8)
-      @user = User.new(params[:user])
-      @user.skip_confirmation!
-    end
+    @user = create_user params[:user]
+    return render 'new_member' if @user.id.blank?
 
-    actors = (params[:memberships] || []).map do |organ_name, membership_ids|
-      organ = Organ.find organ_name.split("_").last
-      membership_ids.map do |membership_id|
+    actors = (params[:actors] || []).map do |actor|
+      organ = Organ.find actor[:organ_id]
+
+      actor[:membership_ids].map do |membership_id|
         Actor.first_or_create :organ => organ, :membership => Membership.find(membership_id)
       end
-    end.flatten
+    end.flatten.uniq
 
-    if @user.save
-      @user.send_reset_password_instructions if is_new_user
-      @user.adjust session[:current_root_organ].subtree, actors
-      redirect_to organs_path, :notice => '添加联系人成功'
-    else
-      render 'new_member'
+    @user.adjust session[:current_root_organ].subtree, actors
+    redirect_to organs_path, :notice => '添加联系人成功'
+  end
+
+  protected
+  def create_user args = {}
+    user = User.where(args).first
+    return user unless user.blank?
+
+    args[:password] = SecureRandom.hex(8)
+    user = User.new args
+    user.skip_confirmation!
+    if user.save
+      #user.send_reset_password_instructions
     end
+    user
   end
 
 end
