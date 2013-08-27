@@ -90,7 +90,7 @@
 }
 .ul-help li a:hover{
   color: #fff;
-  background-color: #F5AB24;
+  background-color: #fbbe4f;
 }
 .head-connect p{
   margin: 7px 0 0;
@@ -154,34 +154,36 @@
   position: relative;
 }
 #web-info .info-connect{
-  height:365px;  
+  height:325px;  
   position: absolute;
   z-index: 100;
-  right: -50px;
+  right: 0;
   top: -35px;
-  width: 423px;
+  width: 300px;
 }
 #web-info .info-connect .connect-top{
   position: absolute;
   top: 0;
   z-index: 15;
+  left: -71px;
+  width: 423px;
 }
 #web-info .info-connect .connect-top img{
   
 }
 #web-info .info-connect .connect-con{
-  background-color: #f8f8f8;
-  height: 345px;
+  background-color: #f8f8f8;  
   width: 280px;
   position: absolute;
-  left: 71px;
+  left: 0;
   z-index: 10;
   top: 5px;
+  bottom: 0;
 }
 #web-info .info-connect .connect-con .connect-title{
   position: absolute;
   right: -6px;
-  bottom: -6px;
+  bottom: -8px;
 }
 #web-info .info-connect .connect-con .connect-detail{
   padding: 20px;
@@ -193,8 +195,8 @@
 
 #web-info .info-connect .connect-bottom{
   z-index: 5;
-  left: 50px;
-  bottom: 0;
+  left: -20px;
+  bottom: -15px;
   position: absolute;
 }
 .ul-info{
@@ -224,6 +226,17 @@
 #web-ad{
   width: 960px;
   margin: 10px auto;
+}
+
+.info-box .info-title .info-more{
+  height: 20px;
+  width: 40px;
+  display: block;
+  background: url(more.png) no-repeat;
+  float: right;
+}
+.info-box .info-title .info-more:hover{
+  background: url(more.png) no-repeat 0 -20px;
 }
 /*---------------------login--------------------------------*/
 #default #login{
