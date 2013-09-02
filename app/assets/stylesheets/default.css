@@ -222,7 +222,7 @@
   min-height: 370px;   
 }
 
-#web-ad{
+#web-ad,#web-feature{
   width: 960px;
   margin: 10px auto;
 }
@@ -234,9 +234,25 @@
   background: url(more.png) no-repeat;
   float: right;
 }
+
 .info-box .info-title .info-more:hover{
   background: url(more.png) no-repeat 0 -20px;
 }
+
+.feature-info{
+  background: url("icon-feature.png") no-repeat;
+  padding: 17px;
+  margin-right: 20px;
+}
+
+#web-feature .row-fluid .span4 p{
+  font-size: 20px;
+}
+
+.feature-convenient{
+  background-position: 0 -34px;
+}
+
 /*---------------------login--------------------------------*/
 #default #login{
     width:350px;
