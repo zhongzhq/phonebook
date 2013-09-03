@@ -66,9 +66,10 @@
   margin: 0 auto; 
 }
 #header .head-con .head-connect{
-  margin-top: 20px;
-  width: 235px;
-  overflow: hidden;  
+  margin-top: 15px;  
+  background: url("bg-g.jpg");
+  padding: 0 10px;
+  border: 1px solid #eaeaea;
 }
 .ul-help{
   
@@ -83,16 +84,9 @@
 }
 
 .ul-help li a,.ul-help li span{
-  padding: 5px;
+  padding: 10px 5px;
   color: #666;
   display: block;  
-}
-.ul-help li a:hover{
-  color: #fff;
-  background-color: #fbbe4f;
-}
-.head-connect p{
-  margin: 7px 0 0;
 }
 
 #navigation{
