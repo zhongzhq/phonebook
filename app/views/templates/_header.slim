@@ -1,5 +1,5 @@
 .navbar.navbar-fixed-top
-  .navbar-inner.topbar
+  /.navbar-inner.topbar
     ul.nav.pull-left
       li
         a href="javascript:void(0)" 客户电话 028-85197020
@@ -29,8 +29,8 @@
             |退出
 
   .navigation
-    .container
-      h4.pull-right
+    .container-fluid
+      /h4.pull-right
         - if session[:current_root_organ].blank?
           | 暂无组织，赶快加入吧
         - else
@@ -43,10 +43,22 @@
                 li
                   = link_to organ.name, organs_path(:id => organ.id)
 
-      a.sitename_a href=root_path
-        img.pull-left src="/assets/zhiyi_logo.png" alt=t('site_name') title=t('site_name')
-        span.sitename
-          =t('site_name')
-          | V#{Version.config['server'].last['version']['number']}
-
+      a.sitename_a.pull-left href=root_path
+        img src="/assets/sitename1.jpg" alt=t('site_name') title=t('site_name')        
+        /=t('site_name')
+        sup
+          label.label V#{Version.config['server'].last['version']['number']}
+      .nav-info.pull-right        
+        .nav-logout.pull-right
+          a href=destroy_user_session_path data-method="delete"
+            i.icon-power-off
+            
+        .nav-userinfo.pull-right
+          a.dropdown-toggle href="#" data-toggle="dropdown"
+            img src="/assets/head.jpg" alt=""
+            span yangdan
+            i.icon-caret-down
+        /.nav-search.pull-right
+          input type="text"  
+      .clear
       

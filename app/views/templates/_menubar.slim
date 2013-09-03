@@ -1,28 +1,33 @@
-.menu-area
+ul.menu-area
   - if can? :read, Organ
     .menu-head
-      = form_tag search_organs_path, :class => "form-inline", method: "get" do
+      /= form_tag search_organs_path, :class => "form-inline", method: "get" do
         = text_field_tag 'text', nil, placeholder: '姓名/手机号/邮箱',class: "input-small"
         = submit_tag "搜索", class: 'btn'
+      /a.reorder href=""
+        i.icon-reorder
       - if can? :manage, Organ
-        a.adduser.btn.btn-info href=new_member_organs_path
+        a.adduser href=new_member_organs_path
           i.icon-plus
-          | 添加联系人
+          
 
-  .menu-block
-    a href= dashboards_path
-      p
-        i.icon-dashboard.text-xlarge.success
-        | 仪表盘
+  li
+    a href= dashboards_path      
+      i.icon-dashboard.text-xlarge
+      | 仪表盘
   - if can? :read, Organ
-    .menu-block
-      a href= organs_path
-        p
-          i.icon-th.success
-          = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
+    li
+      a href= organs_path       
+        i.icon-th.text-xlarge
+        = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
   - if can? :manage, Organ
-    .menu-block
-      a href= memberships_path
-        p
-          i.icon-user.text-xlarge.success
-          | 角色管理
+    li
+      a href= memberships_path        
+        i.icon-user.text-xlarge
+        | 角色管理
+  li
+    a href="#"
+      i.icon-comments-alt.text-xlarge
+      span.margin-right5 待办事宜
+      sup
+        span.badge.badge-important 0

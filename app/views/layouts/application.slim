@@ -10,11 +10,11 @@ html lang="en"
     = csrf_meta_tag
   body
     #header
-      =render "templates/header"
-    #content.container-fluid
-      .row-fluid
-        #menubar
-          =render "templates/menubar"
+      =render "templates/header"    
+    #content 
+      #menubar
+        =render "templates/menubar"
+      .container-fluid
         #working-area
           = render 'templates/flash', :flash => flash
           .row-fluid

@@ -5,7 +5,7 @@
 
   .workarea
     ul
-      li 姓名： #{ current_user.name || link_to('未填写，请完善', edit_info_users_path) }
+      /li 姓名： #{ current_user.name || link_to('未填写，请完善', edit_info_users_path) }
       li
         | 邮箱： #{current_user.email}
         - if Devise.mappings[:user].confirmable?

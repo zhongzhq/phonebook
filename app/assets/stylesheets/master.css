@@ -17,16 +17,7 @@
 .topbar i {
     font-size: 18px;
 }
-.navigation{
-    border-top: 1px solid #4cd1e2;
-    border-bottom: 1px solid #188896;
-    background-color: #23a2b5;
-}
-body {
-    background-color: #fff;
-    background-position: 0 40px;
-    padding-top:85px;
-}
+
 /*++++++++++++++++++++++++++++++++++++++++++
   public
 --------------------------------------------*/
@@ -46,79 +37,13 @@ body {
 
     font-size: 12px;
 }
-.sitename{
-    font-size:18px;
-    line-height: 40px;
-    height:40px;
-    color:#fff;
-}
-.sitename_a:link{
-    text-decoration:none;
-}
+
 #header .nav a{
     padding:10px 5px;
 }
 
-/*++++++++++++++++++++++++++++++++++++++++++++
- working area layout
-----------------------------------------------*/
-#showcontent{
-    margin-left:200px;
-    padding:50px 10px 10px 10px;
-}
-#working-area{
-    overflow:hidden;
-}
 
-#default #header .navbar-container,#footer{
-    margin:0 auto;
-}
 
-#working-area{
-    margin-left:210px;
-}
-/*****************
-menubar
-*****************/
-#menubar{
-    border-right:1px solid #E1E3E6;
-    position:fixed;
-    width:200px;
-    background-color:#FAFAFA;
-    padding-right:2px;
-    box-shadow:0 1px 2px #E1E3E6;
-}
-#menubar .footer{position:absolute;bottom:0;left:10px;}
-.menu-block{
-    margin:5px;
-}
-.menu-head{
-    padding:5px 10px;
-    border-bottom:1px dashed #666;
-    background-color:#D9EDF7;
-
-}
-.menu-block p{
-    margin:0;
-}
-.menu-block a{
-    display:block;
-    padding:10px 15px;
-    background:-moz-linear-gradient(center top , #F9F9F9 0%, #EFEFEF 100%) repeat scroll 0 0 transparent;
-    color:#333;
-    border-radius:5px;
-    border:1px solid #E1E3E6;
-    box-shadow:0 1px 2px #E1E3E6;
-}
-.menu-block a:hover{
-    text-decoration:none;
-    color:#0088CC;
-    border:1px solid #D2E1F1;
-}
-.adduser{
-    padding:10px 0;
-    width: 100%;
-}
 /*****************
 infobox
 *****************/
@@ -177,3 +102,113 @@ infobox
 .organtree, .organtree ul, .organtree li{
     list-style:none
 }
+
+/*------------------header--------------------------*/
+.navigation{    
+    border-bottom: 4px solid #9fb92c;
+    background-color: #35353a;
+    line-height: 40px;    
+}
+
+.nav-search,.nav-userinfo,.nav-logout{
+    margin-right: 15px;
+}
+
+.nav-search a,.nav-userinfo a,.nav-logout a{
+    color: #fff;
+}
+
+.nav-userinfo img{
+    height: 30px;
+    width: 30px;
+    margin-right: 7px;
+}
+
+.icon-caret-down{
+    margin-left: 5px;
+}
+
+.sitename_a{
+    font-size:18px;    
+    color:#9FB92C; 
+    display: block;
+}
+
+.sitename_a sup .label{
+    background-color: #939EA4 ;
+    font-weight: normal;
+}
+.sitename_a:hover{
+    text-decoration: none;
+    color: #9FB92C;
+}
+
+/*----------------------------content---------------------*/
+body{
+    font-size: 14px;
+}
+#content{
+    padding-top: 40px;
+}
+
+/*****************
+menubar
+*****************/
+#menubar{    
+    position:fixed;
+    width:180px;
+    background-color:#35353a;
+    top: 44px;
+    left: 0;   
+    min-height: 1000px; 
+}
+
+.adduser,.reorder{
+    padding: 5px 5px 5px 8px;
+    background-color: #D15B47;
+    color: #fff;
+    margin:0 5px 0 0;
+}
+
+.adduser:hover{
+    color: #fff;
+    background-color:#b74635;
+    text-decoration: none;
+}
+
+.menu-area{
+    margin: 0;
+}
+
+.menu-head{
+    padding: 10px 15px;
+}
+
+.menu-area li,.menu-head{
+    background: url("menu-line.png") repeat-x scroll left bottom transparent;
+}
+
+.menu-area li a{
+    display: block;
+    padding: 10px 15px;
+    color: #939EA4;
+}
+.menu-area li a:hover{
+    color: #9FB92C;
+    text-decoration: none;
+}
+
+.menu-area li a .badge-important{
+    background-color: #D15B47;
+}
+.menu-area li a i{
+    margin-right: 10px;
+}
+/*++++++++++++++++++++++++++++++++++++++++++++
+ working area layout
+----------------------------------------------*/
+#working-area{
+    overflow:hidden;
+    margin-left:180px;
+}
+
