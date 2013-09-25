@@ -1,17 +1,11 @@
 # -*- coding: utf-8 -*-
 class Membership < ActiveRecord::Base
-  attr_accessible :name, :organ_id
+  attr_accessible :name
 
-  validates :name, :presence => true, :uniqueness => { :scope => :organ_id }
-  validates :organ_id, :presence => true, :existence => true
+  validates_presence_of :name
+  validates_uniqueness_of :name
 
-  belongs_to :organ
+
   has_many :actors
 
-  # 根据 organ_id 找到 root；并把 root.id 作为当前 Membership记录 的 organ_id
-  before_validation { self.organ_id = Organ.find(self.organ_id).root.id; true }
-  scope :find_by_organ, -> organ { where(:organ_id => organ.root.id) }
-
-  # 清除未使用的 actor，再判断 actor 是否为空
-  before_destroy { actors.map(&:destroy); self.class.find(self).actors.blank? }
 end

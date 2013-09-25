@@ -7,7 +7,6 @@ class Organ < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => :ancestry
 
   has_many :actors
-  has_many :memberships
   has_ancestry
 
   state_machine :initial => :enabled do
