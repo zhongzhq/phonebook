@@ -2,7 +2,7 @@
   h4
     i.icon-upload.text-large
     span.text-info 新建联系人
-      
+
   .widgetarea
     = simple_form_for @user, :url => create_member_organs_path, :method => :post, :html => {:class=>"form-horizontal form-mini"} do |f|
       = f.input :search, :label => '通过手机号查找' do
@@ -16,7 +16,7 @@
       = f.input :actors, :label => '角色' do
         a.btn style='width: 21%' href='#modal' data-toggle='modal' 点击添加角色
         p.help-block#actors_labels
-      
+
       .control-group
         .controls
           = link_to '取消', organs_path, :class => 'btn btn-danger'
@@ -27,12 +27,13 @@
     button.close data-dismiss="modal" &times;
     h3 选择角色
   = simple_form_for :actors, :html => {:class=>"form-horizontal form-mini"} do |f|
-    .modal-body    
+    .modal-body
       = f.input :organ, label: '企业信息' do
-        = f.hidden_field :organ_id
+        =f.select :organ_id, Organ.all.map{ |organ| [organ.fullname,organ.id]}, include_blank: false
+
 
       = f.input :organ, label: '角色' do
-        - Membership.where(organ_id: session[:current_root_organ].id).select([:id, :name]).each do |x|
+        - Membership.select([:id, :name]).each do |x|
           span
             - is_member = ( x.name == Settings.membership.member )
             = check_box_tag 'membership_ids', x.id, is_member, disabled: is_member
@@ -49,7 +50,6 @@ javascript:
     $(location).attr('href', '/organs/new_member?phone=' + $("#phone").val())
   })
 
-  option_tree($("#actors_organ_id"), '/user_applies/children_organs')
 
 
 coffee:
@@ -68,7 +68,7 @@ coffee:
     for opt in memberships
       membership += '/' + $(opt).next('span').text()
 
-    strs = '<div class="actor-label"><label>' + organ[1..organ.length] + ' —— ' + membership[1..membership.length] + '<a id="tang" href="#" onclick="$(this).parent().remove()">删除</a></div>' + '</label>' + '<input id="actors__organ_id" name="actors[][organ_id]" type="hidden" value="' + $("select[name^='actors[organ_id]_']:last").find("option:selected").val() + '">' 
+    strs = '<div class="actor-label"><label>' + organ[1..organ.length] + ' —— ' + membership[1..membership.length] + '<a id="tang" href="#" onclick="$(this).parent().remove()">删除</a></div>' + '</label>' + '<input id="actors__organ_id" name="actors[][organ_id]" type="hidden" value="' + $("select[name^='actors[organ_id]_']:last").find("option:selected").val() + '">'
 
     for opt in memberships
       strs += '<input id="actors__membership_ids_" name="actors[][membership_ids][]" type="hidden" value="' + $(opt).val() + '">'

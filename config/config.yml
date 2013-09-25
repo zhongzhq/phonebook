@@ -1,9 +1,9 @@
 defaults: &defaults
   organ:
-    system: 系统管理组
+    system: 知一软件
   membership:
     member: 成员
-    admin: 管理员
+    admin: 系统管理员
   domain: phonebook.zhiyisoft.com
   email_sender: 成都知一软件有限公司 <office@zhiyisoft.com>
 

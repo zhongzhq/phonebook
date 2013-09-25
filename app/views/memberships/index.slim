@@ -18,7 +18,7 @@
             td= membership.name
             td.operating
               - if Settings.membership.values.include? membership.name
-                | 系统角色
+                | 系统角色,不允许修改、删除
               - else
                 = link_to '修改', edit_membership_path(membership)
                 = link_to '删除', membership_path(membership), :method => :delete, :confirm => '你确定要删除吗？'

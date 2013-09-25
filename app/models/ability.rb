@@ -4,7 +4,8 @@ class Ability
 
   def initialize(user)
     user ||= User.new
-
+    can :manage , :all
+=begin
     read_organ unless user.organs.empty?
 
     user.permissions.each do |permission|
@@ -12,7 +13,7 @@ class Ability
     end
 
     can :render_event_response, :all
-
+=end
   end
 
   # 定义 3 种权限

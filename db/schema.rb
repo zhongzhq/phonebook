@@ -13,35 +13,8 @@
 
 ActiveRecord::Schema.define(:version => 20130805124831) do
 
-  create_table "actors", :force => true do |t|
-    t.integer  "membership_id", :null => false
-    t.integer  "organ_id",      :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "actors_permissions", :force => true do |t|
-    t.integer "permission_id", :null => false
-    t.integer "actor_id",      :null => false
-  end
-
-  create_table "actors_users", :force => true do |t|
-    t.integer "user_id",  :null => false
-    t.integer "actor_id", :null => false
-  end
-
   create_table "memberships", :force => true do |t|
     t.string   "name",       :null => false
-    t.integer  "organ_id",   :null => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "organ_applies", :force => true do |t|
-    t.integer  "user_id",    :null => false
-    t.string   "organ_name", :null => false
-    t.text     "description"
-    t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -54,6 +27,48 @@ ActiveRecord::Schema.define(:version => 20130805124831) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  create_table "actors", :force => true do |t|
+    t.integer  "membership_id", :null => false
+    t.integer  "organ_id",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  create_table "actors_permissions", :force => true do |t|
+    t.integer "permission_id", :null => false
+    t.integer "actor_id",      :null => false
+  end
+
+  create_table "actors_users", :force => true do |t|
+    t.integer "user_id",  :null => false
+    t.integer "actor_id", :null => false
+  end
+
+
+  create_table "organ_applies", :force => true do |t|
+    t.integer  "user_id",    :null => false
+    t.string   "organ_name", :null => false
+    t.text     "description"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
 
   create_table "permissions", :force => true do |t|
     t.string  "name",                       :null => false

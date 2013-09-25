@@ -25,8 +25,8 @@ class OrganApply < ActiveRecord::Base
   def init_organ
     organ = Organ.create :name => self.organ_name
     # 初始化角色
-    admin = Membership.create :name => Settings.membership.admin, :organ_id => organ.id
-    member = Membership.create :name => Settings.membership.member, :organ_id => organ.id
+    admin = Membership.create :name => Settings.membership.admin
+    member = Membership.create :name => Settings.membership.member
     # 给用户分配管理员角色
     organ_admin_actor = Actor.first_or_create(:organ => organ, :membership => admin)
     User.find(self.user_id).actors << organ_admin_actor

@@ -8,9 +8,7 @@ class OrgansController < ApplicationController
   end
 
   def index
-    @root_organs = current_user.organs.map(&:root).uniq
-    session[:current_root_organ] = Organ.find(params[:id]) unless params[:id].blank?
-    redirect_to master_root_path if Organ.system_organ == session[:current_root_organ]
+    @root_organ = Organ.roots.first
   end
 
   # 申请创建一个企业

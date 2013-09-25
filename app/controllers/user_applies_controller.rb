@@ -29,15 +29,12 @@ class UserAppliesController < ApplicationController
   def children_organs
     hash = {}
     # 根据用户是否加入企业来确定默认显示的组织
-    default_organs = if session[:current_root_organ].blank?
-      Organ.roots.reject{ |organ| organ == Organ.system_organ }
-    else
-      session[:current_root_organ].children
-    end
+
+    Organ.all.map{ |organ| hash[organ.id] = organ.fullname }
+
 
     # 根据 params[:id] 找到下级组织
-    @organs = params[:id] ? Organ.find(params[:id]).children : default_organs
-    @organs.map { |organ| hash[organ.id] = organ.name }
+    # @organs = params[:id] ? Organ.find(params[:id]).children : default_organs
     render :json => hash
   end
 
