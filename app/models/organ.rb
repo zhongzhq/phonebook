@@ -4,7 +4,7 @@ class Organ < ActiveRecord::Base
 
   validates :name, :presence => true
   # 同一父级的组织名不能重复
-  validate { errors.add(:name, :taken) if siblings.reject{|x| x if x.id == self.id}.map(&:name).include?(self.name) }
+  validates_uniqueness_of :name, :scope => :ancestry
 
   has_many :actors
   has_many :memberships
