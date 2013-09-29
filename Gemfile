@@ -32,6 +32,11 @@ gem 'state_machine'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+                              :github => 'anjlab/bootstrap-rails',
+                              :branch => '3.0.0'
+
+=begin
 gemfile_local = File.join(File.dirname(__FILE__), 'Gemfile.local')
 
 if File.readable?(gemfile_local)
@@ -39,6 +44,7 @@ if File.readable?(gemfile_local)
 else
   gem "zhiyi-bootstrap-rails", :require => "bootstrap-rails", :git => "git@github.com:zhiyisoft/bootstrap-rails.git", :ref => "HEAD"
 end
+=end
 gem 'apotomo'
 
 # Gems for test
