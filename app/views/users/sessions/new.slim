@@ -5,20 +5,20 @@
   .workarea
     = render 'templates/flash', :flash => flash
     = simple_form_for( resource, :as => resource_name, :url => session_path(resource_name), :html => {:class=>"form-horizontal label-justify"}) do |f|
-      = f.input :account, :autofocus => true, placeholder: "邮箱 / 已验证手机号",label:"账&emsp; 号"
+      = f.input :account, :autofocus => true, placeholder: "用户名 / 已验证手机号",label:"账&emsp; 号"
       = f.input :password, placeholder: "********",label:"密&emsp; 码"
 
-      // 验证码
-      = f.input :captcha,label:"验 证 码" do
-        = text_field_tag :captcha,'', :style=>"width:80px"
-        = captcha_tag id: 'captcha_img'
-        a onclick='refresh_captcha();' href='javascript:void(0)'
-          |
-          span style="font-size:12px;" 看不清？换一张
+      / // 验证码
+      / = f.input :captcha,label:"验 证 码" do
+      /   = text_field_tag :captcha,'', :style=>"width:80px"
+      /   = captcha_tag id: 'captcha_img'
+      /   a onclick='refresh_captcha();' href='javascript:void(0)'
+      /     |
+      /     span style="font-size:12px;" 看不清？换一张
 
       .control-group.margin-bottom0
         .controls
           = f.button :submit, '登 录', :class => "btn-success btn-login"
-          a.margin-right5 href=new_registration_path(resource_name) style="font-size:12px;" 立即注册
-          span.margin-right5 |
-          a.margin-right5 href=new_password_path(resource_name) style="font-size:12px;" 忘记密码
+          / a.margin-right5 href=new_registration_path(resource_name) style="font-size:12px;" 立即注册
+          / span.margin-right5 |
+          / a.margin-right5 href=new_password_path(resource_name) style="font-size:12px;" 忘记密码

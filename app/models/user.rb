@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
-  attr_accessible :password, :name, :email, :phone, :password_confirmation, :account
-  devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :validatable, :timeoutable, :confirmable
+  attr_accessible :password, :name, :username, :phone, :password_confirmation, :account
+  devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :timeoutable # :validatable#, :confirmable
 
-  validates_presence_of :email, :phone
+  validates_presence_of :username, :phone
   validates :phone, :uniqueness => true, format: {with: /^\d{11}$/}
 
   has_and_belongs_to_many :actors
@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if account = conditions.delete(:account)
-      where(conditions).where(["lower(email) = :value OR phone = :value", { :value => account.downcase }]).first
+      where(conditions).where(["lower(username) = :value OR phone = :value", { :value => account.downcase }]).first
     else
       where(conditions).first
     end

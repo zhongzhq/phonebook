@@ -4,16 +4,16 @@ require 'rack/contrib'
 class Users::SessionsController < Devise::SessionsController
   # POST /resource/sign_in
   use Rack::JSONP
-  def create
-    @user = User.new(params[:user])
+  # def create
+  #   @user = User.new(params[:user])
     
-    if request.post? && captcha_valid?(params[:captcha])
-      super
-    else
-      flash[:alert] = '验证码错误'
-      render 'new', layout: "default"
-    end
-  end
+  #   if request.post? && captcha_valid?(params[:captcha])
+  #     super
+  #   else
+  #     flash[:alert] = '验证码错误'
+  #     render 'new', layout: "default"
+  #   end
+  # end
 
   # get json
   def login
