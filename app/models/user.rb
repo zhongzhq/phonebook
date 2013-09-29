@@ -1,12 +1,22 @@
 # -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
-  attr_accessible :password, :name, :username, :phone, :password_confirmation, :account
-  devise :database_authenticatable, :token_authenticatable, :registerable, :recoverable, :timeoutable # :validatable#, :confirmable
+  attr_accessible :name, :username, :phone, :password, :password_confirmation, :account
+  devise :database_authenticatable, :token_authenticatable, :registerable #, :timeoutable, :validatable, :confirmable
 
   validates_presence_of :username, :phone
   validates :phone, :uniqueness => true, format: {with: /^\d{11}$/}
 
   has_and_belongs_to_many :actors
+
+  state_machine :initial => :enabled do
+    event :start do
+      transition :disabled => :enabled
+    end
+
+    event :close do
+      transition :enabled => :disabled
+    end
+  end
 
   scope :find_by_organ, -> organ { joins(:actors).where(actors: { id: Actor.find_by_organ(organ)} ).uniq }
 
