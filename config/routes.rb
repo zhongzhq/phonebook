@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
 EPBook::Application.routes.draw do
-    root :to => "users/sessions#login"
+
+  authenticate :user do
+    root :to => "dashboards#index"
+  end
+  root :to => "users/sessions#login"
+
   # public
   resources :downloads, :only => [:index]
   resources :news, :only => [:index]
@@ -13,11 +18,6 @@ EPBook::Application.routes.draw do
   }
 
   resources :dashboards, :only => [:index]
-
-  devise_scope :user do
-    get "/users/login" => "users/sessions#login"
-    get "/users/logout" => "users/sessions#logout"
-  end
 
   resources :users do
     get 'resend_email_confirmation', :on => :collection

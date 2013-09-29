@@ -57,7 +57,7 @@ group :development do
   gem 'guard-rspec'
   gem 'guard-cucumber'
 
-  gem 'pry-rails'
+  #gem 'pry-rails'
 end
 
 group :test do

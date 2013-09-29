@@ -29,6 +29,11 @@ ActiveRecord::Schema.define(:version => 20130805124831) do
     t.datetime "updated_at",  :null => false
   end
 
+  create_table "organ_attrs", :force => true do |t|
+    t.string   "name",  :null => false
+    t.string   "value", :null => false
+  end
+
   create_table "actors", :force => true do |t|
     t.integer  "membership_id", :null => false
     t.integer  "organ_id",      :null => false

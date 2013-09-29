@@ -8,6 +8,7 @@ class Organ < ActiveRecord::Base
 
   has_many :memberships
   has_many :actors
+  has_many :organ_attrs
   has_ancestry
 
   state_machine :initial => :enabled do
