@@ -1,11 +1,12 @@
 # -*- coding: utf-8 -*-
 class Organ < ActiveRecord::Base
-  attr_accessible :name, :parent_id, :description
+  attr_accessible :name, :parent_id, :office_room
 
   validates :name, :presence => true
   # 同一父级的组织名不能重复
   validates_uniqueness_of :name, :scope => :ancestry
 
+  has_many :memberships
   has_many :actors
   has_ancestry
 

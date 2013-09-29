@@ -5,10 +5,6 @@
         .span3
           p
             | 按组织结构显示
-            span
-              - if can? :manage, Organ
-                a href=user_applies_path(:organ_id => @root_organ.id) 审核用户
           = render_widget :organ_tree, :display, :id => @root_organ.id
-          p = link_to '查看所有用户', url_for_event(:all, :source => :organ_panel, :id => @root_organ.id), remote: true
         .span9
           = render_widget :organ_panel, :display, :id => @root_organ.id

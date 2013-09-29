@@ -47,7 +47,8 @@
         img src="/assets/sitename1.jpg" alt=t('site_name') title=t('site_name')        
         /=t('site_name')
         sup
-          label.label V#{Version.config['server'].last['version']['number']}
+          /label.label V 0.0.1#{Version.config['server'].last['version']['number']}
+          label.label V 0.0.1
       .nav-info.pull-right        
         .nav-logout.pull-right
           a href=destroy_user_session_path data-method="delete"
