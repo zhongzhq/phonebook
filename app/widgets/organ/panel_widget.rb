@@ -17,7 +17,7 @@ class Organ::PanelWidget < ApplicationWidget
   # 显示组织所有成员
   def show
     @organ = Organ.find params[:id]
-    @members = @organ.members.paginate(:page => params[:page])
+    @members = @organ.members.paginate(:page => params[:page]) if @organ.children.blank?
     replace :view => :show
   end
 

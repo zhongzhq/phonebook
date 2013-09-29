@@ -11,14 +11,40 @@ class OrgansController < ApplicationController
     @root_organ = Organ.roots.first
   end
 
-  # 申请创建一个企业
+  def new
+    if params[:id]
+      @organ = Organ.find( params[:id] ).children.build
+      p @organ
+    else
+      @organ = Organ.new
+    end
+  end
+
   def create
     @organ = Organ.new(params[:organ])
-
     if @organ.save
-      redirect_to root_path, notice: '申请成功，正在审核'
+      OrganAttr.create(:key => '电话一', :value => params[:organ_attrs][:phone1], :organ_id => @organ.id)
+      OrganAttr.create(:key => '电话二', :value => params[:organ_attrs][:phone2], :organ_id => @organ.id)
+      OrganAttr.create(:key => '办公室地址', :value => params[:organ_attrs][:addr], :organ_id => @organ.id)
+      redirect_to organs_path, notice: '新建组织成功'
     else
       render 'new'
+    end
+  end
+
+  def edit
+    @organ = Organ.find(params[:id])
+  end
+
+  def update
+    @organ =  Organ.find(params[:id])
+    if @organ.update_attributes(params[:organ])
+      OrganAttr.create(:key => '电话一', :value => params[:organ_attrs][:phone1], :organ_id => @organ.id)
+      OrganAttr.create(:key => '电话二', :value => params[:organ_attrs][:phone2], :organ_id => @organ.id)
+      OrganAttr.create(:key => '办公室地址', :value => params[:organ_attrs][:addr], :organ_id => @organ.id)
+      redirect_to organs_path, notice: '组织信息更新成功'
+    else
+      render 'edit'
     end
   end
 

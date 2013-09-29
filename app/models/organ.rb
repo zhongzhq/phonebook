@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Organ < ActiveRecord::Base
-  attr_accessible :name, :parent_id, :office_room
+  attr_accessible :name, :parent_id
 
   validates :name, :presence => true
   # 同一父级的组织名不能重复
@@ -8,8 +8,9 @@ class Organ < ActiveRecord::Base
 
   has_many :memberships
   has_many :actors
-  has_many :organ_attrs
   has_ancestry
+
+  has_many :organ_attrs
 
   state_machine :initial => :enabled do
     event :start do

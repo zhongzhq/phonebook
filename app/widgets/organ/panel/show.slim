@@ -8,39 +8,52 @@
           = link_to '添加成员', url_for_event(:add_user, :id => @organ.id), class: 'btn btn-link', remote: true        
 
     .widgetarea.widgetarea-height
-      table.table.table-hover
-        thead
-          tr.alert.alert-info
-            th.index_number 序号
-            th 姓名
-            th 手机号
-            th 用户名
-            th 角色
-            th 操作
-        tbody
-          -if @members.empty?
-            tr
-              td colspan="5" style="text-align:center;color:red" 此部门下无成员
-          - @members.each_with_index do |member, index|
-            tr
-              td= index + 1
-              td= member.name
-              td= member.phone
-              td= member.username
-              td
-                - member.actors.where(:organ_id => @organ.id).each do |x|
-                  | #{x.membership.name}
+      - @organ.organ_attrs.each do |attr|
+          span= attr.key
+          |：
+          span= attr.value
+
+      - unless @organ.children.blank?
+        - @organ.children.each do |organ|
+          p = organ.name
+          - organ.organ_attrs.each do |attr|
+            span= attr.key
+            | :
+            span= attr.value
+      - else
+        table.table.table-hover
+          thead
+            tr.alert.alert-info
+              th.index_number 序号
+              th 姓名
+              th 手机号
+              th 用户名
+              th 角色
+              th 操作
+          tbody
+            -if @members.empty?
+              tr
+                td colspan="5" style="text-align:center;color:red" 此部门下无成员
+            - @members.each_with_index do |member, index|
+              tr
+                td= index + 1
+                td= member.name
+                td= member.phone
+                td= member.username
+                td
+                  - member.actors.where(:organ_id => @organ.id).each do |x|
+                    | #{x.membership.name}
+                    - if can? :manage, Organ
+                      - unless current_user == member && x.membership.name == Settings.membership.admin
+                        = link_to '删除', url_for_event(:remove_from_show, :id => x.organ.id, :membership_id => x.membership.id, :user_id => member.id ), remote: true
+                    br
+
+                td.operating
                   - if can? :manage, Organ
-                    - unless current_user == member && x.membership.name == Settings.membership.admin
-                      = link_to '删除', url_for_event(:remove_from_show, :id => x.organ.id, :membership_id => x.membership.id, :user_id => member.id ), remote: true
-                  br
+                    - unless current_user == member
+                      = link_to '编辑', url_for_event(:edit_user, :id => @organ.id, :user_id => member.id), remote: true
 
-              td.operating
-                - if can? :manage, Organ
-                  - unless current_user == member
-                    = link_to '编辑', url_for_event(:edit_user, :id => @organ.id, :user_id => member.id), remote: true
-
-      = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}
+        = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}
 
   #user-edit-dialog
 
