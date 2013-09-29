@@ -2,7 +2,11 @@
   = simple_form_for @organ, :html => {:class=>"form-horizontal form-mini"} do |f|
     = f.input :name
     = f.hidden_field :parent_id
-    = f.input :description,:input_html => {:style=>"width:400px;height:100px"}
+
+    = simple_fields_for :organ_attrs do |t|
+      = t.input :phone1, :label => '电话一'
+      = t.input :phone2, :label => '电话二'
+      = t.input :addr, :label => '办公室地址'
 
     .control-group
       .controls

@@ -23,15 +23,15 @@ ActiveRecord::Schema.define(:version => 20130805124831) do
   create_table "organs", :force => true do |t|
     t.string   "name",        :null => false
     t.string   "ancestry"
-    t.string   "office_room"
     t.string   "state"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
   create_table "organ_attrs", :force => true do |t|
-    t.string   "name",  :null => false
-    t.string   "value", :null => false
+    t.string   "key"
+    t.string   "value"
+    t.integer  "organ_id"
   end
 
   create_table "actors", :force => true do |t|
