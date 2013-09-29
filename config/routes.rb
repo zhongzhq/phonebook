@@ -1,9 +1,6 @@
   # -*- coding: utf-8 -*-
   EPBook::Application.routes.draw do
-    root :to => 'public#index'
-
-    # 验证码
-    captcha_route
+    root :to => 'users/sessions#login'
 
     # public
     resources :downloads, :only => [:index]
@@ -22,7 +19,6 @@
       get "/users/login" => "users/sessions#login"
       get "/users/logout" => "users/sessions#logout"
     end
-
 
     resources :users do
       get 'resend_email_confirmation', :on => :collection
@@ -44,19 +40,6 @@
     end
 
     resources :memberships, :except => [:show]
-
-    resources :user_applies, :only => [:index, :new, :create, :update] do
-      collection do
-        get 'children_organs'
-        get 'memberships'
-      end
-    end
-    resources :organ_applies, :except => [:show] do
-      member do
-        get 'check'
-      end
-    end
-
 
     mount API => 'api'
   end
