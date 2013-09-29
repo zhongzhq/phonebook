@@ -6,12 +6,9 @@
     captcha_route
 
     # public
-    resources :products, :only => [:index]
-    resources :clouds, :only => [:index]
     resources :downloads, :only => [:index]
     resources :news, :only => [:index]
     resources :helps, :only => [:index]
-    resources :purchases, :only => [:index]
 
     # devise
     devise_for :users, :controllers => {
@@ -60,12 +57,6 @@
       end
     end
 
-    # Master routes
-    namespace :master do
-      root :to => 'home#index'
-      resources :organs, :only => [:index, :update]
-      resources :systems, :only => [:index]
-    end
 
     mount API => 'api'
   end
