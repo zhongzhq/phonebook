@@ -1,11 +1,11 @@
 .navbar.navbar-fixed-top
-  /.navbar-inner.topbar
+  .navbar-inner.topbar
     ul.nav.pull-left
       li
         a href="javascript:void(0)" 客户电话 028-85197020
 
     ul.nav.pull-right
-      a href="#" 
+      a href="#"
       - if user_signed_in?
         li
           a href= edit_user_path(current_user) data-toggle="tooltip" data-placement="bottom" title="个人资料设置"
@@ -27,38 +27,3 @@
           a href=destroy_user_session_path data-method="delete"
             i.icon-power-off
             |退出
-
-  .navigation
-    .container-fluid
-      /h4.pull-right
-        - if session[:current_root_organ].blank?
-          | 暂无组织，赶快加入吧
-        - else
-          .dropdown data-toggle="tooltip" data-placement="top" title="切换组织"
-            a.dropdown-toggle data-toggle="dropdown" href='#' data-target='#' style='color: #f8f8f8;'
-              = session[:current_root_organ].try(:name)
-              b.caret
-            ul.dropdown-menu
-              - current_user.root_organs.each do |organ|
-                li
-                  = link_to organ.name, organs_path(:id => organ.id)
-
-      a.sitename_a.pull-left href=root_path
-        img src="/assets/sitename1.jpg" alt=t('site_name') title=t('site_name')        
-        /=t('site_name')
-        sup
-          label.label V#{Version.config['server'].last['version']['number']}
-      .nav-info.pull-right        
-        .nav-logout.pull-right
-          a href=destroy_user_session_path data-method="delete"
-            i.icon-power-off
-            
-        .nav-userinfo.pull-right
-          a.dropdown-toggle href="#" data-toggle="dropdown"
-            img src="/assets/head.jpg" alt=""
-            span= current_user.name
-            i.icon-caret-down
-        /.nav-search.pull-right
-          input type="text"  
-      .clear
-      

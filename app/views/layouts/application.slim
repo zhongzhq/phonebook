@@ -8,17 +8,19 @@ html lang="en"
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tag
+    link href="/assets/zylogo.ico" type="image/x-icon" rel="Shortcut Icon"
+    link href="/favicon.ico" type="image/x-icon" rel="icon"
+
   body
     #header
-      =render "templates/header"    
-    #content 
-      #menubar
-        =render "templates/menubar"
-      .container-fluid
-        #working-area
-          = render 'templates/flash', :flash => flash
-          .row-fluid
-            = yield
+      =render "templates/header"
+    #content
+      -if current_user
+        #navigation
+          =render "templates/navigation"
+      #working-area
+        = render 'templates/flash', :flash => flash
+        = yield
 
     #footer
-      /!=render "templates/footer"
+      =render "templates/footer"
