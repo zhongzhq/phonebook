@@ -7,6 +7,15 @@ class Organ::PanelWidget < ApplicationWidget
   responds_to_event :edit_user_submit
   responds_to_event :remove_from_show
   responds_to_event :remove_form_all
+  responds_to_event :search
+
+  def search
+    User.where("name LIKE :text OR phone LIKE :text OR email LIKE :text", {:text => "%#{params[:text]}%"}).tap do |x|
+      @members = x.paginate(:page => params[:page])
+      @sum = x.count
+    end
+    replace :view => :search
+  end
 
   def display args
     @organ = Organ.find args[:id]

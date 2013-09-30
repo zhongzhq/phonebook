@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 EPBook::Application.routes.draw do
 
-  authenticate :user do
-    root :to => "dashboards#index"
+  devise_scope :user do
+    root :to => "users/sessions#new"
+    authenticate :user do
+      root :to => "dashboards#index"
+    end
   end
-  root :to => "users/sessions#login"
 
   # public
   resources :downloads, :only => [:index]
