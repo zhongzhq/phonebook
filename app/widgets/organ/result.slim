@@ -1,8 +1,11 @@
 = widget_div do
   .widget
+    = render :view => :search
+      
     h4
       i.icon-hand-right
-      span.text-info 企业所有成员
+      span.text-info 搜索结果
+      strong #{@sum}条记录
 
     .widgetarea.widgetarea-height
       table.table.table-hover
@@ -11,8 +14,8 @@
             th.index_number 序号
             th 姓名
             th 手机号
-            td 邮箱
-            td 角色
+            th 用户名
+            th 角色
             th 操作
         tbody
           - @members.each_with_index do |member, index|
@@ -20,13 +23,13 @@
               td= index + 1
               td= member.name
               td= member.phone
-              td= member.email
+              td= member.username
               td
                 - member.actors.each do |x|
-                  | #{x.organ.name} - #{x.membership.name}
+                  =x.fullname
                   - if can? :manage, Organ
                     - unless current_user == member
-                      = link_to '删除', url_for_event(:remove_form_all, :id => x.organ.id, :membership_id => x.membership.id, :user_id => member.id ), remote: true
+                      = link_to '删除', remove_member_organ_path(x.organ, user_id: member.id, membership_id: x.membership.id)
                   br
 
               td.operating

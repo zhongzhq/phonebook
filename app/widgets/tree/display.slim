@@ -5,7 +5,7 @@
         -if root_organ.children
           img src="/assets/tv-expandable.gif" onclick="toggle_tree($(this))"
           span.hover
-            = link_to root_organ.name, url_for_event(:show, id: root_organ.id), :remote => true
+            = link_to root_organ.name, url_for_event(:show, source: :organ, id: root_organ.id), :remote => true
             - if can? :manage, Organ
               span.offset1.hide
                 = link_to '编辑', edit_organ_path(root_organ)

@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 class TreeWidget < ApplicationWidget
-  responds_to_event :show
+
+  has_widgets do
+    self << widget('organ', :organ)
+  end
 
   def display
     @root_organs = Organ.roots
-    render
-  end
-
-  def show evt
-    @organ = Organ.find evt[:id]
-    @members = @organ.members.paginate(:page => evt[:page]) if @organ.children.blank?
     render
   end
 end

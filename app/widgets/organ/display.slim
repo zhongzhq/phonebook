@@ -1,8 +1,6 @@
 = widget_div do
   .widget
-    = form_tag url_for_event(:search), :class => "form-inline", :remote => true do
-      = text_field_tag 'text', nil, placeholder: '姓名/手机号/用户名/组织',class: "input-small"
-      = submit_tag "搜索", class: 'btn'
+    = render :view => :search
 
     h4
       i.icon-hand-right
@@ -58,8 +56,3 @@
                       = link_to '编辑', adjust_user_path(member)
 
         = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}
-
-  #user-edit-dialog
-
-  javascript:
-    $('.modal-backdrop').remove()
