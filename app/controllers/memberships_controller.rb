@@ -6,7 +6,6 @@ class MembershipsController < ApplicationController
     @memberships = Membership.all
   end
 
-
   def create
     @membership = Membership.new(params[:membership])
     return redirect_to memberships_path, notice: '添加成功' if @membership.save

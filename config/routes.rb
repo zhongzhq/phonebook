@@ -10,10 +10,13 @@ EPBook::Application.routes.draw do
     end
   end
 
-  # public
-  resources :downloads, :only => [:index]
-  resources :news, :only => [:index]
-  resources :helps, :only => [:index]
+  resources :news
+  resources :publics, :only => [] do
+    collection do
+      get 'help'
+      get 'download'
+    end
+  end
 
   # devise
   devise_for :users, :controllers => {
