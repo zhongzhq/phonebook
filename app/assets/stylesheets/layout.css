@@ -4,6 +4,7 @@
 #header{
     height: 90px;
     width: 100%;
+    padding-top:15px;
 }
 
 #content {
@@ -25,7 +26,6 @@
 #footer a{
     font-family: "宋体";
     font-size: 12px;
-    margin-left: 11px;
     padding-right: 11px;
     text-decoration: none;
 }
