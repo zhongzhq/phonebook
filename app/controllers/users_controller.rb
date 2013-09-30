@@ -9,7 +9,6 @@ class UsersController < ApplicationController
     @organ = Organ.find params[:organ_id] if params[:organ_id]
     params[:user][:password] = '123456'
     params[:user][:email] = "#{SecureRandom.hex(8)}tangjiujun@zhiyisoft.com"
-    p params[:user]
     @user = User.new(params[:user])
 
     actors = (params[:membership_ids] || []).map do |id|
@@ -22,8 +21,6 @@ class UsersController < ApplicationController
     else
       render 'new_user'
     end
-
-    p @user.errors
   end
   
   # 修改用户信息
@@ -64,7 +61,7 @@ class UsersController < ApplicationController
       end
     end.flatten
     
-    @user.adjust session[:current_root_organ].subtree, actors
+    @user.adjust @user.organs.first.root.subtree, actors
     redirect_to organs_path, notice: '调整成功'
   end
 end

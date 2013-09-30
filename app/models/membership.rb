@@ -10,4 +10,8 @@ class Membership < ActiveRecord::Base
 
   # 角色自动关联根组织
   before_save {self.organ_id = Organ.find(:first, :conditions => {:id => organ_id}).root.id}
+
+  def self.find_by_organ organ
+    where(organ_id: organ.id)
+  end
 end

@@ -55,7 +55,7 @@
                 td.operating
                   - if can? :manage, Organ
                     - unless current_user == member
-                      = link_to '编辑', url_for_event(:edit_user, :id => @organ.id, :user_id => member.id), remote: true
+                      = link_to '编辑', adjust_user_path(member)
 
         = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}
 

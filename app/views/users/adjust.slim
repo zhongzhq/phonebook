@@ -9,7 +9,8 @@
       = f.input :phone
 
       = f.input :new_organ_ids, label: '组织名称' do
-        = recursive_tree session[:current_root_organ], Membership.find_by_organ(session[:current_root_organ])
+        - p @user.organs.first.root
+        = recursive_tree @user.organs.first.root, Membership.find_by_organ(@user.organs.first.root)
       
       .control-group
         .controls

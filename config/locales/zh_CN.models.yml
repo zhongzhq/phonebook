@@ -4,7 +4,6 @@ zh_CN:
       organ: 组织
       membership: 角色
       user: 用户
-      organ_apply: 申请企业
     attributes:
       organ:
         name: 组织名
@@ -13,18 +12,11 @@ zh_CN:
         name: 角色名
       user:
         username: 用户名
+        phone: 手机号码
+        name: 姓名
         account: 帐号
         password: 密码
         password_confirmation: 确认密码
-        reset_password_token: 密码重置口令
-        confirmation_token: 邮箱确认口令
-        name: 姓名
-        email: 电子邮箱
-        phone: 手机号码
-        captcha: 验证码
-      organ_apply:
-        organ_name: 企业名称
-        description: 描述
 
     errors:
       messages:
