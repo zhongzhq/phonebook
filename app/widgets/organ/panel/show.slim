@@ -5,7 +5,7 @@
       span.text-info #{@organ.name}
       .pull-right
         - if can? :manage, Organ
-          = link_to '添加成员', url_for_event(:add_user, :id => @organ.id), class: 'btn btn-link', remote: true        
+          = link_to '添加成员', new_user_users_path(:organ_id => @organ.id), class: 'btn btn-link'        
 
     .widgetarea.widgetarea-height
       - @organ.organ_attrs.each do |attr|

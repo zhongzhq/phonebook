@@ -8,7 +8,6 @@
     .modal-body
       = f.input :phone
       = f.input :name
-      = f.input :email
 
       = f.input :membership, :label => "#{@organ.name}角色" do
         - membership_ids = @user.actors.where(organ_id: @organ.id).map(&:membership).map(&:id)

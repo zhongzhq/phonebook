@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
-  attr_accessible :name, :username, :phone, :password, :password_confirmation, :account
-  devise :database_authenticatable, :token_authenticatable, :registerable #, :timeoutable, :validatable, :confirmable
+  attr_accessible :name, :username, :email, :phone, :password, :password_confirmation, :account
+  devise :database_authenticatable, :token_authenticatable, :registerable, :validatable #, :timeoutable, :confirmable
 
   validates_presence_of :username, :phone
   validates :phone, :uniqueness => true, format: {with: /^\d{11}$/}

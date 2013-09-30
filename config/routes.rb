@@ -20,7 +20,11 @@ EPBook::Application.routes.draw do
   resources :dashboards, :only => [:index]
 
   resources :users do
-    get 'resend_email_confirmation', :on => :collection
+    collection do
+      get 'new_user'
+      post 'create_user'
+    end
+    # get 'resend_email_confirmation', :on => :collection
     member do
       get 'adjust'
       put 'adjust_post'

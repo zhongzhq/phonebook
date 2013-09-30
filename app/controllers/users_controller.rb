@@ -1,5 +1,31 @@
 # -*- coding: utf-8 -*-
-class UsersController < ApplicationController  
+class UsersController < ApplicationController
+  def new_user
+    @organ = Organ.find params[:organ_id] if params[:organ_id]
+    @user =  User.new
+  end
+
+  def create_user
+    @organ = Organ.find params[:organ_id] if params[:organ_id]
+    params[:user][:password] = '123456'
+    params[:user][:email] = "#{SecureRandom.hex(8)}tangjiujun@zhiyisoft.com"
+    p params[:user]
+    @user = User.new(params[:user])
+
+    actors = (params[:membership_ids] || []).map do |id|
+      Actor.first_or_create :organ => @organ, :membership => Membership.find(id)
+    end
+
+    if @user.save
+      @user.adjust @organ, actors
+      redirect_to organs_path
+    else
+      render 'new_user'
+    end
+
+    p @user.errors
+  end
+  
   # 修改用户信息
   def edit
     @user = current_user
