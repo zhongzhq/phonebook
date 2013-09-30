@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 EPBook::Application.routes.draw do
 
-  devise_scope :user do
-    root :to => "users/sessions#new"
-    authenticate :user do
-      root :to => "dashboards#index"
+  authenticated :user do
+    root :to => "dashboards#index"
+  end
+  unauthenticated :user do
+    devise_scope :user do
+      root :to => "users/sessions#new"
     end
   end
 

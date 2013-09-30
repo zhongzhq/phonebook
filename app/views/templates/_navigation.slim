@@ -15,11 +15,6 @@ ul.menu-area
     a href= dashboards_path      
       i.icon-dashboard.text-xlarge
       | 仪表盘
-  - if can? :read, Organ
-    li
-      a href= organs_path       
-        i.icon-th.text-xlarge
-        = (can? :manage, Organ) ? ' 企业管理' : ' 企业电话本'
   - if can? :manage, Organ
     li
       a href= memberships_path        
@@ -31,3 +26,5 @@ ul.menu-area
       span.margin-right5 待办事宜
       sup
         span.badge.badge-important 0
+
+= render_widget :organ_tree, :display

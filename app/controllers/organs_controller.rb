@@ -4,7 +4,6 @@ class OrgansController < ApplicationController
 
   has_widgets do |root|
     root << widget('organ/panel', :organ_panel)
-    root << widget('organ/tree', :organ_tree)
   end
 
   def index

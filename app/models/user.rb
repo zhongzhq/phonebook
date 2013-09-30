@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
   attr_accessible :username, :phone, :name, :password, :account
-  devise :database_authenticatable, :token_authenticatable, :timeoutable
+  devise :database_authenticatable, :token_authenticatable, :timeoutable, :registerable
 
   validates_presence_of :username, :phone
   validates :username, :phone, :uniqueness => true
