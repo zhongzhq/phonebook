@@ -1,0 +1,41 @@
+.panel.panel-info
+  .panel-heading
+    strong 当前位置：
+    | 搜索
+
+  .panel-body
+    /* 搜索框 */
+    .row
+      .col-md-6.col-xs-12
+        = form_tag search_organs_path, :id => "search-form", :class => "form-inline remote", :remote => true
+          .form-group.col-md-8.col-xs-8
+            = text_field_tag 'text', nil, placeholder: '姓名/用户名/电话',class: "form-control"
+          = submit_tag "搜索", class: 'btn btn-default'
+
+    - @result.each do |organ, users|
+      .panel.panel-info
+        .panel-heading
+          strong = organ.fullname
+        .panel-body
+          - users.each do |member|
+            .card.col-md-4
+              .panel.panel-info
+                .panel-heading
+                  span.glyphicon.glyphicon-user
+                  = member.name
+                  span.pull-right
+                    span.glyphicon.glyphicon-heart-empty data-toggle="tooltip" title="已关注"
+                    = link_to '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="编辑"></span>'.html_safe, edit_user_path(member, :organ_id => organ.id), :remote => true, :class => "remote"
+                    /span.glyphicon.glyphicon-remove data-toggle="tooltip" title="删除"
+
+                .panel-body
+                  .media
+                    a.pull-left href="#"
+                      img.media-object src="assets/avator.png"
+                    .media-body
+                      p 手机： #{member.cellphone}
+                      p 角色： #{member.find_memberships_by_organ(organ)}
+  
+javascript:
+  ajax_get($(".remote"));
+  $("[data-toggle~=tooltip]").tooltip();

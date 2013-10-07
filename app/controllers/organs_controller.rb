@@ -37,4 +37,16 @@ class OrgansController < ApplicationController
       render "edit"
     end
   end
+
+  def search
+    @result = {}
+    if params[:text].present?
+      users = User.where("name LIKE :text OR cellphone LIKE :text OR username LIKE :text", {:text => "%#{params[:text]}%"})
+      organs = users.map(&:actors).flatten.uniq.map(&:organ).uniq.sort
+      organs.each do |organ|
+        @result[organ] = users.find_by_organ(organ)
+      end
+    end
+    @result
+  end
 end

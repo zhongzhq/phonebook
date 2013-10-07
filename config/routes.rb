@@ -11,6 +11,11 @@ Phonebook::Application.routes.draw do
     end
   end
 
-  resources :organs, :except => [:index, :destroy]
+  resources :organs, :except => [:index, :destroy] do
+    collection do
+      post 'search'
+    end
+  end
+
   resources :users
 end
