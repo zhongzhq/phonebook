@@ -1,0 +1,6 @@
+#login-box
+  h3 欢迎登陆
+  = form_for @user, :url => authenticate_publics_path do |f|
+    = f.text_field :account, :placeholder => "用户名/手机号", :class => "form-control input-lg"
+    = f.password_field :password, :placeholder => "密码", :class => "form-control input-lg"
+    = f.submit "用户登陆", :class => "btn btn-lg btn-primary btn-block"

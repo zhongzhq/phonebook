@@ -1,0 +1,37 @@
+.panel.panel-info
+  .panel-heading
+    strong 当前位置：
+    = @organ.fullname
+    .notice
+      span 公司地址： 成都市高新区天益街
+      span 电话一： 663278723
+      span 电话二： 233779879
+
+  .panel-body
+    /* 搜索框 */
+    .row
+      .col-md-6.col-xs-12
+        form#search-form.form-inline
+          .form-group.col-md-8.col-xs-8
+            input type="text" class="form-control" placeholder="搜索： 姓名/用户名/手机号/组织"
+          button type="submit" class="btn btn-default" 搜索
+
+    /* 用户名片 */
+    - @members.each do |member|
+      .card.col-md-4
+        .panel.panel-info
+          .panel-heading
+            span.glyphicon.glyphicon-user
+            = member.name
+            span.pull-right
+              span.glyphicon.glyphicon-heart-empty data-toggle="tooltip" title="已关注"
+              span.glyphicon.glyphicon-edit data-toggle="tooltip" title="编辑"
+              span.glyphicon.glyphicon-remove data-toggle="tooltip" title="删除"
+
+          .panel-body
+            .media
+              a.pull-left href="#"
+                img.media-object src="assets/avator.png"
+              .media-body
+                p 手机： #{member.cellphone}
+                p 角色： #{member.find_memberships_by_organ(@organ)}

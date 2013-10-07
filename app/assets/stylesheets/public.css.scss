@@ -1,0 +1,148 @@
+body {
+  font-family: sans-serif;
+}
+
+/* ------------------------------------
+  Header stylesheet
+------------------------------------ */
+$header_height: 100px;
+
+#header {
+  padding-bottom: $header_height;
+  .navbar {
+    height: $header_height;
+    .container {
+      padding-top: 25px;
+      .navbar-brand {
+        font-size: 35px;
+      }
+      .navbar-collapse {
+        background-color: rgb(34, 34, 34);
+      }
+    }
+  }
+}
+
+/* ------------------------------------
+  Login box stylesheet
+------------------------------------ */
+
+#login-box {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+  .form-control {
+    margin-bottom: 5px;
+  }
+}
+
+/* ------------------------------------
+  Sidebar stylesheet
+------------------------------------ */
+
+#sidebar.affix {
+  position: static;
+}
+
+#sidebar{
+  a {
+    color: #5D6872;
+    text-decoration: none;
+  }
+  .nav {
+    margin-top: 15px;
+    margin-bottom: 30px;
+    padding-top:    10px;
+    padding-bottom: 10px;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #f7f5fa;
+    border-radius: 5px;
+  }
+  .header {
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+  }
+  .tree {
+    margin-top: 5px;
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-left: 15px;
+      .item {
+        padding-bottom: 5px;
+        border-radius: 3px;
+      }
+      .item:hover {
+        background-color: #EEEEEE;
+      }
+    }
+  }
+}
+
+// fixed sidebar
+// @media screen and (min-width: 992px) {
+//   #sidebar.affix {
+//     width: 213px;
+//   }
+//   #sidebar.affix {
+//     position: fixed;
+//     top: 80px;
+//   }
+// }
+// @media screen and (min-width: 1200px) {
+//   #sidebar.affix {
+//     width: 263px;
+//   }
+// }
+
+/* ------------------------------------
+  Content stylesheet
+------------------------------------ */
+
+.panel {
+  .panel-heading {
+    .notice {
+      color: #000000;
+      margin-top: 10px;
+      font-size: 10px;
+      span {
+        padding: 0 20px 0 0;
+      }
+    }
+  }
+  .panel-body {
+    #search-form {
+      margin-bottom: 10px;
+    }
+    .form-group {
+      padding-right: 0;
+    }
+  }
+}
+
+.glyphicon {
+  margin: 0 5px;
+}
+
+.card {
+  .panel-heading {
+    margin: 0;
+    padding: 5px 10px;
+  }
+  .panel-body {
+    .media, .media-body {
+      overflow: inherit;
+    }
+    .media {
+      img {
+        width: 64px;
+        height: 64px;
+      }
+      p {
+        margin: 2px 0;
+        padding: 0;
+      }
+    }
+  }
+}

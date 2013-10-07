@@ -1,0 +1,12 @@
+#flash style="margin: 10px auto;"
+  - if flash.present?
+    - if flash[:notice].present?
+      .alert.alert-success.text-center
+        button type="button" class="close" data-dismiss="alert" &times;
+        strong 提示：
+        = flash[:notice]
+    - elsif flash[:alert].present?
+      .alert.alert-danger.text-center
+        button type="button" class="close" data-dismiss="alert" &times;
+        strong 警告：
+        = flash[:alert]

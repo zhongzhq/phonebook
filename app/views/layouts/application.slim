@@ -1,0 +1,34 @@
+doctype html
+html lang="en"
+  head
+    meta charset="utf-8"
+    meta http-equiv="X-UA-Compatible" content="IE=edge"
+    meta name="viewport" content="width=device-width, initial-scale=1.0"    
+
+    title 企业电话本
+    = stylesheet_link_tag "application", :media => "all"
+    = csrf_meta_tags
+
+  body
+    #header
+      = render "snippets/header"
+
+    .container
+      .row
+        - if current_user.present?
+          .col-md-3            
+              = render "snippets/sidebar"
+          .col-md-9
+            = render "snippets/flash", :flash => flash
+            #content
+              == yield
+
+        - else
+          = render "snippets/flash", :flash => flash
+          #content
+            == yield
+
+    #footer
+      = render "snippets/footer"
+
+    = javascript_include_tag "application"
