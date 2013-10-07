@@ -2,29 +2,15 @@
   a href="/" title="企业电话簿"
     img src="/images/logo.png"
 
-  ul.nav.pull-right
-    - if user_signed_in?
-      li
-        a href= edit_user_path(current_user) data-toggle="tooltip" data-placement="bottom" title="个人资料设置"
+  - if user_signed_in?
+    .btn-group.pull-right
+      a.btn.btn-default href= edit_user_path(current_user) data-toggle="tooltip" data-placement="bottom" title="个人资料设置"
         - if current_user.name.blank?
-          i.icon-warning-sign.warning
-          | 请完善用户资料
+          请完善用户资料
         - else
-          i.icon-user.success
-          =current_user.name
-      li
-        a href=edit_user_registration_path
-          i.icon-wrench.success
-          | 修改密码
-      li
-        a href=help_publics_path
-          i.icon-question-sign.success
-          | 帮助
-      li
-        a href=download_publics_path
-          i.icon-question-sign.success
-          | 下载
-      li
-        a href=destroy_user_session_path data-method="delete"
-          i.icon-power-off
-          | 退出
+          |欢迎您 #{current_user.name}
+
+      a.btn.btn-default href=edit_user_registration_path 修改密码
+      a.btn.btn-default href=help_publics_path  帮助手册
+      a.btn.btn-default href=download_publics_path 软件下载
+      a.btn.btn-danger href=destroy_user_session_path data-method="delete"  退出
