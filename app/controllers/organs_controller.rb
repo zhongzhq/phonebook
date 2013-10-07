@@ -22,6 +22,7 @@ class OrgansController < ApplicationController
   def show
     @organ = Organ.find(params[:id])
     @members = @organ.members # if @organ.children.blank?
+    render :layout => params[:layout] if params[:layout].present?
   end
 
   def edit

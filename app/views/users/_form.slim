@@ -1,0 +1,15 @@
+= simple_form_for @user, :remote => true do |f|
+  = input f, :name
+  = input f, :username
+  = input f, :cellphone
+  = input f, :password
+
+  .form-group
+    label 角色： 
+    = f.collection_check_boxes :membership_ids, Membership.all, :id, :name, {:input_html => {:class => 'form-control'}}.merge({})
+
+  = hidden_field_tag :organ_id, @organ.id
+  = f.button :submit, "保存"
+
+javascript:
+  ajax_get($("form[data-remote~=true]"));

@@ -11,4 +11,10 @@ class Actor < ActiveRecord::Base
   has_many :users, :through => :actor_users
 
   scope :find_by_organ, -> organ { where organ_id: organ }
+
+  def self.first_or_create args = {}
+    result = where(organ_id: args[:organ], membership_id: args[:membership])
+    return result.first unless result.blank?
+    result.first_or_create
+  end
 end
