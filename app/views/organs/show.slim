@@ -13,7 +13,7 @@
       .col-md-6.col-xs-12
         form#search-form.form-inline
           .form-group.col-md-8.col-xs-8
-            input type="text" class="form-control" placeholder="搜索： 姓名/用户名/手机号/组织"
+            input type="text" class="form-control" placeholder="搜索： 姓名/用户名/电话/组织"
           button type="submit" class="btn btn-default" 搜索
       .col-md-6.col-xs-12
         = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-primary user-link", :remote => true

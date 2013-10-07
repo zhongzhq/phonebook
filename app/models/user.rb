@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   attr_accessor :account, :membership_ids
 
   attr_accessible :name, :username, :cellphone, :password, :password_confirmation, :state, :account, :membership_ids
-  validates_presence_of :username, :password, :cellphone, :on => :create
+  validates_presence_of :username, :cellphone
+  validates_presence_of :password, :on => :create
   
   has_many :actor_users
   has_many :actors, :through => :actor_users
