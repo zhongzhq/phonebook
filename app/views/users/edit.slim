@@ -1,15 +1,15 @@
-.infobox
-  .infobox-title
+.widget-box
+  .widget-title
     h4
       i.icon-edit.text-large.muted
       span.text-info 修改个人信息
-    .infobox-area
-      = simple_form_for @user, :html => { :class=>"form-horizontal form-mini" } do |f|
-        = f.input :name
-        = f.input :email
-        = f.input :phone
+  .widgetcontent
+    = simple_form_for @user, :html => { :class=>"form-horizontal form-mini" } do |f|
+      = f.input :name
+      = f.input :email
+      = f.input :phone
 
-        .control-group
-          .controls
-            = link_to '返回', :back, :class => "btn margin-right5"
-            = f.button :submit,"保存", :class => "btn-info"
+      .control-group
+        .controls
+          = link_to '返回', :back, :class => "btn margin-right5"
+          = f.button :submit,"保存", :class => "btn-info"
