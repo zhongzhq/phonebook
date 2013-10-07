@@ -1,9 +1,18 @@
-ul
-  - @root_organs.each do |root_organ|
-    li
-      .item
-        = link_to root_organ.name, organ_path(root_organ), :remote => true
-        span.action
-          = link_to "", edit_organ_path(root_organ), :class => "glyphicon glyphicon-pencil", :remote => true
-          = link_to "", new_organ_path(:id => root_organ.id), :class => "glyphicon glyphicon-plus", :remote => true
-      = render :view => :children, :locals => { :organ => root_organ }
+.organ_tree
+  ul
+    - @root_organs.each do |root_organ|
+      li
+        .item
+          = link_to root_organ.name, organ_path(root_organ), :remote => true
+          span.action
+            = link_to "", edit_organ_path(root_organ), :class => "glyphicon glyphicon-pencil", :remote => true
+            = link_to "", new_organ_path(:id => root_organ.id), :class => "glyphicon glyphicon-plus", :remote => true
+        = render :view => :children, :locals => { :organ => root_organ }
+
+javascript:
+  organ_tree();
+  $(document).ready(function(){
+    $(".organ_tree .item").find(".toggle-icon").click();
+    ajax_get($(".organ_tree .item").find("a"));
+  })
+  

@@ -7,6 +7,7 @@ html lang="en"
 
     title 企业电话本
     = stylesheet_link_tag "application", :media => "all"
+    = javascript_include_tag "application"
     = csrf_meta_tags
 
   body
@@ -18,9 +19,9 @@ html lang="en"
         - if current_user.present?
           .col-md-3            
               = render "snippets/sidebar"
-          .col-md-9
-            = render "snippets/flash", :flash => flash
+          .col-md-9            
             #content
+              = render "snippets/flash", :flash => flash
               == yield
 
         - else
@@ -30,5 +31,3 @@ html lang="en"
 
     #footer
       = render "snippets/footer"
-
-    = javascript_include_tag "application"

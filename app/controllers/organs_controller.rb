@@ -13,7 +13,7 @@ class OrgansController < ApplicationController
   def create
     @organ = Organ.new(params[:organ])
     if @organ.save
-      
+      redirect_to root_path(:layout => false), :notice => "添加下级组织成功"
     else
       render "new"
     end

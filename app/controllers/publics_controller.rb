@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class PublicsController < ApplicationController
   def index
-    p current_user
+    render :layout => false if params[:layout] == "false"
   end
 
   def login
