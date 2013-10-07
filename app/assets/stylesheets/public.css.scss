@@ -5,23 +5,25 @@ body {
 /* ------------------------------------
   Header stylesheet
 ------------------------------------ */
-$header_height: 100px;
-
+// $header_height: 40px;
 #header {
-  padding-bottom: $header_height;
-  .navbar {
-    height: $header_height;
-    .container {
-      padding-top: 25px;
-      .navbar-brand {
-        font-size: 35px;
-      }
-      .navbar-collapse {
-        background-color: rgb(34, 34, 34);
-      }
-    }
-  }
+  padding-bottom: 50px;
 }
+// #header {
+//   padding-bottom: $header_height;
+//   .navbar {
+//     height: $header_height;
+//     .container {
+//       padding-top: 25px;
+//       .navbar-brand {
+//         font-size: 35px;
+//       }
+//       .navbar-collapse {
+//         background-color: rgb(34, 34, 34);
+//       }
+//     }
+//   }
+// }
 
 /* ------------------------------------
   Login box stylesheet
@@ -149,4 +151,8 @@ $header_height: 100px;
       }
     }
   }
+}
+
+.card .panel:hover {
+  border: 1px solid #3276b1;
 }

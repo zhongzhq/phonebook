@@ -16,7 +16,7 @@
             input type="text" class="form-control" placeholder="搜索： 姓名/用户名/手机号/组织"
           button type="submit" class="btn btn-default" 搜索
       .col-md-6.col-xs-12
-        = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-primary add_user_link", :remote => true
+        = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-primary user-link", :remote => true
 
     /* 用户名片 */
     - @members.each do |member|
@@ -27,8 +27,8 @@
             = member.name
             span.pull-right
               span.glyphicon.glyphicon-heart-empty data-toggle="tooltip" title="已关注"
-              span.glyphicon.glyphicon-edit data-toggle="tooltip" title="编辑"
-              span.glyphicon.glyphicon-remove data-toggle="tooltip" title="删除"
+              = link_to '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="编辑"></span>'.html_safe, edit_user_path(member, :organ_id => @organ.id), :remote => true, :class => "user-link"
+              /span.glyphicon.glyphicon-remove data-toggle="tooltip" title="删除"
 
           .panel-body
             .media
@@ -39,4 +39,5 @@
                 p 角色： #{member.find_memberships_by_organ(@organ)}
 
 javascript:
-  ajax_get($(".add_user_link"));
+  ajax_get($(".user-link"));
+  $("[data-toggle~=tooltip]").tooltip();

@@ -15,6 +15,6 @@
               = current_user.try(:name) || "请完善用户资料"
               b.caret
               ul.dropdown-menu
-                li.divider              
-                li
-                  = link_to "退出", logout_publics_path, :method => :delete
+                li.divider
+          li
+            = link_to "退出", logout_publics_path, :method => :delete

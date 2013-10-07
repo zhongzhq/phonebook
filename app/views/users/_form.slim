@@ -1,14 +1,14 @@
 = simple_form_for @user, :remote => true do |f|
   = input f, :name
   = input f, :username
-  = input f, :cellphone
-  = input f, :password
+  = input f, :cellphone  
 
   .form-group
     label 角色： 
     = f.collection_check_boxes :membership_ids, Membership.all, :id, :name, {:input_html => {:class => 'form-control'}}.merge({})
 
-  = hidden_field_tag :organ_id, @organ.id
+  = hidden_field_tag :organ_id, @organ.id 
+  = input f, :password if @user.id.blank?
   = f.button :submit, "保存"
 
 javascript:

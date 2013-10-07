@@ -50,11 +50,11 @@ function organ_tree(){
 }
 
 function ajax_get(selector){
+  // selector.bind("ajax:before", function(){
+  //   $("#content .panel-body:first").html("<div class='text-center'><img src='/assets/loading.gif'/></div>");
+  // })
+
   selector.bind("ajax:complete", function(status, xhr){
     $('#content').html(xhr.responseText);
   })
 }
-
-$(document).ready(function(){
-  $("[data-toggle~=tooltip]").tooltip();
-})

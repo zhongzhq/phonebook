@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
 
   def add_actor memberships, organ
     actors = (memberships || []).map do |membership|
-      p membership
       Actor.first_or_create :organ => organ, :membership => Membership.find(membership)
     end
     actors.each do |actor|
