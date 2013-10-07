@@ -19,14 +19,14 @@ html lang="en"
         - if current_user.present?
           .col-md-3            
               = render "snippets/sidebar"
-          .col-md-9            
+          .col-md-9
             #content
               = render "snippets/flash", :flash => flash
               == yield
 
         - else
-          = render "snippets/flash", :flash => flash
           #content
+            = render "snippets/flash", :flash => flash          
             == yield
 
     #footer

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class PublicsController < ApplicationController
   def index
-    render :layout => false if params[:layout] == "false"
+    render :layout => params[:layout] if params[:layout].present?
   end
 
   def login

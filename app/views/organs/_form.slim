@@ -9,7 +9,7 @@ coffee:
       $('#content').html(xhr.responseText)
       # refresh sidebar
       sidebar = $.ajax({type: "GET", url: "/organs/render_event_response?source=organ_tree&type=refresh", async: false}).responseText;
-      $("#sidebar .tree").html(sidebar)
+      $("#sidebar .organ_tree").html(sidebar)
       )
   
   
