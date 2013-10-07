@@ -1,6 +1,0 @@
-p #{ @user.name || @user.email }，您好：
-.context style="margin-left: 20px;"
-  - if @organ.blank?
-    p 对不起，您申请的企业《#{@organ_apply.organ_name}》未能通过审核，你可以登陆后修改申请信息，并重新申请
-  - else
-    p 恭喜你，您申请的企业《#{@organ_apply.organ_name}》已经通过审核，您现在可以管理你的企业了
