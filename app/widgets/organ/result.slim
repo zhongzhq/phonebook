@@ -1,7 +1,7 @@
 = widget_div do
   .widget
     = render :view => :search
-      
+
     h4
       i.icon-hand-right
       span.text-info 搜索结果
@@ -36,4 +36,4 @@
                 - if can? :manage, Organ
                   = link_to '编辑', adjust_user_path(member)
 
-      = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]}
+      = will_paginate @members, :renderer => Bootstrap::PaginateHelper::Remote, params: {source: params[:source], type: params[:type]},bootstrap: 3

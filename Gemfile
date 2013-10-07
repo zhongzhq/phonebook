@@ -31,7 +31,7 @@ gem 'state_machine'
 
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
+gem 'will_paginate-bootstrap'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
                               :github => 'anjlab/bootstrap-rails',
                               :branch => '3.0.0'
