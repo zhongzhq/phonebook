@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org/'
 
 gem 'rails', '3.2.13'
 gem 'sqlite3'
@@ -25,3 +25,4 @@ end
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'ancestry'
+gem "paperclip", "~> 3.0"
