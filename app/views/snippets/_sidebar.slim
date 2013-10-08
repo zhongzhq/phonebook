@@ -10,4 +10,6 @@
     li= render_widget :organ_tree, :display
 
 javascript:
-  ajax_get($(".remote"))
+  $(".remote").click(function(){
+    ajax_get($(this))
+  })
