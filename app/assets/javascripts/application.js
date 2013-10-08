@@ -12,8 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require twitter/bootstrap/tooltip
+//= require twitter/bootstrap/transition
+//= require twitter/bootstrap/collapse
 //= require twitter/bootstrap/dropdown
+//= require twitter/bootstrap/tooltip
 //= require_tree .
 
 function organ_tree(){
