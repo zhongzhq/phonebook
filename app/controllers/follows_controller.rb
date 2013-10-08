@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class FollowsController < ApplicationController
+  layout false
 
   def index
     @follow_users = []
@@ -11,12 +12,12 @@ class FollowsController < ApplicationController
   end
 
   def new
-    Follow.create(:follower_id => current_user.id, :followed_id => params[:user_id])
-    redirect_to root_path(:layout => "content"), :notice => "关注成功"
+    @user_id = params[:user_id]
+    Follow.create(:follower_id => current_user.id, :followed_id => @user_id)
   end
 
   def destroy
-    Follow.find_by_follower_and_followed(current_user, params[:user_id]).first.try(:destroy)
-    redirect_to root_path(:layout => "content"), :notice => "取消关注成功"
+    @user_id = params[:id]
+    Follow.find_by_follower_and_followed(current_user, @user_id).first.try(:destroy)
   end
 end

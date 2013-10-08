@@ -60,11 +60,3 @@ function ajax_get(selector, replaced_selector){
     replaced_selector.html(xhr.responseText);
   })
 }
-
-function ajax_get_new(selector, callback){
-  // selector.bind("ajax:before", function(){
-  //   $("#content .panel-body:first").html("<div class='text-center'><img src='/assets/loading.gif'/></div>");
-  // })
-
-  selector.bind("ajax:complete", callback);
-}

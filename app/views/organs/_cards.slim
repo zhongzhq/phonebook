@@ -9,7 +9,7 @@
         span.pull-right
 
           - if followed_user_ids.include?(user.id)
-            = link_to '<span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="已关注"></span>'.html_safe, follow_path(:user_id => user.id), :method => :delete, :remote => true, :class => "follow"
+            = link_to '<span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="已关注"></span>'.html_safe, follow_path(user.id), :method => :delete, :remote => true, :class => "follow"
           - else
             = link_to '<span class="glyphicon glyphicon-heart-empty" data-toggle="tooltip" title="未关注"></span>'.html_safe, new_follow_path(:user_id => user.id), :remote => true, :class => "follow"
 
@@ -25,5 +25,9 @@
             p 手机： #{user.cellphone}
             p 角色： #{user.find_memberships_by_organ(organ)}
 
-coffee:
-  ajax_get_new($(".follow")) 
+javascript:
+  $(".follow").click(function(){
+    $(this).bind("ajax:complete", function(status, xhr){
+      $(this).replaceWith(xhr.responseText);
+    })
+  })
