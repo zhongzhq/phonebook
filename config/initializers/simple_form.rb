@@ -40,7 +40,7 @@ SimpleForm.setup do |config|
 
     ## Inputs
     b.use :label
-    b.wrapper tag: 'div', class: 'controls' do |ba|
+    b.wrapper tag: 'div', class: 'col-sm-10' do |b|
       b.use :input
       b.use :hint,  :wrap_with => { :tag => :span, :class => 'text-muted' }
       b.use :error, :wrap_with => { :tag => :span, :class => 'help-block' }
@@ -97,10 +97,10 @@ SimpleForm.setup do |config|
   config.label_text = lambda { |label, required| "#{label}" }
 
   # You can define the class to use on all labels. Default is nil.
-  # config.label_class = 'control-label'
+  config.label_class = "col-sm-2 control-label"
 
   # You can define the class to use on all forms. Default is simple_form.
-  # config.form_class = :simple_form
+  config.form_class = "form-horizontal"
 
   # You can define which elements should obtain additional classes
   # config.generate_additional_classes_for = [:wrapper, :label, :input]
@@ -141,4 +141,7 @@ SimpleForm.setup do |config|
 
   # Cache SimpleForm inputs discovery
   # config.cache_discovery = !Rails.env.development?
+
+  # Default class for inputs
+  # config.input_class = nil
 end

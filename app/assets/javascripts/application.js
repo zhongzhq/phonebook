@@ -16,6 +16,7 @@
 //= require twitter/bootstrap/collapse
 //= require twitter/bootstrap/dropdown
 //= require twitter/bootstrap/tooltip
+//= require twitter/bootstrap/alert
 //= require_tree .
 
 function organ_tree(){
