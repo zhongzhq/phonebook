@@ -4,4 +4,19 @@
     | 我的关注
 
   .panel-body
-    = render :partial => "organs/cards", :locals => {:users => users, :organ => organ}
+    - @follow_users.each do |user|
+      .card.col-md-4
+        .panel.panel-info
+          .panel-heading
+            span.glyphicon.glyphicon-user
+            = user.name
+
+          .panel-body
+            .media
+              a.pull-left href="#"
+                img.media-object src="assets/avator.png"
+              .media-body
+                p 手机： #{user.cellphone}
+                - user.actors.each do |actor|
+                  p 角色： #{actor.fullname}
+                  br
