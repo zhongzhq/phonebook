@@ -8,7 +8,11 @@
       = input f, :name
       = input f, :username
       = input f, :cellphone
-      
+
+      = f.simple_fields_for :user_attrs do |a|
+        = input a, :key, as: :hidden
+        = input a, :value, label: a.object.key
+
       .form-group
         .col-sm-offset-2.col-sm-10
           = f.button :submit, "保存"

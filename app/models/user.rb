@@ -7,12 +7,14 @@ class User < ActiveRecord::Base
     :url => "/uploads/:attachment/:style/:username.:extension",
     :path => "/:rails_root/public/uploads/:attachment/:style/:username.:extension"
 
-  attr_accessible :name, :username, :cellphone, :password, :password_confirmation, :state, :avatar, :account, :membership_ids, :current_password
+  attr_accessible :name, :username, :cellphone, :password, :password_confirmation, :state, :avatar, :account, :membership_ids, :current_password, :user_attrs_attributes
   validates_presence_of :username, :cellphone
   validates_presence_of :password, :on => :create
   
   has_many :actor_users
   has_many :actors, :through => :actor_users
+  has_many :user_attrs, :dependent => :destroy
+  accepts_nested_attributes_for :user_attrs, :allow_destroy => true, :reject_if =>:all_blank
 
   has_secure_password
 

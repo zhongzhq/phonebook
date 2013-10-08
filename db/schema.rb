@@ -63,4 +63,11 @@ ActiveRecord::Schema.define(:version => 20131008033353) do
     t.datetime "avatar_updated_at"
   end
 
+  create_table "user_attrs", :force => true do |t|
+    t.string   "user_id"
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 end

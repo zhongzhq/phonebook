@@ -54,6 +54,7 @@ class UsersController < ApplicationController
 
   def info
     @user = User.find(params[:id])
+    ["座机号", "电子邮箱"].each {|key| @user.user_attrs.build(:key => key) } if @user.user_attrs.blank?
   end
 
   def info_submit
