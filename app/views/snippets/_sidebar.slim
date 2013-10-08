@@ -6,7 +6,10 @@
     li
       a href="#" 常用联系人
 
-    li.header 组织信息
+    li.header
+      | 组织信息
+      span.btn-group.btn-group-xs.pull-right
+        = link_to "添加企业", new_organ_path, :class => "btn remote", :remote => true
     li= render_widget :organ_tree, :display
 
 javascript:
