@@ -49,12 +49,13 @@ function organ_tree(){
   })
 }
 
-function ajax_get(selector){
+function ajax_get(selector, replaced_selector){
+  replaced_selector = replaced_selector || $("#content");
   // selector.bind("ajax:before", function(){
   //   $("#content .panel-body:first").html("<div class='text-center'><img src='/assets/loading.gif'/></div>");
   // })
 
   selector.bind("ajax:complete", function(status, xhr){
-    $('#content').html(xhr.responseText);
+    replaced_selector.html(xhr.responseText);
   })
 }

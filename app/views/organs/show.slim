@@ -18,25 +18,7 @@
       .col-md-6.col-xs-12
         = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-primary remote", :remote => true
 
-    /* 用户名片 */
-    - @members.each do |member|
-      .card.col-md-4
-        .panel.panel-info
-          .panel-heading
-            span.glyphicon.glyphicon-user
-            = member.name
-            span.pull-right
-              span.glyphicon.glyphicon-heart-empty data-toggle="tooltip" title="已关注"
-              = link_to '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="编辑"></span>'.html_safe, edit_user_path(member, :organ_id => @organ.id), :remote => true, :class => "remote"
-              /span.glyphicon.glyphicon-remove data-toggle="tooltip" title="删除"
-
-          .panel-body
-            .media
-              a.pull-left href="#"
-                img.media-object src="assets/avator.png"
-              .media-body
-                p 手机： #{member.cellphone}
-                p 角色： #{member.find_memberships_by_organ(@organ)}
+    = render :partial => "cards", :locals => {:users => @members, :organ => @organ}
 
 javascript:
   ajax_get($(".remote"));

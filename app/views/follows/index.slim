@@ -1,0 +1,7 @@
+.panel.panel-info
+  .panel-heading
+    strong 当前位置：
+    | 我的关注
+
+  .panel-body
+    = render :partial => "organs/cards", :locals => {:users => users, :organ => organ}

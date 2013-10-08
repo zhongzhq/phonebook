@@ -17,5 +17,7 @@ Phonebook::Application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users, :except => [:index, :show, :destroy]
+
+  resources :follows, :only => [:index, :new, :destroy]
 end
