@@ -2,7 +2,12 @@
 class User < ActiveRecord::Base
   attr_accessor :account, :membership_ids
 
-  attr_accessible :name, :username, :cellphone, :password, :password_confirmation, :state, :account, :membership_ids
+  # 头像
+  has_attached_file :avatar, :styles => { :original => "256x256>", :thumb => "64x64>" },
+    :url => "/uploads/:attachment/:style/:username.:extension",
+    :path => "/:rails_root/public/uploads/:attachment/:style/:username.:extension"
+
+  attr_accessible :name, :username, :cellphone, :password, :password_confirmation, :state, :avatar, :account, :membership_ids
   validates_presence_of :username, :cellphone
   validates_presence_of :password, :on => :create
   

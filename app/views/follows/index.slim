@@ -14,7 +14,8 @@
           .panel-body
             .media
               a.pull-left href="#"
-                img.media-object src="assets/avator.png"
+                .avatar
+                  = image_tag(user.avatar? ? user.avatar.url(:thumb) : "/assets/avator.png", :class => "media-object")
               .media-body
                 p 手机： #{user.cellphone}
                 - user.actors.each do |actor|
