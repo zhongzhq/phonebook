@@ -1,0 +1,5 @@
+= simple_form_for @user, :url => info_submit_user_path(@user), :method => :post do |f|
+  = input f, :name
+  = input f, :username
+  = input f, :cellphone
+  = f.button :submit, "保存"

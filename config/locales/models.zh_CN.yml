@@ -11,6 +11,7 @@ zh_CN:
         account: 帐号
         password: 密码
         password_confirmation: 确认密码
+        current_password: 当前密码
         state: 状态
       organ:
         name: 组织名

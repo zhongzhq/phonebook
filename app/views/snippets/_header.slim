@@ -15,6 +15,9 @@
               = current_user.try(:name) || "请完善用户资料"
               b.caret
               ul.dropdown-menu
-                li.divider
+                li
+                  a href=info_user_path(current_user) 修改信息
+                li
+                  a href=password_user_path(current_user) 修改密码
           li
             = link_to "退出", logout_publics_path, :method => :delete

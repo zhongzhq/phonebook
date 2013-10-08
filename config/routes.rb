@@ -17,7 +17,14 @@ Phonebook::Application.routes.draw do
     end
   end
 
-  resources :users, :except => [:index, :show, :destroy]
+  resources :users, :except => [:index, :show, :destroy] do
+    member do
+      get "password"
+      post "password_submit"
+      get "info"
+      post "info_submit"
+    end
+  end
 
   resources :follows, :only => [:index, :new, :destroy]
 end
