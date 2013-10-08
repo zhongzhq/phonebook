@@ -1,0 +1,9 @@
+= simple_form_for @membership, :remote => true do |f|
+  = input f, :name
+  
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.button :submit, "保存"
+
+javascript:
+  ajax_get($("form[data-remote~=true]"));

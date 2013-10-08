@@ -5,4 +5,6 @@ class Membership < ActiveRecord::Base
   validates :name, :presence => true
 
   has_many :actors
+
+  before_destroy { actors.blank? }
 end

@@ -3,6 +3,7 @@ zh_CN:
     models:
       user: 用户
       organ: 组织
+      membership: 角色
     attributes:
       user:
         username: 用户名
@@ -15,6 +16,8 @@ zh_CN:
         state: 状态
       organ:
         name: 组织名
+      membership:
+        name: 角色名
 
     errors:
       messages:

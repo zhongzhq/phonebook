@@ -27,4 +27,10 @@ Phonebook::Application.routes.draw do
   end
 
   resources :follows, :only => [:index, :new, :destroy]
+
+  resources :memberships, :except => [:show] do
+    collection do
+      delete "index"
+    end
+  end
 end
