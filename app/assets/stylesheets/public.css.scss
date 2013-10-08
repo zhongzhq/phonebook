@@ -7,7 +7,7 @@ body {
 ------------------------------------ */
 // $header_height: 40px;
 #header {
-  padding-bottom: 50px;
+  padding-bottom: 60px;
 }
 // #header {
 //   padding-bottom: $header_height;
@@ -52,13 +52,16 @@ body {
     text-decoration: none;
   }
   .nav {
-    margin-top: 15px;
+    margin-top: 10px;
     margin-bottom: 30px;
     padding-top:    10px;
     padding-bottom: 10px;
     text-shadow: 0 1px 0 #fff;
     background-color: #f7f5fa;
     border-radius: 5px;
+  }
+  .nav > li > a {
+    padding: 5px 15px;
   }
   .header {
     font-weight: bold;
@@ -70,7 +73,7 @@ body {
     ul {
       list-style: none;
       padding: 0;
-      margin-left: 15px;
+      margin-left: 25px;
       .item {
         padding-bottom: 5px;
         border-radius: 3px;
