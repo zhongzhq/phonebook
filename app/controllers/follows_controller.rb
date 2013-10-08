@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 class FollowsController < ApplicationController
-  layout false
 
   def index
     @follow_users = []
