@@ -10,6 +10,8 @@
           .panel-heading
             span.glyphicon.glyphicon-user
             = user.name
+            span.pull-right
+              = link_to '<span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="已关注"></span>'.html_safe, follow_path(user.id), :method => :delete, :remote => true, :class => "follow"
 
           .panel-body
             .media
@@ -21,3 +23,10 @@
                 - user.actors.each do |actor|
                   p 角色： #{actor.fullname}
                   br
+
+javascript:
+  $(".follow").click(function(){
+    $(this).bind("ajax:complete", function(status, xhr){
+      $(this).closest(".card").replaceWith();
+    })
+  })
