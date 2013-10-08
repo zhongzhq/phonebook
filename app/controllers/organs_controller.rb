@@ -8,7 +8,7 @@ class OrgansController < ApplicationController
     else
       @organ = Organ.new
     end
-    ["房间号", "电话一", "电话二"].each {|key| @organ.organ_attrs.build(:key => key) }
+    ["房间号", "电话一", "电话二", "地址"].each {|key| @organ.organ_attrs.build(:key => key) }
   end
 
   def create
@@ -30,6 +30,7 @@ class OrgansController < ApplicationController
 
   def edit
     @organ = Organ.find(params[:id])
+    ["房间号", "电话一", "电话二", "地址"].each {|key| @organ.organ_attrs.build(:key => key) } if @organ.organ_attrs.blank?
   end
 
   def update
