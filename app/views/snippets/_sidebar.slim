@@ -8,3 +8,8 @@
 
     li.header 组织信息
     li= render_widget :organ_tree, :display
+
+javascript:
+  $(".remote").click(function(){
+    ajax_get($(this))
+  })

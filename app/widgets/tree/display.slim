@@ -10,10 +10,9 @@
         = render :view => :children, :locals => { :organ => root_organ }
 
 javascript:
-  
+
   $(document).ready(function(){
     organ_tree();
     $(".organ_tree .item").find(".toggle-icon").click();
     ajax_get($(".organ_tree .item").find("a"));
   })
-  
