@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(:version => 20131008033353) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "organ_attrs", :force => true do |t|
+    t.string   "organ_id"
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "users", :force => true do |t|
     t.string   "name"
     t.string   "username"

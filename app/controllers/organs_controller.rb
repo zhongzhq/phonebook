@@ -8,11 +8,14 @@ class OrgansController < ApplicationController
     else
       @organ = Organ.new
     end
+    ["房间号", "电话一", "电话二"].each {|key| @organ.organ_attrs.build(:key => key) }
   end
 
   def create
+    organ_attrs_attributes = params[:organ].delete("organ_attrs_attributes")
     @organ = Organ.new(params[:organ])
     if @organ.save
+      @organ.update_attributes(:organ_attrs_attributes => organ_attrs_attributes)
       redirect_to organ_path(@organ, :layout => "content"), :notice => "添加下级组织成功"
     else
       render "new"

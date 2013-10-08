@@ -3,9 +3,8 @@
     strong 当前位置：
     = @organ.fullname
     .notice
-      span 公司地址： 成都市高新区天益街
-      span 电话一： 663278723
-      span 电话二： 233779879
+      - @organ.organ_attrs.each do |a|
+        span #{a.key}: #{a.value}
 
   .panel-body
     /* 搜索框 */

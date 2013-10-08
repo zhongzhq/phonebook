@@ -1,7 +1,14 @@
 = simple_form_for @organ, :remote => true do |f|
   = input f, :name
   = f.hidden_field :parent_id
-  = f.button :submit, "保存"
+  
+  = f.simple_fields_for :organ_attrs do |a|
+    = input a, :key, as: :hidden
+    = input a, :value, label: a.object.key
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.button :submit, "保存"
 
 coffee:
   $("form[data-remote~=true]").bind("ajax:complete",
