@@ -12,10 +12,15 @@
             = text_field_tag 'text', nil, placeholder: '姓名/用户名/电话',class: "form-control"
           = submit_tag "搜索", class: 'btn btn-default'
 
+    - if @result.blank?
+      .panel.panel-warning
+        .panel-heading 没有符合要求的结果
+
     - @result.each do |organ, users|
       .panel.panel-info
         .panel-heading
           strong = organ.fullname
+          span.badge.pull-right = "人数：" + users.size.to_s
         .panel-body
           = render :partial => "cards", :locals => {:users => users, :organ => organ}
   

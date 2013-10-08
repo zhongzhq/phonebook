@@ -1,5 +1,9 @@
 /* 用户名片 */
 - followed_user_ids = Follow.find_by_follower(current_user).map(&:followed_id)
+- if users.blank?
+  .panel.panel-warning
+    .panel-heading 此部门下暂无用户，请查看上级或下级部门
+
 - users.each do |user|
   .card.col-md-4
     .panel.panel-info
