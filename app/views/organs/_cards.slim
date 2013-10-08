@@ -21,7 +21,7 @@
         .media
           a.pull-left href="#"
             .avatar
-              = image_tag(user.avatar? ? user.avatar.url(:thumb) : "/assets/avator.png", :class => "media-object")
+              = image_tag(user.avatar? ? user.avatar.url(:thumb) : "/assets/avator.png", :class => "media-object", :'data-toggle' => "tooltip", :title => "修改头像")
           .media-body
             p 手机： #{user.cellphone}
             p 角色： #{user.find_memberships_by_organ(organ)}
