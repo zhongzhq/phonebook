@@ -13,7 +13,7 @@ class OrgansController < ApplicationController
   def create
     @organ = Organ.new(params[:organ])
     if @organ.save
-      redirect_to root_path(:layout => "content"), :notice => "添加下级组织成功"
+      redirect_to organ_path(@organ, :layout => "content"), :notice => "添加下级组织成功"
     else
       render "new"
     end
@@ -32,7 +32,7 @@ class OrgansController < ApplicationController
   def update
     @organ = Organ.find(params[:id])
     if @organ.update_attributes(params[:organ])
-      redirect_to root_path(:layout => "content"), :notice => "修改组织信息成功"
+      redirect_to organ_path(@organ, :layout => "content"), :notice => "修改组织信息成功"
     else
       render "edit"
     end
