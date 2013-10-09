@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20131008033353) do
   end
 
   create_table "organ_attrs", :force => true do |t|
-    t.string   "organ_id"
+    t.integer   "organ_id"
     t.string   "key"
     t.string   "value"
     t.datetime "created_at", :null => false
@@ -72,7 +72,7 @@ ActiveRecord::Schema.define(:version => 20131008033353) do
   end
 
   create_table "user_attrs", :force => true do |t|
-    t.string   "user_id"
+    t.integer   "user_id"
     t.string   "key"
     t.string   "value"
     t.datetime "created_at", :null => false

@@ -44,12 +44,10 @@ class OrgansController < ApplicationController
 
   def search
     @result = {}
-    if params[:text].present?
-      users = User.where("name LIKE :text OR cellphone LIKE :text OR username LIKE :text", {:text => "%#{params[:text]}%"})
-      organs = users.map(&:actors).flatten.uniq.map(&:organ).uniq.sort
-      organs.each do |organ|
-        @result[organ] = users.find_by_organ(organ)
-      end
+    users = User.where("name LIKE :text OR cellphone LIKE :text OR username LIKE :text", {:text => "%#{params[:text]}%"})
+    organs = users.map(&:actors).flatten.uniq.map(&:organ).uniq.sort
+    organs.each do |organ|
+      @result[organ] = users.find_by_organ(organ)
     end
     @result
   end
