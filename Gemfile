@@ -19,10 +19,15 @@ gem 'slim-rails'
 gem 'simple_form'
 gem 'apotomo'
 
+gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'ancestry'
+gem "paperclip", "~> 3.0"
+
+group :production do  
+  gem "pg"
+end
+
 group :development do
   gem 'pry-debugger'
 end
 
-gem 'bcrypt-ruby', '~> 3.0.0'
-gem 'ancestry'
-gem "paperclip", "~> 3.0"
