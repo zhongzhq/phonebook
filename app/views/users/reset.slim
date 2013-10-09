@@ -1,0 +1,17 @@
+.panel.panel-info
+  .panel-heading
+    strong 当前位置：
+    | 重置密码
+
+  .panel-body
+    = simple_form_for @user, :url => reset_submit_user_path(@user), :method => :post, :remote => true do |f|
+      = input f, :password
+      = input f, :password_confirmation
+      = hidden_field_tag :organ_id, @organ.id
+      
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.button :submit, "保存"
+
+javascript:
+  ajax_get($("form[data-remote~=true]"));

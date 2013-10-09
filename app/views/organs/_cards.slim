@@ -18,7 +18,7 @@
             = link_to '<span class="glyphicon glyphicon-heart-empty" data-toggle="tooltip" title="未关注"></span>'.html_safe, new_follow_path(:user_id => user.id), :remote => true, :class => "follow"
 
           = link_to '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="编辑"></span>'.html_safe, edit_user_path(user, :organ_id => organ.id), :remote => true, :class => "remote"
-          /span.glyphicon.glyphicon-remove data-toggle="tooltip" title="删除"
+          = link_to '<span class="glyphicon glyphicon-registration-mark" data-toggle="tooltip" title="重置密码"></span>'.html_safe, reset_user_path(user, :organ_id => organ.id), :remote => true, :class => "remote"
 
       .panel-body
         .media

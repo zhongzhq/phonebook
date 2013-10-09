@@ -19,6 +19,9 @@ Phonebook::Application.routes.draw do
 
   resources :users, :except => [:index, :show, :destroy] do
     member do
+      get "reset"
+      post "reset_submit"
+      
       get "password"
       post "password_submit"
       get "info"
