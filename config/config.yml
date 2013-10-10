@@ -1,0 +1,13 @@
+defaults: &defaults
+  memberships:
+    member: 成员
+    admin: 管理员
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
