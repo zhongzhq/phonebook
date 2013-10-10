@@ -12,7 +12,7 @@ class PublicsController < ApplicationController
     @user = User.find_first_by_account(params[:user][:account])
 
     if @user.try(:authenticate, params[:user][:password])
-      session[:user_id] = @user
+      session[:user_id] = @user.id
       redirect_to root_path, :notice => '登陆成功'
     else
       redirect_to root_path, :alert => '账号或密码错误'

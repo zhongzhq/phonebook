@@ -1,4 +1,4 @@
-class TreeWidget < Apotomo::Widget
+class TreeWidget < ApplicationWidget
   responds_to_event :refresh, :with => :display
 
   def display

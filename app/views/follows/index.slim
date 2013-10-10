@@ -27,6 +27,6 @@
 javascript:
   $(".follow").click(function(){
     $(this).bind("ajax:complete", function(status, xhr){
-      $(this).closest(".card").replaceWith();
+      $(this).closest(".card").remove();
     })
   })
