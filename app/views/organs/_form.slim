@@ -1,4 +1,4 @@
-= simple_form_for @organ, :remote => true do |f|
+= simple_form_for @organ do |f|
   = input f, :name
   = f.hidden_field :parent_id
   
@@ -9,14 +9,13 @@
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.button :submit, "保存"
+      = link_to "返回", organ_back_path(@organ), :class => "btn organ-form"
 
-coffee:
-  $("form[data-remote~=true]").bind("ajax:complete",
-    (status, xhr) ->
-      $('#content').html(xhr.responseText)
-      # refresh sidebar
-      sidebar = $.ajax({type: "GET", url: "/organs/render_event_response?source=organ_tree&type=refresh", async: false}).responseText;
-      $("#sidebar .organ_tree").html(sidebar)
-      )
-  
-  
+javascript:
+  $(function(){
+    remote_content($(".new_organ, .edit_organ, .organ-form"), function(){
+      $.get("/organs/render_event_response?source=organ_tree&type=refresh").always(function(data){
+        $("#sidebar .organ_tree").replaceWith(data.responseText);
+      });
+    });
+  })

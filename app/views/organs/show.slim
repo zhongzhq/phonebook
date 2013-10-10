@@ -20,5 +20,5 @@
     = render :partial => "cards", :locals => {:users => @members, :organ => @organ}
 
 javascript:
-  ajax_get($(".remote"));
+  remote_content($(".remote"));
   $("[data-toggle~=tooltip]").tooltip();
