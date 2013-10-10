@@ -1,9 +1,10 @@
-= link_to '<span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="已关注"></span>'.html_safe, follow_path(@user_id), :method => :delete, :remote => true, :class => "follow"
+= link_to '<span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="已关注"></span>'.html_safe, follow_path(@user_id), :method => :delete, :class => "follow"
 
 javascript:
-  $(".follow").click(function(){
-    $(this).bind("ajax:complete", function(status, xhr){
+  $(function(){
+    remote($(".follow"), function(status, xhr){
       $(this).replaceWith(xhr.responseText);
     })
+    
+    $("[data-toggle~=tooltip]").tooltip();
   })
-  $("[data-toggle~=tooltip]").tooltip();

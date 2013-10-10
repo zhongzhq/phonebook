@@ -33,20 +33,19 @@ function organ_tree(){
 }
 
 function remote(selector, fn) {
-  selector.attr("data-remote", "true");
-
-  selector.bind("ajax:before", function(){
-    $("body").append('<div class="backdrop"></div>');
-  });  
-  
+  selector.attr("data-remote", "true");  
   selector.bind("ajax:complete", fn);  
 }
 
 function remote_content(selector, fn, replace_selector) {
   replace_selector = replace_selector || $("#content");
   
+  selector.bind("ajax:before", function(){
+    $("body").append('<div class="backdrop"></div>');
+  });
+  
   remote(selector, function(status, xhr){
-    $("#content").html(xhr.responseText);
+    replace_selector.html(xhr.responseText);
     if(fn != undefined){ fn.call(); }
     $(".backdrop").remove();
   });  

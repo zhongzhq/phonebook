@@ -50,5 +50,6 @@ class OrgansController < ApplicationController
       @result[organ] = users.find_by_organ(organ)
     end
     @result
+    render "result"
   end
 end

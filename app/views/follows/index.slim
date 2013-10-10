@@ -11,7 +11,7 @@
             span.glyphicon.glyphicon-user
             = user.name
             span.pull-right
-              = link_to '<span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="已关注"></span>'.html_safe, follow_path(user.id), :method => :delete, :remote => true, :class => "follow"
+              = link_to '<span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="取消关注"></span>'.html_safe, follow_path(user.id), :method => :delete, :class => "follow"
 
           .panel-body
             .media
@@ -25,8 +25,10 @@
                   br
 
 javascript:
-  $(".follow").click(function(){
-    $(this).bind("ajax:complete", function(status, xhr){
+  $(function(){
+    remote($(".follow"), function(status, xhr){
       $(this).closest(".card").remove();
     })
+    
+    $("[data-toggle~=tooltip]").tooltip();
   })

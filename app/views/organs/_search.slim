@@ -1,0 +1,9 @@
+= form_tag search_organs_path, :id => "search-form", :class => "form-inline"
+  .form-group.col-md-8.col-xs-8
+    = text_field_tag 'text', nil, placeholder: '姓名/用户名/电话',class: "form-control"
+  = submit_tag "搜索", class: 'btn btn-default'
+
+javascript:
+  $(function(){
+    remote_content($("#search-form"));
+  })
