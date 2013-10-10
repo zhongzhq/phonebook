@@ -5,7 +5,7 @@
 
   .panel-body
     p.badge 系统角色总计： #{@memberships.size} 个
-    = link_to "新建角色", new_membership_path, :class => "btn membership-link", :remote => true
+    = link_to "新建角色", new_membership_path, :class => "btn membership-link"
 
   table.table
     tr
@@ -13,18 +13,19 @@
       th 创建时间
       th 更新时间
       th 操作
+
     - @memberships.each do |membership|
       tr
         td= membership.name
         td= membership.created_at.strftime("%Y-%m-%d %H:%M")
         td= membership.updated_at.strftime("%Y-%m-%d %H:%M")
         td
-          = link_to "编辑", edit_membership_path(membership), :class => "membership-link", :remote => true
-          | | 
-          = link_to "删除", membership_path(membership.id), :method => :delete, :class => "membership-link", :remote => true
+          - if membership.not_system_membership?
+            = link_to "编辑", edit_membership_path(membership), :class => "membership-link"
+            | | 
+            = link_to "删除", membership_path(membership.id), :method => :delete, :class => "membership-link"
 
 javascript:
-  $(".membership-link").click(function(){
-    ajax_get($(".membership-link"));
-  })
-  
+  $(function(){
+    remote_content($(".membership-link"));
+  }) 

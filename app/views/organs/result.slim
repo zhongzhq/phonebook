@@ -7,10 +7,7 @@
     /* 搜索框 */
     .row
       .col-md-6.col-xs-12
-        = form_tag search_organs_path, :id => "search-form", :class => "form-inline remote", :remote => true
-          .form-group.col-md-8.col-xs-8
-            = text_field_tag 'text', nil, placeholder: '姓名/用户名/电话',class: "form-control"
-          = submit_tag "搜索", class: 'btn btn-default'
+        = render :partial => "search"
 
     - if @result.blank?
       .panel.panel-warning
@@ -23,7 +20,3 @@
           span.badge.pull-right = "人数：" + users.size.to_s
         .panel-body
           = render :partial => "cards", :locals => {:users => users, :organ => organ}
-  
-javascript:
-  ajax_get($(".remote"));
-  $("[data-toggle~=tooltip]").tooltip();

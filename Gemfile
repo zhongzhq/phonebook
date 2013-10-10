@@ -1,7 +1,6 @@
 source 'http://ruby.taobao.org'
 
 gem 'rails', '3.2.13'
-gem 'sqlite3'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -22,13 +21,15 @@ gem 'apotomo'
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'ancestry'
 gem "paperclip", "~> 3.0"
+gem "settingslogic"
+gem "cancan"
 
 group :production do  
   gem "pg"
   gem 'unicorn'
 end
 
-group :development do
+group :development, :test do
   gem 'pry-debugger'
+  gem "sqlite3"
 end
-

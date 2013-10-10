@@ -10,15 +10,13 @@
     /* 搜索框 */
     .row
       .col-md-6.col-xs-12
-        = form_tag search_organs_path, :id => "search-form", :class => "form-inline remote", :remote => true
-          .form-group.col-md-8.col-xs-8
-            = text_field_tag 'text', nil, placeholder: '姓名/用户名/电话',class: "form-control"
-          = submit_tag "搜索", class: 'btn btn-default'
+        = render :partial => "search"
       .col-md-6.col-xs-12
-        = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-primary remote", :remote => true
+        = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-primary add-user"
 
     = render :partial => "cards", :locals => {:users => @members, :organ => @organ}
 
 javascript:
-  ajax_get($(".remote"));
-  $("[data-toggle~=tooltip]").tooltip();
+  $(function(){
+    remote_content($(".add-user"));
+  })  

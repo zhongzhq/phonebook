@@ -2,28 +2,23 @@ body {
   font-family: sans-serif;
 }
 
+.backdrop {
+  opacity: 0.5;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1030;
+  background-color: #000000;
+}
+
 /* ------------------------------------
   Header stylesheet
 ------------------------------------ */
-// $header_height: 40px;
 #header {
   padding-bottom: 60px;
 }
-// #header {
-//   padding-bottom: $header_height;
-//   .navbar {
-//     height: $header_height;
-//     .container {
-//       padding-top: 25px;
-//       .navbar-brand {
-//         font-size: 35px;
-//       }
-//       .navbar-collapse {
-//         background-color: rgb(34, 34, 34);
-//       }
-//     }
-//   }
-// }
 
 /* ------------------------------------
   Login box stylesheet

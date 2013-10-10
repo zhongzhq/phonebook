@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 class FollowsController < ApplicationController
-  layout false
-
   def index
     @follow_users = []
     Follow.find_by_follower(current_user).each do |follow|
