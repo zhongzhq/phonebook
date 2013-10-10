@@ -22,6 +22,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'ancestry'
 gem "paperclip", "~> 3.0"
 gem "settingslogic"
+gem "cancan"
 
 group :production do  
   gem "pg"

@@ -1,7 +1,8 @@
 defaults: &defaults
+  # 在系统第一次初始化后，请不要修改 memberships
   memberships:
-    member: 成员
-    admin: 管理员
+    - 管理员
+    - 成员
 
 development:
   <<: *defaults

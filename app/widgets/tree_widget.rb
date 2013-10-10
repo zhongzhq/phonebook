@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class TreeWidget < ApplicationWidget
   responds_to_event :refresh, :with => :display
 
