@@ -41,7 +41,14 @@ function remote_content(selector, fn, replace_selector) {
   replace_selector = replace_selector || $("#content");
   
   selector.bind("ajax:before", function(){
-    $("body").append('<div class="backdrop"></div>');
+    $("body").append('\
+      <div class="backdrop">\
+        <div class="progress progress-striped active">\
+          <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%">\
+            <span class="sr-only">100% Complete</span>\
+          </div>\
+        </div>\
+      </div>');
   });
   
   remote(selector, function(status, xhr){

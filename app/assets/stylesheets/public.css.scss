@@ -11,6 +11,10 @@ body {
   left: 0;
   z-index: 1030;
   background-color: #000000;
+  .progress.progress-striped.active {
+    margin: 180px auto;
+    width: 250px;
+  }
 }
 
 /* ------------------------------------
