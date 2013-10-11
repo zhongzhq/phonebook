@@ -17,7 +17,7 @@ Phonebook::Application.routes.draw do
     end
   end
 
-  resources :users, :except => [:index, :show, :destroy] do
+  resources :users, :except => [:index, :destroy] do
     member do
       get "reset"
       post "reset_submit"

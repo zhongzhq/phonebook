@@ -17,5 +17,7 @@
 
 javascript:
   $(function(){
-    remote_content($(".new_user, .edit_user"));
+    remote($(".new_user, .edit_user"), function(status, xhr){
+      $(this).closest(".card").replaceWith(xhr.responseText);
+    });
   })

@@ -35,8 +35,9 @@ javascript:
       $(this).replaceWith(xhr.responseText);
     })
 
-    remote_content($(".edit-user, .reset-password"));
+    remote($(".edit-user, .reset-password"), function(status, xhr){
+      $(this).closest(".card").replaceWith(xhr.responseText);
+    });
 
     $("[data-toggle~=tooltip]").tooltip();
   })
-  
