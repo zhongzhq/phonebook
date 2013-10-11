@@ -12,9 +12,22 @@
       = hidden_field_tag :organ_id, @organ.id   
       = f.button :submit, "保存"
 
+      - if @user.id.blank?
+        = button_tag "返回", :class => "btn btn-link return-btn", :type => "button"
+      - else
+        = link_to "返回", user_path(@user, :organ_id => @organ.id), :class => "btn return-btn"
+
 javascript:
   $(function(){
     remote($(".new_user, .edit_user"), function(status, xhr){
+      $(this).closest(".card").replaceWith(xhr.responseText);
+    });
+
+    $(".new_user .return-btn").click(function(){
+      $(this).closest(".card").remove();
+    });
+
+    remote($(".edit_user .return-btn"), function(status, xhr){
       $(this).closest(".card").replaceWith(xhr.responseText);
     });
 

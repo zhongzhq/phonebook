@@ -13,10 +13,15 @@
         .form-group
           .col-sm-offset-2.col-sm-10
             = f.button :submit, "保存"
+            = link_to "返回", user_path(@user, :organ_id => @organ.id), :class => "btn return-btn"
 
 javascript:
   $(function(){
     remote($(".edit_user"), function(status, xhr){
+      $(this).closest(".card").replaceWith(xhr.responseText);
+    });
+
+    remote($(".return-btn"), function(status, xhr){
       $(this).closest(".card").replaceWith(xhr.responseText);
     });
   })
