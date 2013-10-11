@@ -28,14 +28,14 @@ class User < ActiveRecord::Base
     old_ids = find_memberships_by_organ(organ).map(&:id)
 
     delete_actors = (old_ids - new_ids).map do |mem_id|
-      Actor.first_or_create :organ => organ, :membership => Membership.find(mem_id)
+      Actor.where(:organ_id => organ, :membership_id => Membership.find(mem_id)).first
     end
     delete_actors.each do |actor|
       ActorUser.where(:actor_id => actor.id, :user_id => self.id).map(&:destroy)
     end
 
     add_actors = (new_ids - old_ids).map do |mem_id|
-      Actor.where(:organ_id => organ, :membership_id => Membership.find(mem_id)).first
+      Actor.first_or_create :organ => organ, :membership => Membership.find(mem_id)      
     end
     add_actors.each do |actor|
       ActorUser.create(:actor_id => actor.id, :user_id => self.id)
