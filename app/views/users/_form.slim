@@ -5,12 +5,15 @@
   = input f, :cellphone  
   = input f, :password if @user.id.blank?
   
-  .form-group
-    label 角色： 
-    = f.collection_check_boxes :membership_ids, Membership.all, :id, :name, {:input_html => {:class => 'form-control'}}.merge({})
+  .form-group    
+    label.col-sm-2.control-label 角色： 
+    .col-sm-offset-2.col-sm-10
+      = f.collection_check_boxes :membership_ids, Membership.all, :id, :name, {:input_html => {:class => 'form-control'}}.merge({})
 
-  = hidden_field_tag :organ_id, @organ.id   
-  = f.button :submit, "保存"
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = hidden_field_tag :organ_id, @organ.id   
+      = f.button :submit, "保存"
 
 javascript:
   $(function(){
