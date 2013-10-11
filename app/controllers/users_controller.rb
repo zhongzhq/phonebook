@@ -9,10 +9,15 @@ class UsersController < ApplicationController
   def create
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.new(params[:user])
-    if @user.save
-      @user.add_actor(params[:user][:membership_ids].delete_if{|x| x.blank? }, @organ)
-      redirect_to user_path(@user, :organ_id => @organ.id), :notice => "添加用户成功"
+    if params[:user][:membership_ids].delete_if{|x| x.blank? }.present?
+      if @user.save
+        @user.add_actor(params[:user][:membership_ids].delete_if{|x| x.blank? }, @organ)
+        redirect_to user_path(@user, :organ_id => @organ.id), :notice => "添加用户成功"
+      else
+        render "new"
+      end
     else
+      @user.errors.add(:membership_ids, "职务不能为空")
       render "new"
     end
   end
@@ -31,11 +36,16 @@ class UsersController < ApplicationController
   def update
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      @user.add_actor(params[:user][:membership_ids].delete_if{|x| x.blank? }, @organ)
-      redirect_to user_path(@user, :organ_id => @organ.id), :notice => "用户信息修改成功"
+    if params[:user][:membership_ids].delete_if{|x| x.blank? }.present?
+      if @user.update_attributes(params[:user])
+        @user.add_actor(params[:user][:membership_ids].delete_if{|x| x.blank? }, @organ)
+        redirect_to user_path(@user, :organ_id => @organ.id), :notice => "用户信息修改成功"
+      else
+        render "edit"
+      end
     else
-      render "edit"
+     @user.errors.add(:membership_ids, "职务不能为空")
+     render "edit"
     end
   end
 

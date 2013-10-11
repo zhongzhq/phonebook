@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   :path => "/:rails_root/public/uploads/:attachment/:style/:username.:extension"
 
   attr_accessible :name, :username, :cellphone, :password, :password_confirmation, :state, :avatar, :account, :membership_ids, :current_password, :user_attrs_attributes
-  validates_presence_of :username, :cellphone, :membership_ids
+  validates_presence_of :username, :cellphone
   validates_presence_of :password, :on => :create
   
   has_many :actor_users
@@ -17,8 +17,6 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :user_attrs, :allow_destroy => true, :reject_if =>:all_blank
 
   has_secure_password
-
-  before_validation { self.membership_ids.delete_if{|x| x.blank? } }
 
   scope :find_by_organ, -> organ { joins(:actors).where(actors: { id: Actor.find_by_organ(organ)} ).uniq }
 
