@@ -4,6 +4,10 @@
     | 我的关注
 
   .panel-body
+    - if @follow_users.blank?
+      .panel.panel-warning
+        .panel-heading 暂无关注人员，请在组织中关注想要关注的人
+
     - @follow_users.each do |user|
       .card.col-md-4
         .panel.panel-info
