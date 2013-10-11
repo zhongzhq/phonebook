@@ -5,10 +5,7 @@
   = input f, :cellphone  
   = input f, :password if @user.id.blank?
   
-  .form-group    
-    label.col-sm-2.control-label 角色： 
-    .col-sm-offset-2.col-sm-10
-      = f.collection_check_boxes :membership_ids, Membership.all, :id, :name, {:input_html => {:class => 'form-control'}}.merge({})
+  = input f, :membership_ids, :collection => Membership.all, :selected => @user.membership_ids, :input_html => {:multiple => true, :'data-placeholder' => "请选择职务..."}
 
   .form-group
     .col-sm-offset-2.col-sm-10
@@ -20,4 +17,6 @@ javascript:
     remote($(".new_user, .edit_user"), function(status, xhr){
       $(this).closest(".card").replaceWith(xhr.responseText);
     });
+
+    $("#user_membership_ids").chosen({width: "100%", inherit_select_classes: true});
   })

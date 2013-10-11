@@ -16,13 +16,17 @@
         = link_to '<span class="glyphicon glyphicon-registration-mark" data-toggle="tooltip" title="重置密码"></span>'.html_safe, reset_user_path(@user, :organ_id => @organ.id), :class => "reset-password"
 
     .panel-body
-      .media
-        a.pull-left href="#"
-          .avatar
-            = image_tag(@user.avatar? ? @user.avatar.url(:thumb) : "/assets/avator.png", :class => "media-object")
-        .media-body
-          p 手机： #{@user.cellphone}
-          p 角色： #{@user.find_memberships_by_organ(@organ)}
+      p 手机： #{@user.cellphone}
+      p 职务： #{@user.find_memberships_by_organ(@organ).map(&:name).join("/")}
+      - @user.user_attrs.each do |a|
+        p #{a.key}: #{a.value}
+      / .media
+      /   a.pull-left href="#"
+      /     .avatar
+      /       = image_tag(@user.avatar? ? @user.avatar.url(:thumb) : "/assets/avator.png", :class => "media-object")
+      /   .media-body
+      /     p 手机： #{@user.cellphone}
+      /     p 角色： #{@user.find_memberships_by_organ(@organ)}
 
 javascript:
   $(function(){

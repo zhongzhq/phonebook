@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   def new
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.new
+    @user.membership_ids = [Membership.find(:first, :conditions => {:name => "成员"}).id]
   end
 
   def create
@@ -24,12 +25,14 @@ class UsersController < ApplicationController
   def edit
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])
+    @user.membership_ids = @user.actors.where(:organ_id => @organ).map(&:membership).map(&:id)
   end
 
   def update
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
+      @user.add_actor(params[:user][:membership_ids].delete_if{|x| x.blank? }, @organ)
       redirect_to user_path(@user, :organ_id => @organ.id), :notice => "用户信息修改成功"
     else
       render "edit"
