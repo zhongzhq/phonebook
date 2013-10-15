@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
-  layout false
-
   def new
     if params[:id]
       @organ = Organ.find(params[:id]).children.build
@@ -40,16 +38,5 @@ class OrgansController < ApplicationController
     else
       render "edit"
     end
-  end
-
-  def search
-    @result = {}
-    users = User.where("name LIKE :text OR cellphone LIKE :text OR username LIKE :text", {:text => "%#{params[:text]}%"})
-    organs = users.map(&:actors).flatten.uniq.map(&:organ).uniq.sort
-    organs.each do |organ|
-      @result[organ] = users.find_by_organ(organ)
-    end
-    @result
-    render "result"
   end
 end

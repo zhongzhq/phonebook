@@ -1,4 +1,4 @@
-.navbar.navbar-inverse.navbar-fixed-top style="width=100px;"
+.navbar.navbar-default.navbar-fixed-top style="width=100px;"
   .container
     .navbar-header
       button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-collapse"
@@ -8,6 +8,8 @@
       a.navbar-brand href="/" 企业通讯录
 
     .collapse.navbar-collapse
+      = render :partial => "publics/search"
+
       - if current_user.present?
         ul.nav.navbar-nav.navbar-right
           li.dropdown

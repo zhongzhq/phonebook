@@ -23,4 +23,15 @@ class PublicsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path, :notice => '退出成功'
   end
+  
+  def search
+    @result = {}
+    users = User.where("name LIKE :text OR cellphone LIKE :text OR username LIKE :text", {:text => "%#{params[:text]}%"})
+    organs = users.map(&:actors).flatten.uniq.map(&:organ).uniq.sort
+    organs.each do |organ|
+      @result[organ] = users.find_by_organ(organ)
+    end
+    @result
+    render "result"
+  end
 end

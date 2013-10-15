@@ -1,14 +1,9 @@
 .panel.panel-info
   .panel-heading
     strong 当前位置：
-    | 搜索
+    | 搜索结果
 
   .panel-body
-    /* 搜索框 */
-    .row
-      .col-md-6.col-xs-12
-        = render :partial => "search"
-
     - if @result.blank?
       .panel.panel-warning
         .panel-heading 没有符合要求的结果
@@ -19,4 +14,4 @@
           strong = organ.fullname
           span.badge.pull-right = "人数：" + users.size.to_s
         .panel-body
-          = render :partial => "cards", :locals => {:users => users, :organ => organ}
+          = render :partial => "organs/cards", :locals => {:users => users, :organ => organ}

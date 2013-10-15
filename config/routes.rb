@@ -8,14 +8,12 @@ Phonebook::Application.routes.draw do
     collection do      
       post 'authenticate'
       delete 'logout'
+
+      post "search"
     end
   end
 
-  resources :organs, :except => [:index, :destroy] do
-    collection do
-      post 'search'
-    end
-  end
+  resources :organs, :except => [:index, :destroy]
 
   resources :users, :except => [:index, :destroy] do
     member do

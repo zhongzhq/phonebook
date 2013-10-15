@@ -22,6 +22,12 @@ body {
 ------------------------------------ */
 #header {
   padding-bottom: 60px;
+  #search-form {
+    margin-left: 15%;
+    .form-control {
+      width: 300px;
+    }
+  }
 }
 
 /* ------------------------------------
@@ -117,14 +123,6 @@ body {
       span {
         padding: 0 20px 0 0;
       }
-    }
-  }
-  .panel-body {
-    #search-form {
-      margin-bottom: 10px;
-    }
-    .form-group {
-      padding-right: 0;
     }
   }
 }

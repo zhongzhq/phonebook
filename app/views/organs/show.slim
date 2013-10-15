@@ -2,18 +2,14 @@
   .panel-heading
     strong 当前位置：
     = @organ.fullname
+    .pull-right
+      = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-info add-user"
+
     .notice
       - @organ.organ_attrs.each do |a|
         span #{a.key}: #{a.value}
 
   .panel-body
-    /* 搜索框 */
-    .row
-      .col-md-6.col-xs-12
-        = render :partial => "search"
-      .col-md-6.col-xs-12
-        = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-primary add-user"
-
     #user-box
       = render :partial => "cards", :locals => {:users => @members, :organ => @organ}
 

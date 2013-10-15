@@ -1,1 +1,11 @@
-h5 欢迎来到企业电话本
+- users = User.find([1,2,3])
+- organ = Organ.first
+
+.panel.panel-info
+  .panel-heading
+    strong 当前位置：
+    | 最近联系人
+    span.badge.pull-right = "人数：" + users.size.to_s
+
+  .panel-body    
+    = render :partial => "organs/cards", :locals => {:users => users, :organ => organ}
