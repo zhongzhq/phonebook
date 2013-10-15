@@ -14,6 +14,7 @@ class UsersController < ApplicationController
         @user.add_actor(params[:user][:membership_ids].delete_if{|x| x.blank? }, @organ)
         redirect_to user_path(@user, :organ_id => @organ.id), :notice => "添加用户成功"
       else
+        p @user.errors
         render "new"
       end
     else

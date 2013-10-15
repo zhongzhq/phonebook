@@ -1,0 +1,18 @@
+#attrs
+  .form-group.attr-heading
+    .col-sm-3.pull-right
+      
+    .col-sm-9
+      label.control-label 附加属性
+
+  = f.simple_fields_for attrs do |a|
+    .form-group
+      .col-sm-3
+        = a.text_field :key, :class => "form-control", :placeholder => "属性名"
+      .col-sm-7
+        = a.text_field :value, :class => "form-control", :placeholder => "属性值"
+      .col-sm-2
+        = a.link_to_remove "删除", :class => "btn btn-link"
+        /= button_tag "删除", :class => "btn btn-link return-btn", :type => "button"
+
+  = f.link_to_add "新增属性", attrs, :class => "btn btn-link"

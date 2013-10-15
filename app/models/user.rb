@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :actor_users
   has_many :actors, :through => :actor_users
   has_many :user_attrs, :dependent => :destroy
-  accepts_nested_attributes_for :user_attrs, :allow_destroy => true, :reject_if =>:all_blank
+  accepts_nested_attributes_for :user_attrs, :allow_destroy => true, :reject_if => :all_blank
 
   has_secure_password
 

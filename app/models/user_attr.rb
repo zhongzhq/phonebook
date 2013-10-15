@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class UserAttr < ActiveRecord::Base
-  attr_accessible :key, :value, :user_id
-  validates_presence_of  :key, :value, :user_id
+  attr_accessible :key, :value
+  validates_presence_of  :key, :value
 
   belongs_to :user
 end

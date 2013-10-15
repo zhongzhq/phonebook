@@ -17,6 +17,8 @@ gem 'jquery-rails'
 gem 'slim-rails'
 gem 'simple_form'
 gem 'apotomo'
+gem 'wiselinks'
+gem "nested_form"
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'ancestry'

@@ -1,4 +1,4 @@
-= simple_form_for @user, :html => { :multipart => true } do |f|
+= simple_nested_form_for @user, :html => { :multipart => true } do |f|
   /= input f, :avatar
   = input f, :name
   = input f, :username
@@ -6,6 +6,11 @@
   = input f, :password if @user.id.blank?
   
   = input f, :membership_ids, :collection => Membership.all, :selected => @user.membership_ids, :input_html => {:multiple => true, :'data-placeholder' => "请选择职务..."}
+
+  // 附加属性
+  
+  - @user.user_attrs.build
+  = render :partial => "attrs", :locals => {:attrs => :user_attrs, :f => f}
 
   .form-group
     .col-sm-offset-2.col-sm-10

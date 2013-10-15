@@ -155,6 +155,13 @@ body {
   }
 }
 
-.card .panel:hover {
+.card .panel:first-child:hover {
   border: 1px solid #3276b1;
+}
+
+#attrs {
+  .attr-heading {
+    background-color: #d9ede9;
+    border-radius: 5px;
+  }
 }

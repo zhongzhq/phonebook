@@ -89,6 +89,7 @@ GEM
     method_source (0.8.2)
     mime-types (1.25)
     multi_json (1.8.0)
+    nested_form (0.3.2)
     onfire (0.2.0)
     paperclip (3.5.1)
       activemodel (>= 3.0.0)
@@ -172,6 +173,7 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    wiselinks (1.1.2)
 
 PLATFORMS
   ruby
@@ -185,6 +187,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   compass-rails
   jquery-rails
+  nested_form
   paperclip (~> 3.0)
   pg
   pry-debugger
@@ -197,3 +200,4 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   unicorn
+  wiselinks
