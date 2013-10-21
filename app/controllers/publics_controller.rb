@@ -12,15 +12,20 @@ class PublicsController < ApplicationController
     @user = User.find_first_by_account(params[:user][:account])
 
     if @user.try(:authenticate, params[:user][:password])
+      if params[:remember] == "true"
+        cookies[:remember] = {:value => @user.generate_auth_token, :expires => 5.day.from_now }
+      end
+
       session[:user_id] = @user.id
-      redirect_to root_path, :notice => '登陆成功'
+      redirect_to root_path
     else
       redirect_to root_path, :alert => '账号或密码错误'
     end
   end
 
   def logout
-    session[:user_id] = nil
+    current_user.update_attribute(:auth_token, nil)
+    session.clear
     redirect_to root_path, :notice => '退出成功'
   end
   

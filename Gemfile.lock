@@ -45,10 +45,6 @@ GEM
       actionpack (>= 3.0)
       railties (>= 3.0)
     chunky_png (1.2.8)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
-    cocaine (0.5.2)
-      climate_control (>= 0.0.3, < 1.0)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -91,11 +87,6 @@ GEM
     multi_json (1.8.0)
     nested_form (0.3.2)
     onfire (0.2.0)
-    paperclip (3.5.1)
-      activemodel (>= 3.0.0)
-      activesupport (>= 3.0.0)
-      cocaine (~> 0.5.0)
-      mime-types
     pg (0.17.0)
     polyglot (0.3.3)
     pry (0.9.12.2)
@@ -188,7 +179,6 @@ DEPENDENCIES
   compass-rails
   jquery-rails
   nested_form
-  paperclip (~> 3.0)
   pg
   pry-debugger
   rails (= 3.2.13)

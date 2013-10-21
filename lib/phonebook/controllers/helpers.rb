@@ -10,7 +10,11 @@ module Phonebook
 
       def current_user
         begin
-          @current_user ||= User.find(session[:user_id]) if session[:user_id]
+          @current_user ||= if session[:user_id]
+            User.find(session[:user_id])
+          else
+            User.find_by_auth_token(request.cookies["remember"])
+          end
         rescue ActiveRecord::RecordNotFound
           session[:user_id] = nil
         end

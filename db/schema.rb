@@ -61,14 +61,10 @@ ActiveRecord::Schema.define(:version => 20131008033353) do
     t.string   "username"
     t.string   "cellphone"
     t.string   "state"
-    t.string   "avatar"
     t.string   "password_digest"
+    t.string   "auth_token"
     t.datetime "created_at",          :null => false
     t.datetime "updated_at",          :null => false
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
   end
 
   create_table "user_attrs", :force => true do |t|

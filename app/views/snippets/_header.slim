@@ -7,10 +7,8 @@
         span.icon-bar
       a.navbar-brand href="/" = t(:site_name)
 
-    .collapse.navbar-collapse
-      = render :partial => "publics/search"
-
-      - if current_user.present?
+    - if current_user.present?
+      .collapse.navbar-collapse      
         ul.nav.navbar-nav.navbar-right
           li.dropdown
             a.dropdown-toggle href="#" data-toggle="dropdown"

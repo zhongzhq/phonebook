@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 Phonebook::Application.routes.draw do
-  # 设置用户登陆前后不同的 root
-  root :to => 'publics#login', :constraints => ->(request) { request.session[:user_id].blank? }
-  root :to => 'publics#index'
+  # 设置用户登陆前后不同的 root  
+  root :to => 'publics#index', :constraints => ->(request) do
+    User.find_by_auth_token(request.cookies["remember"]) or request.session[:user_id]
+  end
+  root :to => 'publics#login'
 
   resources :publics do
-    collection do      
+    collection do
       post 'authenticate'
       delete 'logout'
 

@@ -1,13 +1,10 @@
 # -*- coding: utf-8 -*-
+require "securerandom"
+
 class User < ActiveRecord::Base
   attr_accessor :account, :membership_ids, :current_password
 
-  # 头像
-  has_attached_file :avatar, :styles => { :original => "256x256>", :thumb => "64x64>" },
-  :url => "/uploads/:attachment/:style/:username.:extension",
-  :path => "/:rails_root/public/uploads/:attachment/:style/:username.:extension"
-
-  attr_accessible :name, :username, :cellphone, :password, :password_confirmation, :state, :avatar, :account, :membership_ids, :current_password, :user_attrs_attributes
+  attr_accessible :name, :username, :cellphone, :password, :password_confirmation, :state, :account, :membership_ids, :current_password, :user_attrs_attributes
   validates_presence_of :username, :cellphone
   validates_presence_of :password, :on => :create
   
@@ -40,6 +37,15 @@ class User < ActiveRecord::Base
     add_actors.each do |actor|
       ActorUser.create(:actor_id => actor.id, :user_id => self.id)
     end    
+  end
+
+  def generate_auth_token
+    update_attribute(:auth_token, SecureRandom.hex)
+    self.auth_token
+  end
+
+  def self.find_by_auth_token token    
+    where(:auth_token => token).first if token.present?
   end
 
   # 通过用户名或手机号查找用户
