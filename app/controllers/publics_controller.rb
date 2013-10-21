@@ -13,7 +13,7 @@ class PublicsController < ApplicationController
 
     if @user.try(:authenticate, params[:user][:password])
       if params[:remember] == "true"
-        cookies[:remember] = {:value => @user.generate_auth_token, :expires => Setting["remember"] }
+        cookies[:remember] = {:value => @user.generate_auth_token, :expires => Time.now + Setting["remember"].to_i.day }
       end
 
       session[:user_id] = @user.id

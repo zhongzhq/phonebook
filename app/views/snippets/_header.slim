@@ -8,7 +8,19 @@
       a.navbar-brand href="/" = t(:site_name)
 
     - if current_user.present?
-      .collapse.navbar-collapse      
+      .collapse.navbar-collapse
+        ul.nav.navbar-nav
+          li
+            = link_to "个人电话本", follows_path
+          li
+            = link_to "组织信息", organs_path
+          li
+            = link_to "组织管理", organs_path
+          li
+            = link_to "职务管理", memberships_path
+          li
+            = link_to "系统设置", settings_path
+            
         ul.nav.navbar-nav.navbar-right
           li.dropdown
             a.dropdown-toggle href="#" data-toggle="dropdown"
