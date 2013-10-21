@@ -1,0 +1,14 @@
+.panel.panel-info
+  .panel-heading
+    strong 当前位置：
+    | 系统设置
+
+  .panel-body    
+    table.table
+      tbody
+        - @settings.each do |setting|
+          tr
+            td= t("setting.#{setting.key}")
+            td= setting.value + "天"
+            td= link_to "修改", edit_setting_path(setting)
+

@@ -1,0 +1,7 @@
+= simple_form_for @setting do |f|
+  = f.hidden_field :key, :value => @setting.key
+  = input f, :value, :label => t("setting.#{@setting.key}")
+
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.button :submit, "保存"

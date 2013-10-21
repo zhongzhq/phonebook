@@ -36,4 +36,6 @@ Phonebook::Application.routes.draw do
       delete "index"
     end
   end
+
+  resources :settings
 end

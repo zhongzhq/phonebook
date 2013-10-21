@@ -74,4 +74,11 @@ ActiveRecord::Schema.define(:version => 20131008033353) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "settings", :force => true do |t|
+    t.string   "key"
+    t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 end
