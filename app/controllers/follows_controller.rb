@@ -10,12 +10,12 @@ class FollowsController < ApplicationController
   end
 
   def new
-    @user_id = params[:user_id]
-    Follow.create(:follower_id => current_user.id, :followed_id => @user_id)
+    Follow.create(:follower_id => current_user.id, :followed_id => params[:user_id])
+    redirect_to :back
   end
 
   def destroy
-    @user_id = params[:id]
-    Follow.find_by_follower_and_followed(current_user, @user_id).first.try(:destroy)
+    Follow.find_by_follower_and_followed(current_user, params[:id]).first.try(:destroy)
+    redirect_to follows_path
   end
 end

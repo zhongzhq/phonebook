@@ -1,10 +1,7 @@
 # -*- coding: utf-8 -*-
 class MembershipsController < ApplicationController
-  layout false
-
   def index
     @memberships = Membership.all
-    render :layout => params[:layout] if params[:layout].present?
   end
 
   def new
