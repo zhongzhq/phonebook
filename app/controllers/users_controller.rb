@@ -3,68 +3,56 @@ class UsersController < ApplicationController
   def new
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.new
-    @user.membership_ids = [Membership.find(:first, :conditions => {:name => "成员"}).id]
   end
 
   def create
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.new(params[:user])
-    if params[:user][:membership_ids].delete_if{|x| x.blank? }.present?
-      if @user.save
-        @user.add_actor(params[:user][:membership_ids].delete_if{|x| x.blank? }, @organ)
-        redirect_to user_path(@user, :organ_id => @organ.id), :notice => "添加用户成功"
-      else
-        p @user.errors
-        render "new"
-      end
+    if @user.save
+      member = Member.create!(:user_id => @user.id, :organ_id => @organ.id)
+      member.set_jobs(params[:user][:jobs])
+      redirect_to user_path(@user, :organ_id => @organ.id)
     else
-      @user.errors.add(:membership_ids, "职务不能为空")
       render "new"
     end
   end
 
   def show
     @user = User.find(params[:id])
-    Recent.create(:user_id => current_user.id, :search_id => @user.id)
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
   end
 
   def edit
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])
-    @user.membership_ids = @user.actors.where(:organ_id => @organ).map(&:membership).map(&:id)
+    @user.jobs = Member.where(:user_id => @user.id, :organ_id => @organ.id).first.jobs.map(&:id)
   end
 
   def update
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])
-    if params[:user][:membership_ids].delete_if{|x| x.blank? }.present?
-      if @user.update_attributes(params[:user])
-        @user.add_actor(params[:user][:membership_ids].delete_if{|x| x.blank? }, @organ)
-        redirect_to user_path(@user, :organ_id => @organ.id), :notice => "用户信息修改成功"
-      else
-        render "edit"
-      end
+    if @user.update_attributes(params[:user])
+      Member.where(:user_id => @user.id, :organ_id => @organ.id).first.set_jobs(params[:user][:jobs])
+      redirect_to user_path(@user, :organ_id => @organ.id)
     else
-     @user.errors.add(:membership_ids, "职务不能为空")
-     render "edit"
-   end
- end
-
- def reset
-  @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
-  @user = User.find(params[:id])    
-end
-
-def reset_submit
-  @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
-  @user = User.find(params[:id])
-  if @user.update_attributes(params[:user])
-    redirect_to user_path(@user, :organ_id => @organ.id), :notice => "重置密码成功"
-  else
-    render "reset"
+      render "edit"
+    end
   end
-end
+
+  def reset
+    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+    @user = User.find(params[:id])    
+  end
+
+  def reset_submit
+    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+    @user = User.find(params[:id])
+    if @user.update_attributes(params[:user])
+      redirect_to user_path(@user, :organ_id => @organ.id), :notice => "重置密码成功"
+    else
+      render "reset"
+    end
+  end
 
   # 用户自己修改信息
   def password

@@ -1,17 +1,15 @@
-- followed_user_ids = Follow.find_by_follower(current_user).map(&:followed_id)
-
-.panel.panel-default
+.panel.panel-info
   .panel-heading
     strong
       = @user.name
 
     span.pull-right
-      - if Follow.find_by_follower_and_followed(current_user, @user.id).blank?
+      - if Follow.exist?(current_user, @user.id)
         = link_to "存入电话本", new_follow_path(:user_id => @user), :class => "btn btn-info btn-xs"
 
       = link_to "编辑", edit_user_path(@user), :class => "btn btn-info btn-xs"
       = link_to "重置密码", reset_user_path(@user), :class => "btn btn-info btn-xs"
 
   .panel-body    
-    p 手机： #{@user.cellphone}
-    p 角色： #{@user.find_memberships_by_organ(@organ)}
+    p 手机： #{@user.phone}
+    p 角色： #{Member.where(:user_id => @user.id, :organ_id => @organ.id).first.jobs.map(&:name).join("/")}

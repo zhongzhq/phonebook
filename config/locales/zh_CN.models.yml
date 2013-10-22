@@ -7,7 +7,7 @@ zh_CN:
     attributes:
       user:
         username: 用户名
-        phone: 手机号
+        phone: 电话
         name: 姓名
         account: 帐号
         password: 密码
@@ -15,6 +15,8 @@ zh_CN:
         current_password: 当前密码
         state: 状态
         comment: 备注
+        jobs: 职务
+        addresses: 办公地址
       organ:
         name: 组织名
       membership:

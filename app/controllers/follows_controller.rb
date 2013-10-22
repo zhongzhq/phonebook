@@ -1,12 +1,7 @@
 # -*- coding: utf-8 -*-
 class FollowsController < ApplicationController
   def index
-    @follow_users = []
-    Follow.find_by_follower(current_user).each do |follow|
-      begin
-        @follow_users << User.find(follow.followed_id)
-      rescue ActiveRecord::RecordNotFound; end
-    end
+    @users = Follow.users(current_user)
   end
 
   def new

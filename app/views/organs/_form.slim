@@ -1,10 +1,6 @@
 = simple_form_for @organ do |f|
   = input f, :name
   = f.hidden_field :parent_id
-  
-  / = f.simple_fields_for :organ_attrs do |a|
-  /   = input a, :key, as: :hidden
-  /   = input a, :value, label: a.object.key
 
   .form-group
     .col-sm-offset-2.col-sm-10

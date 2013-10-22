@@ -12,60 +12,55 @@ zhiyi = Organ.create!(name: '成都知一软件有限公司' )
   zservice = Organ.create!(name: '极服务', parent_id: zhiyi)
 
 # 角色初始化
-member = Membership.create!(name: '成员')
-admin = Membership.create!(name: '管理员')
+member = Job.create!(name: '成员')
+admin = Job.create!(name: '管理员')
 
 # 成员初始化
 behind_users = [
-  User.create!(name: "苏渝", cellphone: 18602881279, username: "suyu", password: "123456"),
-  User.create!(name: "谢刚", cellphone: 18628171676, username: "xiegang", password: "123456"),
-  User.create!(name: "钟正权", cellphone: 13551147353, username: "zhongzhengquan", password: "123456"),
-  User.create!(name: "杨峻峰", cellphone: 15881151751, username: "yangjunfeng", password: "123456"),
-  User.create!(name: "陈健斌", cellphone: 15882357025, username: "chenjianbin", password: "123456"),
-  User.create!(name: "杨丹", cellphone: 13281283611, username: "yangdan", password: "123456"),
-  User.create!(name: "何源", cellphone: 13320963363, username: "heyuan", password: "123456"),
-  User.create!(name: "黄德洲", cellphone: 18782902305, username: "huangdezhou", password: "123456"),
-  User.create!(name: "张涛", cellphone: 15202826031, username: "zhangtao", password: "123456"),
-  User.create!(name: "尹常鑫", cellphone: 15184469287, username: "yinchangxin", password: "123456"),
-  User.create!(name: "唐久军", cellphone: 18782943143, username: "tangjiujun", password: "tang")
+  User.create!(name: "苏渝", phone: 18602881279, account: "suyu", password: "123456"),
+  User.create!(name: "谢刚", phone: 18628171676, account: "xiegang", password: "123456"),
+  User.create!(name: "钟正权", phone: 13551147353, account: "zhongzhengquan", password: "123456"),
+  User.create!(name: "杨峻峰", phone: 15881151751, account: "yangjunfeng", password: "123456"),
+  User.create!(name: "陈健斌", phone: 15882357025, account: "chenjianbin", password: "123456"),
+  User.create!(name: "杨丹", phone: 13281283611, account: "yangdan", password: "123456"),
+  User.create!(name: "何源", phone: 13320963363, account: "heyuan", password: "123456"),
+  User.create!(name: "黄德洲", phone: 18782902305, account: "huangdezhou", password: "123456"),
+  User.create!(name: "张涛", phone: 15202826031, account: "zhangtao", password: "123456"),
+  User.create!(name: "尹常鑫", phone: 15184469287, account: "yinchangxin", password: "123456"),
+  User.create!(name: "唐久军", phone: 18782943143, account: "tangjiujun", password: "tang")
   ]
-  behind_actor = Actor.create!(membership_id: member.id, organ_id: behind.id)
-  behind_users.each { |e| e.actors << behind_actor }
+  behind_users.each { |e| Member.create!(:user_id => e.id, :organ_id => behind.id).tap{|x| x.set_jobs([member.id])} }
 
 testing_users = [
-  User.create!(name: "唐浩", cellphone: 13880129915, username: "tanghao", password: "123456")
+  User.create!(name: "唐浩", phone: 13880129915, account: "tanghao", password: "123456")
   ]
-  testing_actor = Actor.create!(membership_id: member.id, organ_id: testing.id)
-  testing_users.each { |e| e.actors << testing_actor }
+  testing_users.each { |e| Member.create!(:user_id => e.id, :organ_id => testing.id).tap{|x| x.set_jobs([member.id])} }
 
 xingzheng_users = [
-  User.create!(name: "闫秋云", cellphone: 13808229662, username: "yanqiuyun", password: "123456")
+  User.create!(name: "闫秋云", phone: 13808229662, account: "yanqiuyun", password: "123456")
   ]
-  xingzheng_actor = Actor.create!(membership_id: member.id, organ_id: xingzheng.id)
-  xingzheng_users.each { |e| e.actors << xingzheng_actor }
+  xingzheng_users.each { |e| Member.create!(:user_id => e.id, :organ_id => xingzheng.id).tap{|x| x.set_jobs([member.id])} }
 
 caiwu_users = [
-  User.create!(name: "刘玲", cellphone: 13541386053, username: "liuling", password: "123456"),
-  User.create!(name: "李佳", cellphone: 13308176710, username: "lijia", password: "123456")
+  User.create!(name: "刘玲", phone: 13541386053, account: "liuling", password: "123456"),
+  User.create!(name: "李佳", phone: 13308176710, account: "lijia", password: "123456")
   ]
-  caiwu_actor = Actor.create!(membership_id: member.id, organ_id: caiwu.id)
-  caiwu_users.each { |e| e.actors << caiwu_actor }
+  caiwu_users.each { |e| Member.create!(:user_id => e.id, :organ_id => caiwu.id).tap{|x| x.set_jobs([member.id])} }
 
 zservice_users = [
-  User.create!(name: "甘华丽", cellphone: 15281039267, username: "ganhuali", password: "123456"),
-  User.create!(name: "周英", cellphone: 13438800586, username: "zhouying", password: "123456"),
-  User.create!(name: "邓宇晶", cellphone: 18600160167, username: "dengyujing", password: "123456"),
-  User.create!(name: "邹瑜", cellphone: 18008055031, username: "zouyu", password: "123456"),
-  User.create!(name: "文靖", cellphone: 15199925679, username: "wenjing", password: "123456"),
-  User.create!(name: "李源冰", cellphone: 13350081882, username: "liyuanbin", password: "123456"),
-  User.create!(name: "廖肖韦", cellphone: 15202859971, username: "liaoxiaowei", password: "123456"),
-  User.create!(name: "钟刘梅", cellphone: 15196634082, username: "zhongliumei", password: "123456")
+  User.create!(name: "甘华丽", phone: 15281039267, account: "ganhuali", password: "123456"),
+  User.create!(name: "周英", phone: 13438800586, account: "zhouying", password: "123456"),
+  User.create!(name: "邓宇晶", phone: 18600160167, account: "dengyujing", password: "123456"),
+  User.create!(name: "邹瑜", phone: 18008055031, account: "zouyu", password: "123456"),
+  User.create!(name: "文靖", phone: 15199925679, account: "wenjing", password: "123456"),
+  User.create!(name: "李源冰", phone: 13350081882, account: "liyuanbin", password: "123456"),
+  User.create!(name: "廖肖韦", phone: 15202859971, account: "liaoxiaowei", password: "123456"),
+  User.create!(name: "钟刘梅", phone: 15196634082, account: "zhongliumei", password: "123456")
  ]
- zservice_actor = Actor.create!(membership_id: member.id, organ_id: zservice.id)
- zservice_users.each { |e| e.actors << zservice_actor }
+ zservice_users.each { |e| Member.create!(:user_id => e.id, :organ_id => zservice.id).tap{|x| x.set_jobs([member.id])} }
 
 # 初始化管理员
-zhiyi_admin_actor = Actor.create!(membership_id: admin.id, organ_id: zhiyi.id)
-['xiegang', 'tangjiujun'].each do |username|
-  User.where(:username => username).each { |user| user.actors << zhiyi_admin_actor }
-end
+# zhiyi_admin_actor = Actor.create!(membership_id: admin.id, organ_id: zhiyi.id)
+# ['xiegang', 'tangjiujun'].each do |account|
+#   User.where(:account => account).each { |user| user.actors << zhiyi_admin_actor }
+# end

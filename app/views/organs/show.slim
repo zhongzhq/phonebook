@@ -23,7 +23,7 @@
         - @users.each do |user|
           tr
             td = user.name
-            td = user.find_memberships_by_organ(@organ).map(&:name).join("/")
+            td = Member.where(:user_id => user.id, :organ_id => @organ.id).first.jobs.map(&:name).join("/")
             td
-              = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"
+              = link_to "查看详情", user_path(user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
               = link_to "编辑", edit_user_path(user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"

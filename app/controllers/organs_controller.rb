@@ -26,12 +26,7 @@ class OrgansController < ApplicationController
 
   def show
     @organ = Organ.find(params[:id])
-    @users = @organ.members
-  end
-
-  def show_with_organ
-    @organ = Organ.find(params[:id])
-    @users = @organ.members # if @organ.children.blank?
+    @users = @organ.members.map(&:user)
   end
 
   def edit

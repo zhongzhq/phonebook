@@ -1,8 +1,8 @@
-.panel.panel-default
+.panel.panel-info
   .panel-heading
     strong 个人电话本
 
-  - if @follow_users.blank?
+  - if @users.blank?
     .panel-body    
         .panel.panel-warning
           .panel-heading 个人电话本暂无数据
@@ -15,7 +15,7 @@
         th 职务
         th 操作
         
-      - @follow_users.each do |user|
+      - @users.each do |user|
         tr
           td = link_to user.name, user_path(user)
           td

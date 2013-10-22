@@ -1,11 +1,14 @@
 = simple_nested_form_for @user do |f|
   = hidden_field_tag :organ_id, @organ.id
   = input f, :name
-  = input f, :username
-  = input f, :cellphone  
+  = input f, :account
+  = input f, :phone, :hint => '多个电话请用 "," 隔开; 如: 18782943143, 028-63780023'
   = input f, :password if @user.id.blank?
-  
-  = input f, :membership_ids, :collection => Membership.all, :selected => @user.membership_ids, :input_html => {:multiple => true}, :hint => "没有符合要求的职务, 新建一个"
+
+  = input f, :jobs, :collection => Job.all, :input_html => { :multiple => true }
+  = input f, :addresses, :collection => Address.all, :input_html => { :multiple => true }
+
+  = input f, :comment
 
   .form-group
     .col-sm-offset-2.col-sm-10      
@@ -15,5 +18,5 @@
 
 javascript:
   $(function(){
-    $("#user_membership_ids").chosen({width: "100%", inherit_select_classes: true});
+    $("select").chosen({width: "100%", inherit_select_classes: true});
   })
