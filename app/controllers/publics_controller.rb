@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class PublicsController < ApplicationController
   def index
-    @users = Recent.users(current_user)
+    #@users = Recent.users(current_user)
   end
 
   def login
@@ -9,11 +9,10 @@ class PublicsController < ApplicationController
   end
 
   def authenticate
-    @user = User.find_first_by_account(params[:user][:account])
-
-    if @user.try(:authenticate, params[:user][:password])
+    @user = User.login(params[:user])
+    if @user.present?
       if params[:remember] == "true"
-        cookies[:remember] = {:value => @user.generate_auth_token, :expires => Time.now + Setting["remember"].to_i.day }
+        cookies[:remember] = {:value => @user.generate_authentication_token, :expires => Time.now + 60 }
       end
 
       session[:user_id] = @user.id
@@ -24,7 +23,7 @@ class PublicsController < ApplicationController
   end
 
   def logout
-    current_user.update_attribute(:auth_token, nil)
+    current_user.update_attribute(:authentication_token, nil)
     session.clear
     redirect_to root_path, :notice => '退出成功'
   end

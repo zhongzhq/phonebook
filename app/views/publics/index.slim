@@ -8,13 +8,13 @@
       th 职务
       th 操作
       
-    - @users.each do |user|
-      tr
-        td = link_to user.name, user_path(user)
-        td
-          - user.actors.each do |actor|
-            = actor.fullname
-            br
+    / - @users.each do |user|
+    /   tr
+    /     td = link_to user.name, user_path(user)
+    /     td
+    /       - user.actors.each do |actor|
+    /         = actor.fullname
+    /         br
 
-        td
-          = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"
+    /     td
+    /       = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"

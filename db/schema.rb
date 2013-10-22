@@ -11,38 +11,42 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008033353) do
-
-  create_table "actor_users", :force => true do |t|
-    t.integer  "actor_id"
-    t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "actors", :force => true do |t|
-    t.integer  "membership_id"
-    t.integer  "organ_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
+ActiveRecord::Schema.define(:version => 20131022113657) do
 
   create_table "addresses", :force => true do |t|
     t.string   "name"
     t.string   "phone"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "addresses_members", :force => true do |t|
+    t.integer  "address_id"
+    t.integer  "member_id"
   end
 
   create_table "follows", :force => true do |t|
-    t.integer  "follower_id"
+    t.integer  "user_id"
     t.integer  "followed_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "memberships", :force => true do |t|
+  create_table "jobs", :force => true do |t|
     t.string   "name"
+    t.integer  "sort"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "jobs_members", :force => true do |t|
+    t.integer  "job_id"
+    t.integer  "member_id"
+  end
+
+  create_table "members", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "organ_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -50,49 +54,29 @@ ActiveRecord::Schema.define(:version => 20131008033353) do
   create_table "organs", :force => true do |t|
     t.string   "name"
     t.string   "ancestry"
-    t.string   "state"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "organ_attrs", :force => true do |t|
-    t.integer   "organ_id"
-    t.string   "key"
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "users", :force => true do |t|
-    t.string   "name"
-    t.string   "username"
-    t.string   "cellphone"
-    t.string   "state"
-    t.string   "password_digest"
-    t.string   "auth_token"
-    t.datetime "created_at",          :null => false
-    t.datetime "updated_at",          :null => false
-  end
-
-  create_table "user_attrs", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "key"
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "settings", :force => true do |t|
-    t.string   "key"
-    t.string   "value"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "description"
+    t.integer  "sort"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "recents", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "search_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "recently_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
+
+  create_table "users", :force => true do |t|
+    t.string   "name"
+    t.string   "account"
+    t.string   "phone"
+    t.string   "password_digest"
+    t.string   "authentication_token"
+    t.string   "state"
+    t.string   "comment"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
+
 end

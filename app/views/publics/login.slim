@@ -1,7 +1,7 @@
 #login-box
   h3 欢迎登陆
   = form_for @user, :url => authenticate_publics_path do |f|
-    = f.text_field :account, :placeholder => "用户名/手机号", :class => "form-control input-lg"
+    = f.text_field :account, :placeholder => "用户名", :class => "form-control input-lg"
     = f.password_field :password, :placeholder => "密码", :class => "form-control input-lg"
     label.checkbox
       input name="remember" type="checkbox" value="true" 记住我
