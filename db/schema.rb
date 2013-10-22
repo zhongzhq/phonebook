@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20131008033353) do
   end
 
   create_table "user_attrs", :force => true do |t|
-    t.integer   "user_id"
+    t.integer  "user_id"
     t.string   "key"
     t.string   "value"
     t.datetime "created_at", :null => false
@@ -78,6 +78,13 @@ ActiveRecord::Schema.define(:version => 20131008033353) do
   create_table "settings", :force => true do |t|
     t.string   "key"
     t.string   "value"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "recents", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "search_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class PublicsController < ApplicationController
   def index
-    render :layout => params[:layout] if params[:layout].present?
+    @users = Recent.users(current_user)
   end
 
   def login

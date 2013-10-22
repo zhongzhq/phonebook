@@ -1,11 +1,20 @@
-- users = User.find([1,2,3])
-- organ = Organ.first
-
 .panel.panel-info
   .panel-heading
-    strong 当前位置：
-    | 最近联系人
-    span.badge.pull-right = "人数：" + users.size.to_s
+    strong 最近联系人
 
-  .panel-body    
-    = render :partial => "organs/cards", :locals => {:users => users, :organ => organ}
+  table.table
+    tr
+      th 姓名
+      th 职务
+      th 操作
+      
+    - @users.each do |user|
+      tr
+        td = link_to user.name, user_path(user)
+        td
+          - user.actors.each do |actor|
+            = actor.fullname
+            br
+
+        td
+          = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"

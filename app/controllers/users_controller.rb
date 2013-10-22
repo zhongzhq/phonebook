@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    Recent.create(:user_id => current_user.id, :search_id => @user.id)
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
   end
 
@@ -47,23 +48,23 @@ class UsersController < ApplicationController
     else
      @user.errors.add(:membership_ids, "职务不能为空")
      render "edit"
-    end
-  end
+   end
+ end
 
-  def reset
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
-    @user = User.find(params[:id])    
-  end
+ def reset
+  @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+  @user = User.find(params[:id])    
+end
 
-  def reset_submit
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
-    @user = User.find(params[:id])
-    if @user.update_attributes(params[:user])
-      redirect_to user_path(@user, :organ_id => @organ.id), :notice => "重置密码成功"
-    else
-      render "reset"
-    end
+def reset_submit
+  @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+  @user = User.find(params[:id])
+  if @user.update_attributes(params[:user])
+    redirect_to user_path(@user, :organ_id => @organ.id), :notice => "重置密码成功"
+  else
+    render "reset"
   end
+end
 
   # 用户自己修改信息
   def password
