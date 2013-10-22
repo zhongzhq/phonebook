@@ -1,16 +1,11 @@
-= simple_nested_form_for @user, :html => { :multipart => true } do |f|
-  = f.hidden_field :organ_id, :value => @organ.id
+= simple_nested_form_for @user do |f|
+  = hidden_field_tag :organ_id, @organ.id
   = input f, :name
   = input f, :username
   = input f, :cellphone  
   = input f, :password if @user.id.blank?
   
   = input f, :membership_ids, :collection => Membership.all, :selected => @user.membership_ids, :input_html => {:multiple => true}, :hint => "没有符合要求的职务, 新建一个"
-
-  // 附加属性
-  
-  //- @user.user_attrs.build
-  //= render :partial => "attrs", :locals => {:attrs => :user_attrs, :f => f}
 
   .form-group
     .col-sm-offset-2.col-sm-10      

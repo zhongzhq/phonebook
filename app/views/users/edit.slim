@@ -1,8 +1,7 @@
-.col-md-8.card
-  .panel.panel-info
-    .panel-heading
-      strong 当前位置：
-      | #{@user.name} - 编辑用户
+.panel.panel-default
+  .panel-heading
+    strong 当前位置：
+    | #{@user.name} - 编辑用户
 
-    .panel-body
-      = render :partial => "form"
+  .panel-body
+    = render :partial => "form"
