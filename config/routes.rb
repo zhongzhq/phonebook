@@ -11,7 +11,7 @@ Phonebook::Application.routes.draw do
       post 'authenticate'
       delete 'logout'
 
-      post "search"
+      get "search"
     end
   end
 

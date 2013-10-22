@@ -1,42 +1,27 @@
 - followed_user_ids = Follow.find_by_follower(current_user).map(&:followed_id)
 
-.card.col-md-4
-  .panel.panel-info
-    .panel-heading
-      span.glyphicon.glyphicon-user
+.panel.panel-info
+  .panel-heading
+    strong
       = @user.name
-      span.pull-right
+      = @user.cellphone
 
-        - if followed_user_ids.include?(@user.id)
-          = link_to '<span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="已关注"></span>'.html_safe, follow_path(@user.id), :method => :delete, :class => "follow"
-        - else
-          = link_to '<span class="glyphicon glyphicon-heart-empty" data-toggle="tooltip" title="未关注"></span>'.html_safe, new_follow_path(:user_id => @user.id), :class => "follow"
+    span.pull-right
+      - if Follow.find_by_follower_and_followed(current_user, @user.id).blank?
+        = link_to "存入电话本", new_follow_path(:user_id => @user), :class => "btn btn-info btn-xs"
 
-        = link_to '<span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="编辑"></span>'.html_safe, edit_user_path(@user, :organ_id => @organ.id), :class => "edit-user"
-        = link_to '<span class="glyphicon glyphicon-registration-mark" data-toggle="tooltip" title="重置密码"></span>'.html_safe, reset_user_path(@user, :organ_id => @organ.id), :class => "reset-password"
+      = link_to "编辑", edit_user_path(@user), :class => "btn btn-info btn-xs"
+      = link_to "重置密码", reset_user_path(@user), :class => "btn btn-info btn-xs"
 
-    .panel-body
-      p 手机： #{@user.cellphone}
-      p 职务： #{@user.find_memberships_by_organ(@organ).map(&:name).join("/")}
-      - @user.user_attrs.each do |a|
-        p #{a.key}: #{a.value}
-      / .media
-      /   a.pull-left href="#"
-      /     .avatar
-      /       = image_tag(@user.avatar? ? @user.avatar.url(:thumb) : "/assets/avator.png", :class => "media-object")
-      /   .media-body
-      /     p 手机： #{@user.cellphone}
-      /     p 角色： #{@user.find_memberships_by_organ(@organ)}
-
-javascript:
-  $(function(){
-    remote($(".follow"), function(status, xhr){
-      $(this).replaceWith(xhr.responseText);
-    })
-
-    remote($(".edit-user, .reset-password"), function(status, xhr){
-      $(this).closest(".card").replaceWith(xhr.responseText);
-    });
-
-    $("[data-toggle~=tooltip]").tooltip();
-  })
+  .panel-body
+    / p 手机： #{@user.cellphone}
+    / p 职务： #{@user.find_memberships_by_organ(@organ).map(&:name).join("/")}
+    / - @user.user_attrs.each do |a|
+    /   p #{a.key}: #{a.value}
+    / .media
+    /   a.pull-left href="#"
+    /     .avatar
+    /       = image_tag(@user.avatar? ? @user.avatar.url(:thumb) : "/assets/avator.png", :class => "media-object")
+    /   .media-body
+    /     p 手机： #{@user.cellphone}
+    /     p 角色： #{@user.find_memberships_by_organ(@organ)}

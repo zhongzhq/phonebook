@@ -15,19 +15,11 @@ html lang="zh-CN"
       = render "snippets/header"
 
     .container
-      .row
-        - if current_user.present?
-          .col-md-3            
-              = render "snippets/sidebar"
-          .col-md-9
-            #content
-              = render "snippets/flash", :flash => flash
-              == yield
-
-        - else
-          #content
-            = render "snippets/flash", :flash => flash          
-            == yield
+      .row          
+        = render "snippets/flash", :flash => flash
+        = render "snippets/search" if current_user.present?
+        #content
+          == yield
 
     #footer
       = render "snippets/footer"

@@ -30,13 +30,6 @@ class PublicsController < ApplicationController
   end
   
   def search
-    @result = {}
-    users = User.where("name LIKE :text OR cellphone LIKE :text OR username LIKE :text", {:text => "%#{params[:text]}%"})
-    organs = users.map(&:actors).flatten.uniq.map(&:organ).uniq.sort
-    organs.each do |organ|
-      @result[organ] = users.find_by_organ(organ)
-    end
-    @result
-    render "result"
+    @users = User.where("name LIKE :text OR cellphone LIKE :text OR username LIKE :text", {:text => "%#{params[:text]}%"})
   end
 end

@@ -1,38 +1,28 @@
-.panel.panel-info
+.panel.panel-default
   .panel-heading
-    strong 当前位置：
-    | 我的关注
+    strong 个人电话本
 
-  .panel-body
-    - if @follow_users.blank?
-      .panel.panel-warning
-        .panel-heading 暂无关注人员，请在组织中关注想要关注的人
+  - if @follow_users.blank?
+    .panel-body    
+        .panel.panel-warning
+          .panel-heading 个人电话本暂无数据
+  - else
+    .panel-body
+      small 个人电话本主要记录自己存入手机的电话，以方便你了解这些用户信息的变化
+    table.table
+      tr
+        th 姓名
+        th 职务
+        th 操作
+        
+      - @follow_users.each do |user|
+        tr
+          td = link_to user.name, user_path(user)
+          td
+            - user.actors.each do |actor|
+              = actor.fullname
+              br
 
-    - @follow_users.each do |user|
-      .card.col-md-4
-        .panel.panel-info
-          .panel-heading
-            span.glyphicon.glyphicon-user
-            = user.name
-            span.pull-right
-              = link_to '<span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="取消关注"></span>'.html_safe, follow_path(user.id), :method => :delete, :class => "follow"
-
-          .panel-body
-            .media
-              a.pull-left href="#"
-                .avatar
-                  = image_tag(user.avatar? ? user.avatar.url(:thumb) : "/assets/avator.png", :class => "media-object")
-              .media-body
-                p 手机： #{user.cellphone}
-                - user.actors.each do |actor|
-                  p 角色： #{actor.fullname}
-                  br
-
-javascript:
-  $(function(){
-    remote($(".follow"), function(status, xhr){
-      $(this).closest(".card").remove();
-    })
-    
-    $("[data-toggle~=tooltip]").tooltip();
-  })
+          td
+            = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"
+            = link_to "移除", follow_path(user.id), :method => :delete, :class => "btn btn-danger btn-xs"
