@@ -1,9 +1,5 @@
 ul
   - organ.children.each do |child|
     li
-      .item
-        = link_to child.name, organ_path(child)
-        span.action
-          = link_to "", edit_organ_path(child), :class => "glyphicon glyphicon-pencil"
-          = link_to "", new_organ_path(:id => child.id), :class => "glyphicon glyphicon-plus"
+      = link_to child.name, organ_path(child)
       = render :view => :children, :locals => { :organ => child }

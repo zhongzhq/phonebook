@@ -1,21 +1,27 @@
-.panel.panel-info
-  .panel-heading
-    strong 当前位置：
-    = @organ.fullname
-    .pull-right
-      = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-info add-user"
+.col-md-3  
+  = render_widget :organ_tree, :display
+.col-md-9
+  .panel.panel-default
+    .panel-heading
+      strong = @organ.fullname
+      .pull-right
+        = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-info btn-xs"
 
-    .notice
-      - @organ.organ_attrs.each do |a|
-        span #{a.key}: #{a.value}
+    - if @users.blank?
+      .panel-body
+        .panel.panel-warning
+          .panel-heading 该部门下暂无成员
+    - else
+      table.table
+        tr
+          th 姓名
+          th 岗位
+          th 操作
 
-  .panel-body
-    #user-box
-      = render :partial => "cards", :locals => {:users => @members, :organ => @organ}
-
-javascript:
-  $(function(){
-    remote($(".add-user"), function(status, xhr){
-      $("#user-box").prepend(xhr.responseText);
-    })
-  })  
+        - @users.each do |user|
+          tr
+            td = user.name
+            td = user.find_memberships_by_organ(@organ).map(&:name).join("/")
+            td
+              = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"
+              = link_to "编辑", edit_user_path(user), :class => "btn btn-info btn-xs"

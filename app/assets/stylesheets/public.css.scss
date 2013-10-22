@@ -19,7 +19,7 @@ body {
 }
 
 /* ------------------------------------
-  Login box stylesheet
+  登陆界面
 ------------------------------------ */
 #login-box {
   max-width: 330px;
@@ -31,48 +31,24 @@ body {
 }
 
 /* ------------------------------------
-  Sidebar stylesheet
+  组织树
 ------------------------------------ */
-
-#sidebar.affix {
-  position: static;
-}
-
-#sidebar{
-  a {
-    color: #5D6872;
-    text-decoration: none;
-  }
-  .nav {
-    margin-top: 10px;
-    margin-bottom: 30px;
-    padding-top:    10px;
-    padding-bottom: 10px;
-    text-shadow: 0 1px 0 #fff;
-    background-color: #f7f5fa;
-    border-radius: 5px;
-  }
-  .nav > li > a {
-    padding: 5px 15px;
-  }
+.organ_tree {
+  background-color: #f7f5fa;
+  padding: 10px 0 10px 0;
+  border-radius: 5px;
   .header {
     font-weight: bold;
+    font-size: 16px;
     padding: 10px 15px;
-    border-radius: 5px;
   }
-  .organ_tree {
-    margin-top: 5px;
-    ul {
-      list-style: none;
-      padding: 0;
-      margin-left: 25px;
-      .item {
-        padding-bottom: 5px;
-        border-radius: 3px;
-      }
-      .item:hover {
-        background-color: #EEEEEE;
-      }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-left: 25px;
+    a {
+      text-decoration: none;
+      font-size: 16px;
     }
   }
 }

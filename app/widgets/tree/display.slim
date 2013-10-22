@@ -1,17 +1,7 @@
 .organ_tree
+  .header 组织结构
   ul
     - @root_organs.each do |root_organ|
       li
-        .item
-          = link_to root_organ.name, organ_path(root_organ)
-          span.action
-            = link_to "", edit_organ_path(root_organ), :class => "glyphicon glyphicon-pencil"
-            = link_to "", new_organ_path(:id => root_organ.id), :class => "glyphicon glyphicon-plus"
+        = link_to root_organ.name, organ_path(root_organ)
         = render :view => :children, :locals => { :organ => root_organ }
-
-javascript:
-  $(function(){
-    organ_tree();
-    $(".organ_tree .item").find(".toggle-icon").click();
-    remote_content($(".organ_tree .item").find("a"));
-  })

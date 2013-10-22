@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
+  def index        
+  end
+
   def new
     if params[:id]
       @organ = Organ.find(params[:id]).children.build
@@ -22,7 +25,7 @@ class OrgansController < ApplicationController
 
   def show
     @organ = Organ.find(params[:id])
-    @members = @organ.members # if @organ.children.blank?
+    @users = @organ.members # if @organ.children.blank?
     render :layout => params[:layout] if params[:layout].present?
   end
 
