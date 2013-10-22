@@ -1,7 +1,6 @@
 .panel.panel-info
   .panel-heading
-    strong 当前位置：
-    | 新增组织
+    strong =  @organ.parent_id.present? ? "新建组织" : "新建外协企业"
 
   .panel-body
     = render :partial => "form"

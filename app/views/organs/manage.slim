@@ -1,0 +1,25 @@
+.panel.panel-default
+  .panel-heading
+    strong 组织管理
+    .pull-right
+      = link_to "新建外协企业", new_organ_path, :class => "btn btn-info btn-xs"
+    
+  .panel-body
+    p 对组织进行添加，修改，删除，排序等操作
+
+  table.table
+    tr
+      th 序号
+      th 组织名
+      th 上级组织
+      th 操作
+
+    - @root_organs.each_with_index do |organ, i|
+      tr
+        td = i + 1
+        td = organ.name
+        td 无
+        td
+
+      - organ.children.each_with_index do |child, n|
+        = render :partial => "child", :locals => {:organ => child, :index => "#{i + 1} - #{n + 1}"}

@@ -15,7 +15,11 @@ Phonebook::Application.routes.draw do
     end
   end
 
-  resources :organs, :except => [:destroy]
+  resources :organs, :except => [:destroy] do
+    collection do
+      get "manage"
+    end
+  end
 
   resources :users, :except => [:index, :destroy] do
     member do

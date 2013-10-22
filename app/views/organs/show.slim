@@ -6,6 +6,8 @@
       strong = @organ.fullname
       .pull-right
         = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-info btn-xs"
+        = link_to "添加下级组织", new_organ_path(:id => @organ.id), :class => "btn btn-info btn-xs"
+        = link_to "编辑组织", edit_organ_path(@organ), :class => "btn btn-info btn-xs"
 
     - if @users.blank?
       .panel-body

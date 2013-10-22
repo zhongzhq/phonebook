@@ -1,0 +1,8 @@
+tr
+  td = index
+  td = organ.name
+  td = organ.parent.name
+  td
+
+- organ.children.each_with_index do |child, n|
+  = render :partial => "child", :locals => {:organ => child, :index => "#{index} - #{n + 1}"}
