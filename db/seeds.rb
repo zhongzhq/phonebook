@@ -15,6 +15,11 @@ zhiyi = Organ.create!(name: '成都知一软件有限公司' )
 member = Job.create!(name: '成员')
 admin = Job.create!(name: '管理员')
 
+# 地址
+a = Address.create!(name: "成都市高新区", phone: '121312, 1213, 3123')
+b = Address.create!(name: "成都市龙泉驿区", phone: '121312, 1213, 3123')
+c = Address.create!(name: "成都市武侯区", phone: '121312, 1213, 3123')
+
 # 成员初始化
 behind_users = [
   User.create!(name: "苏渝", phone: 18602881279, account: "suyu", password: "123456"),
@@ -29,7 +34,9 @@ behind_users = [
   User.create!(name: "尹常鑫", phone: 15184469287, account: "yinchangxin", password: "123456"),
   User.create!(name: "唐久军", phone: 18782943143, account: "tangjiujun", password: "tang")
   ]
-  behind_users.each { |e| Member.create!(:user_id => e.id, :organ_id => behind.id).tap{|x| x.set_jobs([member.id])} }
+  behind_users.each { |e| Member.create!(:user_id => e.id, :organ_id => behind.id).tap{|x|
+    x.set_jobs([member.id]); x.addresses << a
+    } }
 
 testing_users = [
   User.create!(name: "唐浩", phone: 13880129915, account: "tanghao", password: "123456")
@@ -58,9 +65,3 @@ zservice_users = [
   User.create!(name: "钟刘梅", phone: 15196634082, account: "zhongliumei", password: "123456")
  ]
  zservice_users.each { |e| Member.create!(:user_id => e.id, :organ_id => zservice.id).tap{|x| x.set_jobs([member.id])} }
-
-# 初始化管理员
-# zhiyi_admin_actor = Actor.create!(membership_id: admin.id, organ_id: zhiyi.id)
-# ['xiegang', 'tangjiujun'].each do |account|
-#   User.where(:account => account).each { |user| user.actors << zhiyi_admin_actor }
-# end

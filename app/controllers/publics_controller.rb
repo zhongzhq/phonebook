@@ -29,6 +29,6 @@ class PublicsController < ApplicationController
   end
   
   def search
-    @users = User.where("name LIKE :text OR cellphone LIKE :text OR username LIKE :text", {:text => "%#{params[:text]}%"})
+    @users = User.where("name LIKE :value", {:value => "%#{params[:text]}%"})
   end
 end
