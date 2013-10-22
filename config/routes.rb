@@ -2,7 +2,6 @@
 Phonebook::Application.routes.draw do
   # 设置用户登陆前后不同的 root  
   root :to => 'publics#index', :constraints => ->(request) do
-    p User.find_by_authentication_token(request.cookies["remember"])
     User.find_by_authentication_token(request.cookies["remember"]) or User.find_by_id(request.session[:user_id])
   end
   root :to => 'publics#login'

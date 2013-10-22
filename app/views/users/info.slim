@@ -1,18 +1,14 @@
 .panel.panel-info
   .panel-heading
-    strong 当前位置：
-    | 修改个人资料
+    strong 修改个人资料
 
   .panel-body
     = simple_form_for @user, :url => info_submit_user_path(@user), :method => :post do |f|
       = input f, :name
-      = input f, :username
-      = input f, :cellphone
-
-      = f.simple_fields_for :user_attrs do |a|
-        = input a, :key, as: :hidden
-        = input a, :value, label: a.object.key
+      = input f, :phone
+      = input f, :comment
 
       .form-group
         .col-sm-offset-2.col-sm-10
           = f.button :submit, "保存"
+          = back_link

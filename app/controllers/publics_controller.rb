@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 class PublicsController < ApplicationController
   def index
-    #@users = Recent.users(current_user)
+    @users = Recent.users(current_user)
   end
 
   def login

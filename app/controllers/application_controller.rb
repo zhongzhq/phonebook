@@ -6,9 +6,4 @@ class ApplicationController < ActionController::Base
   end
 
   include Phonebook::Controllers::Helpers
-
-  layout :set_layout
-  def set_layout
-    request.xhr? ? false : "application"
-  end
 end

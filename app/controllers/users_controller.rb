@@ -74,8 +74,8 @@ end
   def password_submit
     @user = User.find(params[:id])
     if @user.try(:authenticate, params[:user][:current_password])      
-      if @user.update_attributes(params[:user])
-        redirect_to root_path, :notice => "密码修改成功"
+      if @user.update_attributes(params[:user].tap{|x| x.delete("current_password")})
+        redirect_to root_path
       else
         return render "password"
       end
@@ -87,13 +87,13 @@ end
 
   def info
     @user = User.find(params[:id])
-    ["座机号", "电子邮箱"].each {|key| @user.user_attrs.build(:key => key) } if @user.user_attrs.blank?
   end
 
   def info_submit
     @user = User.find(params[:id])
+
     if @user.update_attributes(params[:user])
-      redirect_to root_path, :notice => "用户资料更新成功"
+      redirect_to root_path
     else
       render "info"
     end

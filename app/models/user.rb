@@ -2,7 +2,7 @@
 class User < ActiveRecord::Base
   include Concerns::Authentication
 
-  attr_accessible :account, :name, :phone
+  attr_accessible :account, :name, :phone, :comment
 
   has_many :members
 

@@ -4,9 +4,7 @@ module ApplicationHelper
     form.input field_name, {:input_html => {:class => 'form-control'}}.merge(args)
   end
 
-  def organ_back_path organ
-    organ.id.present? ? organ_path(organ) : (
-      organ.parent_id.present? ? organ_path( Organ.find(organ.parent_id) ) : root_path
-      )
+  def back_link path = :back
+    link_to "返回", :back, :class => "btn btn-danger"
   end
 end
