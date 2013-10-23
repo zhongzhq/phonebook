@@ -3,7 +3,7 @@ zh_CN:
     models:
       user: 用户
       organ: 组织
-      membership: 角色
+      job: 职务
     attributes:
       user:
         username: 用户名
@@ -19,8 +19,9 @@ zh_CN:
         addresses: 办公地址
       organ:
         name: 组织名
-      membership:
-        name: 角色名
+      job:
+        name: 职务名
+        sort: 排序号
 
     errors:
       messages:

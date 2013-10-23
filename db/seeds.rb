@@ -12,8 +12,8 @@ zhiyi = Organ.create!(name: '成都知一软件有限公司' )
   zservice = Organ.create!(name: '极服务', parent_id: zhiyi)
 
 # 角色初始化
-member = Job.create!(name: '成员')
-admin = Job.create!(name: '管理员')
+member = Job.create!(name: '成员', :sort => 50)
+admin = Job.create!(name: '管理员', :sort => 10)
 
 # 地址
 a = Address.create!(name: "成都市高新区", phone: '121312, 1213, 3123')

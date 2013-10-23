@@ -26,7 +26,7 @@ class OrgansController < ApplicationController
 
   def show
     @organ = Organ.find(params[:id])
-    @users = @organ.members.map(&:user)
+    @users = @organ.members.sort{|x, y| y.jobs.map(&:sort).max <=> x.jobs.map(&:sort).max }.map(&:user)
   end
 
   def edit
