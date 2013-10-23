@@ -58,6 +58,21 @@ class UsersController < ApplicationController
     end
   end
 
+  def move
+    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+    @user = User.find(params[:id])
+  end
+
+  def move_submit
+    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+    @user = User.find(params[:id])
+
+    Member.where(:user_id => @user, :organ_id => params[:old_organ_id]).first
+      .update_attributes(:organ_id => @organ.id)
+
+    redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
+  end
+
   # 用户自己修改信息
   def password
     @user = User.find(params[:id])

@@ -18,3 +18,16 @@
 //= require twitter/bootstrap/dropdown
 //= require twitter/bootstrap/alert
 //= require_tree .
+
+function option_tree(selector, url, func, options ){
+  options = $.extend({
+    indexed: true,
+    set_value_on: 'each',    
+    on_each_change: url,
+    choose: '-- 全部 --'
+  }, options || {});
+
+  $.getJSON(url, function(data){
+    selector.optionTree(data, options).change(func);
+  });
+}

@@ -1,7 +1,7 @@
 .panel.panel-info
   .panel-heading
-    strong 搜索结果
-    span.label.label-info  #{@users.size} 条记录
+    strong 搜索结果 #{@users.size} 条记录
+    
 
   - if @users.blank?
     .panel-body    
@@ -19,4 +19,8 @@
         tr
           td = link_to user.name, user_path(user)
           td
+            - user.members.each do |member|
+              = member.organ_and_jobs_name
+              br
+
           td = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"

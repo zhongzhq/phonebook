@@ -1,14 +1,24 @@
 .panel.panel-info
   .panel-heading
-    strong
-      = @user.name
+    strong 用户详细信息
+    .pull-right
+      = link_to "返回", :back, :class => "btn btn-danger"
 
     span.pull-right
       - if Follow.exist?(current_user, @user.id)
         = link_to "存入电话本", new_follow_path(:user_id => @user), :class => "btn btn-info btn-xs"
 
-      = link_to "编辑", edit_user_path(@user), :class => "btn btn-info btn-xs"
-      = link_to "重置密码", reset_user_path(@user), :class => "btn btn-info btn-xs"
+  .panel-body.jumbotron
+    p 姓名：  #{@user.name}   
+    p 电话： #{@user.phone}
+    hr
 
-  .panel-body    
-    p 手机： #{@user.phone}   
+    - @user.members.each do |member|
+      p 办公地址：
+      = member.addresses.map(&:to_s).join("/")
+      p 组织岗位：
+      = link_to member.organ.fullname, organ_path(member.organ)
+      = member.jobs.map(&:name).join("/")
+
+    hr
+    p 备注： #{simple_format @user.comment}

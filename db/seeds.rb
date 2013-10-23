@@ -38,9 +38,14 @@ behind_users = [
     x.set_jobs([member.id]); x.addresses << a
     } }
 
-  ['suyu',' xiegang', 'tangjiujun'].each do |username|
+  ['suyu','xiegang', 'tangjiujun'].each do |username|
     User.where(:account => username).each { |e|
-      Member.first_or_create(:user_id => e.id, :organ_id => behind.id).tap{|x| x.set_jobs([admin.id]) } }
+      Member.first_or_create(:user_id => e.id, :organ_id => behind.id).tap{|x| x.jobs << admin } }
+  end
+
+  ['suyu','xiegang', 'tangjiujun'].each do |username|
+    User.where(:account => username).each { |e|
+      Member.first_or_create(:user_id => e.id, :organ_id => zhiyi.id).tap{|x| x.set_jobs([admin.id]) } }
   end
 
 testing_users = [

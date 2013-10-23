@@ -9,8 +9,8 @@
       - if Follow.exist?(current_user, @user.id)
         = link_to "存入电话本", new_follow_path(:user_id => @user), :class => "btn btn-info btn-xs"
 
-      = link_to "编辑", edit_user_path(@user), :class => "btn btn-info btn-xs"
-      = link_to "重置密码", reset_user_path(@user), :class => "btn btn-info btn-xs"
+      = link_to "编辑用户", edit_user_path(@user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
+      = link_to "调整组织", move_user_path(@user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
 
   .panel-body    
     p 手机： #{@user.phone}
