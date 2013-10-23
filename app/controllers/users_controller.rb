@@ -19,10 +19,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    Recent.create(:user_id => current_user.id, :recently_id => @user.id)
   end
 
   def with_organ
     @user = User.find(params[:id])
+    Recent.create(:user_id => current_user.id, :recently_id => @user.id)
     @organ = Organ.find(params[:organ_id])
   end
 
@@ -68,7 +70,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     Member.where(:user_id => @user, :organ_id => params[:old_organ_id]).first
-      .update_attributes(:organ_id => @organ.id)
+    .update_attributes(:organ_id => @organ.id)
 
     redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
   end
