@@ -4,6 +4,7 @@ zh_CN:
       user: 用户
       organ: 组织
       job: 职务
+      setting: 系统设置
     attributes:
       user:
         username: 用户名
@@ -22,6 +23,9 @@ zh_CN:
       job:
         name: 职务名
         sort: 排序号
+      setting:
+        comment: 设置项
+        value: 值
 
     errors:
       messages:

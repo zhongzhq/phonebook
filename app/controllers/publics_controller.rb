@@ -12,7 +12,7 @@ class PublicsController < ApplicationController
     @user = User.login(params[:user])
     if @user.present?
       if params[:remember] == "true"
-        cookies[:remember] = {:value => @user.generate_authentication_token, :expires => Time.now + 60 }
+        cookies[:remember] = {:value => @user.generate_authentication_token, :expires => Setting.login_remember_day.to_time }
       end
 
       session[:user_id] = @user.id
@@ -81,14 +81,14 @@ class PublicsController < ApplicationController
         }.joins(:addresses).where{
           (addresses.name.like param_two) | (addresses.pinyin.like param_two)
         }
-      m2 = Member.joins(:addresses).where{
-        (addresses.name.like param_one) | (addresses.pinyin.like param_one)
-        }.joins(:jobs).where{
-          (jobs.name.like param_two) | (jobs.pinyin.like param_two)
-        }
-      @users += User.joins(:members).where{ members.id.in m1 + m2 }
+        m2 = Member.joins(:addresses).where{
+          (addresses.name.like param_one) | (addresses.pinyin.like param_one)
+          }.joins(:jobs).where{
+            (jobs.name.like param_two) | (jobs.pinyin.like param_two)
+          }
+          @users += User.joins(:members).where{ members.id.in m1 + m2 }
 
-    elsif @value.split.size == 3
+        elsif @value.split.size == 3
       # 组织 职务 名称 或 组织 地址 名称
       o = Organ.where{ (name.like param_one) | (pinyin.like param_one) }.map(&:subtree).flatten
       m = Member.joins(:organ).where{organ_id.in o}
@@ -109,12 +109,12 @@ class PublicsController < ApplicationController
         }.joins(:addresses).where{
           (addresses.name.like param_three) | (addresses.pinyin.like param_three)
         }
-      m2 = m.joins(:addresses).where{
-        (addresses.name.like param_two) | (addresses.pinyin.like param_two)
-        }.joins(:jobs).where{
-          (jobs.name.like param_three) | (jobs.pinyin.like param_three)
-        }
-      @users += User.joins(:members).where{ members.id.in m1 + m2 }
+        m2 = m.joins(:addresses).where{
+          (addresses.name.like param_two) | (addresses.pinyin.like param_two)
+          }.joins(:jobs).where{
+            (jobs.name.like param_three) | (jobs.pinyin.like param_three)
+          }
+          @users += User.joins(:members).where{ members.id.in m1 + m2 }
 
       # 职务 地址 名称 或 地址 职务 名称
       m1 = Member.joins(:jobs).where{
@@ -122,15 +122,15 @@ class PublicsController < ApplicationController
         }.joins(:addresses).where{
           (addresses.name.like param_two) | (addresses.pinyin.like param_two)
         }
-      m2 = Member.joins(:addresses).where{
-        (addresses.name.like param_one) | (addresses.pinyin.like param_one)
-        }.joins(:jobs).where{
-          (jobs.name.like param_two) | (jobs.pinyin.like param_two)
-        }
-      @users += User.joins(:members).where{ members.id.in m1 + m2 }.where{
-        (name.like param_three) | (pinyin.like param_three)
-      }
-    elsif @value.split.size == 4
+        m2 = Member.joins(:addresses).where{
+          (addresses.name.like param_one) | (addresses.pinyin.like param_one)
+          }.joins(:jobs).where{
+            (jobs.name.like param_two) | (jobs.pinyin.like param_two)
+          }
+          @users += User.joins(:members).where{ members.id.in m1 + m2 }.where{
+            (name.like param_three) | (pinyin.like param_three)
+          }
+        elsif @value.split.size == 4
       # 组织 职务 地址 名称 或 组织 地址 职务 名称
       o = Organ.where{ (name.like param_one) | (pinyin.like param_one) }.map(&:subtree).flatten
       m = Member.joins(:organ).where{organ_id.in o}
@@ -140,16 +140,16 @@ class PublicsController < ApplicationController
         }.joins(:addresses).where{
           (addresses.name.like param_three) | (addresses.pinyin.like param_three)
         }
-      m2 = m.joins(:addresses).where{
-        (addresses.name.like param_two) | (addresses.pinyin.like param_two)
-        }.joins(:jobs).where{
-          (jobs.name.like param_three) | (jobs.pinyin.like param_three)
-        }
-      @users = User.joins(:members).where{ members.id.in m1 + m2 }.where{
-        (name.like param_four) | (pinyin.like param_four)
-      }
-    end
+        m2 = m.joins(:addresses).where{
+          (addresses.name.like param_two) | (addresses.pinyin.like param_two)
+          }.joins(:jobs).where{
+            (jobs.name.like param_three) | (jobs.pinyin.like param_three)
+          }
+          @users = User.joins(:members).where{ members.id.in m1 + m2 }.where{
+            (name.like param_four) | (pinyin.like param_four)
+          }
+        end
 
-    @users = @users.uniq
-  end
-end
+        @users = @users.uniq
+      end
+    end

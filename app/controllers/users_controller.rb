@@ -31,7 +31,9 @@ class UsersController < ApplicationController
   def edit
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])
+
     @user.jobs = Member.where(:user_id => @user.id, :organ_id => @organ.id).first.jobs.map(&:id)
+    @user.addresses = Member.where(:user_id => @user.id, :organ_id => @organ.id).first.addresses.map(&:id)
   end
 
   def update

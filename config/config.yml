@@ -4,6 +4,12 @@ defaults: &defaults
     - 管理员
     - 成员
 
+  system:
+    - key: login_remember_day
+      value: 5
+      comment: 登陆记住天数
+
+
 development:
   <<: *defaults
 

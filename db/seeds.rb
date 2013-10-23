@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+# 初始化系统设置
+Settings.system.each do |setting|
+  Setting.create(setting)
+end
+
 # ----------------- zhiyi init ------------------
 # 部门初始化
 zhiyi = Organ.create!(name: '成都知一软件有限公司' )

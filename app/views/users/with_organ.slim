@@ -15,3 +15,4 @@
   .panel-body    
     p 手机： #{@user.phone}
     p 角色： #{Member.where(:user_id => @user.id, :organ_id => @organ.id).first.jobs.map(&:name).join("/")}
+    p 办公地址： #{Member.where(:user_id => @user.id, :organ_id => @organ.id).first.addresses.map(&:to_s).join("/")}
