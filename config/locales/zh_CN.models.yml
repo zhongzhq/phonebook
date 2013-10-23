@@ -4,6 +4,7 @@ zh_CN:
       user: 用户
       organ: 组织
       job: 职务
+      address: 办公地址
       setting: 系统设置
     attributes:
       user:
@@ -26,6 +27,9 @@ zh_CN:
       setting:
         comment: 设置项
         value: 值
+      address:
+        name: 地址名
+        phone: 办公电话
 
     errors:
       messages:

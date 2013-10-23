@@ -41,11 +41,8 @@ Phonebook::Application.routes.draw do
 
   resources :follows, :only => [:index, :new, :destroy]
 
-  resources :jobs, :except => [:show] do
-    collection do
-      delete "index"
-    end
-  end
+  resources :jobs, :except => [:show]
+  resources :addresses, :except => [:show]
 
   resources :settings
 end

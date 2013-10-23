@@ -1,0 +1,8 @@
+= simple_form_for @address do |f|
+  = input f, :name
+  = input f, :phone
+  
+  .form-group
+    .col-sm-offset-2.col-sm-10
+      = f.button :submit, "保存"
+      = back_link
