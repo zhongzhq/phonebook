@@ -41,7 +41,9 @@ behind_users = [
 testing_users = [
   User.create!(name: "唐浩", phone: 13880129915, account: "tanghao", password: "123456")
   ]
-  testing_users.each { |e| Member.create!(:user_id => e.id, :organ_id => testing.id).tap{|x| x.set_jobs([member.id])} }
+  testing_users.each { |e| Member.create!(:user_id => e.id, :organ_id => testing.id).tap{|x|
+    x.set_jobs([member.id]); x.addresses << b
+    } }
 
 xingzheng_users = [
   User.create!(name: "闫秋云", phone: 13808229662, account: "yanqiuyun", password: "123456")
@@ -64,4 +66,7 @@ zservice_users = [
   User.create!(name: "廖肖韦", phone: 15202859971, account: "liaoxiaowei", password: "123456"),
   User.create!(name: "钟刘梅", phone: 15196634082, account: "zhongliumei", password: "123456")
  ]
- zservice_users.each { |e| Member.create!(:user_id => e.id, :organ_id => zservice.id).tap{|x| x.set_jobs([member.id])} }
+ zservice_users.each { |e| Member.create!(:user_id => e.id, :organ_id => zservice.id).tap{|x|
+  x.set_jobs([member.id])
+  x.addresses << c
+  } }

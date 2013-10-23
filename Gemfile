@@ -15,15 +15,19 @@ end
 
 gem 'jquery-rails'
 gem 'slim-rails'
+
 gem 'simple_form'
 gem 'apotomo'
-gem 'wiselinks'
 gem "nested_form"
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'ancestry'
+gem "squeel"
+gem "hanzi_to_pinyin"
+
 gem "settingslogic"
 gem "cancan"
+
 
 group :production do  
   gem "pg"

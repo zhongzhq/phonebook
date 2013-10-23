@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20131022113657) do
   create_table "addresses", :force => true do |t|
     t.string   "name"
     t.string   "phone"
+    t.string   "pinyin"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -35,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20131022113657) do
   create_table "jobs", :force => true do |t|
     t.string   "name"
     t.integer  "sort"
+    t.string   "pinyin"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -56,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20131022113657) do
     t.string   "ancestry"
     t.string   "description"
     t.integer  "sort"
+    t.string   "pinyin"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -75,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20131022113657) do
     t.string   "authentication_token"
     t.string   "state"
     t.string   "comment"
+    t.string   "pinyin"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
   end

@@ -29,6 +29,18 @@ class PublicsController < ApplicationController
   end
   
   def search
-    @users = User.where("name LIKE :value", {:value => "%#{params[:text]}%"})
+    organ, name, username = params[:value].split(" ").map do |x|
+      x.downcase.split("").join("%").insert(0, "%").insert(-1, "%")
+    end
+
+    p organ, name, username
+
+    if params[:value].present?
+      @organs = Organ.joins(:members).uniq.where("name LIKE :value OR pinyin LIKE :value", {:value => "#{@value}"})
+
+      @users = User.where("name LIKE :value OR pinyin LIKE :value", {:value => "#{@value}"})
+    end
+
+    @value = params[:value]
   end
 end

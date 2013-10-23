@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class Organ < ActiveRecord::Base
+  include Concerns::Pinyin
+  
   attr_accessible :description, :name, :sort, :parent_id
 
   has_many :members

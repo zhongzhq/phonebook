@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
   include Concerns::Authentication
+  include Concerns::Pinyin
 
   attr_accessible :account, :name, :phone, :comment
 
