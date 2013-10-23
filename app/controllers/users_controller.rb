@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       member = Member.create!(:user_id => @user.id, :organ_id => @organ.id)
       member.set_jobs(params[:user][:jobs])
-      redirect_to user_path(@user, :organ_id => @organ.id)
+      redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "new"
     end
@@ -19,7 +19,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+  end
+
+  def with_organ
+    @user = User.find(params[:id])
+    @organ = Organ.find(params[:organ_id])
   end
 
   def edit
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       Member.where(:user_id => @user.id, :organ_id => @organ.id).first.set_jobs(params[:user][:jobs])
-      redirect_to user_path(@user, :organ_id => @organ.id)
+      redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "edit"
     end

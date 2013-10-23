@@ -1,7 +1,8 @@
 .col-md-3  
   = render_widget :organ_tree, :display
+
 .col-md-9
-  .panel.panel-default
+  .panel.panel-info
     .panel-heading
       strong = @organ.fullname
       .pull-right
@@ -25,5 +26,5 @@
             td = user.name
             td = Member.where(:user_id => user.id, :organ_id => @organ.id).first.jobs.map(&:name).join("/")
             td
-              = link_to "查看详情", user_path(user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
+              = link_to "查看详情", with_organ_user_path(user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
               = link_to "编辑", edit_user_path(user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"

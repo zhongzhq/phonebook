@@ -1,20 +1,26 @@
-.panel.panel-default
+.panel.panel-info
   .panel-heading
     strong 最近联系人
 
-  table.table
-    tr
-      th 姓名
-      th 职务
-      th 操作
-      
-    - @users.each do |user|
-      tr
-        td = link_to user.name, user_path(user)
-        td
-          - user.actors.each do |actor|
-            = actor.fullname
-            br
+  - if @users.blank?
+    .panel-body
+      .panel.panel-warning
+        .panel-heading 暂无最近联系人
 
-        td
-          = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"
+  - else
+    table.table
+      tr
+        th 姓名
+        th 职务
+        th 操作
+        
+      - @users.each do |user|
+        tr
+          td = link_to user.name, user_path(user)
+          td
+            - user.actors.each do |actor|
+              = actor.fullname
+              br
+
+          td
+            = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"

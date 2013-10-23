@@ -1,7 +1,9 @@
 .panel.panel-info
   .panel-heading
     strong
-      = @user.name
+      span= link_to @organ.fullname, organ_path(@organ)
+      span.deliver >
+      span= @user.name
 
     span.pull-right
       - if Follow.exist?(current_user, @user.id)
@@ -11,4 +13,5 @@
       = link_to "重置密码", reset_user_path(@user), :class => "btn btn-info btn-xs"
 
   .panel-body    
-    p 手机： #{@user.phone}   
+    p 手机： #{@user.phone}
+    p 角色： #{Member.where(:user_id => @user.id, :organ_id => @organ.id).first.jobs.map(&:name).join("/")}
