@@ -1,6 +1,7 @@
 .panel.panel-info
   .panel-heading
     strong 搜索结果
+    span.label.label-info  #{@users.size} 条记录
 
   - if @users.blank?
     .panel-body    

@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-require 'hanzi_to_pinyin'
-
 module Concerns
   module Pinyin
     extend ActiveSupport::Concern
@@ -9,7 +7,7 @@ module Concerns
       
       private
       def name_to_pinyin
-        self.pinyin = HanziToPinyin.hanzi_2_py(self.name).join
+        self.pinyin = HanziToPinyin.hanzi_2_py(self.name)
       end
     end
   end

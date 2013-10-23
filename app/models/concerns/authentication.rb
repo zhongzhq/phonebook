@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-require 'securerandom'
-
 module Concerns
   module Authentication
     extend ActiveSupport::Concern
@@ -9,7 +7,7 @@ module Concerns
       has_secure_password
 
       def generate_authentication_token
-        update_attribute(:authentication_token, SecureRandom.hex)
+        update_attribute(:authentication_token, SecureRandom.hex(128))
         self.authentication_token
       end
     end
