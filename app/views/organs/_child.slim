@@ -3,6 +3,8 @@ tr
   td = organ.name
   td = organ.parent.name
   td
+    = link_to "编辑", edit_organ_path(organ), :class => "btn btn-info btn-xs"
+    = link_to "新建下级", new_organ_path(:id => organ.id), :class => "btn btn-info btn-xs"
 
 - organ.children.each_with_index do |child, n|
   = render :partial => "child", :locals => {:organ => child, :index => "#{index} - #{n + 1}"}

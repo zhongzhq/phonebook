@@ -18,7 +18,7 @@ class OrgansController < ApplicationController
   def create
     @organ = Organ.new(params[:organ])
     if @organ.save
-      redirect_to organ_path(@organ)
+      redirect_to manage_organs_path
     else
       render "new"
     end
@@ -36,7 +36,7 @@ class OrgansController < ApplicationController
   def update
     @organ = Organ.find(params[:id])
     if @organ.update_attributes(params[:organ])
-      redirect_to organ_path(@organ)
+      redirect_to manage_organs_path
     else
       render "edit"
     end
