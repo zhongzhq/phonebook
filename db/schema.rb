@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20131023150411) do
   create_table "organs", :force => true do |t|
     t.string   "name"
     t.string   "ancestry"
-    t.string   "description"
+    t.text     "description"
     t.integer  "sort"
     t.string   "pinyin"
     t.datetime "created_at",  :null => false
@@ -83,9 +83,9 @@ ActiveRecord::Schema.define(:version => 20131023150411) do
     t.string   "account"
     t.string   "phone"
     t.string   "password_digest"
-    t.string   "authentication_token"
+    t.text     "authentication_token"
     t.string   "state"
-    t.string   "comment"
+    t.text     "comment"
     t.string   "pinyin"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
