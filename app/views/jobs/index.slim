@@ -1,10 +1,13 @@
 .panel.panel-info
   .panel-heading
     strong 职务管理
+    .pull-right
+      = link_to "新建职务", new_job_path, :class => "btn btn-primary btn-xs"
 
   .panel-body
-    p.badge 系统职务总计： #{@jobs.size} 个
-    = link_to "新建职务", new_job_path, :class => "btn btn-primary btn-xs"
+    p 系统职务（岗位）管理，主要对岗位（职务）进行增加，修改，删除以及 排序设置（排序号必须为 1-100 以内的整数）
+    small
+      strong 备注： 本页显示顺序，即排序设置顺序
 
   table.table
     tr

@@ -5,6 +5,6 @@ module ApplicationHelper
   end
 
   def back_link path = :back
-    link_to "返回", :back, :class => "btn btn-danger"
+    link_to "返回", path, :class => "btn btn-danger"
   end
 end

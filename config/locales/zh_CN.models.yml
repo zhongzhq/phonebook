@@ -21,6 +21,8 @@ zh_CN:
         addresses: 办公地址
       organ:
         name: 组织名
+        sort: 排序号
+        description: 描述
       job:
         name: 职务名
         sort: 排序号

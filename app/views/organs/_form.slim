@@ -1,8 +1,10 @@
 = simple_form_for @organ do |f|
   = input f, :name
+  = input f, :sort
+  = input f, :description, :as => :text, :input_html => { :rows => 5, :class => 'form-control' }
   = f.hidden_field :parent_id
 
   .form-group
     .col-sm-offset-2.col-sm-10
       = f.button :submit, "保存"
-      = link_to "返回", :back, :class => "btn btn-danger"
+      = back_link manage_organs_path

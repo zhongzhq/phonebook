@@ -7,18 +7,18 @@ end
 
 # ----------------- zhiyi init ------------------
 # 部门初始化
-zhiyi = Organ.create!(name: '成都知一软件有限公司' )
-  software = Organ.create!(name: '软件研发部', parent_id: zhiyi )
-    front = Organ.create!(name: '前台开发部', parent_id: software )
-    behind = Organ.create!(name: '后台开发部', parent_id: software )
-  testing = Organ.create!(name: '测试部', parent_id: zhiyi)
-  xingzheng = Organ.create!(name: '行政部', parent_id: zhiyi)
-  caiwu = Organ.create!(name: '财务部', parent_id: zhiyi )
-  zservice = Organ.create!(name: '极服务', parent_id: zhiyi)
+zhiyi = Organ.create!(name: '成都知一软件有限公司', sort: 100 )
+  software = Organ.create!(name: '软件研发部', parent_id: zhiyi, sort: 60 )
+    front = Organ.create!(name: '前台开发部', parent_id: software, sort: 40 )
+    behind = Organ.create!(name: '后台开发部', parent_id: software, sort: 40 )
+  testing = Organ.create!(name: '测试部', parent_id: zhiyi, sort: 50 )
+  xingzheng = Organ.create!(name: '行政部', parent_id: zhiyi, sort: 70 )
+  caiwu = Organ.create!(name: '财务部', parent_id: zhiyi, sort: 80 )
+  zservice = Organ.create!(name: '极服务', parent_id: zhiyi, sort: 30 )
 
 # 角色初始化
-member = Job.create!(name: '成员', :sort => 50)
-admin = Job.create!(name: '管理员', :sort => 10)
+member = Job.create!(name: '成员', :sort => 10)
+admin = Job.create!(name: '管理员', :sort => 50)
 
 # 地址
 a = Address.create!(name: "成都市高新区", phone: '121312, 1213, 3123')
