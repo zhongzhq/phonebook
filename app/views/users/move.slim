@@ -25,7 +25,6 @@
         .col-sm-offset-2.col-sm-10
           = f.button :submit, "保存"
           = back_link
-      = url_for_event(:get_children, :source => :organ_tree )
 
 javascript:
   option_tree($("#new_organ_id"), "#{url_for_event(:get_children, :source => :organ_tree )}", function(){

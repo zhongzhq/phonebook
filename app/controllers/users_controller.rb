@@ -55,11 +55,13 @@ class UsersController < ApplicationController
   def reset_submit
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])
+
     if @user.update_attributes(params[:user])
-      redirect_to user_path(@user, :organ_id => @organ.id), :notice => "重置密码成功"
+      redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "reset"
     end
+    p @user.errors
   end
 
   def move

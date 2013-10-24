@@ -2,18 +2,18 @@
   = hidden_field_tag :organ_id, @organ.id
   = input f, :name
   = input f, :account
-  = input f, :phone, :hint => '多个电话请用 "," 隔开; 如: 18782943143, 028-63780023'
+  = input f, :phone, :hint => "多个电话，请以逗号 ',' 隔开; 如: 18782943143, 028-63780023"
   = input f, :password if @user.id.blank?
 
-  = input f, :jobs, :collection => Job.all, :input_html => { :multiple => true }
-  = input f, :addresses, :collection => Address.all, :input_html => { :multiple => true }
+  = input f, :jobs, :collection => Job.all, :input_html => { :multiple => true, :'data-placeholder' => "请选择岗位..." }
+  = input f, :addresses, :collection => Address.all, :input_html => { :multiple => true, :'data-placeholder' => "请选择办公地址..."  }
 
-  = input f, :comment
+  = input f, :comment, :as => :text, :input_html => { :rows => 5, :class => 'form-control' }
 
   .form-group
     .col-sm-offset-2.col-sm-10      
       = f.button :submit, "保存"
-      = link_to "返回", :back, :class => "btn btn-danger"
+      = back_link
 
 
 javascript:

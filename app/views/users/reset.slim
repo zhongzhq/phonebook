@@ -1,27 +1,14 @@
-.col-md-8.card
-  .panel.panel-info
-    .panel-heading
-      strong 当前位置：
-      | #{@user.name} - 重置密码
+.panel.panel-info
+  .panel-heading
+    strong 重置密码 --- #{@user.name}
 
-    .panel-body
-      = simple_form_for @user, :url => reset_submit_user_path(@user), :method => :post do |f|
-        = input f, :password
-        = input f, :password_confirmation
-        = hidden_field_tag :organ_id, @organ.id
-        
-        .form-group
-          .col-sm-offset-2.col-sm-10
-            = f.button :submit, "保存"
-            = link_to "返回", user_path(@user, :organ_id => @organ.id), :class => "btn return-btn"
-
-javascript:
-  $(function(){
-    remote($(".edit_user"), function(status, xhr){
-      $(this).closest(".card").replaceWith(xhr.responseText);
-    });
-
-    remote($(".return-btn"), function(status, xhr){
-      $(this).closest(".card").replaceWith(xhr.responseText);
-    });
-  })
+  .panel-body
+    = simple_form_for @user, :url => reset_submit_user_path(@user), :method => :post do |f|
+      = hidden_field_tag :organ_id, @organ.id
+      = input f, :password
+      = input f, :password_confirmation      
+      
+      .form-group
+        .col-sm-offset-2.col-sm-10
+          = f.button :submit, "保存"
+          = back_link
