@@ -16,48 +16,62 @@ zhiyi = Organ.create!(name: '成都知一软件有限公司', sort: 100 )
   caiwu = Organ.create!(name: '财务部', parent_id: zhiyi, sort: 80 )
   zservice = Organ.create!(name: '极服务', parent_id: zhiyi, sort: 30 )
 
-# 角色初始化
-member = Job.create!(name: '成员', :sort => 10)
-admin = Job.create!(name: '管理员', :sort => 50)
+# 职务初始化
+boss = Job.create!(name: '总经理', :sort => 80)
+leader = Job.create!(name: '项目经理', :sort => 60)
+member = Job.create!(name: '员工', :sort => 10)
+engineer = Job.create!(name: '工程师', :sort => 40)
 
 # 地址
-a = Address.create!(name: "成都市高新区", phone: '121312, 1213, 3123')
-b = Address.create!(name: "成都市龙泉驿区", phone: '121312, 1213, 3123')
-c = Address.create!(name: "成都市武侯区", phone: '121312, 1213, 3123')
+address_one = Address.create!(name: "成都市高新区天益街38号", phone: '028-85179020')
+address_two = Address.create!(name: "成都市高新区天府大道新希望国际中心", phone: '400-123-1234, 028-85179020')
 
 # 成员初始化
-behind_users = [
-  User.create!(name: "苏渝", phone: 18602881279, account: "suyu", password: "123456"),
-  User.create!(name: "谢刚", phone: 18628171676, account: "xiegang", password: "123456"),
-  User.create!(name: "钟正权", phone: 13551147353, account: "zhongzhengquan", password: "123456"),
-  User.create!(name: "杨峻峰", phone: 15881151751, account: "yangjunfeng", password: "123456"),
+User.create!(name: "苏渝", phone: 18602881279, account: "suyu", password: "123456")
+User.create!(name: "谢刚", phone: 18628171676, account: "xiegang", password: "123456")
+User.create!(name: "钟正权", phone: 13551147353, account: "zhongzhengquan", password: "123456")
+
+User.create!(name: "杨峻峰", phone: 15881151751, account: "yangjunfeng", password: "123456")
+User.create!(name: "何源", phone: 13320963363, account: "heyuan", password: "123456")
+
+behind_users = [  
   User.create!(name: "陈健斌", phone: 15882357025, account: "chenjianbin", password: "123456"),
-  User.create!(name: "杨丹", phone: 13281283611, account: "yangdan", password: "123456"),
-  User.create!(name: "何源", phone: 13320963363, account: "heyuan", password: "123456"),
+  User.create!(name: "杨丹", phone: 13281283611, account: "yangdan", password: "123456"),  
   User.create!(name: "黄德洲", phone: 18782902305, account: "huangdezhou", password: "123456"),
   User.create!(name: "张涛", phone: 15202826031, account: "zhangtao", password: "123456"),
   User.create!(name: "尹常鑫", phone: 15184469287, account: "yinchangxin", password: "123456"),
   User.create!(name: "唐久军", phone: 18782943143, account: "tangjiujun", password: "tang")
   ]
   behind_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => behind.id).tap{|x|
-    x.set_jobs([member.id]); x.addresses << a
+    x.set_jobs([member.id]); x.addresses << address_one
     } }
 
-  ['suyu','xiegang', 'tangjiujun'].each do |username|
+  ['suyu'].each do |username|
     User.where(:account => username).each { |e|
-      Member.first_or_create(:user_id => e.id, :organ_id => behind.id).tap{|x| x.jobs << admin } }
+      Member.first_or_create(:user_id => e.id, :organ_id => zhiyi.id).tap{|x|
+        x.set_jobs([boss.id]); x.addresses << address_one
+        } }
   end
 
-  ['suyu','xiegang', 'tangjiujun'].each do |username|
+  ['xiegang', 'zhongzhengquan'].each do |username|
     User.where(:account => username).each { |e|
-      Member.first_or_create(:user_id => e.id, :organ_id => zhiyi.id).tap{|x| x.set_jobs([admin.id]) } }
+      Member.first_or_create(:user_id => e.id, :organ_id => software.id).tap{|x|
+        x.set_jobs([leader.id]); x.addresses << address_one
+        } }
+  end
+
+  ['heyuan', 'yangjunfeng'].each do |username|
+    User.where(:account => username).each { |e|
+      Member.first_or_create(:user_id => e.id, :organ_id => behind.id).tap{|x|
+        x.set_jobs([engineer.id]); x.addresses << address_one
+        } }
   end
 
 testing_users = [
   User.create!(name: "唐浩", phone: 13880129915, account: "tanghao", password: "123456")
   ]
   testing_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => testing.id).tap{|x|
-    x.set_jobs([member.id]); x.addresses << b
+    x.set_jobs([member.id]); x.addresses << address_one
     } }
 
 xingzheng_users = [
@@ -83,5 +97,5 @@ zservice_users = [
  ]
  zservice_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => zservice.id).tap{|x|
   x.set_jobs([member.id])
-  x.addresses << c
+  x.addresses << address_two
   } }
