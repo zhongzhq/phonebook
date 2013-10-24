@@ -10,7 +10,10 @@ class SettingsController < ApplicationController
 
   def update
     @setting = Setting.find(params[:id])
-    @setting.update_attributes(params[:setting])
-    redirect_to settings_path
+    if @setting.update_attributes(params[:setting])      
+      redirect_to settings_path
+    else
+      render "edit"
+    end
   end
 end
