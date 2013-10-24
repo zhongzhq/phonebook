@@ -16,6 +16,11 @@ class Member < ActiveRecord::Base
     Job.find(job_ids.delete_if{|x| x.blank?}).map { |e| jobs << e }
   end
 
+  def set_addresses address_ids
+    addresses.clear
+    Address.find(address_ids.delete_if{|x| x.blank?}).map { |e| addresses << e }
+  end
+
   def self.first_or_create args = {}
     where(:user_id => args[:user_id], :organ_id => args[:organ_id]).first_or_create
   end

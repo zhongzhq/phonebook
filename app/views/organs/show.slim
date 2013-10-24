@@ -8,10 +8,12 @@
       .pull-right
         = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-info btn-xs"
 
+    .panel-body
+      small = simple_format @organ.description
+
     - if @users.blank?
-      .panel-body
-        .panel.panel-warning
-          .panel-heading 该部门下暂无成员
+      .panel.panel-warning
+        .panel-heading 该部门下暂无成员
 
     - else
       table.table

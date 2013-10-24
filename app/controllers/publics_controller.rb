@@ -150,6 +150,6 @@ class PublicsController < ApplicationController
           }
         end
 
-        @users = @users.uniq
+        @users = (@users || []).uniq
       end
     end

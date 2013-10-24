@@ -12,12 +12,12 @@
       .form-group
         .col-sm-2.control-label 当前组织
         .col-sm-10
+          input type="hidden" name="old_organ_id" value=@organ.id
           .form-control-static #{@organ.fullname}
 
       .form-group
-        .col-sm-2.control-label 调整到
-        .col-sm-10
-          input type="hidden" name="old_organ_id" value=@organ.id
+        .col-sm-2.control-label for="new_organ_id" 调整到
+        .col-sm-10          
           input id="new_organ_id" type="hidden" name="organ_id" class="form-control"
           
 

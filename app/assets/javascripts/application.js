@@ -24,7 +24,7 @@ function option_tree(selector, url, func, options ){
     indexed: true,
     set_value_on: 'each',    
     on_each_change: url,
-    choose: '-- 全部 --'
+    choose: '-- 请选择 --'
   }, options || {});
 
   $.getJSON(url, function(data){
