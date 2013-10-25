@@ -16,6 +16,11 @@
     .panel.panel-info
       .panel-heading
         strong 常用电话
+      table.table
+        - Common.all.each do |common|
+          tr
+            td = common.name
+            td = common.phone
 
 
 

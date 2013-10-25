@@ -16,7 +16,7 @@ class Organ < ActiveRecord::Base
     parent.fullname + "/" + name
   end
 
-  # 首页显示的组织
+  # 首页显示的组织, is_index 值为 1 时，表示显示该组织
   def self.index_organ
     where(:is_index => 1)
   end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131023150411) do
+ActiveRecord::Schema.define(:version => 20131025065032) do
 
   create_table "addresses", :force => true do |t|
     t.string   "name"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(:version => 20131023150411) do
   create_table "addresses_members", :force => true do |t|
     t.integer "address_id"
     t.integer "member_id"
+  end
+
+  create_table "commons", :force => true do |t|
+    t.string   "name"
+    t.string   "phone"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "follows", :force => true do |t|
@@ -59,9 +66,9 @@ ActiveRecord::Schema.define(:version => 20131023150411) do
     t.text     "description"
     t.integer  "sort"
     t.string   "pinyin"
-    t.integer  "is_index",  :default => 0   # 默认 0 不显示，1 显示
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "is_index",    :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "recents", :force => true do |t|
@@ -90,6 +97,12 @@ ActiveRecord::Schema.define(:version => 20131023150411) do
     t.string   "pinyin"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+  end
+
+  create_table "ussdsfers", :force => true do |t|
+    t.text     "desc"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
