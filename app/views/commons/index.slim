@@ -2,7 +2,7 @@
   .panel-heading
     strong 常用电话
     .pull-right
-      = link_to "新建常用电话", new_common_path, :class => "btn btn-primary btn-xs"
+      = link_to "添加常用电话", new_common_path, :class => "btn btn-primary btn-xs"
 
   - if @commons.blank?
     .panel-body    
@@ -10,11 +10,11 @@
           .panel-heading 暂无常用电话，请先添加
   - else
     .panel-body
-      small 设置一些公司常用的电话，放置在首页
+      small 设置公司的常用电话，用户登录后的首页显示
       
     table.table
       tr
-        th 名字
+        th 名称
         th 电话
         th 操作
         

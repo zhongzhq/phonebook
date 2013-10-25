@@ -35,7 +35,7 @@ zh_CN:
         comment: 设置项
         value: 值
       common:
-        name: 名字
+        name: 名称
         phone: 电话
 
     errors:
