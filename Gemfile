@@ -35,6 +35,7 @@ group :production do
 end
 
 group :development, :test do
+  gem "zeus"
   gem 'pry-debugger'
   gem "sqlite3"
 end

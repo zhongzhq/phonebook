@@ -10,10 +10,10 @@ end
 zhiyi = Organ.create!(name: '成都知一软件有限公司', sort: 100 )
   software = Organ.create!(name: '软件研发部', parent_id: zhiyi, sort: 60 )
     front = Organ.create!(name: '前台开发部', parent_id: software, sort: 40 )
-    behind = Organ.create!(name: '后台开发部', parent_id: software, sort: 40 )
+    behind = Organ.create!(name: '后台开发部', parent_id: software, sort: 40, is_index: 1 )
   testing = Organ.create!(name: '测试部', parent_id: zhiyi, sort: 50 )
-  xingzheng = Organ.create!(name: '行政部', parent_id: zhiyi, sort: 70 )
-  caiwu = Organ.create!(name: '财务部', parent_id: zhiyi, sort: 80 )
+  xingzheng = Organ.create!(name: '行政部', parent_id: zhiyi, sort: 70, is_index: 1 )
+  caiwu = Organ.create!(name: '财务部', parent_id: zhiyi, sort: 80, is_index: 1 )
   zservice = Organ.create!(name: '极服务', parent_id: zhiyi, sort: 30 )
 
 # 职务初始化

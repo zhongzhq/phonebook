@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20131023150411) do
     t.text     "description"
     t.integer  "sort"
     t.string   "pinyin"
+    t.integer  "is_index",  :default => 0   # 默认 0 不显示，1 显示
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end

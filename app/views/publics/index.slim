@@ -1,28 +1,49 @@
-.panel.panel-info
-  .panel-heading
-    strong 最近联系人
+#home
+  = render :partial => "search"
 
-  - if @users.blank?
-    .panel-body
-      .panel.panel-warning
-        .panel-heading 暂无最近联系人
+.row
+  .col-md-6
+    .panel.panel-info
+      .panel-heading
+        strong 快捷入口
+      table.table
+        - Organ.index_organ.each do |organ|
+          tr
+            td
+              = link_to organ.fullname, organ_path(organ)
 
-  - else
-    .panel-body
-      small 最近联系人，记录你最近在系统中 搜索 或者 查看 的用户
+  .col-md-6
+    .panel.panel-info
+      .panel-heading
+        strong 常用电话
 
-    table.table
-      tr
-        th 姓名
-        th 职务
-        th 操作
+
+
+/ .panel.panel-info
+/   .panel-heading
+/     strong 最近联系人
+
+/   - if @users.blank?
+/     .panel-body
+/       .panel.panel-warning
+/         .panel-heading 暂无最近联系人
+
+/   - else
+/     .panel-body
+/       small 最近联系人，记录你最近在系统中 搜索 或者 查看 的用户
+
+/     table.table
+/       tr
+/         th 姓名
+/         th 职务
+/         th 操作
         
-      - @users.each do |user|
-        tr
-          td = link_to user.name, user_path(user)
-          td
-            - user.members.each do |member|
-              = member.organ_and_jobs_name
-              br
-          td
-            = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"
+/       - @users.each do |user|
+/         tr
+/           td = link_to user.name, user_path(user)
+/           td
+/             - user.members.each do |member|
+/               = member.organ_and_jobs_name
+/               br
+/           td
+/             = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"

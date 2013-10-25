@@ -17,7 +17,6 @@ html lang="zh-CN"
     .container
       .row          
         = render "snippets/flash", :flash => flash
-        = render "snippets/search" if current_user.present?
         #content
           == yield
 

@@ -2,7 +2,7 @@
 class Organ < ActiveRecord::Base
   include Concerns::Pinyin
   
-  attr_accessible :description, :name, :sort, :parent_id
+  attr_accessible :description, :name, :sort, :parent_id, :is_index
 
   has_many :members
   has_ancestry
@@ -14,5 +14,10 @@ class Organ < ActiveRecord::Base
   def fullname
     return name unless parent
     parent.fullname + "/" + name
+  end
+
+  # 首页显示的组织
+  def self.index_organ
+    where(:is_index => 1)
   end
 end

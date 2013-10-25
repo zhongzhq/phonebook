@@ -174,6 +174,8 @@ GEM
       rack
       raindrops (~> 0.7)
     yamler (0.1.0)
+    zeus (0.13.3)
+      method_source (>= 0.6.7)
 
 PLATFORMS
   ruby
@@ -201,3 +203,4 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   unicorn
+  zeus
