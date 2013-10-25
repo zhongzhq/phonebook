@@ -10,15 +10,18 @@ html lang="zh-CN"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
+    /![if IE]
+    script: src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
+
   body
     #header
       = render "snippets/header"
 
-    .container
-      .row          
-        = render "snippets/flash", :flash => flash
-        #content
-          == yield
+    .container               
+      = render "snippets/flash", :flash => flash
+    #content
+      .container
+        == yield
 
     #footer
       = render "snippets/footer"
