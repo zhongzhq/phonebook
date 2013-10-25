@@ -6,6 +6,7 @@ zh_CN:
       job: 职务
       address: 办公地址
       setting: 系统设置
+      common: 常用电话
     attributes:
       user:
         username: 用户名
@@ -27,12 +28,15 @@ zh_CN:
       job:
         name: 职务名
         sort: 排序号
-      setting:
-        comment: 设置项
-        value: 值
       address:
         name: 地址名
         phone: 办公电话
+      setting:
+        comment: 设置项
+        value: 值
+      common:
+        name: 名字
+        phone: 电话
 
     errors:
       messages:

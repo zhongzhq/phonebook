@@ -1,0 +1,27 @@
+.panel.panel-info
+  .panel-heading
+    strong 常用电话
+    .pull-right
+      = link_to "新建常用电话", new_common_path, :class => "btn btn-primary btn-xs"
+
+  - if @commons.blank?
+    .panel-body    
+        .panel.panel-warning
+          .panel-heading 暂无常用电话，请先添加
+  - else
+    .panel-body
+      small 设置一些公司常用的电话，放置在首页
+      
+    table.table
+      tr
+        th 名字
+        th 电话
+        th 操作
+        
+      - @commons.each do |common|
+        tr
+          td = common.name
+          td = common.phone
+          td
+            = link_to "编辑", edit_common_path(common), :class => "btn btn-info btn-xs"
+            = link_to "删除", common_path(common), :class => "btn btn-danger btn-xs", :method => :delete, :confirm => "你确定要删除吗？"

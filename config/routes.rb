@@ -45,4 +45,5 @@ Phonebook::Application.routes.draw do
   resources :addresses, :except => [:show]
 
   resources :settings
+  resources :commons
 end
