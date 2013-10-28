@@ -28,14 +28,12 @@ gem "hanzi_to_pinyin"
 gem "settingslogic"
 gem "cancan"
 
+gem "pg"
+gem 'activerecord-postgres-hstore'
 
-group :production do  
-  gem "pg"
-  gem 'unicorn'
-end
+gem "unicorn-rails"
 
 group :development, :test do
   gem "zeus"
   gem 'pry-debugger'
-  gem "sqlite3"
 end
