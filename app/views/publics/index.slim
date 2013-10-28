@@ -2,7 +2,7 @@
   = render :partial => "search"
 
 section
-  .panel-info
+  .content-info
     strong 快捷入口
     ul.ul-inline
       - Organ.index_organ.each do |organ|
@@ -13,13 +13,13 @@ section
     .clearfix
 
 section   
-  .panel-info 
+  .content-info 
     strong 常用电话
     ul.ul-inline
       - Common.all.each do |common|
         li style="padding: 5px 10px;"
           span = common.name
-          em = common.phone        
+          span style="font-weight: bold;" = common.phone        
         
       .clearfix
     .clearfix
