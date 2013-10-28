@@ -1,3 +1,5 @@
+= render :partial => "search"
+
 .panel.panel-info
   .panel-heading
     strong 搜索结果 #{@users.size} 条记录
@@ -12,12 +14,14 @@
     table.table
       tr
         th 姓名
+        th 手机
         th 部门职务
         th 操作
 
       - @users.each do |user|
         tr
           td = link_to user.name, user_path(user)
+          td = user.phone
           td
             - user.members.each do |member|
               = member.organ_and_jobs_name

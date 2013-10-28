@@ -8,7 +8,7 @@ class Member < ActiveRecord::Base
   has_and_belongs_to_many :addresses
 
   def organ_and_jobs_name
-    organ.fullname + "： " + jobs.map(&:name).join("/")
+    organ.name + "： " + jobs.map(&:name).join("/")
   end
 
   def set_jobs job_ids
