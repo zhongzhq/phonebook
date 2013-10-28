@@ -1,28 +1,28 @@
 #home
   = render :partial => "search"
 
-section
-  .panel-info
-    strong 快捷入口
-    ul.ul-inline
-      - Organ.index_organ.each do |organ|
-        li            
-          = link_to organ.name, organ_path(organ) 
+  section
+    .panel-info
+      strong 快捷入口
+      ul.ul-inline
+        - Organ.index_organ.each do |organ|
+          li            
+            = link_to organ.name, organ_path(organ) 
+        .clearfix
+
       .clearfix
 
-    .clearfix
-
-section   
-  .panel-info 
-    strong 常用电话
-    ul.ul-inline
-      - Common.all.each do |common|
-        li style="padding: 5px 10px;"
-          span = common.name
-          em = common.phone        
-        
+  section   
+    .panel-info 
+      strong 常用电话
+      ul.ul-inline
+        - Common.all.each do |common|
+          li style="padding: 5px 10px;"
+            span = common.name
+            em = common.phone        
+          
+        .clearfix
       .clearfix
-    .clearfix
 
 
 
