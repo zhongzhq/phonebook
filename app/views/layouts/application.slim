@@ -17,11 +17,11 @@ html lang="zh-CN"
     #header
       = render "snippets/header"
 
-    .container               
-      = render "snippets/flash", :flash => flash
+    #message
+      .container              
+        = render "snippets/flash", :flash => flash
     #content
       .container
         == yield
-
-    #footer
-      = render "snippets/footer"
+      #footer
+        = render "snippets/footer"
