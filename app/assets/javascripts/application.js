@@ -30,4 +30,28 @@ function option_tree(selector, url, func, options ){
   $.getJSON(url, function(data){
     selector.optionTree(data, options).change(func);
   });
+};
+
+function toggle_tree(selector){
+  var opened_icon = "glyphicon-play"
+  var closed_icon = "glyphicon-chevron-down"
+
+  selector.find(".item").each(function(){
+    $(this).siblings("ul").hide();
+    if($(this).siblings("ul").find("li").size() > 0){
+      $(this).prepend("<span class=\"glyphicon " + opened_icon + " toggle-icon\"></span>");
+    }
+  });
+
+  selector.find(".item .toggle-icon").click(function(){
+    if($(this).is("." + opened_icon)){
+      $(this).removeClass(opened_icon);
+      $(this).addClass(closed_icon);
+      $(this).parent().siblings("ul").show();
+    } else {
+      $(this).removeClass(closed_icon);
+      $(this).addClass(opened_icon);
+      $(this).parent().siblings("ul").hide();
+    }
+  });
 }

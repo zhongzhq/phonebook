@@ -3,5 +3,10 @@
   ul
     - @root_organs.each do |root_organ|
       li
-        = link_to root_organ.name, organ_path(root_organ)
+        .item
+          = link_to root_organ.name, organ_path(root_organ)
         = render :view => :children, :locals => { :organ => root_organ }
+
+javascript:
+  toggle_tree($(".organ_tree"));
+  $(".organ_tree").find(".toggle-icon").click();
