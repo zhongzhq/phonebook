@@ -104,3 +104,9 @@ zservice_users = [
   x.set_jobs([member.id])
   x.addresses << address_two
   } }
+
+User.all.each do |user|
+  user.properties["办公地址"] = ['3-1024',  '3-1025', '2-1028'].shuffle.first
+  user.properties["办公电话"] = ['431278997', '67542487', '23287912', '797977979'].shuffle.first
+  user.save
+end

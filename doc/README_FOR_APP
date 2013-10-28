@@ -3,7 +3,7 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
 
 一、安装数据库
   1、安装PGsql数据库
-    |--sudo aptitude install postgresql postgresql-server-dev-9.1
+    |--sudo aptitude install postgresql postgresql-contrib postgresql-server-dev-9.1
 
   2、设置数据库访问帐号、密码
     |--- sudo -u postgres psql postgres
@@ -21,3 +21,6 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
     |-- rake db:schema:load
     |-- # 初始化数据
     |-- rake db:seed
+
+三、扩展支持
+  sudo su postgres -c "psql phonebook_standalone -c 'CREATE EXTENSION hstore;'"

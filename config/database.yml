@@ -1,6 +1,6 @@
 development:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: phonebook_standalone
   pool: 5
   username: phonebook
@@ -10,7 +10,7 @@ development:
 
 test:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: phonebook_standalone
   pool: 5
   username: phonebook
@@ -20,7 +20,7 @@ test:
 
 production:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: phonebook_standalone
   pool: 5
   username: phonebook

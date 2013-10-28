@@ -16,6 +16,8 @@
         th 姓名
         th 部门职务
         th 手机
+        th 办公地址
+        th 办公电话
         th 操作
 
       - @users.each do |user|
@@ -25,6 +27,7 @@
             - user.members.each do |member|
               = member.organ_and_jobs_name
               br
-          td = user.phone            
-
-          td = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"
+          td = user.phone
+          td = user.properties['办公地址']
+          td = user.properties['办公电话']
+          td = link_to "详情", user_path(user), :class => "btn btn-info btn-xs"

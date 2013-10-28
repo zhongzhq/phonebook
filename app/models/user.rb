@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   include Concerns::Authentication
   include Concerns::Pinyin
 
+  serialize :properties, ActiveRecord::Coders::Hstore
+  
   attr_accessible :account, :name, :phone, :comment
 
   has_many :members
