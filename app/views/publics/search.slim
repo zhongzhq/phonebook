@@ -14,17 +14,17 @@
     table.table
       tr
         th 姓名
-        th 手机
         th 部门职务
+        th 手机
         th 操作
 
       - @users.each do |user|
         tr
           td = link_to user.name, user_path(user)
-          td = user.phone
           td
             - user.members.each do |member|
               = member.organ_and_jobs_name
               br
+          td = user.phone            
 
           td = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"
