@@ -10,7 +10,7 @@ zh_CN:
     attributes:
       user:
         username: 用户名
-        phone: 电话
+        phone: 手机
         name: 姓名
         account: 帐号
         password: 密码

@@ -30,11 +30,17 @@
       - @user.members.each do |member|
         strong = link_to member.organ.fullname, organ_path(member.organ)
         br
-        small = member.addresses.map(&:to_s).join("/")
+        small
+          - member.addresses.each do |x|
+            span 地址：#{x.name}
+            br
+            span 电话：#{x.phone}
 
         br
-        strong 同事
+        strong 部门其他成员
         table
           - Organ.find(member.organ).members.each do |m|
             tr
-              td= link_to m.user.name, user_path(m.user.name)
+              td = link_to m.user.name, user_path(m.user.name)
+              td = m.user.phone
+              td = m.jobs.map(&:name).join("、")
