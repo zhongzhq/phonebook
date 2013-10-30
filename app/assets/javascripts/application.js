@@ -19,19 +19,6 @@
 //= require twitter/bootstrap/alert
 //= require_tree .
 
-function option_tree(selector, url, func, options ){
-  options = $.extend({
-    indexed: true,
-    set_value_on: 'each',    
-    on_each_change: url,
-    choose: '-- 请选择 --'
-  }, options || {});
-
-  $.getJSON(url, function(data){
-    selector.optionTree(data, options).change(func);
-  });
-};
-
 function toggle_tree(selector){
   var opened_icon = "glyphicon-play"
   var closed_icon = "glyphicon-chevron-down"

@@ -2,10 +2,11 @@
 class User < ActiveRecord::Base
   include Concerns::Authentication
   include Concerns::Pinyin
+  attr_accessor :organ
 
   serialize :properties, ActiveRecord::Coders::Hstore
   
-  attr_accessible :account, :name, :phone, :comment, :properties
+  attr_accessible :account, :name, :phone, :comment, :properties, :organ
 
   has_many :members
 

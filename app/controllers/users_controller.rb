@@ -11,7 +11,6 @@ class UsersController < ApplicationController
     if @user.save
       member = Member.create!(:user_id => @user.id, :organ_id => @organ.id)
       member.set_jobs(params[:user][:jobs])
-      member.set_addresses(params[:user][:addresses])
       redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "new"

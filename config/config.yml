@@ -13,7 +13,6 @@ defaults: &defaults
     - 办公地址
     - 办公电话
 
-
 development:
   <<: *defaults
 
