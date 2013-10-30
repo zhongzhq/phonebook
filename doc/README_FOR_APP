@@ -16,7 +16,7 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
 二、初始化数据库
   1、进入项目根目录
     |-- # 创建数据库
-    |-- rake db:create RAILS_ENV="development"
+    |-- rake db:create RAILS_ENV="production"
     |-- # 创建数据库表
     |-- rake db:schema:load
     |-- # 初始化数据
