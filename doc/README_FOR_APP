@@ -22,5 +22,5 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
     |-- # 初始化数据
     |-- rake db:seed
 
-三、扩展支持
+三、PgSql  hstore 扩展支持设置（root 用户跳过此步骤）
   sudo su postgres -c "psql phonebook_standalone -c 'CREATE EXTENSION hstore;'"

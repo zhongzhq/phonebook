@@ -34,7 +34,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @user.jobs = Member.where(:user_id => @user.id, :organ_id => @organ.id).first.jobs.map(&:id)
-    @user.addresses = Member.where(:user_id => @user.id, :organ_id => @organ.id).first.addresses.map(&:id)
   end
 
   def update
@@ -42,7 +41,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update_attributes(params[:user])
       Member.where(:user_id => @user.id, :organ_id => @organ.id).first.set_jobs(params[:user][:jobs])
-      Member.where(:user_id => @user.id, :organ_id => @organ.id).first.set_addresses(params[:user][:addresses])
       redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "edit"

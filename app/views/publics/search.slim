@@ -25,7 +25,8 @@
           td = link_to user.name, user_path(user)
           td
             - user.members.each do |member|
-              = member.organ_and_jobs_name
+              span title="#{member.organ.fullname + '： ' + member.jobs.map(&:name).join("、")}"
+                = member.organ.name + '： ' + member.jobs.map(&:name).join("、")
               br
           td = user.phone
           td = user.properties['办公地址']

@@ -9,6 +9,10 @@ defaults: &defaults
       value: 5
       comment: 登陆记住天数
 
+  user_properties:
+    - 办公地址
+    - 办公电话
+
 
 development:
   <<: *defaults
