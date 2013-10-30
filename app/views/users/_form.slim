@@ -29,13 +29,16 @@
 javascript:
   $(function(){
     var preselect = "#{(@organ.ancestors << @organ).map(&:name).join(',')}";
+    console.log(preselect.split(','));
     var selector = $("#user_organ");
 
     $.getJSON("#{url_for_event(:organs, :source => :organ_tree)}", function(data){
       selector.optionTree(data, {
+        set_value_on: 'each',
         preselect: {"user_organ": preselect.split(',')},
         choose: '-- 请选择 --'
       }).change(function(){
+        console.log(this.value);
         selector.val(this.value);
       });
     });

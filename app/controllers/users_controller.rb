@@ -11,6 +11,9 @@ class UsersController < ApplicationController
     if @user.save
       member = Member.create!(:user_id => @user.id, :organ_id => @organ.id)
       member.set_jobs(params[:user][:jobs])
+
+      @organ = Organ.where(:name => params[:user_organ]).first
+      @user.members.first.update_attributes(:organ_id => @organ.id)
       redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "new"
@@ -38,8 +41,12 @@ class UsersController < ApplicationController
   def update
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])
+    
     if @user.update_attributes(params[:user])
       Member.where(:user_id => @user.id, :organ_id => @organ.id).first.set_jobs(params[:user][:jobs])
+
+      @organ = Organ.where(:name => params[:user_organ]).first
+      @user.members.first.update_attributes(:organ_id => @organ.id)
       redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "edit"
@@ -61,26 +68,6 @@ class UsersController < ApplicationController
       render "reset"
     end
     p @user.errors
-  end
-
-  def move
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
-    @user = User.find(params[:id])
-  end
-
-  def move_submit
-    @user = User.find(params[:id])
-
-    if params[:organ_id].blank?
-      @organ = Organ.find(params[:old_organ_id])
-      @user.errors.add(:organ_id, "组织不能为空")
-      return render "move"
-    end
-
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
-    Member.where(:user_id => @user, :organ_id => params[:old_organ_id]).first
-    .update_attributes(:organ_id => @organ.id)
-    redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
   end
 
   # 用户自己修改信息

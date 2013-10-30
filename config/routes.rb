@@ -28,8 +28,6 @@ Phonebook::Application.routes.draw do
       # 管理员操作
       get "reset"
       post "reset_submit"
-      get "move"
-      post "move_submit"
       
       # 个人操作
       get "password"
