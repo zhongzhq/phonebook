@@ -92,7 +92,6 @@ GEM
     method_source (0.8.2)
     mime-types (1.25)
     multi_json (1.8.2)
-    nested_form (0.3.2)
     onfire (0.2.0)
     pg (0.17.0)
     pg-hstore (1.2.0)
@@ -198,7 +197,6 @@ DEPENDENCIES
   compass-rails
   hanzi_to_pinyin
   jquery-rails (= 3.0.4)
-  nested_form
   pg
   pry-debugger
   rails (= 3.2.13)
