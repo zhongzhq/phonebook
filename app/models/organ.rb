@@ -11,6 +11,8 @@ class Organ < ActiveRecord::Base
   validates_uniqueness_of :name, :scope => :ancestry
   validates :sort, :numericality => { :only_integer => true, :greater_than => 0, :less_than => 101 }
 
+  before_destroy { children.blank? && members.blank? }
+
   def fullname
     return name unless parent
     parent.fullname + "/" + name
