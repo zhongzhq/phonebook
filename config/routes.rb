@@ -37,7 +37,7 @@ Phonebook::Application.routes.draw do
     end
   end
 
-  resources :follows, :only => [:index, :new, :destroy]
+  # resources :follows, :only => [:index, :new, :destroy]
 
   resources :jobs, :except => [:show]
   resources :addresses, :except => [:show]

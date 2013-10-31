@@ -2,11 +2,19 @@
   = render_widget :organ_tree, :display
 
 .col-md-9
+
+  form#search-form.form-inline action=search_publics_path
+    .form-group
+      input name="value" type="text" class="form-control" placeholder="姓名或首字母，电话，房间号，组织" value=@value
+
+    button type="submit" class="btn btn-primary" 搜索
+
   .panel.panel-info
     .panel-heading
       strong = @organ.fullname
       .pull-right
         = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-info btn-xs"
+
 
     .panel-body
       small = simple_format @organ.description

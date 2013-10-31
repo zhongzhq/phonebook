@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require twitter/bootstrap/collapse
 //= require twitter/bootstrap/dropdown
+//= require twitter/bootstrap/alert
 //= require_tree .
 
 function toggle_tree(selector){

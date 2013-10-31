@@ -18,6 +18,7 @@ gem 'slim-rails'
 
 gem 'simple_form'
 gem 'apotomo'
+gem 'will_paginate-bootstrap'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'ancestry'

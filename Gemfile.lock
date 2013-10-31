@@ -179,6 +179,9 @@ GEM
     unicorn-rails (1.1.0)
       rack
       unicorn
+    will_paginate (3.0.5)
+    will_paginate-bootstrap (1.0.0)
+      will_paginate (>= 3.0.3)
     yamler (0.1.0)
     zeus (0.13.3)
       method_source (>= 0.6.7)
@@ -208,4 +211,5 @@ DEPENDENCIES
   therubyracer
   uglifier (>= 1.0.3)
   unicorn-rails
+  will_paginate-bootstrap
   zeus
