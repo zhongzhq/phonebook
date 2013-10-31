@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   # validate :exist_jobs
 
+  before_destroy { members.blank? }
+
   attr_accessor :jobs
   attr_accessible :jobs
 
@@ -21,7 +23,4 @@ class User < ActiveRecord::Base
     errors.add(:jobs, :blank) if jobs.delete_if{|x| x.blank?}.blank?
   end
 
-  def save_properties hash
-    
-  end
 end

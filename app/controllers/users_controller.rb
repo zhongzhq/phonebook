@@ -102,4 +102,16 @@ class UsersController < ApplicationController
       render "info"
     end
   end
+
+  def destroy    
+    @user = User.find(params[:id])
+
+    if params[:organ_id].present?
+      @organ = Organ.find(params[:organ_id])
+      redirect_to organ_path(@organ), (Member.where(:user_id => @user.id, :organ_id => @organ.id).first.try(:destroy) ? {:notice => "用户从组织中删除成功"} : {:alert => "用户从组织中删除失败"})
+    else
+      @user.destroy
+      redirect_to :back, (@job.destroy ? {:notice => "用户删除成功"} : {:alert => "用户还存在于组织下"})
+    end    
+  end
 end

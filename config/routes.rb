@@ -21,7 +21,7 @@ Phonebook::Application.routes.draw do
     end
   end
 
-  resources :users, :except => [:index, :destroy] do
+  resources :users, :except => [:index] do
     member do
       get "with_organ"
 

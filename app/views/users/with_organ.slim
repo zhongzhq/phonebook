@@ -11,6 +11,7 @@
 
       = link_to "编辑用户", edit_user_path(@user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
       = link_to "重置密码", reset_user_path(@user, :organ_id => @organ.id), :class => "btn btn-danger btn-xs"
+      = link_to "删除", user_path(@user, :organ_id => @organ.id), :class => "btn btn-danger btn-xs", :method => :delete, :confirm => "你确定要删除吗？"
 
   .panel-body
     .col-md-12
