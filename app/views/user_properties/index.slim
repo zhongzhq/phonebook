@@ -16,7 +16,7 @@
         td = check_box_tag 'user_property_checkbox', p.id, p.opened?, :class => "user_property_checkbox"
 
 br
-  form.form-inline action=user_properties_path method="post"
+  = form_tag user_properties_path, :class => "form-inline", :method => "post"
     .form-group
       label 添加自定义属性:
     .form-group
