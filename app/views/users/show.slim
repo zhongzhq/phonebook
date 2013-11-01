@@ -41,6 +41,6 @@
         table
           - Organ.find(member.organ).members.each do |m|
             tr
-              td = link_to m.user.name, user_path(m.user.name)
+              td = link_to m.user.name, user_path(m.user)
               td = m.user.phone
               td = m.jobs.map(&:name).join("、")
