@@ -1,0 +1,37 @@
+.panel.panel-info
+  .panel-heading
+    strong 用户属性管理
+
+  .panel-body
+    small 设置用户的附加属性
+
+  table.table
+    tr
+      th 属性名
+      th 是否启用
+
+    -  @user_properies.each do |p|
+      tr
+        td = p.name
+        td = check_box_tag 'user_property_checkbox', p.id, p.opened?, :class => "user_property_checkbox"
+
+br
+  form.form-inline action=user_properties_path method="post"
+    .form-group
+      label 添加自定义属性:
+    .form-group
+      input name="user_property[name]" type="text" class="form-control" placeholder="属性名"
+    button type="submit" class="btn btn-primary" 新增
+    span 示例： 家庭电话，办公电话
+
+javascript:
+  $(function(){
+    $(".user_property_checkbox").click(function(){      
+      if($(this).attr("checked") == "checked"){
+        $(this).removeAttr("checked");
+      }else{
+        $(this).attr("checked", "checked");
+      }
+      $.get("/user_properties/" + $(this).val() + "/edit?checked=" + ($(this).attr("checked") == "checked"));
+    });
+  })

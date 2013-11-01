@@ -44,4 +44,6 @@ Phonebook::Application.routes.draw do
 
   resources :settings
   resources :commons
+
+  resources :user_properties, :only => [:index, :create, :edit]
 end

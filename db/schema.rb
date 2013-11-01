@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
   create_table "user_properties", :force => true do |t|
     t.string   "key"
     t.string   "name"
+    t.string   "state"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
   end
