@@ -14,6 +14,8 @@ class UsersController < ApplicationController
 
       @organ = Organ.where(:name => params[:user_organ]).first
       @user.members.first.update_attributes(:organ_id => @organ.id)
+
+      @user.update_properties(params[:user_properties])
       redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "new"
@@ -47,6 +49,8 @@ class UsersController < ApplicationController
 
       @organ = Organ.where(:name => params[:user_organ]).first
       @user.members.first.update_attributes(:organ_id => @organ.id)
+
+      @user.update_properties(params[:user_properties])
       redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "edit"

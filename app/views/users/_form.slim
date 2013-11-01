@@ -13,11 +13,11 @@
 
   = input f, :jobs, :collection => Job.all, :input_html => { :multiple => true, :'data-placeholder' => "请选择岗位..." }
 
-  - Settings.user_properties.each do |k|
+  - UserProperty.enabled_properties.each do |p|
     .form-group
-      label.control-label.col-sm-2 = k
+      label.control-label.col-sm-2 = p.name
       .col-sm-10
-        input.form-control name="user[properties][#{k}]" type="text" value="#{@user.properties[k]}"
+        input.form-control name="user_properties[#{p.key}]" type="text" value="#{@user.properties[p.key]}"
 
   = input f, :comment, :as => :text, :input_html => { :rows => 5, :class => 'form-control' }
 

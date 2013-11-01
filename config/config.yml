@@ -1,17 +1,12 @@
 defaults: &defaults
-  # 在系统第一次初始化后，请不要修改 memberships
-  memberships:
-    - 管理员
-    - 成员
-
   system:
     - key: login_remember_day
       value: 5
       comment: 登陆记住天数
 
   user_properties:
-    - 办公地址
     - 办公电话
+    - 办公地址
 
 development:
   <<: *defaults

@@ -17,6 +17,10 @@ class UserProperty < ActiveRecord::Base
     end
   end
 
+  def self.enabled_properties
+    where(:state => "opened")
+  end
+
   private
   def name_to_pinyin_as_key
     self.key = HanziToPinyin.hanzi_2_py(self.name).gsub(/[;|,]/, '')

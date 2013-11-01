@@ -23,4 +23,10 @@ class User < ActiveRecord::Base
     errors.add(:jobs, :blank) if jobs.delete_if{|x| x.blank?}.blank?
   end
 
+  def update_properties args = {}
+    args.each do |key, value|
+      properties[key] = value
+    end
+    save
+  end
 end

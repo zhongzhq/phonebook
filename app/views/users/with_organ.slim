@@ -23,8 +23,8 @@
     hr
     .col-md-8
       strong 其他信息
-      - @user.properties.each do |k, v|
-        p #{k}： #{v}
+      - UserProperty.enabled_properties.each do |p|
+        p #{p.name}： #{@user.properties[p.key]}
       strong 备注
       p #{simple_format @user.comment}
 
