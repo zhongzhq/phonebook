@@ -29,8 +29,8 @@
           th 姓名
           th 岗位
           th 手机
-          th 办公地址
           th 办公电话
+          th 办公地址          
           th 操作
 
         - @users.each do |user|
@@ -38,6 +38,6 @@
             td = link_to user.name, with_organ_user_path(user, :organ_id => @organ.id)
             td = Member.where(:user_id => user.id, :organ_id => @organ.id).first.jobs.map(&:name).join("/")
             td = user.phone
-            td = user.properties['办公地址']
-            td = user.properties['办公电话']
+            td = user.properties[UserProperty.find_by_name("办公地址").key]
+            td = user.properties[UserProperty.find_by_name("办公电话").key]
             td = link_to "详情", with_organ_user_path(user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
