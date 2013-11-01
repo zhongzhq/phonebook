@@ -102,4 +102,10 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
 
   add_index "users", ["properties"], :name => "index_users_on_properties"
 
+  create_table "user_properties", :force => true do |t|
+    t.string   "key"
+    t.string   "name"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 end
