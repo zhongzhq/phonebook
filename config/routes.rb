@@ -19,6 +19,9 @@ Phonebook::Application.routes.draw do
     collection do
       get "manage"
     end
+    member do
+      get "search"
+    end
   end
 
   resources :users, :except => [:index] do

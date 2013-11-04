@@ -3,9 +3,10 @@
 
 .col-md-9
 
-  form#search-form.form-inline action=search_publics_path
+  form#search-form.form-inline action="#"
+    /search_organ_path(@organ)
     .form-group
-      input name="value" type="text" class="form-control" placeholder="姓名或首字母，电话，房间号，组织" value=@value
+      input name="value" type="text" class="form-control" placeholder="姓名或首字母，电话，房间号" value=@value
 
     button type="submit" class="btn btn-primary" 搜索
 
