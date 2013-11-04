@@ -52,8 +52,10 @@ html{
 ------------------------------------ */
 .organ_tree {
   background-color: #f7f5fa;
-  padding: 10px 0 10px 0;
+  padding: 20px 20px 10px 0;
   border-radius: 5px;
+  min-height: 400px;
+
   .header {
     font-weight: bold;
     font-size: 16px;
@@ -62,12 +64,40 @@ html{
   ul {
     list-style: none;
     padding: 0;
-    margin-left: 20px;
+    margin-left: 20px; 
+
+    li{
+      background: url("d.png") no-repeat;
+      background-position: -60px -89px;
+      border-left: 1px dotted #333;
+    }  
+
     a {
-      text-decoration: none;
-      font-size: 16px;
+      text-decoration: none;      
     }
+    
+    .item{
+      span{
+        margin-right: 8px;
+        cursor: pointer;
+      }
+    }
+    ul{       
+      
+      margin-left: 5px;
+  
+      li{
+        padding-left: 15px;
+      }
+
+      .item{
+        a{
+          color: #716B7A;
+        }
+      }
+    }    
   }
+  
 }
 
 /* ------------------------------------

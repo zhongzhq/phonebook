@@ -19,8 +19,8 @@
 //= require_tree .
 
 function toggle_tree(selector){
-  var opened_icon = "glyphicon-play"
-  var closed_icon = "glyphicon-chevron-down"
+  var opened_icon = "glyphicon-folder-close"
+  var closed_icon = "glyphicon-folder-open"
 
   selector.find(".item").each(function(){
     $(this).siblings("ul").hide();
