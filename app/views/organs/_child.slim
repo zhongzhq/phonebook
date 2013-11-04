@@ -4,7 +4,7 @@ tr
   td = organ.parent.name
   td
     = link_to "编辑", edit_organ_path(organ), :class => "btn btn-info btn-xs"
-    = link_to "新建下级", new_organ_path(:id => organ.id), :class => "btn btn-info btn-xs"
+    = link_to "增加下级", new_organ_path(:id => organ.id), :class => "btn btn-info btn-xs"
     = link_to "删除", organ_path(organ), :class => "btn btn-danger btn-xs", :method => :delete, :confirm => "你确定要删除吗？"
 
 - organ.children.order("sort DESC").each_with_index do |child, n|
