@@ -5,16 +5,6 @@
   /   p 搜索用户：  张三，zs，科长 张三，办公室 张三，3109 张三
   = render :partial => "search"
 
-section
-  .content-info
-    strong 快捷入口
-    ul.ul-inline
-      - Organ.index_organ.each do |organ|
-        li            
-          = link_to organ.name, organ_path(organ) 
-      .clearfix
-    .clearfix
-
 section   
   .content-info 
     strong 常用电话

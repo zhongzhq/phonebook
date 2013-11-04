@@ -25,7 +25,6 @@ zh_CN:
         name: 组织名
         sort: 排序号
         description: 描述
-        is_index: 首页显示
       job:
         name: 职务名
         sort: 排序号
