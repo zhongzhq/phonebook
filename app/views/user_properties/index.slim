@@ -2,18 +2,18 @@
   .panel-heading
     strong 用户属性管理
 
-  .panel-body
-    small 设置用户的附加属性
-
-  table.table
+  table.table.table-hover
     tr
-      th 属性名
-      th 是否启用
+      th style="width: 200px;" 属性名
+      th 启用
 
     -  @user_properies.each do |p|
       tr
         td = p.name
-        td = check_box_tag 'user_property_checkbox', p.id, p.opened?, :class => "user_property_checkbox"
+        td
+          = check_box_tag 'user_property_checkbox', p.id, p.opened?, :class => "user_property_checkbox"
+          span.flash
+
 
 br
   = form_tag user_properties_path, :class => "form-inline", :method => "post"
@@ -26,12 +26,22 @@ br
 
 javascript:
   $(function(){
-    $(".user_property_checkbox").click(function(){      
-      if($(this).attr("checked") == "checked"){
-        $(this).removeAttr("checked");
+    $(".user_property_checkbox").click(function(){
+      var checkbox = $(this);
+      if(checkbox.attr("checked") == "checked"){
+        checkbox.removeAttr("checked");
       }else{
-        $(this).attr("checked", "checked");
+        checkbox.attr("checked", "checked");
       }
-      $.get("/user_properties/" + $(this).val() + "/edit?checked=" + ($(this).attr("checked") == "checked"));
+      var flash = checkbox.siblings(".flash")
+      $.get( ("/user_properties/" + checkbox.val() + "/edit?checked=" + (checkbox.attr("checked") == "checked") ),
+      function(data){
+        flash.html(data).show()
+        setTimeout(function(){
+          flash.fadeOut("hide");
+        }, 1000);
+      }).fail(function(){
+        checkbox.siblings(".flash").html("服务器错误").show().fadeOut("hide");
+      });
     });
   })
