@@ -86,6 +86,7 @@ class PublicsController < ApplicationController
         (name.like param_three) | (pinyin.like param_three)
       }
     end
+    @users = @users || []
     render "user_result"
   end
 end
