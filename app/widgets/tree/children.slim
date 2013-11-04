@@ -1,6 +1,6 @@
 ul
   - organ.children.order("sort DESC").each do |child|
     li
-      .item
+      .item   
         = link_to child.name, organ_path(child)
       = render :view => :children, :locals => { :organ => child }

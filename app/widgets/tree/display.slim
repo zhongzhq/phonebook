@@ -1,11 +1,10 @@
 .organ_tree.affix
-  .header 组织结构
-  ul
-    - @root_organs.each do |root_organ|
-      li
-        .item
-          = link_to root_organ.name, organ_path(root_organ)
-        = render :view => :children, :locals => { :organ => root_organ }
+  /.header 组织结构
+  - @root_organs.each do |root_organ|
+    ul
+      .item
+        = link_to root_organ.name, organ_path(root_organ)    
+      = render :view => :children, :locals => { :organ => root_organ }
 
 javascript:
   toggle_tree($(".organ_tree"));
