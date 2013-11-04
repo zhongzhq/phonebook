@@ -1,5 +1,10 @@
 form#search-form.form-inline action=search_publics_path
   .form-group
-    input name="value" type="text" class="form-control input-lg" placeholder="姓名或首字母，电话，房间号，组织" value=@value
+    input#value-input.form-control.input-lg name="value" type="text" autofocus="true"  placeholder="姓名或首字母，电话，房间号，组织" value=@value data-toggle="tooltip" data-original-title="<strong>搜索用户</strong><br/> 张三，zs，科长 张三，办公室 张三，3109 张三"
 
   button type="submit" class="btn btn-primary btn-lg" 搜索
+
+javascript:
+  $(function(){
+    $("#value-input").tooltip({html: true});
+  })
