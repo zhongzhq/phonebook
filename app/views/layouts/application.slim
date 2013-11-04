@@ -22,6 +22,9 @@ html lang="zh-CN"
         = render "snippets/flash", :flash => flash
     #content
       .container
-        == yield
+        .col-md-3
+          = render_widget :organ_tree, :display
+        .col-md-9
+          == yield
       #footer
         = render "snippets/footer"
