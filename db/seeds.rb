@@ -31,10 +31,6 @@ leader = Job.create!(name: '项目经理', :sort => 60)
 member = Job.create!(name: '员工', :sort => 10)
 engineer = Job.create!(name: '工程师', :sort => 40)
 
-# 地址
-address_one = Address.create!(name: "成都市高新区天益街38号", phone: '028-85179020')
-address_two = Address.create!(name: "成都市高新区天府大道新希望国际中心", phone: '400-123-1234, 028-85179020')
-
 # 成员初始化
 User.create!(name: "苏渝", phone: 18602881279, account: "suyu", password: "123456")
 User.create!(name: "谢刚", phone: 18628171676, account: "xiegang", password: "123456")
@@ -52,27 +48,27 @@ behind_users = [
   User.create!(name: "唐久军", phone: 18782943143, account: "tangjiujun", password: "tang")
   ]
   behind_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => behind.id).tap{|x|
-    x.set_jobs([member.id]); x.addresses << address_one
+    x.set_jobs([member.id])
     } }
 
   ['suyu'].each do |username|
     User.where(:account => username).each { |e|
       Member.first_or_create(:user_id => e.id, :organ_id => zhiyi.id).tap{|x|
-        x.set_jobs([boss.id]); x.addresses << address_one
+        x.set_jobs([boss.id])
         } }
   end
 
   ['xiegang', 'zhongzhengquan'].each do |username|
     User.where(:account => username).each { |e|
       Member.first_or_create(:user_id => e.id, :organ_id => software.id).tap{|x|
-        x.set_jobs([leader.id]); x.addresses << address_one
+        x.set_jobs([leader.id])
         } }
   end
 
   ['heyuan', 'yangjunfeng'].each do |username|
     User.where(:account => username).each { |e|
       Member.first_or_create(:user_id => e.id, :organ_id => behind.id).tap{|x|
-        x.set_jobs([engineer.id]); x.addresses << address_one
+        x.set_jobs([engineer.id])
         } }
   end
 
@@ -80,7 +76,7 @@ testing_users = [
   User.create!(name: "唐浩", phone: 13880129915, account: "tanghao", password: "123456")
   ]
   testing_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => testing.id).tap{|x|
-    x.set_jobs([member.id]); x.addresses << address_one
+    x.set_jobs([member.id])
     } }
 
 xingzheng_users = [
@@ -106,7 +102,6 @@ zservice_users = [
  ]
  zservice_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => zservice.id).tap{|x|
   x.set_jobs([member.id])
-  x.addresses << address_two
   } }
 
 User.all.each do |user|
