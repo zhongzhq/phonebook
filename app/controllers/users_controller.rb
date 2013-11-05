@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
-  layout "organ_tree", :only => [:new, :with_organ, :reset]
+  layout "organ_tree", :only => [:new, :create, :with_organ, :reset, :edit, :update]
   def new
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.new
@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     if @user.save
       member = Member.create!(:user_id => @user.id, :organ_id => @organ.id)
       member.set_jobs(params[:user][:jobs])
+      member.update_attributes(:is_admin => params[:is_admin])
 
       @organ = Organ.where(:name => params[:user_organ]).first
       @user.members.first.update_attributes(:organ_id => @organ.id)
@@ -34,6 +35,12 @@ class UsersController < ApplicationController
     @organ = Organ.find(params[:organ_id])
   end
 
+  def with_organ_show
+    @user = User.find(params[:id])
+    Recent.create(:user_id => current_user.id, :recently_id => @user.id)
+    @organ = Organ.find(params[:organ_id])
+  end
+
   def edit
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])
@@ -46,8 +53,10 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      Member.where(:user_id => @user.id, :organ_id => @organ.id).first.set_jobs(params[:user][:jobs])
-
+      member = Member.where(:user_id => @user.id, :organ_id => @organ.id).first
+      member.set_jobs(params[:user][:jobs])
+      member.update_attributes(:is_admin => params[:is_admin])
+      
       @organ = Organ.where(:name => params[:user_organ]).first
       @user.members.first.update_attributes(:organ_id => @organ.id)
 

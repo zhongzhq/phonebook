@@ -2,7 +2,9 @@
 class OrgansController < ApplicationController
   layout "organ_tree", :only => [:show]
 
-  def index        
+  def index
+    @organ = Organ.find(params[:id])
+    @users = @organ.members.sort{|x, y| y.jobs.map(&:sort).max <=> x.jobs.map(&:sort).max }.map(&:user)
   end
 
   def manage
@@ -19,6 +21,7 @@ class OrgansController < ApplicationController
 
   def create
     @organ = Organ.new(params[:organ])
+
     if @organ.save
       redirect_to manage_organs_path
     else

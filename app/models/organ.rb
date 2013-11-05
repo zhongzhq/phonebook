@@ -5,7 +5,7 @@ class Organ < ActiveRecord::Base
   has_many :members
   has_ancestry
 
-  validates_presence_of :name, :sort
+  validates_presence_of :name
   validates_uniqueness_of :name, :scope => :ancestry
 
   before_destroy { children.blank? && members.blank? }
