@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class JobsController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     @jobs = Job.order("sort DESC")
   end

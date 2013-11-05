@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class UserPropertiesController < ApplicationController
+  load_and_authorize_resource
+  
   def index
     @user_properies = UserProperty.all.sort
   end
