@@ -1,6 +1,9 @@
 ul
-  - organ.children.order("sort DESC").each do |child|
+  - children = organ.children
+  - children.order("sort DESC").each_with_index do |child, index|
     li
-      .item   
+      .item
+        - if (children.size - 1) == index
+          span last
         = link_to child.name, organ_path(child)
       = render :view => :children, :locals => { :organ => child }
