@@ -18,24 +18,32 @@ gem 'slim-rails'
 
 gem 'simple_form'
 gem 'apotomo'
-gem "nested_form"
+gem 'will_paginate-bootstrap'
 
 gem 'bcrypt-ruby', '~> 3.0.0'
 gem 'ancestry'
 gem "squeel"
 gem "hanzi_to_pinyin"
+gem "state_machine"
 
 gem "settingslogic"
 gem "cancan"
 
+gem "pg"
+gem 'activerecord-postgres-hstore'
 
-group :production do  
-  gem "pg"
-  gem 'unicorn'
-end
+gem "unicorn-rails"
 
 group :development, :test do
   gem "zeus"
   gem 'pry-debugger'
-  gem "sqlite3"
+
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'capybara'
+  gem 'database_cleaner'
 end

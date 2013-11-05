@@ -7,10 +7,11 @@ zh_CN:
       address: 办公地址
       setting: 系统设置
       common: 常用电话
+      user_property: 属性
     attributes:
       user:
         username: 用户名
-        phone: 电话
+        phone: 手机
         name: 姓名
         account: 帐号
         password: 密码
@@ -24,7 +25,6 @@ zh_CN:
         name: 组织名
         sort: 排序号
         description: 描述
-        is_index: 首页显示
       job:
         name: 职务名
         sort: 排序号
@@ -37,6 +37,8 @@ zh_CN:
       common:
         name: 名称
         phone: 电话
+      user_property:
+        name: 属性名
 
     errors:
       messages:

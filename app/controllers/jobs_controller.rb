@@ -31,4 +31,9 @@ class JobsController < ApplicationController
       render "edit"
     end
   end
+
+  def destroy
+    @job = Job.find(params[:id])
+    redirect_to jobs_path, (@job.destroy ? {:notice => "职务删除成功"} : {:alert => "职务正在使用中"})
+  end
 end

@@ -1,0 +1,47 @@
+.panel.panel-info
+  .panel-heading
+    strong 用户属性管理
+
+  table.table.table-hover
+    tr
+      th style="width: 200px;" 属性名
+      th 启用
+
+    -  @user_properies.each do |p|
+      tr
+        td = p.name
+        td
+          = check_box_tag 'user_property_checkbox', p.id, p.opened?, :class => "user_property_checkbox"
+          span.flash
+
+
+br
+  = form_tag user_properties_path, :class => "form-inline", :method => "post"
+    .form-group
+      label 添加自定义属性:
+    .form-group
+      input name="user_property[name]" type="text" class="form-control" placeholder="属性名"
+    button type="submit" class="btn btn-primary" 新增
+    span 示例： 家庭电话，办公电话
+
+javascript:
+  $(function(){
+    $(".user_property_checkbox").click(function(){
+      var checkbox = $(this);
+      if(checkbox.attr("checked") == "checked"){
+        checkbox.removeAttr("checked");
+      }else{
+        checkbox.attr("checked", "checked");
+      }
+      var flash = checkbox.siblings(".flash")
+      $.get( ("/user_properties/" + checkbox.val() + "/edit?checked=" + (checkbox.attr("checked") == "checked") ),
+      function(data){
+        flash.html(data).show()
+        setTimeout(function(){
+          flash.fadeOut("hide");
+        }, 1000);
+      }).fail(function(){
+        checkbox.siblings(".flash").html("服务器错误").show().fadeOut("hide");
+      });
+    });
+  })

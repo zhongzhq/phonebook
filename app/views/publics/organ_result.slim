@@ -1,0 +1,22 @@
+= render :partial => "search"
+
+.panel.panel-info
+  .panel-heading
+    strong 搜索结果 #{@organ.size} 条记录
+    
+
+  - if @organ.blank?
+    .panel-body    
+      .panel.panel-warning
+        .panel-heading 没有符合要求的结果
+
+  - else
+    table.table
+      tr
+        th 组织名
+        th 人数
+
+      - @organ.each do |organ|
+        tr
+          td = link_to organ.fullname, organ_path(organ)
+          td = organ.members.size.to_s + "人"

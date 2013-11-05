@@ -2,8 +2,11 @@
 class User < ActiveRecord::Base
   include Concerns::Authentication
   include Concerns::Pinyin
+  attr_accessor :organ
 
-  attr_accessible :account, :name, :phone, :comment
+  serialize :properties, ActiveRecord::Coders::Hstore
+  
+  attr_accessible :account, :name, :phone, :comment, :properties, :organ
 
   has_many :members
 
@@ -11,10 +14,19 @@ class User < ActiveRecord::Base
   validates_presence_of :password, :on => :create
   # validate :exist_jobs
 
-  attr_accessor :jobs, :addresses
-  attr_accessible :jobs, :addresses
+  before_destroy { members.blank? }
+
+  attr_accessor :jobs
+  attr_accessible :jobs
 
   def exist_jobs
     errors.add(:jobs, :blank) if jobs.delete_if{|x| x.blank?}.blank?
+  end
+
+  def update_properties args = {}
+    args.each do |key, value|
+      properties[key] = value
+    end
+    save
   end
 end

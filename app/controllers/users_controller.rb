@@ -11,7 +11,11 @@ class UsersController < ApplicationController
     if @user.save
       member = Member.create!(:user_id => @user.id, :organ_id => @organ.id)
       member.set_jobs(params[:user][:jobs])
-      member.set_addresses(params[:user][:addresses])
+
+      @organ = Organ.where(:name => params[:user_organ]).first
+      @user.members.first.update_attributes(:organ_id => @organ.id)
+
+      @user.update_properties(params[:user_properties])
       redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "new"
@@ -34,15 +38,19 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     @user.jobs = Member.where(:user_id => @user.id, :organ_id => @organ.id).first.jobs.map(&:id)
-    @user.addresses = Member.where(:user_id => @user.id, :organ_id => @organ.id).first.addresses.map(&:id)
   end
 
   def update
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])
+    
     if @user.update_attributes(params[:user])
       Member.where(:user_id => @user.id, :organ_id => @organ.id).first.set_jobs(params[:user][:jobs])
-      Member.where(:user_id => @user.id, :organ_id => @organ.id).first.set_addresses(params[:user][:addresses])
+
+      @organ = Organ.where(:name => params[:user_organ]).first
+      @user.members.first.update_attributes(:organ_id => @organ.id)
+
+      @user.update_properties(params[:user_properties])
       redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
     else
       render "edit"
@@ -64,26 +72,6 @@ class UsersController < ApplicationController
       render "reset"
     end
     p @user.errors
-  end
-
-  def move
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
-    @user = User.find(params[:id])
-  end
-
-  def move_submit
-    @user = User.find(params[:id])
-
-    if params[:organ_id].blank?
-      @organ = Organ.find(params[:old_organ_id])
-      @user.errors.add(:organ_id, "组织不能为空")
-      return render "move"
-    end
-
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
-    Member.where(:user_id => @user, :organ_id => params[:old_organ_id]).first
-    .update_attributes(:organ_id => @organ.id)
-    redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
   end
 
   # 用户自己修改信息
@@ -117,5 +105,17 @@ class UsersController < ApplicationController
     else
       render "info"
     end
+  end
+
+  def destroy    
+    @user = User.find(params[:id])
+
+    if params[:organ_id].present?
+      @organ = Organ.find(params[:organ_id])
+      redirect_to organ_path(@organ), (Member.where(:user_id => @user.id, :organ_id => @organ.id).first.try(:destroy) ? {:notice => "用户从组织中删除成功"} : {:alert => "用户从组织中删除失败"})
+    else
+      @user.destroy
+      redirect_to :back, (@job.destroy ? {:notice => "用户删除成功"} : {:alert => "用户还存在于组织下"})
+    end    
   end
 end

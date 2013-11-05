@@ -1,26 +1,18 @@
 #home
+  / .alert.alert-info
+  /   strong 搜索提示：    
+  /   p 搜索组织：  办公室
+  /   p 搜索用户：  张三，zs，科长 张三，办公室 张三，3109 张三
   = render :partial => "search"
 
-section
-  .panel-info
-    strong 快捷入口
-    ul.ul-inline
-      - Organ.index_organ.each do |organ|
-        li            
-          = link_to organ.name, organ_path(organ) 
-      .clearfix
-
-    .clearfix
-
 section   
-  .panel-info 
+  .content-info 
     strong 常用电话
     ul.ul-inline
       - Common.all.each do |common|
         li style="padding: 5px 10px;"
           span = common.name
-          em = common.phone        
-        
+          span style="font-weight: bold;" = common.phone  
       .clearfix
     .clearfix
 

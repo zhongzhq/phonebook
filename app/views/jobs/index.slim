@@ -21,3 +21,4 @@
         td= job.sort
         td
           = link_to "编辑", edit_job_path(job), :class => "btn btn-info btn-xs"
+          = link_to "删除", job_path(job), :class => "btn btn-danger btn-xs", :method => :delete, :confirm => "你确定要删除吗？"

@@ -1,7 +1,11 @@
+*{margin:0;}
 body {
   font-family: sans-serif;
-  padding-top: 60px;
-  padding-bottom: 40px;
+  height: 100%;
+}
+
+html{
+  height: 100%;
 }
 
 .container {
@@ -16,7 +20,17 @@ body {
   搜索表单
 ------------------------------------ */
 #home {
-  margin: 10% 0;
+ margin: 10% 0 80px;
+//   .alert {
+//     margin-top: -8%;
+//     strong {
+//       line-height: 30px;
+//     }
+//     p {
+//       margin-left: 20px;
+//       line-height: 15px;
+//     }
+//   }
 }
 #search-form {
   padding-bottom: 10px;
@@ -37,7 +51,7 @@ body {
 #login-box {
   max-width: 330px;
   padding: 15px;
-  margin: 0 auto;
+  margin: 10% auto 0;
   .form-control {
     margin-bottom: 5px;
   }
@@ -48,8 +62,10 @@ body {
 ------------------------------------ */
 .organ_tree {
   background-color: #f7f5fa;
-  padding: 10px 0 10px 0;
+  padding: 20px 20px 10px 0;
   border-radius: 5px;
+  min-height: 400px;
+
   .header {
     font-weight: bold;
     font-size: 16px;
@@ -58,12 +74,40 @@ body {
   ul {
     list-style: none;
     padding: 0;
-    margin-left: 20px;
+    margin-left: 20px; 
+
+    li{
+      background: url("d.png") no-repeat;
+      background-position: -60px -89px;
+      border-left: 1px dotted #333;
+    }  
+
     a {
-      text-decoration: none;
-      font-size: 16px;
+      text-decoration: none;      
     }
+    
+    .item{
+      span{
+        margin-right: 8px;
+        cursor: pointer;
+      }
+    }
+    ul{       
+      
+      margin-left: 5px;
+  
+      li{
+        padding-left: 15px;
+      }
+
+      .item{
+        a{
+          color: #716B7A;
+        }
+      }
+    }    
   }
+  
 }
 
 /* ------------------------------------
@@ -128,7 +172,14 @@ body {
 /*-------------------------------
 首页
 -------------------------------*/
-.panel-info{
+#content{  
+  padding-bottom: 40px;
+  padding-top: 70px;
+  position: relative;
+  min-height: 100%;
+}
+
+.content-info{
   width: 550px;
   margin: 5px auto;
 
@@ -155,6 +206,7 @@ body {
       }
     }
   }
+  
 }
 
 
@@ -173,4 +225,37 @@ body {
       text-decoration: none;
     }
   }
+}
+
+#footer{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+
+  .footCon{    
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;    
+    border-top: 1px solid #E4E4E4;
+    color: #777;
+    font-size: 13px;
+
+    .footCopy{
+      
+    }
+
+    .footServe{
+      
+    }
+  }
+}
+
+#message{
+ position: absolute;
+ z-index: 10;
+ top: 70px;
+ width: 100%; 
 }

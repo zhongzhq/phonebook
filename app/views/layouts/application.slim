@@ -11,17 +11,20 @@ html lang="zh-CN"
     = csrf_meta_tags
 
     /![if IE]
-    script: src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
+      script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
 
   body
     #header
       = render "snippets/header"
 
-    .container               
-      = render "snippets/flash", :flash => flash
+    #message
+      .container              
+        = render "snippets/flash", :flash => flash
     #content
       .container
-        == yield
-
-    #footer
-      = render "snippets/footer"
+        .col-md-3
+          = render_widget :organ_tree, :display
+        .col-md-9
+          == yield
+      #footer
+        = render "snippets/footer"

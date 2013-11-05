@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131025065032) do
+ActiveRecord::Schema.define(:version => 20131028085249) do
 
   create_table "addresses", :force => true do |t|
     t.string   "name"
@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20131025065032) do
     t.text     "description"
     t.integer  "sort"
     t.string   "pinyin"
-    t.integer  "is_index",    :default => 0
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
@@ -97,12 +96,16 @@ ActiveRecord::Schema.define(:version => 20131025065032) do
     t.string   "pinyin"
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
+    t.hstore   "properties"
   end
 
-  create_table "ussdsfers", :force => true do |t|
-    t.text     "desc"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+  add_index "users", ["properties"], :name => "index_users_on_properties"
 
+  create_table "user_properties", :force => true do |t|
+    t.string   "key"
+    t.string   "name"
+    t.string   "state"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
+  end
 end

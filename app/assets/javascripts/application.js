@@ -12,22 +12,31 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery_nested_form
-//= require twitter/bootstrap/transition
 //= require twitter/bootstrap/collapse
 //= require twitter/bootstrap/dropdown
 //= require twitter/bootstrap/alert
 //= require_tree .
 
-function option_tree(selector, url, func, options ){
-  options = $.extend({
-    indexed: true,
-    set_value_on: 'each',    
-    on_each_change: url,
-    choose: '-- 请选择 --'
-  }, options || {});
+function toggle_tree(selector){
+  var opened_icon = "glyphicon-folder-close"
+  var closed_icon = "glyphicon-folder-open"
 
-  $.getJSON(url, function(data){
-    selector.optionTree(data, options).change(func);
+  selector.find(".item").each(function(){
+    $(this).siblings("ul").hide();
+    if($(this).siblings("ul").find("li").size() > 0){
+      $(this).prepend("<span class=\"glyphicon " + opened_icon + " toggle-icon\"></span>");
+    }
+  });
+
+  selector.find(".item .toggle-icon").click(function(){
+    if($(this).is("." + opened_icon)){
+      $(this).removeClass(opened_icon);
+      $(this).addClass(closed_icon);
+      $(this).parent().siblings("ul").show();
+    } else {
+      $(this).removeClass(closed_icon);
+      $(this).addClass(opened_icon);
+      $(this).parent().siblings("ul").hide();
+    }
   });
 }

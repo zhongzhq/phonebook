@@ -15,7 +15,7 @@
           /li
           /  = link_to "最近联系人", root_path
           li
-            = link_to "组织信息", organs_path
+            = link_to "组织用户", "/organs/1"
           li.dropdown
             a.dropdown-toggle href="#" data-toggle="dropdown"
               | 系统管理
@@ -26,7 +26,7 @@
               li
                 = link_to "职务管理", jobs_path
               li
-                = link_to "办公地址管理", addresses_path
+                = link_to "用户属性管理", user_properties_path
               li.divider
               li
                 = link_to "系统设置", settings_path

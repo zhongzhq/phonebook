@@ -1,18 +1,26 @@
 development:
-  adapter: sqlite3
-  database: db/development.sqlite3
+  adapter: postgresql
+  encoding: utf8
+  database: phonebook_standalone
   pool: 5
-  timeout: 5000
+  username: phonebook
+  password: phonebook
+  host: localhost
+  port: 5432
 
 test:
-  adapter: sqlite3
-  database: db/test.sqlite3
+  adapter: postgresql
+  encoding: utf8
+  database: phonebook_standalone
   pool: 5
-  timeout: 5000
+  username: phonebook
+  password: phonebook
+  host: localhost
+  port: 5432
 
 production:
   adapter: postgresql
-  encoding: unicode
+  encoding: utf8
   database: phonebook_standalone
   pool: 5
   username: phonebook

@@ -1,2 +1,26 @@
 Use this README file to introduce your application and point to useful places in the API for learning more.
 Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+
+一、安装数据库
+  1、安装PGsql数据库
+    |--sudo aptitude install postgresql postgresql-contrib postgresql-server-dev-9.1
+
+  2、设置数据库访问帐号、密码
+    |--- sudo -u postgres psql postgres
+    |---# 创建用户
+    |-- postgres=# create user phonebook with password 'phonebook' createdb;
+
+  3、退出
+    |-- postgres=# \q
+
+二、初始化数据库
+  1、进入项目根目录
+    |-- # 创建数据库
+    |-- rake db:create RAILS_ENV="production"
+    |-- # 创建数据库表
+    |-- rake db:schema:load
+    |-- # 初始化数据
+    |-- rake db:seed
+
+三、PgSql  hstore 扩展支持设置（root 用户跳过此步骤）
+  sudo su postgres -c "psql phonebook_standalone -c 'CREATE EXTENSION hstore;'"

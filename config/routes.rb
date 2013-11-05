@@ -15,21 +15,22 @@ Phonebook::Application.routes.draw do
     end
   end
 
-  resources :organs, :except => [:destroy] do
+  resources :organs do
     collection do
       get "manage"
     end
+    member do
+      get "search"
+    end
   end
 
-  resources :users, :except => [:index, :destroy] do
+  resources :users, :except => [:index] do
     member do
       get "with_organ"
 
       # 管理员操作
       get "reset"
       post "reset_submit"
-      get "move"
-      post "move_submit"
       
       # 个人操作
       get "password"
@@ -39,11 +40,13 @@ Phonebook::Application.routes.draw do
     end
   end
 
-  resources :follows, :only => [:index, :new, :destroy]
+  # resources :follows, :only => [:index, :new, :destroy]
 
   resources :jobs, :except => [:show]
   resources :addresses, :except => [:show]
 
   resources :settings
   resources :commons
+
+  resources :user_properties, :only => [:index, :create, :edit]
 end
