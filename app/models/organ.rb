@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Organ < ActiveRecord::Base
-  attr_accessible :description, :name, :sort, :parent_id
+  attr_accessible :name, :description, :sort, :parent_id, :address, :phone
 
   has_many :members
   has_ancestry

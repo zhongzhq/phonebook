@@ -60,6 +60,12 @@ html{
 /* ------------------------------------
   组织树
 ------------------------------------ */
+.icon-folder-close{
+  background: url("icon-folder-close.png") no-repeat;
+}
+.icon-folder-open{
+  background: url("icon-folder-open.png") no-repeat;
+}
 .organ_tree {
   background-color: #f7f5fa;
   padding: 20px 20px 10px 0;
@@ -71,15 +77,22 @@ html{
     font-size: 16px;
     padding: 10px 15px;
   }
+
+  .li-last{
+    border: 0 none;
+    background: url("joinbottom.gif") no-repeat;
+    background-position: -7px 1px;
+  }
+
   ul {
     list-style: none;
     padding: 0;
     margin-left: 20px; 
 
     li{
-      background: url("d.png") no-repeat;
-      background-position: -60px -89px;
-      border-left: 1px dotted #333;
+      background: url("line-hr.gif") no-repeat;
+      background-position: -6px 0;
+      border-left: 1px dotted #808080;
     }  
 
     a {
@@ -88,13 +101,17 @@ html{
     
     .item{
       span{
-        margin-right: 8px;
+        margin-right: 5px;
         cursor: pointer;
+        padding: 2px 10px;
+      }
+      .glyphicon-folder-close{
+        color: blue;
       }
     }
     ul{       
       
-      margin-left: 5px;
+      margin-left: 10px;
   
       li{
         padding-left: 15px;

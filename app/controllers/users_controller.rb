@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
+  layout "organ_tree", :only => [:new, :with_organ, :reset]
   def new
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.new

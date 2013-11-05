@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
+  layout "organ_tree", :only => [:show]
+
   def index        
   end
 

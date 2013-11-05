@@ -13,19 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20131028085249) do
 
-  create_table "addresses", :force => true do |t|
-    t.string   "name"
-    t.string   "phone"
-    t.string   "pinyin"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "addresses_members", :force => true do |t|
-    t.integer "address_id"
-    t.integer "member_id"
-  end
-
   create_table "commons", :force => true do |t|
     t.string   "name"
     t.string   "phone"
@@ -36,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
   create_table "follows", :force => true do |t|
     t.integer  "user_id"
     t.integer  "followed_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "jobs", :force => true do |t|
@@ -63,17 +50,19 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
   create_table "organs", :force => true do |t|
     t.string   "name"
     t.string   "ancestry"
+    t.string   "address"
+    t.string   "phone"
     t.text     "description"
-    t.integer  "sort"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.integer  "sort", :default => 0
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "recents", :force => true do |t|
     t.integer  "user_id"
     t.integer  "recently_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "settings", :force => true do |t|
@@ -93,8 +82,8 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
     t.string   "state"
     t.text     "comment"
     t.string   "pinyin"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.hstore   "properties"
   end
 
@@ -104,7 +93,7 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
     t.string   "key"
     t.string   "name"
     t.string   "state"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 end

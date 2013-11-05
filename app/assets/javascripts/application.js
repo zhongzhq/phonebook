@@ -18,13 +18,13 @@
 //= require_tree .
 
 function toggle_tree(selector){
-  var opened_icon = "glyphicon-folder-close"
-  var closed_icon = "glyphicon-folder-open"
+  var opened_icon = "icon-folder-close"
+  var closed_icon = "icon-folder-open"
 
   selector.find(".item").each(function(){
     $(this).siblings("ul").hide();
     if($(this).siblings("ul").find("li").size() > 0){
-      $(this).prepend("<span class=\"glyphicon " + opened_icon + " toggle-icon\"></span>");
+      $(this).prepend("<span class=\" " + opened_icon + " toggle-icon\"></span>");
     }
   });
 
