@@ -2,6 +2,7 @@
 class TreeWidget < ApplicationWidget
   responds_to_event :refresh, :with => :display
   responds_to_event :organs
+  responds_to_event :show
 
   def display
     @root_organs = Organ.roots
@@ -14,6 +15,11 @@ class TreeWidget < ApplicationWidget
       result[organ.name] = children(organ)
     end
     result.to_json
+  end
+
+  def show
+    @root_organs = Organ.roots
+    render
   end
 
   private
