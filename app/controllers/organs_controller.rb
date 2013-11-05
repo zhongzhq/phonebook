@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
+  load_and_authorize_resource
   layout "organ_tree", :only => [:show]
 
   def index
