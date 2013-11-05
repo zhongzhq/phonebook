@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class Member < ActiveRecord::Base
-  attr_accessible :organ_id, :user_id
+  attr_accessible :organ_id, :user_id, :is_admin
 
   belongs_to :user
   belongs_to :organ
@@ -14,5 +14,9 @@ class Member < ActiveRecord::Base
 
   def self.first_or_create args = {}
     where(:user_id => args[:user_id], :organ_id => args[:organ_id]).first_or_create
+  end
+
+  def admin?
+    is_admin == 1
   end
 end
