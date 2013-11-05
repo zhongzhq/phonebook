@@ -20,7 +20,17 @@ html{
   搜索表单
 ------------------------------------ */
 #home {
-  margin: 17% 0 80px;
+ margin: 10% 0 80px;
+//   .alert {
+//     margin-top: -8%;
+//     strong {
+//       line-height: 30px;
+//     }
+//     p {
+//       margin-left: 20px;
+//       line-height: 15px;
+//     }
+//   }
 }
 #search-form {
   padding-bottom: 10px;
@@ -251,12 +261,4 @@ html{
  z-index: 10;
  top: 70px;
  width: 100%; 
-}
-
-
-.tooltip {
-  .tooltip-inner {
-    background-color: gray;
-    width: 100%;
-  }
 }

@@ -66,7 +66,6 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
     t.text     "description"
     t.integer  "sort"
     t.string   "pinyin"
-    t.integer  "is_index",    :default => 0
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end

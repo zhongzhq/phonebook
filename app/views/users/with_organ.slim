@@ -1,10 +1,6 @@
 .panel.panel-info
-  .panel-heading
-    strong
-      span= link_to @organ.fullname, organ_path(@organ)
-      span.deliver >
-      span= @user.name
 
+  .panel-body
     span.pull-right
       - if Follow.exist?(current_user, @user.id)
         = link_to "存入电话本", new_follow_path(:user_id => @user), :class => "btn btn-info btn-xs"
@@ -13,23 +9,22 @@
       = link_to "重置密码", reset_user_path(@user, :organ_id => @organ.id), :class => "btn btn-danger btn-xs"
       = link_to "删除", user_path(@user, :organ_id => @organ.id), :class => "btn btn-danger btn-xs", :method => :delete, :confirm => "你确定要删除吗？"
 
-  .panel-body
     .col-md-12
       h3 = @user.name
       - @user.members.each do |member|
         p  = member.jobs.map(&:name).join("、")
       p 手机： #{@user.phone}
 
-    .col-md-8
+    .col-md-6
       - UserProperty.enabled_properties.each do |p|
         p #{p.name}： #{@user.properties[p.key]}
       strong 备注
       p #{simple_format @user.comment}
 
-    .col-md-4
-      strong 组织信
-      table.table
+    .col-md-6
       - @user.members.each do |member|
+        strong 组织信息
+        br
         strong = link_to member.organ.fullname, organ_path(member.organ)
         br
         small
@@ -40,9 +35,10 @@
 
         br
         strong 部门其他成员
-        table
+        table.table.table-condensed
           - Organ.find(member.organ).members.each do |m|
-            tr
-              td = link_to m.user.name, user_path(m.user.name)
-              td = m.user.phone
-              td = m.jobs.map(&:name).join("、")
+            - unless @user.members.map(&:id).include?(m.id)
+              tr
+                td = link_to m.user.name, user_path(m.user.name)
+                td = m.user.phone
+                td = m.jobs.map(&:name).join("、")
