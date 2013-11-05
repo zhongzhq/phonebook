@@ -28,7 +28,7 @@
       br
       table.table
       - @user.members.each do |member|
-        strong = link_to member.organ.fullname, organ_path(member.organ)
+        strong = link_to member.organ.fullname, organs_path(:id => member.organ.id)
         br
         strong 部门其他成员
         table

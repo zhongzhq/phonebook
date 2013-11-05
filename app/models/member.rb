@@ -5,7 +5,6 @@ class Member < ActiveRecord::Base
   belongs_to :user
   belongs_to :organ
   has_and_belongs_to_many :jobs
-  has_and_belongs_to_many :addresses
 
   def set_jobs job_ids
     jobs.clear
