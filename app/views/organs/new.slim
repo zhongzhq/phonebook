@@ -1,6 +1,6 @@
 .panel.panel-info
   .panel-heading
-    strong =  @organ.parent_id.present? ? "新建组织" : "新建外协企业"
+    strong =  @organ.parent_id.present? ? "增加 #{Organ.find(@organ.parent_id).name} 下级" : "添加外协企业"
 
   .panel-body
     = render :partial => "form"

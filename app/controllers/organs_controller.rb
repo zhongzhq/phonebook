@@ -19,6 +19,7 @@ class OrgansController < ApplicationController
 
   def create
     @organ = Organ.new(params[:organ])
+
     if @organ.save
       redirect_to manage_organs_path
     else
