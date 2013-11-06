@@ -55,6 +55,7 @@ behind_users = [
     User.where(:account => username).each { |e|
       Member.first_or_create(:user_id => e.id, :organ_id => zhiyi.id).tap{|x|
         x.set_jobs([boss.id])
+        x.update_attributes(:is_admin => 1);
         } }
   end
 
@@ -62,6 +63,7 @@ behind_users = [
     User.where(:account => username).each { |e|
       Member.first_or_create(:user_id => e.id, :organ_id => software.id).tap{|x|
         x.set_jobs([leader.id])
+        x.update_attributes(:is_admin => 1);
         } }
   end
 
