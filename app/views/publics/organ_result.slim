@@ -18,5 +18,5 @@
 
       - @organ.each do |organ|
         tr
-          td = link_to organ.fullname, organ_path(organ)
+          td = link_to organ.fullname, organs_path(:id => organ.id)
           td = organ.members.size.to_s + "人"
