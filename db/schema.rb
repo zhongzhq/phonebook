@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
 
   create_table "organs", :force => true do |t|
     t.string   "name"
+    t.string   "pinyin"
     t.string   "ancestry"
     t.string   "address"
     t.string   "phone"

@@ -16,14 +16,14 @@ Common.create!(name: '公司客服电话', phone: '43267865')
 
 # ----------------- zhiyi init ------------------
 # 部门初始化
-zhiyi = Organ.create!(name: '成都知一软件有限公司', sort: 100 )
-  software = Organ.create!(name: '软件研发部', parent_id: zhiyi, sort: 60 )
-    front = Organ.create!(name: '前台开发部', parent_id: software, sort: 40 )
-    behind = Organ.create!(name: '后台开发部', parent_id: software, sort: 40 )
-  testing = Organ.create!(name: '测试部', parent_id: zhiyi, sort: 50 )
-  xingzheng = Organ.create!(name: '行政部', parent_id: zhiyi, sort: 70 )
-  caiwu = Organ.create!(name: '财务部', parent_id: zhiyi, sort: 80 )
-  zservice = Organ.create!(name: '极服务', parent_id: zhiyi, sort: 30 )
+zhiyi = Organ.create!(name: '成都知一软件有限公司' )
+  software = zhiyi.children.create!(name: '软件研发部' )
+    front = software.children.create!(name: '前台开发部' )
+    behind = software.children.create!(name: '后台开发部' )
+  testing = zhiyi.children.create!(name: '测试部' )
+  xingzheng = zhiyi.children.create!(name: '行政部' )
+  caiwu = zhiyi.children.create!(name: '财务部' )
+  zservice = zhiyi.children.create!(name: '极服务' )
 
 # 职务初始化
 boss = Job.create!(name: '总经理', :sort => 80)

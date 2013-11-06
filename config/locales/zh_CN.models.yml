@@ -1,13 +1,19 @@
 zh_CN:
   activerecord:
     models:
-      user: 用户
       organ: 组织
+      user: 用户
       job: 职务
       setting: 系统设置
       common: 常用电话
       user_property: 属性
     attributes:
+      organ:
+        name: 组织名
+        sort: 排序号
+        address: 地址
+        phone: 电话
+        description: 描述
       user:
         username: 用户名
         phone: 手机
@@ -20,11 +26,6 @@ zh_CN:
         comment: 备注
         jobs: 职务
         addresses: 办公地址
-      organ:
-        name: 组织名
-        address: 地址
-        phone: 电话
-        description: 描述
       job:
         name: 职务名
         sort: 排序号

@@ -1,9 +1,11 @@
 = simple_form_for @organ do |f|
+  = f.hidden_field :parent_id
+  
   = input f, :name
+  = input f, :sort
   = input f, :address
   = input f, :phone
   = input f, :description, :as => :text, :input_html => { :rows => 5, :class => 'form-control' }
-  = f.hidden_field :parent_id
 
   .form-group
     .col-sm-offset-2.col-sm-10

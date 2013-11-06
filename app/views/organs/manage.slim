@@ -6,9 +6,8 @@
     
   .panel-body
     small
-      | 可以对组织进行进行 增加，修改，删除 以及 排序设置
-      br
-      strong 备注： 本页显示顺序，即排序设置顺序
+      | 可以对组织进行 增加，修改，删除 以及 排序设置（排序号越大，等级越高）
+      .pull-right 备注： 本页显示顺序，即排序设置顺序
 
   table.table.table-hover.table-bordered
     - @root_organs.each do |organ|
@@ -22,5 +21,5 @@
         = link_to "添加下级", new_organ_path(:id => organ.id), :class => "btn btn-info btn-xs"        
         = link_to "删除", organ_path(organ), :class => "btn btn-danger btn-xs", :method => :delete, :confirm => "你确定要删除吗？"
 
-      - organ.children.order("sort DESC").each do |child|
+      - organ.children.desc.each do |child|
         = render :partial => "child", :locals => {:organ => child}

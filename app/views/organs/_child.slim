@@ -8,5 +8,5 @@ tr
     = link_to "增加下级", new_organ_path(:id => organ.id), :class => "btn btn-info btn-xs"    
     = link_to "删除", organ_path(organ), :class => "btn btn-danger btn-xs", :method => :delete, :confirm => "你确定要删除吗？"
 
-- organ.children.order("sort DESC").each do |child|
+- organ.children.desc.each do |child|
   = render :partial => "child", :locals => {:organ => child}
