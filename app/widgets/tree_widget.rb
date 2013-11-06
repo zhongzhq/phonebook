@@ -4,8 +4,12 @@ class TreeWidget < ApplicationWidget
   responds_to_event :organs
   responds_to_event :show
 
-  def display
-    @root_organs = Organ.roots
+  def display    
+    current_user.members.each do |member|
+      @organ = member.organ if member.admin?
+    end
+
+    @root_organs = [@organ] if @organ.present?
     render
   end
 
@@ -18,6 +22,7 @@ class TreeWidget < ApplicationWidget
   end
 
   def show
+    @organ = Organ.find(params[:id])
     @root_organs = Organ.roots
     render
   end

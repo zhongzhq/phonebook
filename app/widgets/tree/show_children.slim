@@ -3,11 +3,19 @@ ul
   - children.order("sort DESC").each_with_index do |child, index|
     - if (children.size - 1) == index          
       li.li-last
-        .item
-          = link_to child.name, organs_path(:id => child.id)
+        - if child == @organ
+          .item style="background-color: rgb(213, 213, 213);"
+            = link_to child.name, organs_path(:id => child.id)
+        - else
+          .item
+            = link_to child.name, organs_path(:id => child.id)
         = render :view => :show_children, :locals => { :organ => child }
     - else
       li
-        .item        
-          = link_to child.name, organs_path(:id => child.id)
+        - if child == @organ
+          .item style="background-color: rgb(213, 213, 213);"
+            = link_to child.name, organs_path(:id => child.id)
+        - else
+          .item        
+            = link_to child.name, organs_path(:id => child.id)
         = render :view => :show_children, :locals => { :organ => child }

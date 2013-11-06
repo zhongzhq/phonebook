@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   include Phonebook::Controllers::Helpers
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to root_url, :alert => "权限拒绝"
+    redirect_to root_url, :alert => t("alert.refuse")
   end
 end
