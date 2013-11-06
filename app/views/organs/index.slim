@@ -1,8 +1,8 @@
 .col-md-3
   = render_widget :organ_tree, :show
 .col-md-9
-  form#search-form.form-inline action="#"
-    /search_organ_path(@organ)
+  form#search-form.form-inline action=search_publics_path
+    input name="organ_id" type="hidden" value="#{@organ.id}"
     .form-group
       input name="value" type="text" class="form-control" placeholder="姓名或首字母，电话，房间号" value=@value
 

@@ -52,8 +52,4 @@ class OrgansController < ApplicationController
     @organ = Organ.find(params[:id])
     redirect_to manage_organs_path, (@organ.destroy ? {:notice => "组织删除成功"} : {:alert => "组织下还有成员或下级组织"})
   end
-
-  def search
-    @organ = Organ.find(params[:id])
-  end
 end
