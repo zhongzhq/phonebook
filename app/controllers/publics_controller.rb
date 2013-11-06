@@ -55,7 +55,7 @@ class PublicsController < ApplicationController
 
     elsif @value.split.size == 2
       # 组织 职务 或 组织 名称
-      o = Organ.where{ (name.like param_one) | (pinyin.like param_one) }.map(&:subtree).flatten
+      o = Organ.where{ (name.like param_one) }.map(&:subtree).flatten
       m = Member.joins(:organ).where{organ_id.in o}
 
       m1 = m.joins(:user).where{
@@ -76,7 +76,7 @@ class PublicsController < ApplicationController
 
     elsif @value.split.size == 3
       # 组织 职务 名称
-      o = Organ.where{ (name.like param_one) | (pinyin.like param_one) }.map(&:subtree).flatten
+      o = Organ.where{ (name.like param_one) }.map(&:subtree).flatten
       m = Member.joins(:organ).where{organ_id.in o}
 
       m1 = m.joins(:jobs).where{
