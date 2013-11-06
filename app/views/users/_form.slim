@@ -8,8 +8,8 @@
   .form-group
     label.col-sm-2.control-label for="new_organ_id" 所属组织
     .col-sm-10          
-      input id="user_organ" type="hidden" name="user_organ" class="form-control"
-      
+      input id="user_organ" type="hidden" name="user_organ" class="form-control" 
+
 
   = input f, :jobs, :collection => Job.all, :input_html => { :multiple => true, :'data-placeholder' => "请选择岗位..." }
 
@@ -36,16 +36,17 @@ javascript:
   $(function(){
     var preselect = "#{(@organ.ancestors << @organ).map(&:name).join(',')}";
     var selector = $("#user_organ");
-
     $.getJSON("#{url_for_event(:organs, :source => :organ_tree)}", function(data){
       selector.optionTree(data, {
-        set_value_on: 'each',
-        preselect: {"user_organ": preselect.split(',')},
+        set_value_on: 'each',        
+        preselect: {"user_organ": preselect.split(",")},  
         choose: '-- 请选择 --'
       }).change(function(){
         console.log(this.value);
         selector.val(this.value);
       });
+      // init input data 
+      selector.val("#{@organ.name}")
     });
 
     $("select").chosen({width: "100%", inherit_select_classes: true});
