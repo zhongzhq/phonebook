@@ -22,6 +22,7 @@ class TreeWidget < ApplicationWidget
   end
 
   def show
+    @organ = Organ.find(params[:id])
     @root_organs = Organ.roots
     render
   end
