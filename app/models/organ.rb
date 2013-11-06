@@ -1,15 +1,12 @@
 # -*- coding: utf-8 -*-
 class Organ < ActiveRecord::Base
-  include Concerns::Pinyin
-  
-  attr_accessible :description, :name, :sort, :parent_id
+  attr_accessible :name, :description, :sort, :parent_id, :address, :phone
 
   has_many :members
   has_ancestry
 
-  validates_presence_of :name, :sort
+  validates_presence_of :name
   validates_uniqueness_of :name, :scope => :ancestry
-  validates :sort, :numericality => { :only_integer => true, :greater_than => 0, :less_than => 101 }
 
   before_destroy { children.blank? && members.blank? }
 

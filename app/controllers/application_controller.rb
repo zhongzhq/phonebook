@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
@@ -6,4 +7,8 @@ class ApplicationController < ActionController::Base
   end
 
   include Phonebook::Controllers::Helpers
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to root_url, :alert => t("alert.refuse")
+  end
 end

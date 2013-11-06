@@ -28,14 +28,7 @@
       br
       table.table
       - @user.members.each do |member|
-        strong = link_to member.organ.fullname, organ_path(member.organ)
-        br
-        small
-          - member.addresses.each do |x|
-            span 地址：#{x.name}
-            br
-            span 电话：#{x.phone}
-
+        strong = link_to member.organ.fullname, organs_path(:id => member.organ.id)
         br
         strong 部门其他成员
         table

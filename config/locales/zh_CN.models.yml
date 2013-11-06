@@ -4,7 +4,6 @@ zh_CN:
       user: 用户
       organ: 组织
       job: 职务
-      address: 办公地址
       setting: 系统设置
       common: 常用电话
       user_property: 属性
@@ -23,14 +22,12 @@ zh_CN:
         addresses: 办公地址
       organ:
         name: 组织名
-        sort: 排序号
+        address: 地址
+        phone: 电话
         description: 描述
       job:
         name: 职务名
         sort: 排序号
-      address:
-        name: 地址名
-        phone: 办公电话
       setting:
         comment: 设置项
         value: 值

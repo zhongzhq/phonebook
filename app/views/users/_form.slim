@@ -13,6 +13,12 @@
 
   = input f, :jobs, :collection => Job.all, :input_html => { :multiple => true, :'data-placeholder' => "请选择岗位..." }
 
+  .form-group
+    label.col-sm-2.control-label for="new_organ_id" 管理员
+    .col-sm-10
+      = check_box_tag "is_admin", 1, Member.where(:user_id => @user.id, :organ_id => @organ.id).first.try(:admin?)
+      span 管理员 （默认非管理员）
+
   - UserProperty.enabled_properties.each do |p|
     .form-group
       label.control-label.col-sm-2 = p.name
