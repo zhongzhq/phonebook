@@ -16,5 +16,5 @@ class Organ < ActiveRecord::Base
     parent.fullname + "/" + name
   end
 
-  scope :desc, -> { order("sort DESC") }
+  default_scope order('sort DESC')
 end

@@ -21,5 +21,5 @@
         = link_to "添加下级", new_organ_path(:id => organ.id), :class => "btn btn-info btn-xs"        
         = link_to "删除", organ_path(organ), :class => "btn btn-danger btn-xs", :method => :delete, :confirm => "你确定要删除吗？"
 
-      - organ.children.desc.each do |child|
+      - organ.children.each do |child|
         = render :partial => "child", :locals => {:organ => child}
