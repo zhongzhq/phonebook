@@ -5,7 +5,7 @@ class Ability
   def initialize(user)
     user ||= User.new
 
-    can :index, Organ
+    can [:index, :search], Organ
     can [:password, :password_submit, :info, :info_submit], User
     can [:show, :with_organ_show], User
 
