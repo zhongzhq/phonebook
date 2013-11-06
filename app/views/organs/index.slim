@@ -1,6 +1,6 @@
-.col-md-3
+.organ_tree
   = render_widget :organ_tree, :show
-.col-md-9
+.organ_user
   form#search-form.form-inline action=search_publics_path
     input name="organ_id" type="hidden" value="#{@organ.id}"
     .form-group
@@ -21,7 +21,7 @@
         .panel-heading 该部门下暂无成员
 
     - else
-      table.table
+      table.table.table-search
         tr
           th 姓名
           th 职务
@@ -37,4 +37,5 @@
             td = user.properties[UserProperty.find_by_name("办公电话").key]
             td = user.phone
             td = user.properties[UserProperty.find_by_name("办公地址").key]
-            td = link_to "详情", with_organ_show_user_path(user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
+            td = link_to "详情", with_organ_show_user_path(user, :organ_id => @organ.id), :class => "btn btn-success", :style => "padding: 2px 5px;font-size: 13px;"
+.clearfix

@@ -10,8 +10,12 @@ html lang="zh-CN"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-    /![if IE]
+    /[if IE]
       script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"
+
+    /[if IE]
+      link rel="stylesheet" type="text/css" href="/assets/ie.css"
+
 
   body
     #header

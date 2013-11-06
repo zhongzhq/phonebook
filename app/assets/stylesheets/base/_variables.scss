@@ -1,0 +1,79 @@
+//
+//变量
+//////////////////////////////////////////////////
+
+//
+//colors
+//
+$bg-color-default: #F2F2F2;
+$bg-color-primary: #428BCA;
+$bg-color-green: #5CB85C;
+$bg-color-blue: #5BC0DE;
+$bg-color-orange: #F0AD4E;
+$bg-color-red: #D9534F;
+$bg-color-info: #D9EDF7;
+$bg-color-success: #DFF0D8;
+$bg-color-warning: #FCF8E3;
+$bg-color-danger: #F2DEDE;
+
+
+$border-color-default: #D4D4D4;
+$border-color-primary: #357EBD;
+$border-color-green: #4CAE4C;
+$border-color-blue: #46B8DA;
+$border-color-orange: #EEA236;
+$border-color-red: #D43F3A;
+$border-color-info: #BCE8F1;
+$border-color-success: #D6E9C6;
+$border-color-warning: #FAEBCC;
+$border-color-danger: #EBCCD1;
+
+
+$font-color-default: #333333;
+$font-color-white: #FFFFFF;
+$font-color-green: #ccc;
+$font-color-blue: #ccc;
+$font-color-orange: #ccc;
+$font-color-red: #ccc;
+$font-color-info: #3A87AD;
+$font-color-success: #468847;
+$font-color-warning: #468847;
+$font-color-danger: #B94A48;
+
+$color-primary: #428bca;
+$color-success: #5cb85c;
+$color-warning: #f0ad4e;
+$color-danger: #d9534f;
+$color-info: #5bc0de;
+$gray-light: #ccc;
+
+//
+//Buttons
+//
+$btn-default-color: #333;
+$btn-default-bg: #fff;
+$btn-default-border: #ccc;
+
+$btn-primary-color: #fff;
+$btn-primary-bg: $color-primary;
+$btn-primary-border: darken($btn-primary-bg, 5%);
+
+$btn-success-color: #fff;
+$btn-success-bg: $color-success;
+$btn-success-border: darken($btn-success-bg, 5%);
+
+$btn-warning-color: #fff;
+$btn-warning-bg:  $color-warning;
+$btn-warning-border: darken($btn-warning-bg, 5%);
+
+$btn-danger-color: #fff;
+$btn-danger-bg: $color-danger;
+$btn-danger-border: darken($btn-danger-bg, 5%);
+
+$btn-info-color: #fff;
+$btn-info-bg: $color-info;
+$btn-info-border: darken($btn-info-bg, 5%);
+
+$btn-link-disabled-color: $gray-light;
+
+

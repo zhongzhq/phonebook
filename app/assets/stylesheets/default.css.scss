@@ -1,0 +1,131 @@
+@import "base/mixins";
+@import "base/variables";
+
+//--------------------------------------------
+//组件具体样式
+//////////////////////////////////////////////
+
+//--------------------------------------------
+//bar-color
+//--------------------------------------------
+.bg_default{
+  @include gradient(#f9f9f9, #f2f2f2);
+  background-color: #fafafa;  
+  border-bottom: 1px solid #d4d4d4;
+}
+
+.bg_gray{
+  @include gradient(#fdfdfd, #eaeaea);
+  background-color: #efefef;
+  border-bottom: 1px solid #cdcdcd;
+}
+
+.bg_blue{
+  @include gradient(#52ADED, #418CE4);
+  background-color: #4BA0E9;
+  border-bottom: 1px solid #185AA7;   
+}
+
+.bg_black{
+  @include gradient(#4e4e4e, #333333);
+  background-color: #3B3B41;
+  border-bottom: 1px solid #292929; 
+}
+
+//--------------------------------------------
+//widget-box
+//--------------------------------------------
+
+.widget_box{
+  background: none repeat scroll 0 0 #FFFFFF;
+  border: 1px solid #CDCDCD;
+  border-radius: 4px 4px 4px 4px;
+  clear: both;
+  margin-bottom: 10px;
+}
+
+.widget_box .widget_title {
+  @extend .bg_gray;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  height: 36px;
+  line-height: 36px;
+  padding-left: 15px;
+}
+
+.widget_box .widget_content{
+	padding: 12px 15px;
+}
+
+//--------------------------------------------
+//btn
+//--------------------------------------------
+.btn{
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.btn-default{
+  @include button-variant($btn-default-color,$btn-default-bg,$btn-default-border);
+}
+.btn-primary{
+  @include button-variant($btn-primary-color,$btn-primary-bg,$btn-primary-border);
+}
+.btn-success{
+  @include button-variant($btn-success-color,$btn-success-bg,$btn-success-border);
+}
+.btn-warning{
+  @include button-variant($btn-warning-color,$btn-warning-bg,$btn-warning-border);
+}
+.btn-danger{
+  @include button-variant($btn-danger-color,$btn-danger-bg,$btn-danger-border);
+}
+
+//--------------------------------------------
+//ul
+//--------------------------------------------
+.ul-inline{
+  display:block;
+
+  li{
+    float: left;
+    list-style: none;
+    display:block;
+
+    a{
+      display:block;
+      padding: 10px 15px;   
+      text-decoration: none;
+    }
+  }
+}
+
+//--------------------------------------------
+//search_area
+//--------------------------------------------
+#search_area{
+  margin-bottom: 20px;
+  
+  #value-input{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    height: 40px;
+    line-height: 40px;    
+    padding: 0 5px;    
+
+  }
+
+  .input-btn{
+    padding: 10px;
+   
+  }
+}
