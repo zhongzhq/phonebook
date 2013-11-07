@@ -18,4 +18,4 @@ ul
         - else
           .item        
             = link_to child.name, organs_path(:id => child.id)
-        = render :view => :children, :locals => { :organ => child }
+        = render :view => :show_children, :locals => { :organ => child }

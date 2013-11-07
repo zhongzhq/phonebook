@@ -74,7 +74,7 @@ class OrgansController < ApplicationController
       @users += User.joins(:members).where{ members.id.in m1 }
     end
 
-    @users = @users.uniq || []
+    @users = (@users || []).uniq
     render "result"
   end
 end
