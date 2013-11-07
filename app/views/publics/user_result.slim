@@ -26,7 +26,7 @@
               span title="#{member.organ.fullname + '： ' + member.jobs.map(&:name).join("、")}"
                 = member.organ.name + '： ' + member.jobs.map(&:name).join("、")
               br
-          td = user.properties[UserProperty.find_by_name("办公电话").key]
-          td = user.phone
-          td = user.properties[UserProperty.find_by_name("办公地址").key]
+          td = user.office_phone
+          td = user.mobile_phone
+          td = user.office_address
           td = link_to "详情", user_path(user), :class => "btn btn-success", :style => "padding: 2px 5px;font-size: 13px;"

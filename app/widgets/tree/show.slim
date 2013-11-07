@@ -1,12 +1,13 @@
-- @root_organs.each do |root_organ|
-  ul
-    - if root_organ == @organ
-      .item style="background-color: rgb(213, 213, 213);"
-        = link_to root_organ.name, organs_path(:id => root_organ.id)
-    - else
-      .item
-        = link_to root_organ.name, organs_path(:id => root_organ.id)
-    = render :view => :show_children, :locals => { :organ => root_organ }
+.organ_tree.affix
+  - @root_organs.each do |root_organ|
+    ul
+      - if root_organ == @organ
+        .item style="background-color: rgb(213, 213, 213);"
+          = link_to root_organ.name, organs_path(:id => root_organ.id)
+      - else
+        .item
+          = link_to root_organ.name, organs_path(:id => root_organ.id)
+      = render :view => :show_children, :locals => { :organ => root_organ }
 
 javascript:
   toggle_tree($(".organ_tree"));

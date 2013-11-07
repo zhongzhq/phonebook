@@ -5,7 +5,6 @@ zh_CN:
       user: 用户
       job: 职务      
       common: 常用电话
-      user_property: 属性
       system: 系统设置
     attributes:
       organ:
@@ -15,25 +14,23 @@ zh_CN:
         phone: 电话
         description: 描述
       user:
-        username: 用户名
-        phone: 手机
         name: 姓名
         account: 帐号
+        mobile_phone: 移动电话
+        office_phone: 办公电话
+        office_address: 办公地址        
         password: 密码
         password_confirmation: 确认密码
         current_password: 当前密码
         state: 状态
         comment: 备注
         jobs: 职务
-        addresses: 办公地址
       job:
         name: 职务名
         sort: 排序号
       common:
         name: 名称
         phone: 电话
-      user_property:
-        name: 属性名
       system:
         login_remember_days: 登录记住天数
 

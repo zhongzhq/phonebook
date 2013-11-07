@@ -1,5 +1,4 @@
 form#search-form.form-inline action="#"
-  /search_organ_path(@organ)
   .form-group
     input name="value" type="text" class="form-control" placeholder="姓名或首字母，电话，房间号" value=@value
 
@@ -35,7 +34,7 @@ form#search-form.form-inline action="#"
         tr
           td = link_to user.name, with_organ_user_path(user, :organ_id => @organ.id)
           td = Member.where(:user_id => user.id, :organ_id => @organ.id).first.jobs.map(&:name).join("/")
-          td = user.properties[UserProperty.find_by_name("办公电话").key]
-          td = user.phone
-          td = user.properties[UserProperty.find_by_name("办公地址").key]
+          td = user.office_phone
+          td = user.mobile_phone
+          td = user.office_address
           td = link_to "详情", with_organ_user_path(user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"

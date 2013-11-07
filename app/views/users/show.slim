@@ -3,22 +3,19 @@
     strong 用户详细信息
     .pull-right
       = link_to "返回", :back, :class => "btn btn-danger btn-sm"
-
-    span.pull-right
-      - if Follow.exist?(current_user, @user.id)
-        = link_to "存入电话本", new_follow_path(:user_id => @user), :class => "btn btn-info btn-xs"
-
   .panel-body
     .col-md-12
       h3 = @user.name
       - @user.members.each do |member|
         p  = member.organ.name + '： ' + member.jobs.map(&:name).join("、")
-      p 手机： #{@user.phone}
+      p 办公电话： #{@user.office_phone}
 
     hr
     .col-md-8
+      p 移动电话：#{@user.mobile_phone}
+      p 办公地址：#{@user.office_address}
       strong 其他信息
-      - UserProperty.enabled_properties.each do |p|
+      - Property.enabled_properties.each do |p|
         p #{p.name}： #{@user.properties[p.key]}
       strong 备注
       p #{simple_format @user.comment}
@@ -35,5 +32,5 @@
           - Organ.find(member.organ).members.each do |m|
             tr
               td = link_to m.user.name, user_path(m.user)
-              td = m.user.phone
+              td = m.user.office_phone
               td = m.jobs.map(&:name).join("、")

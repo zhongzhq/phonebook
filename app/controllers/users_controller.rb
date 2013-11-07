@@ -28,18 +28,15 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    Recent.create(:user_id => current_user.id, :recently_id => @user.id)
   end
 
   def with_organ
     @user = User.find(params[:id])
-    Recent.create(:user_id => current_user.id, :recently_id => @user.id)
     @organ = Organ.find(params[:organ_id])
   end
 
   def with_organ_show
     @user = User.find(params[:id])
-    Recent.create(:user_id => current_user.id, :recently_id => @user.id)
     @organ = Organ.find(params[:organ_id])
   end
 

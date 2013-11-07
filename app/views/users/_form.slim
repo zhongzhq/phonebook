@@ -2,7 +2,8 @@
   = hidden_field_tag :organ_id, @organ.id
   = input f, :name
   = input f, :account
-  = input f, :phone, :hint => "多个电话，请以逗号 ',' 隔开; 如: 18782943143, 028-63780023"
+  = input f, :office_phone
+  = input f, :mobile_phone
   = input f, :password if @user.id.blank?
 
   .form-group
@@ -19,7 +20,8 @@
       = check_box_tag "is_admin", 1, Member.where(:user_id => @user.id, :organ_id => @organ.id).first.try(:admin?)
       span 管理员 （默认非管理员）
 
-  - UserProperty.enabled_properties.each do |p|
+  = input f, :office_address
+  - Property.enabled_properties.each do |p|
     .form-group
       label.control-label.col-sm-2 = p.name
       .col-sm-10

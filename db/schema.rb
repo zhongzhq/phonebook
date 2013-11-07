@@ -59,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
     t.string   "name"
     t.string   "pinyin"
     t.string   "account"
-    t.string   "phone"
+    t.string   "mobile_phone"
     t.string   "office_phone"
     t.string   "office_address"
     t.string   "password_digest"
