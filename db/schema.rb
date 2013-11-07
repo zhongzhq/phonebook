@@ -20,13 +20,6 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
     t.datetime "updated_at", :null => false
   end
 
-  # create_table "follows", :force => true do |t|
-  #   t.integer  "user_id"
-  #   t.integer  "followed_id"
-  #   t.datetime "created_at", :null => false
-  #   t.datetime "updated_at", :null => false
-  # end
-
   create_table "jobs", :force => true do |t|
     t.string   "name"
     t.string   "pinyin"
@@ -57,13 +50,6 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-
-  # create_table "recents", :force => true do |t|
-  #   t.integer  "user_id"
-  #   t.integer  "recently_id"
-  #   t.datetime "created_at", :null => false
-  #   t.datetime "updated_at", :null => false
-  # end
 
   create_table "systems", :force => true do |t|
     t.integer   "login_remember_days"
