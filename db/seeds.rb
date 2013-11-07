@@ -100,3 +100,9 @@ zservice_users = [
  zservice_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => zservice.id).tap{|x|
   x.set_jobs([member.id])
   } }
+
+User.all.each do |user|
+  user.update_attributes(
+    :office_phone => ["15202859971", "15199925679", "13438800586"].shuffle.first,
+    :office_address => ["3-1203", '4-4123', '2-3234'].shuffle.first)
+end
