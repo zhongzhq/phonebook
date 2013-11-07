@@ -1,18 +1,11 @@
-.navbar.navbar-default.navbar-fixed-top style="width=100px;"
+#header.bg_default
   .container
-    .navbar-header
-      button.navbar-toggle type="button" data-toggle="collapse" data-target=".navbar-collapse"
-        span.icon-bar
-        span.icon-bar
-        span.icon-bar
-      a.navbar-brand href="/" = t(:site_name)
-
-    - if current_user.present?
-      .collapse.navbar-collapse
-        ul.nav.navbar-nav
+    a.head_brand href="/" = t(:site_name) 
+    - if current_user.present?     
+      .head_nav      
+        ul
           li
             = link_to "组织用户", "/organs?id=1"
-
           - if current_user.members.map(&:admin?).include?(true)
             li.dropdown
               a.dropdown-toggle href="#" data-toggle="dropdown"
@@ -28,13 +21,13 @@
                     = link_to "职务管理", jobs_path              
                   li
                     = link_to "用户属性管理", user_properties_path
-                  li.divider
-                  li
-                    = link_to "系统设置", system_path(System.first)
-                  li
-                    = link_to "常用电话管理", commons_path
-                
-        ul.nav.navbar-nav.navbar-right
+                li.divider
+                li
+                  = link_to "系统设置", system_path(System.first)
+                li
+                  = link_to "常用电话管理", commons_path
+      .head_info
+        ul
           li.dropdown
             a.dropdown-toggle href="#" data-toggle="dropdown"
               = current_user.try(:name) || "请完善用户资料"

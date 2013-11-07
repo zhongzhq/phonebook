@@ -7,7 +7,7 @@ ul
           = link_to child.name, organ_path(child)
         = render :view => :children, :locals => { :organ => child }
     - else
-      li
-        .item        
+      li.li-normal
+        .item   
           = link_to child.name, organ_path(child)
         = render :view => :children, :locals => { :organ => child }
