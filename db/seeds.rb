@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 
 # 初始化系统设置
-Settings.system.each do |setting|
-  Setting.create(setting)
-end
+System.create!(Settings.system)
 
 Settings.user_properties.each do |p|
   UserProperty.create(:name => p)

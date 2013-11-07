@@ -3,10 +3,10 @@ zh_CN:
     models:
       organ: 组织
       user: 用户
-      job: 职务
-      setting: 系统设置
+      job: 职务      
       common: 常用电话
       user_property: 属性
+      system: 系统设置
     attributes:
       organ:
         name: 组织名
@@ -29,14 +29,13 @@ zh_CN:
       job:
         name: 职务名
         sort: 排序号
-      setting:
-        comment: 设置项
-        value: 值
       common:
         name: 名称
         phone: 电话
       user_property:
         name: 属性名
+      system:
+        login_remember_days: 登录记住天数
 
     errors:
       messages:

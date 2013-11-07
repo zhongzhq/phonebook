@@ -17,7 +17,7 @@
 
     - if @users.blank?
       .panel.panel-warning
-        .panel-heading 该部门下暂无成员
+        .panel-heading 没有找到符合要求的结果
 
     - else
       table.table
@@ -31,7 +31,7 @@
 
         - @users.each do |user|
           tr
-            td = link_to user.name, user_path(user)
+            td = user.name
             td
               - user.members.each do |member|
                 span title="#{member.organ.fullname + '： ' + member.jobs.map(&:name).join("、")}"
