@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   serialize :properties, ActiveRecord::Coders::Hstore
   
-  attr_accessible :account, :name, :phone, :comment, :properties, :organ
+  attr_accessible :account, :name, :phone, :office_phone, :office_address, :comment, :properties, :organ
 
   has_many :members
 

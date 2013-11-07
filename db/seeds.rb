@@ -2,10 +2,7 @@
 
 # 初始化系统设置
 System.create!(Settings.system)
-
-Settings.user_properties.each do |p|
-  UserProperty.create(:name => p)
-end
+Settings.user.properties.each { |property| Property.create(:name => property) }
 
 # 常用电话
 Common.create!(name: '物业管理', phone: '67123121')
@@ -104,8 +101,8 @@ zservice_users = [
   x.set_jobs([member.id])
   } }
 
-User.all.each do |user|
-  user.properties[UserProperty.find_by_name("办公地址").key] = ['3-1024',  '3-1025', '2-1028'].shuffle.first
-  user.properties[UserProperty.find_by_name("办公电话").key] = ['431278997', '67542487', '23287912', '797977979'].shuffle.first
-  user.save
-end
+# User.all.each do |user|
+#   user.properties[UserProperty.find_by_name("办公地址").key] = ['3-1024',  '3-1025', '2-1028'].shuffle.first
+#   user.properties[UserProperty.find_by_name("办公电话").key] = ['431278997', '67542487', '23287912', '797977979'].shuffle.first
+#   user.save
+# end

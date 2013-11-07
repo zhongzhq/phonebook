@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-class UserProperty < ActiveRecord::Base
+class Property < ActiveRecord::Base
   attr_accessible :name
 
   validates :name, :presence => true, :uniqueness => true

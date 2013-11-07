@@ -57,13 +57,15 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
 
   create_table "users", :force => true do |t|
     t.string   "name"
+    t.string   "pinyin"
     t.string   "account"
     t.string   "phone"
+    t.string   "office_phone"
+    t.string   "office_address"
     t.string   "password_digest"
     t.text     "authentication_token"
     t.string   "state"
-    t.text     "comment"
-    t.string   "pinyin"
+    t.text     "comment"    
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.hstore   "properties"
@@ -71,11 +73,9 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
 
   add_index "users", ["properties"], :name => "index_users_on_properties"
 
-  create_table "user_properties", :force => true do |t|
-    t.string   "key"
+  create_table "properties", :force => true do |t|
     t.string   "name"
+    t.string   "key"
     t.string   "state"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 end
