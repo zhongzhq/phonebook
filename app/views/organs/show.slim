@@ -10,11 +10,12 @@ form#search-form.form-inline action="#"
     | (#{@organ.members.size})
 
     .pull-right
-      = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-info btn-xs"
+      - if session[:admin]
+        = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-info btn-xs"
 
 
   .panel-body
-    small = simple_format @organ.description
+    small = simple_format @organ.comment
 
   - if @users.blank?
     .panel.panel-warning

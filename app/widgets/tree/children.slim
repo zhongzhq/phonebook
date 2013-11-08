@@ -1,13 +1,22 @@
 ul
   - children = organ.children
-  - children.order("sort DESC").each_with_index do |child, index|
+  - children.each_with_index do |child, index|
     - if (children.size - 1) == index          
       li.li-last
-        .item        
-          = link_to child.name, organ_path(child)
+        - if child == @organ
+          .item style="background-color: rgb(213, 213, 213);"
+            = link_to child.name, organ_path(child)
+        - else
+          .item
+            = link_to child.name, organ_path(child)
         = render :view => :children, :locals => { :organ => child }
+
     - else
       li.li-normal
-        .item   
-          = link_to child.name, organ_path(child)
+        - if child == @organ
+          .item style="background-color: rgb(213, 213, 213);"
+            = link_to child.name, organ_path(child)
+        - else
+          .item        
+            = link_to child.name, organ_path(child)
         = render :view => :children, :locals => { :organ => child }

@@ -5,7 +5,7 @@
       .head_nav      
         ul
           li
-            = link_to "组织用户", "/organs?id=1"
+            = link_to "组织用户", organs_path(:admin => false)
           - if current_user.members.map(&:admin?).include?(true)
             li.dropdown
               a.dropdown-toggle href="#" data-toggle="dropdown"
@@ -13,7 +13,7 @@
                 b.caret
               ul.dropdown-menu
                 li
-                  = link_to "用户管理", organ_path(Organ.find(1))
+                  = link_to "用户管理", organ_path(current_user.admin_member.organ, :admin => true)
                 - if can? :manage, :all
                   li
                     = link_to "组织管理", manage_organs_path

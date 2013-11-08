@@ -29,4 +29,10 @@ class User < ActiveRecord::Base
     end
     save
   end
+
+  def admin_member
+    members.each do |member|
+      return member if member.admin?
+    end
+  end
 end

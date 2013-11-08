@@ -30,7 +30,8 @@
         strong 部门其他成员
         table
           - Organ.find(member.organ).members.each do |m|
-            tr
-              td = link_to m.user.name, user_path(m.user)
-              td = m.user.office_phone
-              td = m.jobs.map(&:name).join("、")
+            - unless @user.members.map(&:id).include?(m.id)
+              tr
+                td = link_to m.user.name, user_path(m.user)
+                td = m.user.office_phone
+                td = m.jobs.map(&:name).join("、")

@@ -1,10 +1,11 @@
 .panel.panel-info
   .panel-heading
     .pull-right
-      = link_to "编辑用户", edit_user_path(@user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
-      = link_to "重置密码", reset_user_path(@user, :organ_id => @organ.id), :class => "btn btn-danger btn-xs"
-      = link_to "删除", user_path(@user, :organ_id => @organ.id), :class => "btn btn-danger btn-xs", :method => :delete, :confirm => "你确定要删除吗？"
-      
+      - if session[:admin]
+        = link_to "编辑用户", edit_user_path(@user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
+        = link_to "重置密码", reset_user_path(@user, :organ_id => @organ.id), :class => "btn btn-danger btn-xs"
+        = link_to "删除", user_path(@user, :organ_id => @organ.id), :class => "btn btn-danger btn-xs", :method => :delete, :confirm => "你确定要删除吗？"
+        
   .panel-body
     h3 = @user.name
     - @user.members.each do |member|
@@ -30,6 +31,6 @@
         - Organ.find(member.organ).members.each do |m|
           - unless @user.members.map(&:id).include?(m.id)
             tr
-              td = link_to m.user.name, user_path(m.user.id)
+              td = link_to m.user.name, with_organ_user_path(m.user.id, :organ_id => @organ.id)
               td = m.user.office_phone
               td = m.jobs.map(&:name).join("、")

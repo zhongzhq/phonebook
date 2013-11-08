@@ -4,12 +4,16 @@ class TreeWidget < ApplicationWidget
   responds_to_event :organs
   responds_to_event :show
 
-  def display    
-    current_user.members.each do |member|
-      @organ = member.organ if member.admin?
+  def display
+    @organ = Organ.find(params[:organ_id] || params[:id])
+
+    if session[:admin]
+      @organs = [current_user.admin_member.organ] if current_user.admin_member
+    else
+      @organs = Organ.roots
     end
 
-    @root_organs = [@organ] if @organ.present?
+    @organs = @organs || []
     render
   end
 
@@ -19,12 +23,6 @@ class TreeWidget < ApplicationWidget
       result[organ.name] = children(organ)
     end
     result.to_json
-  end
-
-  def show
-    @organ = Organ.find(params[:id])
-    @root_organs = Organ.roots
-    render
   end
 
   private

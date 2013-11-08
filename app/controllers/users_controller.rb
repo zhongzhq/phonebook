@@ -35,11 +35,6 @@ class UsersController < ApplicationController
     @organ = Organ.find(params[:organ_id])
   end
 
-  def with_organ_show
-    @user = User.find(params[:id])
-    @organ = Organ.find(params[:organ_id])
-  end
-
   def edit
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
     @user = User.find(params[:id])

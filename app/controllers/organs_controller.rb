@@ -4,8 +4,7 @@ class OrgansController < ApplicationController
   layout "organ_tree", :only => [:show]
 
   def index
-    @organ = Organ.find(params[:id])
-    @users = @organ.members.sort{|x, y| y.jobs.map(&:sort).max <=> x.jobs.map(&:sort).max }.map(&:user)
+    redirect_to organ_path(Organ.find(1))
   end
 
   def manage
