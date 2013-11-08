@@ -84,8 +84,18 @@ class UsersController < ApplicationController
   end
 
   # 用户自己修改信息
-  def password
+  def change
     @user = User.find(params[:id])
+  end
+
+  def data_submit
+    @user = User.find(params[:id])
+
+    if @user.update_attributes(params[:user])
+      redirect_to root_path
+    else
+      render "change"
+    end
   end
 
   def password_submit
@@ -94,27 +104,13 @@ class UsersController < ApplicationController
       if @user.update_attributes(params[:user].tap{|x| x.delete("current_password")})
         redirect_to root_path
       else
-        return render "password"
+        return render "change"
       end
     else
       @user.errors.add(:current_password, "当前密码错误")
-      render "password"
+      render "change"
     end
-  end
-
-  def info
-    @user = User.find(params[:id])
-  end
-
-  def info_submit
-    @user = User.find(params[:id])
-
-    if @user.update_attributes(params[:user])
-      redirect_to root_path
-    else
-      render "info"
-    end
-  end
+  end  
 
   def destroy    
     @user = User.find(params[:id])

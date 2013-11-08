@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
     t.string   "ancestry"
     t.string   "address"
     t.string   "phone"
-    t.text     "description"
+    t.text     "comment"
     t.integer  "sort", :default => 0
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

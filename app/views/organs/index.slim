@@ -18,7 +18,7 @@
       span 地址： #{@organ.address}
 
     .panel-body
-      small = simple_format @organ.description
+      small = simple_format @organ.comment
 
     - if @users.blank?
       .panel.panel-warning

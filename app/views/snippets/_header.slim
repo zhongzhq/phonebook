@@ -35,8 +35,6 @@
               b.caret
             ul.dropdown-menu
               li
-                a href=info_user_path(current_user) 个人信息
-              li
-                a href=password_user_path(current_user) 修改密码
+                a href=change_user_path(current_user) 修改个人信息
           li
             = link_to "退出", logout_publics_path, :method => :delete

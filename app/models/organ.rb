@@ -2,7 +2,7 @@
 class Organ < ActiveRecord::Base
   include Concerns::Pinyin
   
-  attr_accessible :name, :description, :sort, :parent_id, :address, :phone
+  attr_accessible :name, :comment, :sort, :parent_id, :address, :phone
 
   has_many :members
   has_ancestry

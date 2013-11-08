@@ -12,13 +12,13 @@ zh_CN:
         sort: 排序号
         address: 地址
         phone: 电话
-        description: 描述
+        comment: 备注
       user:
         name: 姓名
         account: 帐号
-        mobile_phone: 移动电话
+        mobile_phone: 手机
         office_phone: 办公电话
-        office_address: 办公地址        
+        office_address: 房间号
         password: 密码
         password_confirmation: 确认密码
         current_password: 当前密码

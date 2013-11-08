@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   has_many :members
 
-  validates_presence_of :account, :name
+  validates :account, :name, :mobile_phone, :presence => true
   validates_presence_of :password, :on => :create
   # validate :exist_jobs
 
