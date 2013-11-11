@@ -4,8 +4,6 @@
     - if current_user.present?     
       .head_nav      
         ul
-          li
-            = link_to "组织用户", organs_path(:admin => false)
           - if current_user.members.map(&:admin?).include?(true)
             li.dropdown
               a.dropdown-toggle href="#" data-toggle="dropdown"

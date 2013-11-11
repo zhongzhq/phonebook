@@ -1,37 +1,10 @@
-#home
-  / .alert.alert-info
-  /   strong 搜索提示：    
-  /   p 搜索组织：  办公室
-  /   p 搜索用户：  张三，zs，科长 张三，办公室 张三，3109 张三
-  = render :partial => "search"
+.col-md-4
+  = render :partial => 'organ_tree', :locals => { :organs => @organs }
 
+.col-md-8
+  #home
+    = render :partial => "search"
 
-
-/ .panel.panel-info
-/   .panel-heading
-/     strong 最近联系人
-
-/   - if @users.blank?
-/     .panel-body
-/       .panel.panel-warning
-/         .panel-heading 暂无最近联系人
-
-/   - else
-/     .panel-body
-/       small 最近联系人，记录你最近在系统中 搜索 或者 查看 的用户
-
-/     table.table
-/       tr
-/         th 姓名
-/         th 职务
-/         th 操作
-        
-/       - @users.each do |user|
-/         tr
-/           td = link_to user.name, user_path(user)
-/           td
-/             - user.members.each do |member|
-/               = member.organ_and_jobs_name
-/               br
-/           td
-/             = link_to "查看详情", user_path(user), :class => "btn btn-info btn-xs"
+javascript:
+  toggle_tree($(".organ_tree"));
+  $(".organ_tree").find(".toggle-icon").click();

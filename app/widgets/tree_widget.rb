@@ -5,7 +5,7 @@ class TreeWidget < ApplicationWidget
   responds_to_event :show
 
   def display
-    @organ = Organ.find(params[:organ_id] || params[:id])
+    @organ = Organ.find(params[:organ_id] || params[:id]) if(params[:id].present? or params[:organ_id].present?)
 
     if session[:admin]
       @organs = [current_user.admin_member.organ] if current_user.admin_member

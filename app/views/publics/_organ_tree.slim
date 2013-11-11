@@ -1,0 +1,10 @@
+.organ_tree.affix
+  - organs.each do |organ|
+    ul
+      - if organ == @organ
+        .item style="background-color: rgb(213, 213, 213);"
+          = link_to organ.name, search_publics_path(:value => organ.fullname)
+      - else
+        .item
+          = link_to organ.name, search_publics_path(:value => organ.fullname)
+      = render :partial => 'children', :locals => { :organ => organ }
