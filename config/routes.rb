@@ -41,7 +41,6 @@ Phonebook::Application.routes.draw do
   resources :addresses, :except => [:show]
 
   resources :systems
-  resources :commons
 
   resources :properties, :only => [:index, :create, :edit]
 end

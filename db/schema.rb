@@ -13,13 +13,6 @@
 
 ActiveRecord::Schema.define(:version => 20131028085249) do
 
-  create_table "commons", :force => true do |t|
-    t.string   "name"
-    t.string   "phone"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "jobs", :force => true do |t|
     t.string   "name"
     t.string   "pinyin"
