@@ -23,8 +23,8 @@ class Organ < ActiveRecord::Base
     where{ (name.like value) | (pinyin.like value) }
   end
 
-  def children_members
-    children_ids = children.map(&:id)
-    User.joins{members.organ}.where{members.organ.id.in children_ids}
+  def users
+    organ_id = self.id
+    User.joins{members.organ}.where{members.organ.id == organ_id}
   end
 end
