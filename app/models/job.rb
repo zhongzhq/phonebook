@@ -6,8 +6,9 @@ class Job < ActiveRecord::Base
 
   has_and_belongs_to_many :members
 
-  validates_presence_of :name, :sort
-  validates :sort, :numericality => { :only_integer => true, :greater_than => 0, :less_than => 101 }
+  validates :name, :presence => true, :uniqueness => true
 
   before_destroy { members.blank? }
+
+  default_scope order('sort DESC')
 end

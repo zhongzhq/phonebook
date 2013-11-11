@@ -1,12 +1,10 @@
 defaults: &defaults
   system:
-    - key: login_remember_day
-      value: 5
-      comment: 登陆记住天数
+    login_remember_days: 5
 
-  user_properties:
-    - 办公电话
-    - 办公地址
+  user:
+    properties:
+      - 电子邮箱
 
 development:
   <<: *defaults

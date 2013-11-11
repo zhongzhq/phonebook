@@ -20,19 +20,10 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "follows", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "followed_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "jobs", :force => true do |t|
     t.string   "name"
-    t.integer  "sort"
     t.string   "pinyin"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "sort", :default => 0
   end
 
   create_table "jobs_members", :force => true do |t|
@@ -50,39 +41,31 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
 
   create_table "organs", :force => true do |t|
     t.string   "name"
+    t.string   "pinyin"
     t.string   "ancestry"
     t.string   "address"
     t.string   "phone"
-    t.text     "description"
+    t.text     "comment"
     t.integer  "sort", :default => 0
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  create_table "recents", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "recently_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "settings", :force => true do |t|
-    t.string   "key"
-    t.string   "value"
-    t.string   "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "systems", :force => true do |t|
+    t.integer   "login_remember_days"
   end
 
   create_table "users", :force => true do |t|
     t.string   "name"
+    t.string   "pinyin"
     t.string   "account"
-    t.string   "phone"
+    t.string   "mobile_phone"
+    t.string   "office_phone"
+    t.string   "office_address"
     t.string   "password_digest"
     t.text     "authentication_token"
     t.string   "state"
-    t.text     "comment"
-    t.string   "pinyin"
+    t.text     "comment"    
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
     t.hstore   "properties"
@@ -90,11 +73,9 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
 
   add_index "users", ["properties"], :name => "index_users_on_properties"
 
-  create_table "user_properties", :force => true do |t|
-    t.string   "key"
+  create_table "properties", :force => true do |t|
     t.string   "name"
+    t.string   "key"
     t.string   "state"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 end

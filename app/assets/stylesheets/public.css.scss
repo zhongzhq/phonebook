@@ -1,15 +1,5 @@
-*{margin:0;}
-body {
-  font-family: sans-serif;
-  height: 100%;
-}
-
-html{
-  height: 100%;
-}
-
 .container {
-  max-width: 960px;
+  width: 960px;
 }
 
 .btn {
@@ -25,36 +15,22 @@ html{
   搜索表单
 ------------------------------------ */
 #home {
- margin: 10% 0 80px;
-//   .alert {
-//     margin-top: -8%;
-//     strong {
-//       line-height: 30px;
-//     }
-//     p {
-//       margin-left: 20px;
-//       line-height: 15px;
-//     }
-//   }
+  margin: 10% 0 80px;
+
+  #search-form{
+    text-align: center;
+  }
 }
 #search-form {
-  padding-bottom: 10px;
-  text-align: center;
+  
 
-  .form-group {
-    padding-right: 0px;
-
-    input{
-      width: 500px;
-    }
-  }
 }
 
 /* ------------------------------------
   登陆界面
 ------------------------------------ */
 #login-box {
-  max-width: 330px;
+  width: 330px;
   padding: 15px;
   margin: 10% auto 0;
   .form-control {
@@ -66,16 +42,18 @@ html{
   组织树
 ------------------------------------ */
 .icon-folder-close{
-  background: url("icon-folder-close.png") no-repeat;
+  background-image: url("icon-folder-close.png");
 }
 .icon-folder-open{
-  background: url("icon-folder-open.png") no-repeat;
+  background-image: url("icon-folder-open.png");
 }
 .organ_tree {
   background-color: #f7f5fa;
   padding: 20px 20px 10px 0;
   border-radius: 5px;
   min-height: 400px;
+  width: 25%;
+  float: left;
 
   .header {
     font-weight: bold;
@@ -86,7 +64,12 @@ html{
   .li-last{
     border: 0 none;
     background: url("joinbottom.gif") no-repeat;
-    background-position: -7px 1px;
+    background-position: -7px 0;
+    padding-left: 15px;
+  }
+
+  .li-normal{
+    padding-left: 15px;
   }
 
   ul {
@@ -95,9 +78,8 @@ html{
     margin-left: 20px; 
 
     li{
-      background: url("line-hr.gif") no-repeat;
-      background-position: -6px 0;
-      border-left: 1px dotted #808080;
+      background: url("line.gif") repeat-y;
+      background-position: -7px 0;
     }  
 
     a {
@@ -116,11 +98,8 @@ html{
     }
     ul{       
       
-      margin-left: 10px;
-  
-      li{
-        padding-left: 15px;
-      }
+      margin-left: 10px; 
+      
 
       .item{
         a{
@@ -130,6 +109,11 @@ html{
     }    
   }
   
+}
+
+.organ_user{
+  width: 70%;
+  float:right;
 }
 
 /* ------------------------------------
@@ -194,13 +178,6 @@ html{
 /*-------------------------------
 首页
 -------------------------------*/
-#content{  
-  padding-bottom: 40px;
-  padding-top: 70px;
-  position: relative;
-  min-height: 100%;
-}
-
 .content-info{
   width: 550px;
   margin: 5px auto;
@@ -232,48 +209,7 @@ html{
 }
 
 
-/*------------------ul-inline---------------------------------------*/
-.ul-inline{
-  display:block;
 
-  li{
-    float: left;
-    list-style: none;
-    display:block;
-
-    a{
-      display:block;
-      padding: 10px 15px;   
-      text-decoration: none;
-    }
-  }
-}
-
-#footer{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-
-  .footCon{    
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;    
-    border-top: 1px solid #E4E4E4;
-    color: #777;
-    font-size: 13px;
-
-    .footCopy{
-      
-    }
-
-    .footServe{
-      
-    }
-  }
-}
 
 #message{
  position: absolute;
@@ -281,3 +217,72 @@ html{
  top: 70px;
  width: 100%; 
 }
+
+
+
+
+
+
+//
+//网站公用样式
+//
+
+*{
+  margin: 0;padding: 0;
+}
+body{
+  font-family: "Microsoft YaHei"，"Times New Roman";
+  color: #333;
+  font-size: 14px;
+  background-color: #f9f9f9;
+}
+html{
+  height: 100%;
+}
+article,aside,canvas,details,embed,figcaption,figure,footer,header,hgroup,menu,nav,section,summary{
+  display:block;
+}
+command,datalist,keygen,mark,meter,progress,rp,rt,ruby,time,wbr{
+  display:inline;
+}
+ul{
+  display:block;
+
+  li{
+    display:block;
+    list-style: none;
+  
+    a{
+      
+    }
+  }
+}
+img{
+  border: 0 none;
+}
+a{
+  text-decoration:none; 
+  cursor:pointer;
+}
+
+h1{
+  font-size:18px;
+  font-weight:bold;
+  margin: 15px 0;
+}
+h2{
+  font-size:16px;
+  font-weight:bold;
+  margin: 10px 0;
+}
+h3{
+  font-size:14px;
+  font-weight:bold;
+  margin: 5px 0;
+}
+h4{
+  font-size:12px;
+  font-weight:bold;
+}
+
+/*----------------------ie6--------------------------*/

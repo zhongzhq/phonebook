@@ -7,7 +7,7 @@
       th style="width: 200px;" 属性名
       th 启用
 
-    -  @user_properies.each do |p|
+    -  @properties.each do |p|
       tr
         td = p.name
         td
@@ -16,13 +16,13 @@
 
 
 br
-  = form_tag user_properties_path, :class => "form-inline", :method => "post"
+  = form_tag properties_path, :class => "form-inline", :method => "post"
     .form-group
       label 添加自定义属性:
     .form-group
-      input name="user_property[name]" type="text" class="form-control" placeholder="属性名"
+      input name="property[name]" type="text" class="form-control" placeholder="属性名"
     button type="submit" class="btn btn-primary" 新增
-    span 示例： 家庭电话，办公电话
+    span 示例： 家庭地址，出生地
 
 javascript:
   $(function(){
@@ -34,7 +34,7 @@ javascript:
         checkbox.attr("checked", "checked");
       }
       var flash = checkbox.siblings(".flash")
-      $.get( ("/user_properties/" + checkbox.val() + "/edit?checked=" + (checkbox.attr("checked") == "checked") ),
+      $.get( ("/properties/" + checkbox.val() + "/edit?checked=" + (checkbox.attr("checked") == "checked") ),
       function(data){
         flash.html(data).show()
         setTimeout(function(){

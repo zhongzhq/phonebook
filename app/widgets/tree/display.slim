@@ -1,10 +1,13 @@
 .organ_tree.affix
-  /.header 组织结构
-  - @root_organs.each do |root_organ|
+  - @organs.each do |organ|
     ul
-      .item
-        = link_to root_organ.name, organ_path(root_organ)    
-      = render :view => :children, :locals => { :organ => root_organ }
+      - if organ == @organ
+        .item style="background-color: rgb(213, 213, 213);"
+          = link_to organ.name, organ_path(organ)
+      - else
+        .item
+          = link_to organ.name, organ_path(organ)
+      = render :view => :children, :locals => { :organ => organ }
 
 javascript:
   toggle_tree($(".organ_tree"));

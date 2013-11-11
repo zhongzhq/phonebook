@@ -34,20 +34,17 @@ Phonebook::Application.routes.draw do
       post "reset_submit"
       
       # 个人操作
-      get "password"
-      post "password_submit"
-      get "info"
-      post "info_submit"
+      get "change"
+      post "data_submit"
+      post "password_submit"      
     end
   end
-
-  # resources :follows, :only => [:index, :new, :destroy]
 
   resources :jobs, :except => [:show]
   resources :addresses, :except => [:show]
 
-  resources :settings
+  resources :systems
   resources :commons
 
-  resources :user_properties, :only => [:index, :create, :edit]
+  resources :properties, :only => [:index, :create, :edit]
 end

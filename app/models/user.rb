@@ -6,11 +6,11 @@ class User < ActiveRecord::Base
 
   serialize :properties, ActiveRecord::Coders::Hstore
   
-  attr_accessible :account, :name, :phone, :comment, :properties, :organ
+  attr_accessible :account, :name, :mobile_phone, :office_phone, :office_address, :comment, :properties, :organ
 
   has_many :members
 
-  validates_presence_of :account, :name, :phone
+  validates :account, :name, :mobile_phone, :presence => true
   validates_presence_of :password, :on => :create
   # validate :exist_jobs
 
@@ -28,5 +28,11 @@ class User < ActiveRecord::Base
       properties[key] = value
     end
     save
+  end
+
+  def admin_member
+    members.each do |member|
+      return member if member.admin?
+    end
   end
 end

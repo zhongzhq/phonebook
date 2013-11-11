@@ -1,8 +1,7 @@
 .col-md-3
   = render_widget :organ_tree, :show
 .col-md-9
-  form#search-form.form-inline action="#"
-    /search_organ_path(@organ)
+  form#search-form.form-inline action=search_organ_path(@organ)
     .form-group
       input name="value" type="text" class="form-control" placeholder="姓名或首字母，电话，房间号" value=@value
 
@@ -18,13 +17,13 @@
 
     - if @users.blank?
       .panel.panel-warning
-        .panel-heading 该部门下暂无成员
+        .panel-heading 没有找到符合要求的结果
 
     - else
       table.table
         tr
           th 姓名
-          th 职务
+          th 部门职务
           th 办公电话
           th 移动电话
           th 办公地址          
@@ -32,9 +31,13 @@
 
         - @users.each do |user|
           tr
-            td = link_to user.name, with_organ_show_user_path(user, :organ_id => @organ.id)
-            td = Member.where(:user_id => user.id, :organ_id => @organ.id).first.jobs.map(&:name).join("/")
-            td = user.properties[UserProperty.find_by_name("办公电话").key]
-            td = user.phone
-            td = user.properties[UserProperty.find_by_name("办公地址").key]
-            td = link_to "详情", with_organ_show_user_path(user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
+            td = user.name
+            td
+              - user.members.each do |member|
+                span title="#{member.organ.fullname + '： ' + member.jobs.map(&:name).join("、")}"
+                  = member.organ.name + '： ' + member.jobs.map(&:name).join("、")
+                br
+            td = user.office_phone
+            td = user.mobile_phone
+            td = user.office_address
+            td = link_to "详情", user_path(user), :class => "btn btn-info btn-xs"

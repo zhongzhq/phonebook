@@ -1,0 +1,20 @@
+body{
+	font-size: 13px;
+}
+.panel-heading{
+	background-color: #D9EDF7;
+	border-bottom: 0 none;
+}
+
+.table-search th{
+	height: 35px;
+}
+
+.table-search td{
+	height: 30px;
+}
+.table-search td,.table-search th{
+	border-bottom: 1px solid #ccc;
+	padding: 0 10px;
+}
+
