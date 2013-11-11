@@ -35,4 +35,5 @@ class User < ActiveRecord::Base
       return member if member.admin?
     end
   end
+
 end
