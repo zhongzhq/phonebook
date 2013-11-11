@@ -29,7 +29,11 @@ class PublicsController < ApplicationController
   end
   
   def search
-    @value = params[:value]
+    searching = params[:value]
+    @organs = SearchEngine.search_organs(searching)
+    @users = SearchEngine.search_user(searching)
+
+    render "xxxxx"
 
     param_one, param_two, param_three = params[:value].split(" ").map do |x|
       x.downcase.split('').join("%").insert(0, "%").insert(-1, "%")
