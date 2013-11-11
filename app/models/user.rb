@@ -35,4 +35,10 @@ class User < ActiveRecord::Base
       return member if member.admin?
     end
   end
+
+  def self.search value
+    return [] if value.blank?
+    value = value.downcase.split('').join("%").insert(0, "%").insert(-1, "%")
+    where{ (name.like value) | (pinyin.like value) | (mobile_phone.like value) }
+  end
 end
