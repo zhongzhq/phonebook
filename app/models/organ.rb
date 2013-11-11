@@ -7,7 +7,7 @@ class Organ < ActiveRecord::Base
   has_many :members
   has_ancestry
 
-  validates :name, :presence => true, :uniqueness => true
+  validates :name, :presence => true, :uniqueness => { :scope => :ancestry}
 
   before_destroy { children.blank? && members.blank? }
 
@@ -17,10 +17,15 @@ class Organ < ActiveRecord::Base
   end
 
   default_scope order('sort DESC')
-  def self.search value
-    return [] if value.blank?
-    value = value.downcase.split('').join("%").insert(0, "%").insert(-1, "%")
-    where{ (name.like value) | (pinyin.like value) }
+
+  def self.search_by_fullname value
+    values = value.split("/")
+    organ = Organ.where{name.like values.first}.first
+
+    values.drop(1).each do |x|
+      organ = organ.children.where{name.like x}.first
+    end
+    organ
   end
 
   def users

@@ -13,7 +13,6 @@
           th 办公电话
           th 移动电话
           th 办公地址
-          th 操作
 
         - users.each do |user|
           tr
@@ -26,7 +25,6 @@
             td = user.office_phone
             td = user.mobile_phone
             td = user.office_address
-            td = link_to "详情", search_publics_path(:value => user.mobile_phone), :class => "btn btn-success", :style => "padding: 2px 5px;font-size: 13px;"
 
 .col-md-4
   .panel.panel-info
@@ -36,8 +34,8 @@
     - else
       table.table
         tr
-          th 下级组织
+          th = @value
 
         - @organ.children.each do |organ|
           tr
-            td = link_to organ.fullname, search_publics_path(:value => organ.name)
+            td = link_to organ.name, search_publics_path(:value => organ.name)

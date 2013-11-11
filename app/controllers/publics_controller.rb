@@ -30,11 +30,12 @@ class PublicsController < ApplicationController
   
   def search
     @value = params[:value]
-    @organs = Organ.search(@value)
-    @users = User.search(@value)
+    @organs = SearchEngine.search_organs(@value)
+    @users = SearchEngine.search_users(@value)
 
     if(@organs.size == 1) and (@users.blank?)
       @organ = @organs.first
+      @value = @organ.fullname
       return render "result_organ"
     elsif (@organs.blank?) and (@users.size == 1)
       @user = @users.first

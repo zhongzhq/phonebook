@@ -1,18 +1,16 @@
 = render "search"
 
-.panel.panel-info
-  .panel-heading
-    strong 用户详细信息
+.col-md-8
+  .panel.panel-info
+    .panel-heading
+      strong 用户详细信息
 
-  .panel-body
-    .col-md-12
+    .panel-body
       h3 = @user.name
       - @user.members.each do |member|
         p  = member.organ.name + '： ' + member.jobs.map(&:name).join("、")
       p 办公电话： #{@user.office_phone}
-
-    hr
-    .col-md-8
+    
       p 移动电话：#{@user.mobile_phone}
       p 办公地址：#{@user.office_address}
       strong 其他信息
@@ -21,9 +19,13 @@
       strong 备注
       p #{simple_format @user.comment}
 
-    .col-md-4
+
+.col-md-4
+  .panel.panel-info
+    .panel-heading
       strong 组织信息
-      br
+      
+    .panel-body
       table.table
       - @user.members.each do |member|
         strong = link_to member.organ.fullname, search_publics_path(:value => member.organ.name)

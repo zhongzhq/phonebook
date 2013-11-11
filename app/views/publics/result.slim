@@ -10,7 +10,6 @@
           th 办公电话
           th 移动电话
           th 办公地址
-          th 操作
 
         - @users.each do |user|
           tr
@@ -23,7 +22,6 @@
             td = user.office_phone
             td = user.mobile_phone
             td = user.office_address
-            td = link_to "详情", search_publics_path(:value => user.mobile_phone), :class => "btn btn-success", :style => "padding: 2px 5px;font-size: 13px;"
 
 - if @organs.present?
   .col-md-4
