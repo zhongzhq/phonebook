@@ -4,9 +4,10 @@ gem 'rails', '3.2.13'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'bootstrap-sass-rails'
-  gem 'compass-rails'
+  # gem 'bootstrap-sass-rails'
+  gem 'bootstrap-sass', '2.3.1.3'
 
+  gem 'compass-rails'
   gem 'coffee-rails', '~> 3.2.1'
 
   gem 'therubyracer', :platforms => :ruby

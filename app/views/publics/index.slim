@@ -1,9 +1,19 @@
-.col-md-4
-  = render :partial => 'organ_tree', :locals => { :organs => @organs }
+.row-fluid
+  .span3
+    .widget-box
+      .widget-title
+        span.icon: i.icon-user
+        h5 组织机构
+      .widget-content
+        = render :partial => 'organ_tree', :locals => { :organs => @organs }
 
-.col-md-8
-  #home
-    = render :partial => "search"
+  .span9
+    .widget-box
+      .widget-title
+        span.icon: i.icon-search
+        h5 组织机构
+      .widget-content
+        = render :partial => "search"
 
 javascript:
   toggle_tree($(".organ_tree"));

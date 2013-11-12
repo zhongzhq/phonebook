@@ -5,38 +5,45 @@
 // or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
 //
 // It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// the compiled file.
+// compiled file.
 //
-// WARNING: THE FIRST BLANK LINE MARKS THE END OF WHAT'S TO BE PROCESSED, ANY BLANK LINE SHOULD
-// GO AFTER THE REQUIRES BELOW.
+// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
+// about supported directives.
 //
 //= require jquery
-//= require jquery_ujs
-//= require twitter/bootstrap/collapse
-//= require twitter/bootstrap/dropdown
-//= require twitter/bootstrap/alert
-//= require_tree .
-
-function toggle_tree(selector){
-  var opened_icon = "icon-folder-close"
-  var closed_icon = "icon-folder-open"
-
-  selector.find(".item").each(function(){
-    $(this).siblings("ul").hide();
-    if($(this).siblings("ul").find("li").size() > 0){
-      $(this).prepend("<span class=\" " + opened_icon + " toggle-icon\"></span>");
-    }
-  });
-
-  selector.find(".item .toggle-icon").click(function(){
-    if($(this).is("." + opened_icon)){
-      $(this).removeClass(opened_icon);
-      $(this).addClass(closed_icon);
-      $(this).parent().siblings("ul").show();
-    } else {
-      $(this).removeClass(closed_icon);
-      $(this).addClass(opened_icon);
-      $(this).parent().siblings("ul").hide();
-    }
-  });
-}
+//= require bootstrap
+//= require bootstrap-colorpicker
+//= require bootstrap-datepicker
+//= require bootstrap-wysihtml5
+//= require excanvas.min
+//= require fullcalendar.min
+//= require jquery.dataTables.min
+//= require jquery.easy-pie-chart
+//= require jquery.flot.crosshair
+//= require jquery.flot.min
+//= require jquery.flot.pie
+//= require jquery.flot.pie.min
+//= require jquery.flot.resize.min
+//= require jquery.flot.stack
+//= require jquery.gritter.min
+//= require jquery.optionTree
+//= require jquery.peity.min
+//= require jquery.ui.custom
+//= require jquery.uniform
+//= require jquery.validate
+//= require jquery.wizard
+//= require masked
+//= require matrix.calendar
+//= require matrix.charts
+//= require matrix.dashboard
+//= require matrix.form_common
+//= require matrix.form_validation
+//= require matrix.interface
+//= require matrix
+//= require matrix.login
+//= require matrix.popover
+//= require matrix.tables
+//= require matrix.wizard
+//= require select2.min
+//= require wysihtml5-0.3.0
+//* = require_tree .

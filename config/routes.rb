@@ -9,7 +9,7 @@ Phonebook::Application.routes.draw do
   resources :publics do
     collection do
       post 'authenticate'
-      delete 'logout'
+      get 'logout'
 
       get "search"
     end
