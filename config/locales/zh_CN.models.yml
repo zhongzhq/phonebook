@@ -4,7 +4,6 @@ zh_CN:
       organ: 组织
       user: 用户
       job: 职务      
-      common: 常用电话
       system: 系统设置
     attributes:
       organ:
@@ -28,9 +27,6 @@ zh_CN:
       job:
         name: 职务名
         sort: 排序号
-      common:
-        name: 名称
-        phone: 电话
       system:
         login_remember_days: 登录记住天数
 

@@ -9,7 +9,7 @@ Phonebook::Application.routes.draw do
   resources :publics do
     collection do
       post 'authenticate'
-      delete 'logout'
+      get 'logout'
 
       get "search"
     end
@@ -41,7 +41,6 @@ Phonebook::Application.routes.draw do
   resources :addresses, :except => [:show]
 
   resources :systems
-  resources :commons
 
   resources :properties, :only => [:index, :create, :edit]
 end
