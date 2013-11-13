@@ -1,6 +1,7 @@
-.panel.panel-info
-  .panel-heading
-    strong 编辑职务 -> #{@job.name}
+.widget-box
+  .widget-title
+    span.icon: i.icon-user
+    h5 编辑 #{@job.name}
 
-  .panel-body
+  .widget-content
     = render :partial => "form"

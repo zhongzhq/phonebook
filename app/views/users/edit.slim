@@ -1,6 +1,5 @@
-.panel.panel-info
-  .panel-heading
-    strong 编辑用户
-
-  .panel-body
-    = render :partial => "form"
+.widget-title
+  span.icon: i.icon-user
+  h5 编辑 #{@organ.fullname} 下用户：#{@user.name}
+.widget-content
+  = render :partial => "form"

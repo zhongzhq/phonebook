@@ -19,9 +19,6 @@ Phonebook::Application.routes.draw do
 
   resources :users, :except => [:index] do
     member do
-      get "with_organ"
-      get "with_organ_show"
-
       # 管理员操作
       get "reset"
       post "reset_submit"

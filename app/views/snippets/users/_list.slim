@@ -15,7 +15,7 @@ table.table
           - if @value.present?
             = link_to user.name, search_publics_path(:value => user.mobile_phone)
           - else
-            = link_to user.name, with_organ_user_path(user, :organ_id => organ.id)
+            = link_to user.name, user_path(user, :organ_id => organ.id)
         - else
           - if @value.present?
             = link_to user.name, search_publics_path(:value => user.mobile_phone)

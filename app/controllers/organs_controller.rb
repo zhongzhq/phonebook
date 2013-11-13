@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 class OrgansController < ApplicationController
   load_and_authorize_resource
+  layout "tree", :only => [:show]
 
   def index
     @root_organs = Organ.roots

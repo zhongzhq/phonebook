@@ -1,19 +1,14 @@
-= render :partial => "snippets/search"
-
-ul.todo.unstyled
-  li 
-    span= @organ.fullname
-    | (#{@organ.members.size})
-    .pull-right
-      - if session[:admin]
-        = link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-info btn-xs"
-
-
-  .panel-body
+.widget-box
+  .widget-title
+    span.icon: i.icon-user
+    h5 = @organ.fullname
     small = simple_format @organ.comment
+    span.pull-right= link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-primary"
 
-- if @users.blank?
-  .panel.panel-warning
-    .panel-heading 该部门下暂无成员
-- else
-  = render :partial => "snippets/users/list", :locals => { :users => @users }
+  .widget-content
+    = render :partial => "snippets/search"
+
+    - if @users.blank?
+      .alert 该部门下暂无成员
+    - else
+      = render :partial => "snippets/users/list", :locals => { :users => @users, :organ => @organ }

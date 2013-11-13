@@ -28,7 +28,7 @@ body
               span.icon: i.icon-user
               h5 组织机构
             .widget-content
-              = render :partial => "snippets/organs/tree"
+              = render :partial => "snippets/organs/tree", :locals => {:show_path => true}
 
         .span9
           .widget-box            
