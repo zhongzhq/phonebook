@@ -1,5 +1,5 @@
 .organ_tree
-  - organs.each do |organ|
+  - Organ.roots.each do |organ|
     ul
       - if organ == @organ
         .item style="background-color: rgb(213, 213, 213);"
@@ -7,4 +7,4 @@
       - else
         .item
           = link_to organ.name, search_publics_path(:value => organ.fullname)
-      = render :partial => 'children', :locals => { :organ => organ }
+      = render :partial => 'snippets/organs/children', :locals => { :organ => organ }

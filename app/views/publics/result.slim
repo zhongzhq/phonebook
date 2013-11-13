@@ -1,52 +1,25 @@
 .row-fluid
+
   .span3
     .widget-box
       .widget-title
         span.icon: i.icon-user
         h5 组织机构
       .widget-content
-        = render :partial => 'organ_tree', :locals => { :organs => Organ.roots }
+        = render :partial => "snippets/organs/tree"
 
   .span9
     .widget-box
       .widget-title
         span.icon: i.icon-search
-        h5 组织机构
+        h5 = @organ.present? ? @organ.name : "搜索结果"
       .widget-content
-        = render "search"
-        - if @organs.present?
-          .col-md-4
-            .panel.panel-info
-              table.table
-                tr
-                  th 组织名
+        = render :partial => "snippets/search"
 
-                - @organs.each do |organ|
-                  tr
-                    td = link_to organ.fullname, search_publics_path(:value => organ.fullname)
+        - (@organ.present? ? @organ.children : (@organs || [])).each do |organ|
+          span style="margin:10px;" = link_to organ.name, search_publics_path(:value => organ.name)
 
-        - if @users.present?
-          .col-md-8
-            .panel.panel-info        
-              table.table.table-search
-                tr
-                  th 姓名
-                  th 部门职务
-                  th 办公电话
-                  th 移动电话
-                  th 办公地址
-
-                - @users.each do |user|
-                  tr
-                    td = link_to user.name, search_publics_path(:value => user.mobile_phone)
-                    td
-                      - user.members.each do |member|
-                        span title="#{member.organ.fullname + '： ' + member.jobs.map(&:name).join("、")}"
-                          = member.organ.name + '： ' + member.jobs.map(&:name).join("、")
-                        br
-                    td = user.office_phone
-                    td = user.mobile_phone
-                    td = user.office_address
+        = render :partial => "snippets/users/list", :locals => { :users => (@organ.present? ? @organ.members.map(&:user) : (@users || [])), :organ => @organ }
         
         - if @users.blank? and @organs.blank?
-          .alert.alert-warning 没有符合要求的结果!
+          .alert.alert-warning 没有找到符合要求的结果！

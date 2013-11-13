@@ -1,4 +1,4 @@
-= render :partial => "publics/search"
+= render :partial => "snippets/search"
 
 ul.todo.unstyled
   li 
@@ -15,22 +15,5 @@ ul.todo.unstyled
 - if @users.blank?
   .panel.panel-warning
     .panel-heading 该部门下暂无成员
-
 - else
-  table.table
-    tr
-      th 姓名
-      th 职务
-      th 办公电话
-      th 移动电话
-      th 办公地址          
-      th 操作
-
-    - @users.each do |user|
-      tr
-        td = link_to user.name, with_organ_user_path(user, :organ_id => @organ.id)
-        td = Member.where(:user_id => user.id, :organ_id => @organ.id).first.jobs.map(&:name).join("/")
-        td = user.office_phone
-        td = user.mobile_phone
-        td = user.office_address
-        td = link_to "详情", with_organ_user_path(user, :organ_id => @organ.id), :class => "btn btn-info btn-xs"
+  = render :partial => "snippets/users/list", :locals => { :users => @users }

@@ -9,7 +9,7 @@ ul
         - else
           .item
             = link_to child.name, search_publics_path(:value => child.fullname)
-        = render :partial => 'children', :locals => { :organ => child }
+        = render :partial => 'snippets/organs/children', :locals => { :organ => child }
 
     - else
       li.li-normal
@@ -19,4 +19,4 @@ ul
         - else
           .item        
             = link_to child.name, search_publics_path(:value => child.fullname)
-        = render :partial => 'children', :locals => { :organ => child }
+        = render :partial => 'snippets/organs/children', :locals => { :organ => child }

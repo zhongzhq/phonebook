@@ -36,12 +36,10 @@ class PublicsController < ApplicationController
     if(@organs.size == 1) and (@users.blank?)
       @organ = @organs.first
       @value = @organ.fullname
-      return render "result_organ"
     elsif (@organs.blank?) and (@users.size == 1)
       @user = @users.first
       return render "result_user"
-    else
-      return render "result"
     end
+    render "result"
   end
 end
