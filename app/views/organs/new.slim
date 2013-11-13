@@ -1,6 +1,7 @@
-.panel.panel-info
-  .panel-heading
-    strong =  @organ.parent_id.present? ? "增加 #{Organ.find(@organ.parent_id).name} 下级" : "添加外协企业"
+.widget-box
+  .widget-title
+    span.icon: i.icon-user
+    h5 = @organ.parent_id.present? ? "增加 #{Organ.find(@organ.parent_id).name} 下级" : "添加外协企业"
 
-  .panel-body
+  .widget-content
     = render :partial => "form"

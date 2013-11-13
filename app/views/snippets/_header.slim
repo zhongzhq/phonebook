@@ -19,14 +19,14 @@
 
   #sidebar
     ul
-      li.active
+      li
         a href=root_path
           i.icon.icon-home
           span 系统首页
       - if current_user.members.map(&:admin?).include?(true)
         - if can? :manage, :all
           li
-            a href=manage_organs_path
+            a href=organs_path
               i.icon.icon-th
               span 组织管理
         li

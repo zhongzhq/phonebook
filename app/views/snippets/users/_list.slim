@@ -20,7 +20,7 @@ table.table
           - if @value.present?
             = link_to user.name, search_publics_path(:value => user.mobile_phone)
           - else
-            = link_to user.name, with_organ_user_path(user)
+            = link_to user.name, user_path(user)
       td
         - if exist_organ
           = Member.where(:user_id => user.id, :organ_id => organ.id).first.jobs.map(&:name).join("/")

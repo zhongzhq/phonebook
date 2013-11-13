@@ -4,10 +4,6 @@ class OrgansController < ApplicationController
   layout "organ_tree", :only => [:show]
 
   def index
-    redirect_to organ_path(Organ.find(1))
-  end
-
-  def manage
     @root_organs = Organ.roots
   end
 
@@ -23,7 +19,7 @@ class OrgansController < ApplicationController
     @organ = Organ.new(params[:organ])
 
     if @organ.save
-      redirect_to manage_organs_path
+      redirect_to organs_path
     else
       render "new"
     end
@@ -41,7 +37,7 @@ class OrgansController < ApplicationController
   def update
     @organ = Organ.find(params[:id])
     if @organ.update_attributes(params[:organ])
-      redirect_to manage_organs_path
+      redirect_to organs_path
     else
       render "edit"
     end
@@ -49,6 +45,6 @@ class OrgansController < ApplicationController
 
   def destroy
     @organ = Organ.find(params[:id])
-    redirect_to manage_organs_path, (@organ.destroy ? {:notice => "组织删除成功"} : {:alert => "组织下还有成员或下级组织"})
+    redirect_to organs_path, (@organ.destroy ? {:notice => "组织删除成功"} : {:alert => "组织下还有成员或下级组织"})
   end
 end
