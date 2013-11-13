@@ -61,10 +61,21 @@ body
           | 首页
 
     .container-fluid
-      .span3
-        = render_widget :organ_tree, :display
-      .span9
-        = yield
+      .row-fluid
+        .span3
+          .widget-box
+            .widget-title
+              span.icon: i.icon-user
+              h5 组织机构
+            .widget-content
+              = render_widget :organ_tree, :display
+        .span9
+          .widget-box
+            .widget-title
+              span.icon: i.icon-user
+              h5 组织机构
+            .widget-content
+              = yield
 
   .row-fluid
     #footer.span12

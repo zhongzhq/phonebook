@@ -1,7 +1,6 @@
-form#search-form action=search_publics_path
-  #search_area
-    input#value-input name="value" style="width: 500px;" type="text" autofocus="true"  placeholder="姓名或首字母，电话，房间号，组织" value=@value
-    input.input-btn type="submit" class="btn btn-primary" value="搜索" 
+form#search-form.form-inline action=search_publics_path
+  input name="value" type="text" autofocus="true"  placeholder="姓名或首字母，电话，房间号，组织" value=@value
+  button type="submit" class="btn btn-primary"  搜索
     
 
 javascript:
