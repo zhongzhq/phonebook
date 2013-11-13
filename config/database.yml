@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: phonebook_standalone
+  database: phonebook_dev
   pool: 5
   username: phonebook
   password: phonebook
@@ -11,7 +11,7 @@ development:
 test:
   adapter: postgresql
   encoding: utf8
-  database: phonebook_standalone
+  database: phonebook_test
   pool: 5
   username: phonebook
   password: phonebook

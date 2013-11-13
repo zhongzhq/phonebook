@@ -4,11 +4,6 @@
 System.create!(Settings.system)
 Settings.user.properties.each { |property| Property.create(:name => property) }
 
-# 常用电话
-Common.create!(name: '物业管理', phone: '67123121')
-Common.create!(name: '蓝光矿泉水', phone: '52234129')
-Common.create!(name: '公司客服电话', phone: '43267865')
-
 # ----------------- zhiyi init ------------------
 # 部门初始化
 zhiyi = Organ.create!(name: '成都知一软件有限公司' )
