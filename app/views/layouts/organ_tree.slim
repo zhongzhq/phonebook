@@ -11,47 +11,7 @@ body
   #header
     h1: a href="#" = t(:site_name)
 
-  #user-nav.navbar.navbar-inverse
-    ul.nav
-      li.dropdown#profile-messages
-        a.dropdown-toggle title="" href="#" data-toggle="dropdown" data-target="#profile-messages"
-          i.icon.icon-user
-          span.text= " 欢迎用户 "
-          b.caret
-
-        ul.dropdown-menu
-          li
-            a href="#"
-              i.icon-user
-              | 账号配置
-          li.divider
-          li
-            = link_to "退出", logout_publics_path
-      - if current_user.present? && current_user.members.map(&:admin?).include?(true)
-        li.dropdown
-          a.dropdown-toggle href="#" data-toggle="dropdown"
-            | 系统管理
-            b.caret
-          ul.dropdown-menu
-            li
-              = link_to "用户管理", organ_path(current_user.admin_member.organ, :admin => true)
-            - if can? :manage, :all
-              li
-                = link_to "组织管理", manage_organs_path
-              li
-                = link_to "职务管理", jobs_path              
-              li
-                = link_to "用户属性管理", properties_path
-              li.divider
-              li
-                = link_to "系统设置", system_path(System.first)
-      
-  #sidebar
-    ul
-      li.active
-        a href="#"
-          i.icon.icon-home
-          span 个人主页
+  = render :partial => "snippets/header"
 
   #content
     #content-header
@@ -69,14 +29,13 @@ body
               h5 组织机构
             .widget-content
               = render_widget :organ_tree, :display
+
         .span9
           .widget-box
             .widget-title
               span.icon: i.icon-user
-              h5 组织机构
+              h5 组织机构 organ_tree
             .widget-content
               = yield
 
-  .row-fluid
-    #footer.span12
-      = "版权所有，2013，成都知一软件有限公司"
+  = render :partial => "snippets/footer"

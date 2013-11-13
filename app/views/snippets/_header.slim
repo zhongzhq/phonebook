@@ -1,36 +1,48 @@
-#header.bg_default
-  .container
-    a.head_brand href="/" = t(:site_name) 
-    - if current_user.present?     
-      .head_nav      
-        ul
-          - if current_user.members.map(&:admin?).include?(true)
-            li.dropdown
-              a.dropdown-toggle href="#" data-toggle="dropdown"
-                | 系统管理
-                b.caret
-              ul.dropdown-menu
-                li
-                  = link_to "用户管理", organ_path(current_user.admin_member.organ, :admin => true)
-                - if can? :manage, :all
-                  li
-                    = link_to "组织管理", manage_organs_path
-                  li
-                    = link_to "职务管理", jobs_path              
-                  li
-                    = link_to "用户属性管理", properties_path
-                  li.divider
-                  li
-                    = link_to "系统设置", system_path(System.first)
+- if current_user.present?
+  #user-nav.navbar.navbar-inverse
+    ul.nav
+      li.dropdown#profile-messages
+        a.dropdown-toggle title="" href="#" data-toggle="dropdown" data-target="#profile-messages"
+          i.icon.icon-user
+          span.text = current_user.name
+          b.caret
 
-      .head_info
-        ul
-          li.dropdown
-            a.dropdown-toggle href="#" data-toggle="dropdown"
-              = current_user.try(:name) || "请完善用户资料"
-              b.caret
-            ul.dropdown-menu
-              li
-                a href=change_user_path(current_user) 修改个人信息
+        ul.dropdown-menu
           li
-            = link_to "退出", logout_publics_path, :method => :delete
+            a href=change_user_path(current_user)
+              i.icon.icon-check
+              span 账号配置
+          li
+            a href=logout_publics_path
+              i.icon.icon-share-alt
+              span 退出
+
+  #sidebar
+    ul
+      li.active
+        a href=root_path
+          i.icon.icon-home
+          span 系统首页
+      - if current_user.members.map(&:admin?).include?(true)
+        - if can? :manage, :all
+          li
+            a href=manage_organs_path
+              i.icon.icon-th
+              span 组织管理
+        li
+          a href=organ_path(current_user.admin_member.organ)
+            i.icon.icon-signal
+            span 用户管理
+        - if can? :manage, :all
+          li
+            a href=jobs_path
+              i.icon.icon-inbox
+              span 职务管理
+          li
+            a href=properties_path
+              i.icon.icon-th-list
+              span 用户属性管理
+          li
+            a href=system_path(System.first)
+              i.icon.icon-cog
+              span 系统设置
