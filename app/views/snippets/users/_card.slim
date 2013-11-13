@@ -20,15 +20,19 @@
         br
         small 电话：#{organ.phone} <br> 地址：#{organ.address}
       p 部门其他成员：
-      table.table
-        - Organ.find(member.organ).members.each do |m|
-          - unless @user.members.map(&:id).include?(m.id)
-            tr
-              td
-                - if @value.present?
-                  = link_to m.user.name, search_publics_path(:value => m.user.mobile_phone)
-                - else
-                  = link_to user.name, with_organ_user_path(user)
+      - members = Organ.find(member.organ).members
+      - if members.size < 2
+        | 无
+      - else
+        table.table
+          - Organ.find(member.organ).members.each do |m|
+            - unless @user.members.map(&:id).include?(m.id)
+              tr
+                td
+                  - if @value.present?
+                    = link_to m.user.name, search_publics_path(:value => m.user.mobile_phone)
+                  - else
+                    = link_to user.name, user_path(user)
 
-              td = m.user.office_phone
-              td = m.jobs.map(&:name).join("、")
+                td = m.user.office_phone
+                td = m.jobs.map(&:name).join("、")

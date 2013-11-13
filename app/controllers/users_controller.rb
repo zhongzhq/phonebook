@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 class UsersController < ApplicationController
   load_and_authorize_resource
-  layout "organ_tree", :only => [:new, :create, :with_organ, :reset, :reset_submit, :edit, :update]
   
   def new
     @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?

@@ -5,18 +5,30 @@ ul
       li.li-last
         - if child == @organ
           .item style="background-color: rgb(213, 213, 213);"
-            = link_to child.name, search_publics_path(:value => child.fullname)
+            - if is_show.present?
+              = link_to child.name, organ_path(child)
+            - else
+              = link_to child.name, search_publics_path(:value => child.fullname)
         - else
           .item
-            = link_to child.name, search_publics_path(:value => child.fullname)
-        = render :partial => 'snippets/organs/children', :locals => { :organ => child }
+            - if is_show.present?
+              = link_to child.name, organ_path(child)
+            - else
+              = link_to child.name, search_publics_path(:value => child.fullname)
+        = render :partial => 'snippets/organs/children', :locals => { :organ => child, :is_show => is_show }
 
     - else
       li.li-normal
         - if child == @organ
           .item style="background-color: rgb(213, 213, 213);"
-            = link_to child.name, search_publics_path(:value => child.fullname)
+            - if is_show.present?
+              = link_to child.name, organ_path(child)
+            - else
+              = link_to child.name, search_publics_path(:value => child.fullname)
         - else
           .item        
-            = link_to child.name, search_publics_path(:value => child.fullname)
-        = render :partial => 'snippets/organs/children', :locals => { :organ => child }
+            - if is_show.present?
+              = link_to child.name, organ_path(child)
+            - else
+              = link_to child.name, search_publics_path(:value => child.fullname)
+        = render :partial => 'snippets/organs/children', :locals => { :organ => child, :is_show => is_show }

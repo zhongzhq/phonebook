@@ -1,10 +1,18 @@
+- is_show = defined?(show_path)
+
 .organ_tree
   - Organ.roots.each do |organ|
     ul
       - if organ == @organ
         .item style="background-color: rgb(213, 213, 213);"
-          = link_to organ.name, search_publics_path(:value => organ.fullname)
+          - if is_show.present?
+            = link_to organ.name, organ_path(organ)
+          - else
+            = link_to organ.name, search_publics_path(:value => organ.fullname)
       - else
         .item
-          = link_to organ.name, search_publics_path(:value => organ.fullname)
-      = render :partial => 'snippets/organs/children', :locals => { :organ => organ }
+          - if is_show.present?
+            = link_to organ.name, send(:organ_path, organ)
+          - else
+            = link_to organ.name, send(:search_publics_path, {:value => organ.fullname})
+      = render :partial => 'snippets/organs/children', :locals => { :organ => organ, :is_show => is_show }

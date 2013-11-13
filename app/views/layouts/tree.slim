@@ -12,13 +12,13 @@ body
     h1: a href="#" = t(:site_name)
 
   = render :partial => "snippets/header"
-
+      
   #content
     #content-header
-      #breadcrumb
-        a.tip-bottom href=root_path title="首页"
-          i.icon-home
-          | 首页
+      / #breadcrumb
+      /   a.tip-bottom href= title="首页"
+      /     i.icon-home
+      /     | 首页
 
     .container-fluid
       .row-fluid
@@ -28,14 +28,10 @@ body
               span.icon: i.icon-user
               h5 组织机构
             .widget-content
-              = render_widget :organ_tree, :display
+              = render :partial => "snippets/organs/tree"
 
         .span9
-          .widget-box
-            .widget-title
-              span.icon: i.icon-user
-              h5 组织机构 organ_tree
-            .widget-content
-              = yield
+          .widget-box            
+            = yield
 
   = render :partial => "snippets/footer"
