@@ -11,6 +11,8 @@ class Ability
       can :manage, :all if member.organ.parent.blank? && member.admin?
 
       if member.admin?
+        can [:new, :create], User
+
         can :show, Organ do |organ|
           user.admin_organ.subtree.include?(organ)
         end

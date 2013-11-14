@@ -4,7 +4,7 @@ class TreeWidget < ApplicationWidget
 
   def organs
     result = {}
-    Organ.roots.each do |organ|
+    [current_user.admin_organ].each do |organ|
       result[organ.name] = children(organ)
     end
     result.to_json

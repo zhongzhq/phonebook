@@ -20,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       @user.update_properties(params[:user_properties])
 
-      @member = Member.first_or_create(:user_id => @user.id, :organ_id => @organ.id)
+      member = Member.first_or_create(@user.id, @organ.id)
       member.set_jobs(params[:user][:jobs])
       member.update_attributes(:is_admin => params[:is_admin])
       
