@@ -6,6 +6,7 @@ class PublicsController < ApplicationController
 
   def login
     @user = User.new
+    render layout: false
   end
 
   def authenticate

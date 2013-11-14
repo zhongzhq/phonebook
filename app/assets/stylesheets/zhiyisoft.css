@@ -18,3 +18,26 @@ table .btn{
   font-size: 12px;
   padding: 0 6px;
 }
+
+a{
+  color:rgb(40, 183, 121);
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+.organ_tree .item a{
+  display: block;
+  padding: 0 3px;
+}
+
+#user-nav{
+  
+}
+#loginbox h3{
+  height: 48px;
+  width: 350px;
+  background: url("../img/logo-login.png") no-repeat;
+}
+
