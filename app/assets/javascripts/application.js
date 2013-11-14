@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery_ujs
 //= require bootstrap-dropdown
 //= require chosen.jquery.min
 //= require jquery.optionTree

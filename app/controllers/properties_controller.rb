@@ -3,7 +3,7 @@ class PropertiesController < ApplicationController
   load_and_authorize_resource
   
   def create
-    Property.create!(params[:property])
+    Property.create(params[:property])
     redirect_to properties_path
   end
 

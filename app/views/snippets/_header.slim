@@ -24,7 +24,7 @@
               i.icon.icon-th
               span 组织管理
         li
-          a href=organ_path(current_user.admin_member.organ)
+          a href=organ_path(current_user.admin_organ)
             i.icon.icon-signal
             span 用户管理
         - if can? :manage, :all

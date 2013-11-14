@@ -12,7 +12,8 @@
     .widget-box
       .widget-title
         span.icon: i.icon-search
-        h5 = @organ.present? ? @organ.name : "搜索结果"
+        h5 = @organ.present? ? @organ.fullname : "搜索结果"
+        = render(:partial => "snippets/organs/detail", :locals => { :organ => @organ }) if @organ.present?
       .widget-content
         = render :partial => "snippets/search"
 
