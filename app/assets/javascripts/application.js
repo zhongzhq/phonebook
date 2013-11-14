@@ -12,3 +12,5 @@
 //
 //= require jquery
 //= require bootstrap-dropdown
+//= require chosen.jquery.min
+//= require jquery.optionTree

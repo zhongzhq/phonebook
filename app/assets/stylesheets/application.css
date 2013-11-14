@@ -10,8 +10,9 @@
  *
  *= require custom
  *= require bootstrap-responsive.min
+ *= require font-awesome
  *= require matrix-media
  *= require matrix-style
- *= require font-awesome
+ *= require chosen.min
  *= require zhiyisoft
  */

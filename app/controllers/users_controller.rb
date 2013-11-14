@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       @user.members.first.update_attributes(:organ_id => @organ.id)
 
       @user.update_properties(params[:user_properties])
-      redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
+      redirect_to user_path(@user, :organ_id => @organ.id)
     else
       render "new"
     end
@@ -51,7 +51,7 @@ class UsersController < ApplicationController
       @user.members.first.update_attributes(:organ_id => @organ.id)
 
       @user.update_properties(params[:user_properties])
-      redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
+      redirect_to user_path(@user, :organ_id => @organ.id)
     else
       render "edit"
     end
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-      redirect_to with_organ_user_path(@user, :organ_id => @organ.id)
+      redirect_to user_path(@user, :organ_id => @organ.id)
     else
       render "reset"
     end
