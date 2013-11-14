@@ -25,9 +25,9 @@ class User < ActiveRecord::Base
     save
   end
 
-  def admin_member
+  def admin_organ
     members.each do |member|
-      return member if member.admin?
+      return member.organ if member.admin?
     end
   end
 
