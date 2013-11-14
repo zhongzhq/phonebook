@@ -2,7 +2,7 @@
   .widget-title
     span.icon: i.icon-user
     h5 = @organ.fullname
-    small = simple_format @organ.comment
+    = render :partial => "snippets/organs/detail", :locals => { :organ => @organ }
     span.pull-right= link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-primary"
 
   .widget-content
