@@ -12,6 +12,11 @@ class UsersController < ApplicationController
     @organ = Organ.find(params[:organ_id])
     @user = User.new(params[:user])
 
+    if params[:user][:jobs].delete_if{|x| x.blank?}.blank?
+      @user.errors.add(:jobs, "角色不能为空")
+      return render "new"
+    end
+
     if @user.save
       @user.update_properties(params[:user_properties])
 
@@ -41,6 +46,11 @@ class UsersController < ApplicationController
     @organ = Organ.find(params[:organ_id])
     @user = User.find(params[:id])
     
+    if params[:user][:jobs].delete_if{|x| x.blank?}.blank?
+      @user.errors.add(:jobs, "角色不能为空")
+      return render "edit"
+    end
+
     if @user.update_attributes(params[:user])
       @user.update_properties(params[:user_properties])
 
@@ -90,16 +100,17 @@ class UsersController < ApplicationController
 
   def password_submit
     @user = User.find(params[:id])
-    if @user.try(:authenticate, params[:user][:current_password])      
-      if @user.update_attributes(params[:user].tap{|x| x.delete("current_password")})
-        redirect_to root_path
-      else
-        return render "change"
-      end
-    else
+
+    if @user.try(:authenticate, params[:user][:current_password])
       @user.errors.add(:current_password, "当前密码错误")
-      render "change"
+      return render "change"
     end
+
+    if @user.update_attributes(params[:user].tap{|x| x.delete("current_password")})
+      redirect_to root_path
+    else
+      return render "change"
+    end    
   end  
 
   def destroy    
