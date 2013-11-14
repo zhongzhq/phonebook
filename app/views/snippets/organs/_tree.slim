@@ -2,9 +2,9 @@
 
 .organ_tree
   - Organ.roots.each do |organ|
-    ul
+    ul style="margin: 0;"
       - if organ == @organ
-        .item style="background-color: rgb(213, 213, 213);"
+        .item style="background-color: #eaeaea;"
           - if is_show.present?
             = link_to organ.name, organ_path(organ)
           - else

@@ -1,21 +1,15 @@
 - if current_user.present?
   #user-nav.navbar.navbar-inverse
     ul.nav
-      li.dropdown#profile-messages
-        a.dropdown-toggle title="" href="#" data-toggle="dropdown" data-target="#profile-messages"
-          i.icon.icon-user
+      li
+        a href=change_user_path(current_user)
+          i.icon.icon-check
           span.text = current_user.name
-          b.caret
-
-        ul.dropdown-menu
-          li
-            a href=change_user_path(current_user)
-              i.icon.icon-check
-              span 账号配置
-          li
-            a href=logout_publics_path
-              i.icon.icon-share-alt
-              span 退出
+      li
+        a href=logout_publics_path
+          i.icon.icon-share-alt
+          span 退出
+          
 
   #sidebar
     ul

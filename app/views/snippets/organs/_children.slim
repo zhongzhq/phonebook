@@ -4,7 +4,7 @@ ul
     - if (children.size - 1) == index          
       li.li-last
         - if child == @organ
-          .item style="background-color: rgb(213, 213, 213);"
+          .item style="background-color: #eaeaea;"
             - if is_show.present?
               = link_to child.name, organ_path(child)
             - else
@@ -20,7 +20,7 @@ ul
     - else
       li.li-normal
         - if child == @organ
-          .item style="background-color: rgb(213, 213, 213);"
+          .item style="background-color: #eaeaea;"
             - if is_show.present?
               = link_to child.name, organ_path(child)
             - else
