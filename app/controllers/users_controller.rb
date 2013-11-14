@@ -4,22 +4,21 @@ class UsersController < ApplicationController
   layout "tree", :except => [:change, :data_submit, :password_submit]
   
   def new
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+    @organ = Organ.find(params[:organ_id])
     @user = User.new
   end
 
   def create
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+    @organ = Organ.find(params[:organ_id])
     @user = User.new(params[:user])
+
     if @user.save
-      member = Member.create!(:user_id => @user.id, :organ_id => @organ.id)
+      @user.update_properties(params[:user_properties])
+
+      @member = Member.first_or_create(:user_id => @user.id, :organ_id => @organ.id)
       member.set_jobs(params[:user][:jobs])
       member.update_attributes(:is_admin => params[:is_admin])
-
-      @organ = Organ.where(:name => params[:user_organ]).first
-      @user.members.first.update_attributes(:organ_id => @organ.id)
-
-      @user.update_properties(params[:user_properties])
+      
       redirect_to user_path(@user, :organ_id => @organ.id)
     else
       render "new"
@@ -32,25 +31,26 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+    @organ = Organ.find(params[:organ_id])
     @user = User.find(params[:id])
 
     @user.jobs = Member.where(:user_id => @user.id, :organ_id => @organ.id).first.jobs.map(&:id)
   end
 
   def update
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+    @organ = Organ.find(params[:organ_id])
     @user = User.find(params[:id])
     
     if @user.update_attributes(params[:user])
-      member = Member.where(:user_id => @user.id, :organ_id => @organ.id).first
+      @user.update_properties(params[:user_properties])
+
+      member = Member.find_by_user_and_organ(@user.id, @organ.id)
       member.set_jobs(params[:user][:jobs])
       member.update_attributes(:is_admin => params[:is_admin])
       
       @organ = Organ.where(:name => params[:user_organ]).first
-      @user.members.first.update_attributes(:organ_id => @organ.id)
+      member.update_attributes(:organ_id => @organ.id)
 
-      @user.update_properties(params[:user_properties])
       redirect_to user_path(@user, :organ_id => @organ.id)
     else
       render "edit"
@@ -58,12 +58,12 @@ class UsersController < ApplicationController
   end
 
   def reset
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+    @organ = Organ.find(params[:organ_id])
     @user = User.find(params[:id])    
   end
 
   def reset_submit
-    @organ = Organ.find(params[:organ_id]) if params[:organ_id].present?
+    @organ = Organ.find(params[:organ_id])
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
@@ -71,7 +71,6 @@ class UsersController < ApplicationController
     else
       render "reset"
     end
-    p @user.errors
   end
 
   # 用户自己修改信息

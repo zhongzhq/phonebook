@@ -1,9 +1,9 @@
 .widget-box
   .widget-title
     span.icon: i.icon-user
-    h5 = @organ.fullname
-    = render :partial => "snippets/organs/detail", :locals => { :organ => @organ }
+    h5 = @organ.fullname    
     span.pull-right= link_to "添加用户", new_user_path(:organ_id => @organ.id), :class => "btn btn-primary"
+    = render :partial => "snippets/organs/detail", :locals => { :organ => @organ }
 
   .widget-content
     = render :partial => "snippets/search"

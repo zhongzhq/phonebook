@@ -37,13 +37,13 @@ behind_users = [
   User.create!(name: "尹常鑫", mobile_phone: 15184469287, account: "yinchangxin", password: "123456"),
   User.create!(name: "唐久军", mobile_phone: 18782943143, account: "tangjiujun", password: "tang")
   ]
-  behind_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => behind.id).tap{|x|
+  behind_users.each { |e| Member.first_or_create( e.id, behind.id).tap{|x|
     x.set_jobs([member.id])
     } }
 
   ['suyu'].each do |username|
     User.where(:account => username).each { |e|
-      Member.first_or_create(:user_id => e.id, :organ_id => zhiyi.id).tap{|x|
+      Member.first_or_create( e.id, zhiyi.id).tap{|x|
         x.set_jobs([boss.id])
         x.update_attributes(:is_admin => 1);
         } }
@@ -51,7 +51,7 @@ behind_users = [
 
   ['xiegang', 'zhongzhengquan'].each do |username|
     User.where(:account => username).each { |e|
-      Member.first_or_create(:user_id => e.id, :organ_id => software.id).tap{|x|
+      Member.first_or_create( e.id, software.id).tap{|x|
         x.set_jobs([leader.id])
         x.update_attributes(:is_admin => 1);
         } }
@@ -59,7 +59,7 @@ behind_users = [
 
   ['heyuan', 'yangjunfeng'].each do |username|
     User.where(:account => username).each { |e|
-      Member.first_or_create(:user_id => e.id, :organ_id => behind.id).tap{|x|
+      Member.first_or_create( e.id, behind.id).tap{|x|
         x.set_jobs([engineer.id])
         } }
   end
@@ -67,20 +67,20 @@ behind_users = [
 testing_users = [
   User.create!(name: "唐浩", mobile_phone: 13880129915, account: "tanghao", password: "123456")
   ]
-  testing_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => testing.id).tap{|x|
+  testing_users.each { |e| Member.first_or_create( e.id, testing.id).tap{|x|
     x.set_jobs([member.id])
     } }
 
 xingzheng_users = [
   User.create!(name: "闫秋云", mobile_phone: 13808229662, account: "yanqiuyun", password: "123456")
   ]
-  xingzheng_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => xingzheng.id).tap{|x| x.set_jobs([member.id])} }
+  xingzheng_users.each { |e| Member.first_or_create( e.id, xingzheng.id).tap{|x| x.set_jobs([member.id])} }
 
 caiwu_users = [
   User.create!(name: "刘玲", mobile_phone: 13541386053, account: "liuling", password: "123456"),
   User.create!(name: "李佳", mobile_phone: 13308176710, account: "lijia", password: "123456")
   ]
-  caiwu_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => caiwu.id).tap{|x| x.set_jobs([member.id])} }
+  caiwu_users.each { |e| Member.first_or_create( e.id, caiwu.id).tap{|x| x.set_jobs([member.id])} }
 
 zservice_users = [
   User.create!(name: "甘华丽", mobile_phone: 15281039267, account: "ganhuali", password: "123456"),
@@ -92,7 +92,7 @@ zservice_users = [
   User.create!(name: "廖肖韦", mobile_phone: 15202859971, account: "liaoxiaowei", password: "123456"),
   User.create!(name: "钟刘梅", mobile_phone: 15196634082, account: "zhongliumei", password: "123456")
  ]
- zservice_users.each { |e| Member.first_or_create(:user_id => e.id, :organ_id => zservice.id).tap{|x|
+ zservice_users.each { |e| Member.first_or_create( e.id, zservice.id).tap{|x|
   x.set_jobs([member.id])
   } }
 
