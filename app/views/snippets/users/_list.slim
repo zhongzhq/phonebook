@@ -1,8 +1,6 @@
 - exist_organ = defined?(organ) && organ.present?
 
-- if users.blank?
-  .alert 该部门下暂无成员  
-- else
+- if users.present?
   table.table
     tr
       th 姓名

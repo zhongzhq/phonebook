@@ -7,4 +7,8 @@
 
   .widget-content
     = render :partial => "snippets/search"
-    = render :partial => "snippets/users/list", :locals => { :users => @users, :organ => @organ }
+
+    - if @users.blank?
+      .alert 该部门下暂无成员  
+    - else
+      = render :partial => "snippets/users/list", :locals => { :users => @users, :organ => @organ }
