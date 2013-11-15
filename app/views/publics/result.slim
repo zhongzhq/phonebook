@@ -16,9 +16,8 @@
         
       .widget-content
         = render :partial => "snippets/search"
-        - if @organ.present?
-          .alert.alert-warning
-            = render(:partial => "snippets/organs/detail", :locals => { :organ => @organ }) 
+        - if @organ.present?          
+          = render(:partial => "snippets/organs/detail", :locals => { :organ => @organ }) 
         - (@organ.present? ? @organ.children : (@organs || [])).each do |organ|
           span style="margin:10px;" = link_to organ.name, search_publics_path(:value => organ.name)
 
