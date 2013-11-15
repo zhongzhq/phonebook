@@ -1,4 +1,11 @@
-small
-  = organ.phone
-  = organ.address
-  = simple_format @organ.comment
+- if organ.phone.present? or organ.address.present?
+  .alert.alert-warning
+    - if organ.phone.present?
+      span
+        | 电话：
+        = organ.phone
+    - if organ.address.present?
+      span style="margin-left:30px;"
+        | 地址：
+        = organ.address
+    /= simple_format @organ.comment

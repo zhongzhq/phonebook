@@ -29,8 +29,11 @@ a:hover{
   cursor: pointer;
 }
 
+.organ_tree ul {
+  list-style: none;
+}
+
 .organ_tree .item a{
-  display: block;
   padding: 0 3px;
 }
 

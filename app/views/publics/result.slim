@@ -13,10 +13,11 @@
       .widget-title
         span.icon: i.icon-search
         h5 = @organ.present? ? @organ.fullname : "搜索结果"
-        = render(:partial => "snippets/organs/detail", :locals => { :organ => @organ }) if @organ.present?
+        
       .widget-content
         = render :partial => "snippets/search"
-
+        - if @organ.present?          
+          = render(:partial => "snippets/organs/detail", :locals => { :organ => @organ }) 
         - (@organ.present? ? @organ.children : (@organs || [])).each do |organ|
           span style="margin:10px;" = link_to organ.name, search_publics_path(:value => organ.name)
 
