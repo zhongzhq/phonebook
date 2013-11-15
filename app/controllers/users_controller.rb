@@ -104,7 +104,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-      redirect_to root_path
+      redirect_to root_path, :notice => "信息修改成功"
     else
       render "change"
     end
