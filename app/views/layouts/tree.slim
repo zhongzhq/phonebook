@@ -22,6 +22,9 @@ body
 
     .container-fluid
       .row-fluid
+        = render :partial => "snippets/flash", :locals => { :flash => flash }
+        
+      .row-fluid
         .span3
           .widget-box
             .widget-title
