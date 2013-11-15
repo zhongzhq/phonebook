@@ -21,10 +21,12 @@ table .btn{
 
 a{
   color:rgb(40, 183, 121);
+  cursor: pointer;
 }
 
 a:hover{
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .organ_tree .item a{
