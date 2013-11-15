@@ -14,7 +14,7 @@
           .control-group
             label.control-label = p.name
             .controls
-              input name="user_properties[#{p.key}]" type="text" value="#{@user.properties[p.key]}"
+              input name="user[properties][#{p.key}]" type="text" value="#{@user.properties[p.key]}"
 
         .form-actions
           button.btn.btn-success.offset2 type="submit" 保存
