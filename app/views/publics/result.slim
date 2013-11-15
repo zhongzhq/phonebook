@@ -22,7 +22,7 @@
           span style="margin:10px;" = link_to organ.name, search_publics_path(:value => organ.name)
 
         - users = (@organ.present? ? @organ.members.map(&:user) : (@users || []))
-        - if users.present?
+        - if users.blank?
           .alert 该部门下暂无成员
         - else
             = render :partial => "snippets/users/list", :locals => { :users => users, :organ => @organ }
