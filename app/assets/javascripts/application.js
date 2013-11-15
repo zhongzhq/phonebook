@@ -18,8 +18,8 @@
 //= require jquery.optionTree
 
 function toggle_tree(selector){
-  var opened_icon = '<img src="/img/icon-folder-close-b.png" class="opened" width="15" height="15"/>'
-  var closed_icon = '<img src="/img/icon-folder-open-b.png" class="closed" width="15" height="15"/>'
+  var opened_icon = '<img src="/img/closed.gif" class="opened"/>'
+  var closed_icon = '<img src="/img/opened.gif" class="closed"/>'
 
   selector.find(".item").each(function(){
     $(this).siblings("ul").hide();
@@ -48,6 +48,6 @@ function check_browser(){
   var version=b_version.split(";"); 
   var trim_Version=version[1].replace(/[ ]/g,""); 
   if((browser=="Microsoft Internet Explorer" && trim_Version=="MSIE7.0") || (browser=="Microsoft Internet Explorer" && trim_Version=="MSIE6.0")){
-    $("#flash").html('<div class="alert alert-warning text-center"><button class="close" data-dismiss="alert" type="button">×</button><strong>警告：</strong>你的浏览器版本过低，建议使用IE8及以上浏览器、或者火狐、谷歌浏览器，已获得更好的体验</div>')
+    $("#flash").html('<div class="alert alert-warning text-center"><button class="close" data-dismiss="alert" type="button">×</button><strong>警告：</strong>你的浏览器版本过低，建议使用IE9及以上浏览器、或者火狐、谷歌浏览器，已获得更好的体验</div>')
   }
 }
