@@ -18,24 +18,25 @@
 //= require jquery.optionTree
 
 function toggle_tree(selector){
-  var opened_icon = "icon-folder-close"
-  var closed_icon = "icon-folder-open"
+  var opened_icon = '<img src="/img/icon-folder-close-b.png" class="opened" width="15" height="15"/>'
+  var closed_icon = '<img src="/img/icon-folder-open-b.png" class="closed" width="15" height="15"/>'
 
   selector.find(".item").each(function(){
     $(this).siblings("ul").hide();
     if($(this).siblings("ul").find("li").size() > 0){
-      $(this).prepend("<span class=\" " + opened_icon + " toggle-icon\"></span>");
+      $(this).prepend('<span class="toggle-icon">' + opened_icon + '</span>');
     }
   });
 
   selector.find(".item .toggle-icon").click(function(){
-    if($(this).is("." + opened_icon)){
-      $(this).removeClass(opened_icon);
-      $(this).addClass(closed_icon);
+    img = $(this).children("img")
+    if(img.hasClass("opened")){
+      $(this).html(closed_icon);
+      img.remove();
       $(this).parent().siblings("ul").show();
-    } else {
-      $(this).removeClass(closed_icon);
-      $(this).addClass(opened_icon);
+    }else{
+      $(this).html(opened_icon);
+      img.remove();
       $(this).parent().siblings("ul").hide();
     }
   });

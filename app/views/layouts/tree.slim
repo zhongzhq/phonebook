@@ -7,9 +7,13 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
+    /[if IE]      
+      link rel="stylesheet" type="text/css" href="/assets/ie.css"
+
 body
   #header
-    h1: a href="#" = t(:site_name)
+    h1
+      /a href="#" = t(:site_name)
 
   = render :partial => "snippets/header"
       
