@@ -1,12 +1,11 @@
-.panel.panel-info
-  .panel-heading
-    strong 编辑系统设置
+.widget-box
+  .widget-title
+    span.icon: i.icon-user
+    h5 修改系统设置
 
-  .panel-body
+  .widget-content
     = simple_form_for @system do |f|
       = input f, :login_remember_days, :hint => "必须为整数；为 0 时，表示禁止用户记住功能"
 
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          = f.button :submit, "保存"
-          = back_link system_path(@system)
+      .form-actions
+        button.btn.btn-success type="submit" 保存

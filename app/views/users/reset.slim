@@ -1,14 +1,11 @@
-.panel.panel-info
-  .panel-heading
-    strong 重置密码 --- #{@user.name}
-
-  .panel-body
-    = simple_form_for @user, :url => reset_submit_user_path(@user), :method => :post do |f|
-      = hidden_field_tag :organ_id, @organ.id
-      = input f, :password
-      = input f, :password_confirmation      
-      
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          = f.button :submit, "保存"
-          = back_link
+.widget-title
+  span.icon: i.icon-user
+  h5 重置 #{@organ.fullname} 下用户：#{@user.name} 密码
+.widget-content
+  = simple_form_for @user, :url => reset_submit_user_path(@user), :method => :post do |f|
+    = hidden_field_tag :organ_id, @organ.id
+    = input f, :password
+    = input f, :password_confirmation      
+    
+    .form-actions
+      button.btn.btn-success type="submit" 保存

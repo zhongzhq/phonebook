@@ -6,33 +6,31 @@
   = input f, :mobile_phone
   = input f, :password if @user.id.blank?
 
-  .form-group
-    label.col-sm-2.control-label for="new_organ_id" 所属组织
-    .col-sm-10          
-      input id="user_organ" type="hidden" name="user_organ" class="form-control" 
+  .control-group
+    label.control-label for="new_organ_id" 所属组织
+    .controls          
+      input id="user_organ" type="hidden" name="user_organ"  
 
 
   = input f, :jobs, :collection => Job.all, :input_html => { :multiple => true, :'data-placeholder' => "请选择岗位..." }
 
-  .form-group
-    label.col-sm-2.control-label for="new_organ_id" 管理员
-    .col-sm-10
+  .control-group
+    label.control-label for="new_organ_id" 管理员
+    .controls
       = check_box_tag "is_admin", 1, Member.where(:user_id => @user.id, :organ_id => @organ.id).first.try(:admin?)
       span 管理员 （默认非管理员）
 
   = input f, :office_address
   - Property.enabled_properties.each do |p|
-    .form-group
-      label.control-label.col-sm-2 = p.name
-      .col-sm-10
-        input.form-control name="user_properties[#{p.key}]" type="text" value="#{@user.properties[p.key]}"
+    .control-group
+      label.control-label = p.name
+      .controls
+        input name="user_properties[#{p.key}]" type="text" value="#{@user.properties[p.key]}"
 
-  = input f, :comment, :as => :text, :input_html => { :rows => 5, :class => 'form-control' }
+  = input f, :comment, :as => :text, :input_html => { :rows => 5 }
 
-  .form-group
-    .col-sm-offset-2.col-sm-10      
-      = f.button :submit, "保存"
-      = back_link
+  .form-actions
+    button.btn.btn-success type="submit" 保存
 
 javascript:
   $(function(){

@@ -6,13 +6,14 @@ class PublicsController < ApplicationController
 
   def login
     @user = User.new
+    render layout: false
   end
 
   def authenticate
     @user = User.login(params[:user])
     if @user.present?
       if params[:remember] == "true"
-        cookies[:remember] = {:value => @user.generate_authentication_token, :expires => Setting.login_remember_day.to_time }
+        cookies[:remember] = {:value => @user.generate_authentication_token, :expires => System.login_remember_days }
       end
 
       session[:user_id] = @user.id
@@ -36,12 +37,10 @@ class PublicsController < ApplicationController
     if(@organs.size == 1) and (@users.blank?)
       @organ = @organs.first
       @value = @organ.fullname
-      return render "result_organ"
     elsif (@organs.blank?) and (@users.size == 1)
       @user = @users.first
       return render "result_user"
-    else
-      return render "result"
     end
+    render "result"
   end
 end

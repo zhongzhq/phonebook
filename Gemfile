@@ -4,7 +4,6 @@ gem 'rails', '3.2.13'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  # gem 'bootstrap-sass-rails'
   gem 'bootstrap-sass', '2.3.1.3'
 
   gem 'compass-rails'
@@ -33,8 +32,6 @@ gem "cancan"
 gem "pg"
 gem 'activerecord-postgres-hstore'
 
-gem "unicorn-rails"
-
 group :development, :test do
   gem "zeus"
   gem 'pry-debugger'
@@ -47,4 +44,8 @@ group :test do
   gem 'cucumber-rails', :require => false
   gem 'capybara'
   gem 'database_cleaner'
+end
+
+group :production do
+  gem "unicorn"
 end

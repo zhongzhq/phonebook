@@ -15,17 +15,10 @@ Phonebook::Application.routes.draw do
     end
   end
 
-  resources :organs do
-    collection do
-      get "manage"
-    end
-  end
+  resources :organs
 
   resources :users, :except => [:index] do
     member do
-      get "with_organ"
-      get "with_organ_show"
-
       # 管理员操作
       get "reset"
       post "reset_submit"

@@ -1,34 +1,33 @@
-.panel.panel-info
-  .panel-heading
-    strong 修改个人信息
+.row-fluid
+  .widget-box
+    .widget-title
+      span.icon: i.icon-user
+      h5 帐号配置
+    .widget-content
+      = simple_form_for @user, :url => data_submit_user_path(@user), :method => :post do |f|
+        = input f, :name
+        = input f, :mobile_phone
+        = input f, :office_phone
+        = input f, :office_address
 
-  .panel-body
-    = simple_form_for @user, :url => data_submit_user_path(@user), :method => :post do |f|
-      = input f, :name
-      = input f, :mobile_phone
-      = input f, :office_phone
-      = input f, :office_address
-      hr
-      - Property.enabled_properties.each do |p|
-        .form-group
-          label.control-label.col-sm-2 = p.name
-          .col-sm-10
-            input.form-control name="user_properties[#{p.key}]" type="text" value="#{@user.properties[p.key]}"
+        - Property.enabled_properties.each do |p|
+          .control-group
+            label.control-label = p.name
+            .controls
+              input name="user_properties[#{p.key}]" type="text" value="#{@user.properties[p.key]}"
 
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          = f.button :submit, "保存"
+        .form-actions
+          button.btn.btn-success.offset2 type="submit" 保存
 
-.panel.panel-info
-  .panel-heading
-    strong 修改密码
-
-  .panel-body
-    = simple_form_for @user, :url => password_submit_user_path(@user), :method => :post do |f|
-      = input f, :current_password
-      = input f, :password
-      = input f, :password_confirmation
-      
-      .form-group
-        .col-sm-offset-2.col-sm-10
-          = f.button :submit, "保存"
+  .widget-box
+    .widget-title
+      span.icon: i.icon-user
+      h5 修改密码
+    .widget-content
+      = simple_form_for @user, :url => password_submit_user_path(@user), :method => :post do |f|
+        = input f, :current_password
+        = input f, :password
+        = input f, :password_confirmation
+        
+        .form-actions
+          button.btn.btn-success.offset2 type="submit" 保存

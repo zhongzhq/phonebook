@@ -1,9 +1,78 @@
-#login-box
-  h3 欢迎登陆
-  = form_for @user, :url => authenticate_publics_path do |f|
-    = f.text_field :account, :placeholder => "用户名", :class => "form-control input-lg"
-    = f.password_field :password, :placeholder => "密码", :class => "form-control input-lg"
-    label.checkbox
-      input name="remember" type="checkbox" value="true" 记住我
-      
-    = f.submit "用户登陆", :class => "btn btn-lg btn-primary btn-block"
+doctype 5
+
+html
+  head
+    title= t(:site_name)
+    = stylesheet_link_tag "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+
+    link rel="stylesheet" type="text/css" href="/assets/matrix-login.css"
+ 
+    /[if IE]      
+      link rel="stylesheet" type="text/css" href="/assets/ie.css"
+
+
+body
+  #loginbox
+    = form_for @user, :url => authenticate_publics_path, :id =>"loginform", :html => {:class=>'form-vertical'} do |f|
+      .control-group.normal_text
+        h3
+          /img alt="Logo" src="img/logo.png"
+      .control-group
+        .controls
+          .main_input_box
+            span.add-on.bg_lg
+              i.icon-user   
+            = f.text_field :account, :placeholder => "用户名"
+      .control-group
+        .controls
+          .main_input_box
+            span.add-on.bg_ly
+              i.icon-lock
+            = f.password_field :password, :placeholder => "密码", :class => "form-control input-lg"
+      .control-group
+        .controls
+          label.checkbox
+            input name="remember" type="checkbox" value="true" 记住我
+      .form-actions.text-center         
+        = f.submit "用户登录", :class => "btn btn-primary"
+  /#loginbox
+    form#loginform.form-vertical action="index.html"
+      .control-group.normal_text
+        h3
+          img alt="Logo" src="img/logo.png"
+      .control-group
+        .controls
+          .main_input_box
+            span.add-on.bg_lg
+              i.icon-user           
+            input placeholder="Username" type="text"
+      .control-group
+        .controls
+          .main_input_box
+            span.add-on.bg_ly
+              i.icon-lock
+            input placeholder="Password" type="password"
+      .form-actions
+        span.pull-left
+          a#to-recover.flip-link.btn.btn-info href="#"
+        span.pull-right
+          a.btn.btn-success href="index.html" type="submit"
+          | Login
+    form#recoverform.form-vertical action="#"
+      p.normal_text Enter your e-mail address below and we will send you instructions how to recover a password.
+      .controls
+        .main_input_box
+          span.add-on.bg_lo
+            i.icon-envelope
+          input placeholder="E-mail address" type="text"
+      .form-actions
+        span.pull-left
+          a#to-login.flip-link.btn.btn-success href="#"
+        span.pull-right
+          a.btn.btn-info>/
+          | Reecover
+
+    
+

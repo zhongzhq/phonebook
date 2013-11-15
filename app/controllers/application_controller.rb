@@ -6,8 +6,6 @@ class ApplicationController < ActionController::Base
     root << widget("tree", :organ_tree)
   end
 
-  before_filter { session[:admin] = (params[:admin] == "true") if params[:admin].present? }
-  
   include Phonebook::Controllers::Helpers
 
   rescue_from CanCan::AccessDenied do |exception|

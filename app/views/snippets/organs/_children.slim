@@ -1,0 +1,34 @@
+ul
+  - children = organ.children
+  - children.each_with_index do |child, index|
+    - if (children.size - 1) == index          
+      li.li-last
+        - if child == @organ
+          .item style="background-color: #eaeaea;"
+            - if is_show.present?
+              = link_to child.name, organ_path(child)
+            - else
+              = link_to child.name, search_publics_path(:value => child.fullname)
+        - else
+          .item
+            - if is_show.present?
+              = link_to child.name, organ_path(child)
+            - else
+              = link_to child.name, search_publics_path(:value => child.fullname)
+        = render :partial => 'snippets/organs/children', :locals => { :organ => child, :is_show => is_show }
+
+    - else
+      li.li-normal
+        - if child == @organ
+          .item style="background-color: #eaeaea;"
+            - if is_show.present?
+              = link_to child.name, organ_path(child)
+            - else
+              = link_to child.name, search_publics_path(:value => child.fullname)
+        - else
+          .item        
+            - if is_show.present?
+              = link_to child.name, organ_path(child)
+            - else
+              = link_to child.name, search_publics_path(:value => child.fullname)
+        = render :partial => 'snippets/organs/children', :locals => { :organ => child, :is_show => is_show }

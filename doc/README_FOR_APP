@@ -6,9 +6,9 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
     |--sudo aptitude install postgresql postgresql-contrib postgresql-server-dev-9.1
 
   2、设置数据库访问帐号、密码
-    |--- sudo -u postgres psql postgres
-    |---# 创建用户
-    |-- postgres=# create user phonebook with password 'phonebook' createdb;
+    |---切换到 postgres用户下执行
+    |-- createuser -P -d -a -e phonebook
+    |-- 输入两次密码：phonebook
 
   3、退出
     |-- postgres=# \q
@@ -21,6 +21,3 @@ Run "rake doc:app" to generate API documentation for your models, controllers, h
     |-- rake db:schema:load
     |-- # 初始化数据
     |-- rake db:seed
-
-三、PgSql  hstore 扩展支持设置（root 用户跳过此步骤）
-  sudo -u postgres psql phonebook_standalone -c 'CREATE EXTENSION hstore;'

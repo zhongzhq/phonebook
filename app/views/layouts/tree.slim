@@ -7,16 +7,9 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
-    
- 
-    /[if IE]      
-      link rel="stylesheet" type="text/css" href="/assets/ie.css"
-
-
 body
   #header
-    h1
-     /a href="#" = t(:site_name)
+    h1: a href="#" = t(:site_name)
 
   = render :partial => "snippets/header"
       
@@ -28,6 +21,17 @@ body
       /     | 首页
 
     .container-fluid
-      = yield
+      .row-fluid
+        .span3
+          .widget-box
+            .widget-title
+              span.icon: i.icon-user
+              h5 组织机构
+            .widget-content
+              = render :partial => "snippets/organs/tree", :locals => {:show_path => true}
+
+        .span9
+          .widget-box            
+            = yield
 
   = render :partial => "snippets/footer"

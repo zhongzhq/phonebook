@@ -217,9 +217,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    unicorn-rails (1.1.0)
-      rack
-      unicorn
     will_paginate (3.0.5)
     will_paginate-bootstrap (1.0.0)
       will_paginate (>= 3.0.3)
@@ -259,6 +256,6 @@ DEPENDENCIES
   state_machine
   therubyracer
   uglifier (>= 1.0.3)
-  unicorn-rails
+  unicorn
   will_paginate-bootstrap
   zeus

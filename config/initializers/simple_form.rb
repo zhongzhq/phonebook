@@ -5,7 +5,7 @@ SimpleForm.setup do |config|
   # wrapper, change the order or even add your own to the
   # stack. The options given below are used to wrap the
   # whole input.
-  config.wrappers :default, :class => 'form-group', :error_class => 'has-error' do |b|
+  config.wrappers :default, :class => 'control-group', :error_class => 'has-error' do |b|
     ## Extensions enabled by default
     # Any of these extensions can be disabled for a
     # given input by passing: `f.input EXTENSION_NAME => false`.
@@ -40,7 +40,7 @@ SimpleForm.setup do |config|
 
     ## Inputs
     b.use :label
-    b.wrapper tag: 'div', class: 'col-sm-10' do |b|
+    b.wrapper tag: 'div', class: 'controls' do |b|
       b.use :input
       b.use :hint,  :wrap_with => { :tag => :span, :class => 'text-muted' }
       b.use :error, :wrap_with => { :tag => :span, :class => 'help-block' }
@@ -97,7 +97,7 @@ SimpleForm.setup do |config|
   config.label_text = lambda { |label, required| "#{label}" }
 
   # You can define the class to use on all labels. Default is nil.
-  config.label_class = "col-sm-2 control-label"
+  config.label_class = "control-label"
 
   # You can define the class to use on all forms. Default is simple_form.
   config.form_class = "form-horizontal"

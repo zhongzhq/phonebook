@@ -1,6 +1,5 @@
-.panel.panel-info
-  .panel-heading
-    strong 新增用户
-
-  .panel-body
-    = render :partial => "form"
+.widget-title
+  span.icon: i.icon-user
+  h5 添加 #{@organ.fullname} 下用户
+.widget-content
+  = render :partial => "form"

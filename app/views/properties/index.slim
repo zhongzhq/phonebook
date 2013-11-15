@@ -1,28 +1,29 @@
-.panel.panel-info
-  .panel-heading
-    strong 用户属性管理
+.widget-box
+  .widget-title
+    span.icon: i.icon-user
+    h5 用户属性管理
 
-  table.table.table-hover
-    tr
-      th style="width: 200px;" 属性名
-      th 启用
-
-    -  @properties.each do |p|
+  .widget-content
+    table.table
       tr
-        td = p.name
-        td
-          = check_box_tag 'user_property_checkbox', p.id, p.opened?, :class => "user_property_checkbox"
-          span.flash
+        th style="width: 200px;" 属性名
+        th 启用
 
+      -  @properties.each do |p|
+        tr
+          td = p.name
+          td
+            = check_box_tag 'user_property_checkbox', p.id, p.opened?, :class => "user_property_checkbox"
+            span.flash
 
-br
-  = form_tag properties_path, :class => "form-inline", :method => "post"
-    .form-group
-      label 添加自定义属性:
-    .form-group
-      input name="property[name]" type="text" class="form-control" placeholder="属性名"
-    button type="submit" class="btn btn-primary" 新增
-    span 示例： 家庭地址，出生地
+    br
+    = form_tag properties_path, :class => "form-inline", :method => "post"
+      .control-group
+        label.control-label for="new_organ_id" 添加自定义属性:
+        .controls          
+          input name="property[name]" type="text" class="form-control" placeholder="属性名"
+          .help-block 示例： 家庭地址，出生地
+      button type="submit" class="btn btn-primary" 新增
 
 javascript:
   $(function(){

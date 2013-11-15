@@ -1,20 +1,22 @@
 .row-fluid
+
   .span3
     .widget-box
       .widget-title
         span.icon: i.icon-user
         h5 组织机构
       .widget-content
-        = render :partial => 'organ_tree', :locals => { :organs => @organs }
+        = render :partial => "snippets/organs/tree"
 
   .span9
     .widget-box
       .widget-title
         span.icon: i.icon-search
-        h5 组织机构
+        h5 快速查找
       .widget-content
-        = render :partial => "search"
-
-javascript:
-  toggle_tree($(".organ_tree"));
-  $(".organ_tree").find(".toggle-icon").click();
+        = render :partial => "snippets/search"
+        .help-block
+          strong 搜索帮助：
+          ul
+            li 搜索用户：如张三，可输入（张三、zs、zhangsan）
+            li 搜索组织：如办公室，可输入（办公室、bgs、bangongsi）

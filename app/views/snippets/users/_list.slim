@@ -1,0 +1,35 @@
+- exist_organ = defined?(organ) && organ.present?
+
+- if users.present?
+  table.table
+    tr
+      th 姓名
+      th = exist_organ ? "部门组织" : "职务"
+      th 办公电话
+      th 手机
+      th 办公地址
+
+    - users.each do |user|
+      tr
+        td
+          - if exist_organ
+            - if @value.present?
+              = link_to user.name, search_publics_path(:value => user.mobile_phone)
+            - else
+              = link_to user.name, user_path(user, :organ_id => organ.id)
+          - else
+            - if @value.present?
+              = link_to user.name, search_publics_path(:value => user.mobile_phone)
+            - else
+              = link_to user.name, user_path(user)
+        td
+          - if exist_organ
+            = Member.where(:user_id => user.id, :organ_id => organ.id).first.jobs.map(&:name).join("/")
+          -else
+            - user.members.each do |member|
+              span title="#{member.organ.fullname + '： ' + member.jobs.map(&:name).join("、")}"
+                = member.organ.name + '： ' + member.jobs.map(&:name).join("、")
+              br
+        td = user.office_phone
+        td = user.mobile_phone
+        td = user.office_address

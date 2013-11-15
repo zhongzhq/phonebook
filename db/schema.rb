@@ -11,12 +11,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131028085249) do
-
+ActiveRecord::Schema.define(:version => 20131113085818) do
+  execute "CREATE EXTENSION IF NOT EXISTS hstore"
+  
   create_table "jobs", :force => true do |t|
-    t.string   "name"
-    t.string   "pinyin"
-    t.integer  "sort", :default => 0
+    t.string  "name"
+    t.string  "pinyin"
+    t.integer "sort",   :default => 0
   end
 
   create_table "jobs_members", :force => true do |t|
@@ -27,9 +28,9 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
   create_table "members", :force => true do |t|
     t.integer  "user_id"
     t.integer  "organ_id"
-    t.integer  "is_admin", :default => 0  # 默认 0 不是管理员
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "is_admin",   :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "organs", :force => true do |t|
@@ -39,13 +40,19 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
     t.string   "address"
     t.string   "phone"
     t.text     "comment"
-    t.integer  "sort", :default => 0
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "sort",       :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  create_table "properties", :force => true do |t|
+    t.string "name"
+    t.string "key"
+    t.string "state"
   end
 
   create_table "systems", :force => true do |t|
-    t.integer   "login_remember_days"
+    t.integer "login_remember_days"
   end
 
   create_table "users", :force => true do |t|
@@ -58,17 +65,12 @@ ActiveRecord::Schema.define(:version => 20131028085249) do
     t.string   "password_digest"
     t.text     "authentication_token"
     t.string   "state"
-    t.text     "comment"    
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "comment"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
     t.hstore   "properties"
   end
 
   add_index "users", ["properties"], :name => "index_users_on_properties"
 
-  create_table "properties", :force => true do |t|
-    t.string   "name"
-    t.string   "key"
-    t.string   "state"
-  end
 end

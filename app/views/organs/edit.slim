@@ -1,6 +1,7 @@
-.panel.panel-info
-  .panel-heading
-    strong 修改 #{@organ.name}
+.widget-box
+  .widget-title
+    span.icon: i.icon-user
+    h5 修改 #{@organ.name}
 
-  .panel-body
+  .widget-content
     = render :partial => "form"
