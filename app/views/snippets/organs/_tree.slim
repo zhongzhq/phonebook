@@ -17,3 +17,7 @@
           - else
             = link_to organ.name, send(:search_publics_path, {:value => organ.fullname})
       = render :partial => 'snippets/organs/children', :locals => { :organ => organ, :is_show => is_show }
+
+javascript:
+  toggle_tree($(".organ_tree"))
+  $(".organ_tree").children("ul").children(".item").find(".toggle-icon").click()
