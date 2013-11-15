@@ -21,7 +21,11 @@
         - (@organ.present? ? @organ.children : (@organs || [])).each do |organ|
           span style="margin:10px;" = link_to organ.name, search_publics_path(:value => organ.name)
 
-        = render :partial => "snippets/users/list", :locals => { :users => (@organ.present? ? @organ.members.map(&:user) : (@users || [])), :organ => @organ }
+        - users = (@organ.present? ? @organ.members.map(&:user) : (@users || []))
+        - if users.present?
+          .alert 该部门下暂无成员
+        - else
+            = render :partial => "snippets/users/list", :locals => { :users => users, :organ => @organ }
         
         - if @users.blank? and @organs.blank?
           .alert.alert-warning 没有找到符合要求的结果！
