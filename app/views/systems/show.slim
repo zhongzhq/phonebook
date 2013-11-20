@@ -6,12 +6,16 @@
   .widget-content
     table.table
       tr
-        th 属性名
+        th style="width: 200px;" 属性名
         th 属性值
         th 说明
       tr
-        td style="width: 200px;" 登录记住天数
+        td 登录记住天数
         td = @system.login_remember_days.to_s + " 天"
         td 属性值必须为整数；为 0 时，表示禁止用户记住功能
+      tr
+        td 每页显示条数
+        td = @system.page_num.to_s + " 条"
+        td 属性值必须为整数
 
   = link_to "修改", edit_system_path(@system), :class => "btn btn-primary btn-sm"
