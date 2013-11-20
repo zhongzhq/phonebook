@@ -12,3 +12,5 @@
       .alert 该部门下暂无成员  
     - else
       = render :partial => "snippets/users/list", :locals => { :users => @users, :organ => @organ }
+      .text-center
+        = will_paginate @users
