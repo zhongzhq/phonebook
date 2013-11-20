@@ -15,7 +15,7 @@ class SearchEngine
       return [] if value.blank?
       value = value.downcase.split('').join("%").insert(0, "%").insert(-1, "%")
 
-      User.where{ (name.like value) | (pinyin.like value) | (mobile_phone.like value) }      
+      User.where{ (name.like value) | (pinyin.like value) | (mobile_phone.like value) | (office_address.like value) }
     end
 
   end

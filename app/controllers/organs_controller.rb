@@ -28,8 +28,7 @@ class OrgansController < ApplicationController
   def show
     @organ = Organ.find(params[:id])
     load_members = @organ.members.joins{jobs}.order("jobs.sort DESC")
-    @users = User.joins{members}.where{members.id.in load_members}
-    .paginate(:per_page => System.page_num, :page => params[:page])
+    @users = User.joins{members}.where{members.id.in load_members}.paginate(:per_page => System.page_num, :page => params[:page])
   end
 
   def edit

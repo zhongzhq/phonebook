@@ -32,11 +32,14 @@ class PublicsController < ApplicationController
   def search
     @value = params[:value]
     @organs = SearchEngine.search_organs(@value)
-    @users = SearchEngine.search_users(@value)
+    @users = SearchEngine.search_users(@value).paginate(:per_page => System.page_num, :page => params[:page])
 
     if(@organs.size == 1) and (@users.blank?)
       @organ = @organs.first
       @value = @organ.fullname
+
+      load_members = @organ.members
+      @users = User.joins{members}.where{members.id.in load_members}.paginate(:per_page => System.page_num, :page => params[:page])
     elsif (@organs.blank?) and (@users.size == 1)
       @user = @users.first
       return render "result_user"
