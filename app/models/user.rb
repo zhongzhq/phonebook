@@ -30,6 +30,7 @@ class User < ActiveRecord::Base
     members.each do |member|
       return member.organ if member.admin?
     end
+    nil
   end
 
   def super_user?
