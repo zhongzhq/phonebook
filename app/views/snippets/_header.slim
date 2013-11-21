@@ -17,7 +17,7 @@
         a href=root_path
           i.icon.icon-home
           span 系统首页
-      - if current_user.members.map(&:admin?).include?(true)
+      - if current_user.admin_organ.present?
         - if can? :manage, :all
           li
             a href=organs_path

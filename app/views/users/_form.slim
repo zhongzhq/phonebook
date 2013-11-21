@@ -15,10 +15,18 @@
   = input f, :jobs, :collection => Job.all, :input_html => { :multiple => true, :'data-placeholder' => "请选择岗位..." }
 
   .control-group
-    label.control-label for="new_organ_id" 管理员
+    label.control-label for="new_organ_id" 系统角色
     .controls
-      = check_box_tag "is_admin", 1, Member.where(:user_id => @user.id, :organ_id => @organ.id).first.try(:admin?)
-      span 管理员 （默认非管理员）
+      - member = Member.where(:user_id => @user.id, :organ_id => @organ.id).first || Member.new
+      - if current_user.super_user?
+        = radio_button_tag "is_admin", 2, member.super_admin?
+        span 超级管理员
+
+      = radio_button_tag "is_admin", 1, member.admin?
+      span 管理员
+
+      = radio_button_tag "is_admin", 0, member.is_admin == 0
+      span 成员
 
   = input f, :office_address
   - Property.enabled_properties.each do |p|
