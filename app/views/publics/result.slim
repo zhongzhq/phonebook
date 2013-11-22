@@ -26,7 +26,10 @@
         - else
           = render :partial => "snippets/users/list", :locals => { :users => @users, :organ => @organ }
           .text-center
-            = will_paginate @members
+            - if @members.present?
+              = will_paginate @members
+            - else
+              = will_paginate @users
         
         - if @users.blank? and @organs.blank?
           .alert.alert-warning 没有找到符合要求的结果！
