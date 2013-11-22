@@ -38,7 +38,7 @@ class PublicsController < ApplicationController
       @organ = @organs.first
       @value = @organ.fullname
 
-      load_members = @organ.members
+      load_members = @organ.members.joins{jobs}.order("jobs.sort DESC")
       @users = User.joins{members}.where{members.id.in load_members}.paginate(:per_page => System.page_num, :page => params[:page])
     elsif (@organs.blank?) and (@users.size == 1)
       @user = @users.first
