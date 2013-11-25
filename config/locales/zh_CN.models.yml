@@ -24,6 +24,7 @@ zh_CN:
         state: 状态
         comment: 备注
         jobs: 职务
+        sort: 排序号
       job:
         name: 职务名
         sort: 排序号

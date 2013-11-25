@@ -11,9 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131113085818) do
-  execute "CREATE EXTENSION IF NOT EXISTS hstore"
-  
+ActiveRecord::Schema.define(:version => 20131125100327) do
+
   create_table "jobs", :force => true do |t|
     t.string  "name"
     t.string  "pinyin"
@@ -67,9 +66,10 @@ ActiveRecord::Schema.define(:version => 20131113085818) do
     t.text     "authentication_token"
     t.string   "state"
     t.text     "comment"
-    t.datetime "created_at",           :null => false
-    t.datetime "updated_at",           :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.hstore   "properties"
+    t.integer  "sort",                 :default => 0
   end
 
   add_index "users", ["properties"], :name => "index_users_on_properties"
