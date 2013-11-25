@@ -29,6 +29,7 @@ zh_CN:
         sort: 排序号
       system:
         login_remember_days: 登录记住天数
+        page_num: 每页显示条数
 
     errors:
       messages:

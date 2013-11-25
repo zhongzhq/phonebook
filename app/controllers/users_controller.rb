@@ -104,7 +104,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
 
     if @user.update_attributes(params[:user])
-      redirect_to root_path
+      redirect_to root_path, :notice => "信息修改成功"
     else
       render "change"
     end
@@ -113,7 +113,7 @@ class UsersController < ApplicationController
   def password_submit
     @user = User.find(params[:id])
 
-    if @user.try(:authenticate, params[:user][:current_password])
+    if not @user.try(:authenticate, params[:user][:current_password])
       @user.errors.add(:current_password, "当前密码错误")
       return render "change"
     end
@@ -121,8 +121,8 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user].tap{|x| x.delete("current_password")})
       redirect_to root_path
     else
-      return render "change"
-    end    
-  end  
+      render "change"
+    end
+  end
 
 end

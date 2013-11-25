@@ -6,6 +6,7 @@
   .widget-content
     = simple_form_for @system do |f|
       = input f, :login_remember_days, :hint => "必须为整数；为 0 时，表示禁止用户记住功能"
+      = input f, :page_num, :hint => "必须为整数"
 
       .form-actions
         button.btn.btn-success type="submit" 保存

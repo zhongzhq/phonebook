@@ -7,6 +7,8 @@ class Ability
 
     can [:change, :data_submit, :password_submit], User
 
+    can :manage, :all if user.super_user?
+
     user.members.each do |member|
       can :manage, :all if member.organ.parent.blank? && member.admin?
 

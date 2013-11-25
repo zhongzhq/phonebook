@@ -16,13 +16,20 @@
         
       .widget-content
         = render :partial => "snippets/search"
-        - if @organ.present?
-          .alert.alert-warning
-            = render(:partial => "snippets/organs/detail", :locals => { :organ => @organ }) 
+        - if @organ.present?          
+          = render(:partial => "snippets/organs/detail", :locals => { :organ => @organ }) 
         - (@organ.present? ? @organ.children : (@organs || [])).each do |organ|
           span style="margin:10px;" = link_to organ.name, search_publics_path(:value => organ.name)
 
-        = render :partial => "snippets/users/list", :locals => { :users => (@organ.present? ? @organ.members.map(&:user) : (@users || [])), :organ => @organ }
+        - if @users.blank?
+          .alert 该部门下暂无成员
+        - else
+          = render :partial => "snippets/users/list", :locals => { :users => @users, :organ => @organ }
+          .text-center
+            - if @members.present?
+              = will_paginate @members
+            - else
+              = will_paginate @users
         
         - if @users.blank? and @organs.blank?
           .alert.alert-warning 没有找到符合要求的结果！

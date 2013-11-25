@@ -1,5 +1,9 @@
 zh_CN:
-  site_name: 塔里木第二勘探公司 - 企业通讯录
+  site_name: 企业通讯录
 
   alert:
-     refuse: 你没有权限访问此页面
+    refuse: 你没有权限访问此页面
+
+  will_paginate:
+    previous_label: 前一页
+    next_label: 后一页

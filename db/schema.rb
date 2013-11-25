@@ -53,6 +53,7 @@ ActiveRecord::Schema.define(:version => 20131113085818) do
 
   create_table "systems", :force => true do |t|
     t.integer "login_remember_days"
+    t.integer "page_num"
   end
 
   create_table "users", :force => true do |t|

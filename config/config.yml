@@ -1,6 +1,7 @@
 defaults: &defaults
   system:
     login_remember_days: 5
+    page_num: 10
 
   user:
     properties:

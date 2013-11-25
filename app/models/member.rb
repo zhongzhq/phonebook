@@ -18,6 +18,10 @@ class Member < ActiveRecord::Base
     is_admin == 1
   end
 
+  def super_admin?
+    is_admin == 2
+  end
+
   class << self
     def find_by_user_and_organ user_id, organ_id
       where(:user_id => user_id, :organ_id => organ_id).first

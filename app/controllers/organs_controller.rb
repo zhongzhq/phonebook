@@ -27,7 +27,9 @@ class OrgansController < ApplicationController
 
   def show
     @organ = Organ.find(params[:id])
-    @users = @organ.members.sort{|x, y| y.jobs.map(&:sort).max <=> x.jobs.map(&:sort).max }.map(&:user)
+    @members = load_members = @organ.members.joins{jobs}.order("jobs.sort DESC").paginate(:per_page => System.page_num, :page => params[:page])
+    @users = User.joins{members}.where{members.id.in load_members}
+    .sort{|x, y| y.members.map{|e| e.jobs.map(&:sort).max }.max <=> x.members.map{|e| e.jobs.map(&:sort).max}.max }
   end
 
   def edit

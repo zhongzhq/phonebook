@@ -33,7 +33,7 @@
                   - if @value.present?
                     = link_to m.user.name, search_publics_path(:value => m.user.mobile_phone)
                   - else
-                    = link_to m.user.name, user_path(m.user)
+                    = link_to m.user.name, user_path(m.user, :organ_id => @organ.id)
 
                 td = m.user.office_phone
                 td = m.jobs.map(&:name).join("、")

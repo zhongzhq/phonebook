@@ -7,16 +7,13 @@ html
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
 
-    
- 
     /[if IE]      
       link rel="stylesheet" type="text/css" href="/assets/ie.css"
-
 
 body
   #header
     h1
-     /a href="#" = t(:site_name)
+      /a href="#" = t(:site_name)
 
   = render :partial => "snippets/header"
       
@@ -28,6 +25,8 @@ body
       /     | 首页
 
     .container-fluid
+      .row-fluid
+        = render :partial => "snippets/flash", :locals => { :flash => flash }
       = yield
 
   = render :partial => "snippets/footer"

@@ -19,5 +19,8 @@
       = render :partial => 'snippets/organs/children', :locals => { :organ => organ, :is_show => is_show }
 
 javascript:
-  toggle_tree($(".organ_tree"))
-  $(".organ_tree").children("ul").children(".item").find(".toggle-icon").click()
+  $(function(){
+    toggle_tree($(".organ_tree"))
+    // $(".organ_tree").find(".item").find(".toggle-icon").click()
+    $(".organ_tree").find(".item:first").find(".toggle-icon").click()
+  })

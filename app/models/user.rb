@@ -26,9 +26,18 @@ class User < ActiveRecord::Base
   end
 
   def admin_organ
+    return Organ.find(1) if super_user?
     members.each do |member|
       return member.organ if member.admin?
     end
+    nil
+  end
+
+  def super_user?
+    members.each do |member|
+      return true if member.super_admin?
+    end
+    false
   end
 
 end
