@@ -9,7 +9,7 @@
       th 手机
       th 办公地址
 
-    - if exist_organ
+    - if Settings.order_by_job && exist_organ
       - tmp_users = []
       - users.group_by{|x| x.members.where(:organ_id => organ.id).first.jobs.map(&:sort).max }.each {|k,v| tmp_users << v.sort{|x,y| y.sort <=> x.sort } }
       - users = tmp_users.flatten

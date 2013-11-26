@@ -13,4 +13,7 @@
     - else
       = render :partial => "snippets/users/list", :locals => { :users => @users, :organ => @organ }
       .text-center
-        = will_paginate @members
+        - if @members.present?
+          = will_paginate @members
+        - else
+          = will_paginate @users

@@ -27,9 +27,14 @@ class OrgansController < ApplicationController
 
   def show
     @organ = Organ.find(params[:id])
-    @members = load_members = @organ.members.joins{jobs}.order("jobs.sort DESC").paginate(:per_page => System.page_num, :page => params[:page])
-    @users = User.joins{members}.where{members.id.in load_members}
-    .sort{|x, y| y.members.map{|e| e.jobs.map(&:sort).max }.max <=> x.members.map{|e| e.jobs.map(&:sort).max}.max }
+    if Settings.order_by_job
+      @members = load_members = @organ.members.joins{jobs}.order("jobs.sort DESC").paginate(:per_page => System.page_num, :page => params[:page])
+      @users = User.joins{members}.where{members.id.in load_members}
+      .sort{|x, y| y.members.map{|e| e.jobs.map(&:sort).max }.max <=> x.members.map{|e| e.jobs.map(&:sort).max}.max }
+    else
+      organ = @organ
+      @users = User.joins{members.organ}.where{members.organ.id == organ}.order("sort DESC").paginate(:per_page => System.page_num, :page => params[:page])     
+    end
   end
 
   def edit
