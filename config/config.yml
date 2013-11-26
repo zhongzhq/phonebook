@@ -6,6 +6,8 @@ defaults: &defaults
   user:
     properties:
       - 电子邮箱
+  # 是否按照职务排序；如果值为 false 时，则按照 user 的 sort 排序
+  order_by_job: false
 
 development:
   <<: *defaults
