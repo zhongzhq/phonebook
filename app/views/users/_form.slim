@@ -7,7 +7,7 @@
   = input f, :password if @user.id.blank?
 
   .control-group
-    label.control-label for="new_organ_id" 所属组织
+    label.control-label for="user_organ" 所属组织
     .controls          
       input id="user_organ" type="hidden" name="user_organ"  
 
@@ -15,7 +15,7 @@
   = input f, :jobs, :collection => Job.all, :input_html => { :multiple => true, :'data-placeholder' => "请选择岗位..." }
 
   .control-group
-    label.control-label for="new_organ_id" 系统角色
+    label.control-label for="is_admin" 系统角色
     .controls
       - member = Member.where(:user_id => @user.id, :organ_id => @organ.id).first || Member.new
       - if current_user.super_user?
@@ -27,6 +27,16 @@
 
       = radio_button_tag "is_admin", 0, member.is_admin == 0
       span 成员
+
+  .control-group
+    label.control-label for="is_visible_leader" 可见领导组
+    .controls
+      - member = Member.where(:user_id => @user.id, :organ_id => @organ.id).first || Member.new
+      = radio_button_tag "is_visible_leader", 1, member.visible_leader?
+      span 可见
+
+      = radio_button_tag "is_visible_leader", 0, member.is_visible_leader == 0
+      span 不可见
 
   = input f, :office_address
   = input f, :sort

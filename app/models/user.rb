@@ -40,4 +40,10 @@ class User < ActiveRecord::Base
     false
   end
 
+  def visible_leader
+    members.first.try do |member|
+      member.present? ? member.is_visible_leader : 0
+    end
+  end
+
 end

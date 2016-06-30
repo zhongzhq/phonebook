@@ -2,7 +2,7 @@
 class UsersController < ApplicationController
   load_and_authorize_resource
   layout "tree", :except => [:change, :data_submit, :password_submit]
-  
+
   def new
     @organ = Organ.find(params[:organ_id])
     @user = User.new
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     @organ = Organ.find(params[:organ_id])
     @user = User.new(params[:user])
 
-    if params[:user][:jobs].delete_if{|x| x.blank?}.blank?
+    if params[:user][:jobs].delete_if { |x| x.blank? }.blank?
       @user.errors.add(:jobs, "角色不能为空")
       return render "new"
     end
@@ -22,8 +22,8 @@ class UsersController < ApplicationController
 
       member = Member.first_or_create(@user.id, @organ.id)
       member.set_jobs(params[:user][:jobs])
-      member.update_attributes(:is_admin => params[:is_admin])
-      
+      member.update_attributes(:is_admin => params[:is_admin], :is_visible_leader => params[:is_visible_leader])
+
       redirect_to user_path(@user, :organ_id => @organ.id)
     else
       render "new"
@@ -45,8 +45,8 @@ class UsersController < ApplicationController
   def update
     @organ = Organ.find(params[:organ_id])
     @user = User.find(params[:id])
-    
-    if params[:user][:jobs].delete_if{|x| x.blank?}.blank?
+
+    if params[:user][:jobs].delete_if { |x| x.blank? }.blank?
       @user.errors.add(:jobs, "角色不能为空")
       return render "edit"
     end
@@ -56,8 +56,8 @@ class UsersController < ApplicationController
 
       member = Member.find_by_user_and_organ(@user.id, @organ.id)
       member.set_jobs(params[:user][:jobs])
-      member.update_attributes(:is_admin => params[:is_admin])
-      
+      member.update_attributes(:is_admin => params[:is_admin], :is_visible_leader => params[:is_visible_leader])
+
       @organ = Organ.where(:name => params[:user_organ]).first
       member.update_attributes(:organ_id => @organ.id)
 
@@ -67,21 +67,21 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy    
+  def destroy
     @user = User.find(params[:id])
 
     if params[:organ_id].present?
       @organ = Organ.find(params[:organ_id])
       redirect_to organ_path(@organ), (Member.find_by_user_and_organ(@user, @organ).destroy ? {:notice => "用户从组织中删除成功"} : {:alert => "用户从组织中删除失败"})
       @user.destroy
-    else      
+    else
       redirect_to :back, (@user.destroy ? {:notice => "用户删除成功"} : {:alert => "用户还存在于组织下"})
-    end    
+    end
   end
 
   def reset
     @organ = Organ.find(params[:organ_id])
-    @user = User.find(params[:id])    
+    @user = User.find(params[:id])
   end
 
   def reset_submit
@@ -118,7 +118,7 @@ class UsersController < ApplicationController
       return render "change"
     end
 
-    if @user.update_attributes(params[:user].tap{|x| x.delete("current_password")})
+    if @user.update_attributes(params[:user].tap { |x| x.delete("current_password") })
       redirect_to root_path
     else
       render "change"

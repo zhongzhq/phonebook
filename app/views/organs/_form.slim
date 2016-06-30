@@ -2,6 +2,16 @@
   = f.hidden_field :parent_id
   
   = input f, :name
+
+  .control-group
+    label.control-label for="is_leader" 是否领导组
+    .controls
+      = radio_button_tag "organ[is_leader]", 1, @organ.is_leader == 1
+      span 是
+
+      = radio_button_tag "organ[is_leader]", 0, @organ.is_leader == 0
+      span 否
+
   = input f, :sort
   = input f, :address
   = input f, :phone
